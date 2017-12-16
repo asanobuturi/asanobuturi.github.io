@@ -2,6 +2,7 @@
 .welcome-slogan {
     color: white;
     font-size: 80px;
+    font-weight: 400;
     padding-top: 70px;
     line-height: 111.31777%; /*(≒(i^i)%)*/
 }
@@ -9,6 +10,7 @@
 .welcome-slogan-small {
     color: white;
     font-size: 30px;
+    font-weight: 400;
     padding-top: 60px;
     line-height: 111.31777%; /*(≒(i^i)%)*/
 }
