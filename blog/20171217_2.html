@@ -1,0 +1,155 @@
+﻿<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="浅野学園物理部の公式ホームページです。文化祭情報などを掲載しています。">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2018年2月は満月にならない|浅野学園物理部</title>
+
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../blogStyle.css">
+    <link rel="shortcut icon" href="../image/favicon.ico">
+</head>
+<body>
+    <div id="nav-drawer">
+        <input id="nav-input" type="checkbox" class="nav-unshown">
+        <label id="nav-open" for="nav-input">
+            <span class="bar bar1"></span>
+            <span class="bar bar2"></span>
+            <span class="bar bar3"></span>
+            <span class="menu">MENU</span>
+            <span class="close">CLOSE</span>
+        </label>
+        <label id="nav-close" for="nav-input"></label>
+        <div id="nav-content">
+            <a class="nav-link" href="../index.html">ホーム</a>
+            <a class="nav-link" href="../about.html">物理部とは</a>
+            <a class="nav-link" href="../document.html">部誌</a>
+            <a class="nav-link" href="../game.html">ゲーム</a>
+            <a class="nav-link isActive" href="index.html">ブログ</a>
+            <div class="nav-separator"></div>
+            <a class="nav-link" href="http://d.hatena.ne.jp/apc/">ブログ(外部サイト)</a>
+        </div>
+    </div>
+    <main>
+        <div id="main">
+            <article class="blogArticle">
+                <header>
+                    <h1>2018年2月は満月にならない</h1>
+                    <div class="postDate"><time datetime="2017-12-17">2017年12月17日</time></div>
+                </header>
+                <div class="content">
+                    <p>まずは，これを見てください。</p>
+                    <img src="20171217_2/Screenshot-2017-12-17 今月のこよみ - 国立天文台暦計算室(1).png" width="170" height="331" />
+                    <p>上の画像は，国立天文台の暦のページからお借りしたのですが，普段なら</p>
+                    <img src="20171217_2/Screenshot-2017-12-17 今月のこよみ - 国立天文台暦計算室.png" width="170" height="357" />
+                    <p>このように「望(満月)」があるはずなのに，2018年2月の暦には「望(満月)」がないんです。</p>
+
+                    <p>今回は，このことについてです。</p>
+                    <h2>そもそも満月とは</h2>
+                    <blockquote>
+                        <p>天文学的な意味での満月（望）は、太陽、地球、月の位置関係によって決まります。満月とは、地球から見て月と太陽が反対方向になった瞬間（月が太陽の光を真正面から受けて、地球からまん丸に見える瞬間）の月のことを指します。</p>
+                        <cite><a href="https://www.nao.ac.jp/astro/sky/2017/10-topics02.html">国立天文台</a></cite>
+                    </blockquote>
+                    <p>
+                        つまり，「○月○日は満月」ではなく，「○月○日 ○時○分の瞬間に満月になる」ということです。上の2017年12月の例で言うと，2017年12月4日 0:47の瞬間，地球から見て月と太陽が反対方向になります。
+                    </p>
+                    <h2>なぜこんなことが起こるのか</h2>
+
+                    <p>
+                        実は，2018年1月と3月に満月はそれぞれ２回あります。<br />
+                        2018年1月から3月の満月を見てみると，
+                    </p>
+                    <pre>
+2018/01/02 11:24
+2018/01/31 22:27
+2018/03/02 09:51
+2018/03/31 21:27
+</pre>
+                    <p>
+                        こんな感じで，ちょうど2018年2月に満月が来ません。<br />
+                        満月から次の満月までは約29.5日なので，うまく１月の最後に満月が来れば２月に満月が来なくなるというわけです。
+                    </p>
+                    <h2>2018年2月以外にはいつあるの？</h2>
+                    <p>
+                        2018年2月以外にはいつあるのか，pythonとPyEphemというライブラリで計算してみました。
+                    </p>
+
+                    <pre class="prettyprint lang-py">
+import ephem
+pr=0
+d=ephem.Date('1800')
+while d&lt;ephem.Date('2500'):
+	d=ephem.next_full_moon(d)
+	tl=ephem.Date(d+ephem.hour*9)
+	mo=tl.datetime().month
+	if pr+1&lt;mo:
+		print('{0}/{1}'.format(tl.datetime().year,mo-1))
+	pr=mo
+</pre>
+                    <p>
+                        その結果は，
+                    </p>
+                    <pre>
+1801/2
+1809/2
+1847/2
+1866/2
+1885/2
+1915/2
+1934/2
+1953/2
+1991/2
+2010/2
+2018/2
+2029/2
+2037/2
+2067/2
+2094/2
+2105/2
+2143/2
+2162/2
+2181/2
+2200/2
+2219/2
+2238/2
+2257/2
+2287/2
+2306/2
+2325/2
+2363/2
+2382/2
+2401/2
+2420/2
+2439/2
+2466/2
+2485/2
+</pre>
+                    <p>
+                        前回は2010年2月，次回は2029年2月。大体100年に４回から６回あります。<br />
+                        思った通り，２月以外にはなさそうですね。<br />
+                        1582年以前はユリウス暦がずっと続いていると仮定して，紀元前10000年から紀元後10000年まで計算してみましたが２月以外にはなさそうです。
+                        （計算があっている保証は出来ません）
+                    </p>
+
+                    <p>
+                        注：時刻はすべて日本時間です。標準時間 GMT+11以上のところでは，2018年2月1日の未明に満月になってしまいます。
+                    </p>
+                    <p>最後まで読んでいただき、ありがとうございました。</p>
+                </div>
+                <nav class="nextPrev">
+                    <div class="next">次へ<a>coming soon(たぶん) &gt;</a></div>
+                    <div class="prev">前へ<a href="20171217.html">ホームページ引っ越し &gt;</a></div>
+                </nav>
+            </article>
+        </div>
+        <footer class="footer">
+            <div class="">
+                <p class="copylight">&copy; 2015 Asano Physics Club</p>
+            </div>
+        </footer>
+    </main>
+</body>
+</html>
