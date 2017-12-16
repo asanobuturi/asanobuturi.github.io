@@ -1,0 +1,197 @@
+﻿
+.welcome-slogan {
+    color: white;
+    font-size: 80px;
+    padding-top: 0.5em;
+    line-height: 111.31777%; /*(≒(i^i)%)*/
+}
+
+.welcome-slogan-small {
+    color: white;
+    font-size: 30px;
+    padding-top: 60px;
+    line-height: 111.31777%; /*(≒(i^i)%)*/
+}
+
+@media (max-width: 700px) {
+    .welcome-slogan {
+        font-size: 30px;
+    }
+
+    .welcome-slogan-small {
+        font-size: 20px;
+    }
+}
+
+.topPageContent {
+    background: url(image/buturi2.jpg) no-repeat center;
+    background-size: cover;
+    background-attachment: fixed;
+    /*position: relative;
+    z-index: 0;
+    overflow: hidden;*/
+}
+/*
+    .topPageContent:before {
+        content: '';
+        background: inherit;
+        -webkit-filter: blur(8px);
+        -moz-filter: blur(8px);
+        -o-filter: blur(8px);
+        -ms-filter: blur(8px);
+        filter: blur(8px);
+        position: absolute;
+        top: -5px;
+        left: -5px;
+        right: -5px;
+        bottom: -5px;
+        z-index: -1;
+    }*/
+
+
+.frosted {
+    margin: 40px auto;
+    width: 80%;
+    max-width: 800px;
+    background: inherit;
+    background-position: center center;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0,0,0,.5);
+    overflow: hidden;
+    background: rgba(225,225,225,0.3);
+}
+
+    .frosted .frosted-title {
+    }
+
+    .frosted .frosted-article {
+        background: rgba(225,225,225,0.52);
+    }
+
+.headline {
+    padding-top: 56px;
+    text-align: center;
+}
+
+    .headline .headline-ja {
+        font-weight: bold;
+        font-size: 30px;
+        margin-bottom: 15px;
+        padding-bottom: 5px;
+    }
+
+    .headline .headline-en {
+        font-weight: 700;
+        letter-spacing: .14em;
+        text-indent: .14em;
+        color: #ec407a;
+        padding-bottom: 20px;
+        font-size: 12px;
+    }
+
+@media (max-width: 600px) {
+    .headline {
+        padding-top: 30px;
+    }
+
+        .headline .headline-ja {
+            font-weight: bold;
+            font-size: 25px;
+            margin-bottom: 10px;
+            padding-bottom: 3px;
+        }
+
+        .headline .headline-en {
+            font-weight: 700;
+            letter-spacing: .14em;
+            text-indent: .14em;
+            color: #ec407a;
+            padding-bottom: 10px;
+            font-size: 8px;
+        }
+}
+
+.headline .news {
+    padding-bottom: 3px;
+    text-align: left;
+    padding: 0em 0.5em;
+}
+
+    .headline .news .news-article {
+        width: 100%;
+        padding: 1.2em 0.7em 1.2em;
+        font-size: 14px;
+    }
+
+        .headline .news .news-article + .news-article {
+            border-top: dotted 1px #e6e6e6;
+        }
+
+        .headline .news .news-article .news-link {
+            width: 100%;
+        }
+
+        .headline .news .news-article .news-date {
+            padding-right: 1.5em;
+            font-weight: 700;
+        }
+
+        .headline .news .news-article .news-text {
+        }
+
+        .headline .news .news-article .news-arrow {
+            float: right;
+            padding-right: 0.25em;
+        }
+
+.contact {
+    letter-spacing: -4px;
+    padding: 10px;
+    text-align: center;
+}
+
+    .contact dl {
+        display: inline-block;
+        letter-spacing: normal;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .contact .description {
+        display: inline-table;
+        vertical-align: middle;
+        font-weight: 800;
+    }
+
+    .contact .contactIcon {
+        padding: 10px;
+        font-size: 48px;
+        width: 48px;
+        height: 48px;
+        color: #9e9e9e;
+    }
+
+    .contact .mailaddressImage {
+        display: inline-table;
+        vertical-align: middle;
+        width: 246px;
+        height: 20px;
+    }
+
+@media (max-width: 500px) {
+    .contact .contactIcon {
+        padding: 5px;
+        font-size: 24px;
+        width: 24px;
+        height: 24px;
+    }
+
+    .contact .mailaddressImage {
+        width: 123px;
+        height: 10px;
+    }
+}
+
+.footer{
+    background-color: transparent;
+}

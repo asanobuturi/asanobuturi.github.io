@@ -1,0 +1,233 @@
+﻿html, body, ul {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+a {
+    color: rgb(50,90,180);
+    display: inline-table;
+    vertical-align: middle;
+}
+
+    a:visited {
+        color: rgb(90, 80, 190);
+    }
+
+    a .material-icons {
+        display: inline-table;
+        vertical-align: middle;
+        color: rgb(255, 58, 88);
+        font-size: 1.4em;
+    }
+
+dd {
+    margin: 0px;
+}
+
+main {
+    text-align: center;
+}
+
+.mdl-textfield--expandable {
+    width: auto;
+}
+
+.mobile {
+    display: none !important;
+}
+
+.logo-image {
+    height: 28px;
+}
+
+.header {
+    overflow: visible;
+    background-color: white;
+}
+
+    .header .material-icons {
+        color: #767777 !important;
+    }
+
+    .header .mdl-layout__drawer-button {
+        background: transparent;
+        color: #767777;
+    }
+
+    .header .mdl-navigation {
+        direction: ltr;
+        -webkit-justify-content: flex-end;
+        -ms-flex-pack: end;
+        justify-content: flex-end;
+        width: 800px;
+    }
+
+    .header .mdl-navigation__link {
+        color: #757575;
+        font-weight: 700;
+        font-size: 16px;
+        height: 60px;
+        line-height: 68px;
+        background-color: transparent !important;
+        border-bottom: 4px solid transparent;
+    }
+
+        .header .mdl-navigation__link:hover {
+            border-bottom: 4px solid rgb(90,170,230);
+            color: black;
+        }
+
+        .header .mdl-navigation__link.isActive {
+            border-bottom: 4px solid rgb(90,170,230);
+            color: black;
+        }
+
+        .header .mdl-navigation__link.isActive2 {
+            border-bottom: 4px solid rgb(90,170,230);
+        }
+
+
+.navigation-container {
+    direction: rtl;
+    -webkit-order: 1;
+    -ms-flex-order: 1;
+    order: 1;
+    width: 500px;
+    transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1), width 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+.drawer-separator {
+    height: 1px;
+    background-color: #dcdcdc;
+    margin: 8px 0;
+}
+
+.drawer {
+    border-right: none;
+}
+
+    .drawer .mdl-navigation__link {
+        color: #757575;
+        font-weight: 700;
+        font-size: 16px;
+        display: inline-block;
+        background-color: transparent !important;
+        border-right: 8px solid transparent;
+    }
+
+        .drawer .mdl-navigation__link.mdl-navigation__link:hover {
+            border-right: 8px solid rgb(90,170,230);
+            color: black;
+        }
+
+        .drawer .mdl-navigation__link.mdl-navigation__link.isActive {
+            border-right: 8px solid rgb(90,170,230);
+            color: black;
+        }
+
+        .drawer .mdl-navigation__link.mdl-navigation__link.isActive2 {
+            border-right: 8px solid rgb(90,170,230);
+        }
+
+
+.mdl-layout__content {
+    background-color: #f5f5f5;
+}
+.mdl-layout__content section {
+    position: relative;
+    margin-top: 3em;
+    margin-bottom: 3em;
+}
+
+section.section--center {
+    max-width: 80%;
+}
+
+.main-title {
+    font-size: 60px;
+    margin: 1em 0px;
+}
+
+.sub-title {
+    font-size: 30px;
+    margin: 1em 0px;
+}
+
+.footer {
+    background-color: gray;
+    padding: 16px 40px;
+}
+
+    .footer a:hover {
+        color: rgb(90,170,230);
+    }
+
+    .footer .mdl-mega-footer--top-section::after {
+        border-bottom: none;
+    }
+
+    .footer .mdl-mega-footer--middle-section::after {
+        border-bottom: none;
+    }
+
+    .footer .mdl-mega-footer--bottom-section {
+        position: relative;
+    }
+
+        .footer .mdl-mega-footer--bottom-section a {
+            margin-right: 2em;
+        }
+
+    .footer .mdl-mega-footer--right-section a .material-icons {
+        position: relative;
+        top: 6px;
+    }
+
+    .footer .copylight {
+        font-weight: 300;
+        color: #f5f5f5;
+    }
+
+@media (max-width: 900px) {
+    .navigation-container {
+        display: none;
+    }
+
+    .title {
+        display: none !important;
+    }
+
+    .mobile {
+        display: block !important;
+    }
+
+    .welcome-slogan {
+        font-size: 40px;
+        margin: 0 16px;
+        padding-top: 24px;
+    }
+
+    .welcome-slogan-small {
+        font-size: 30px;
+        margin: 0 16px;
+        padding-top: 24px;
+    }
+
+    .main-title {
+        font-size: 40px;
+    }
+
+    .sub-title {
+        font-size: 18px;
+    }
+
+    .footer .mdl-mega-footer--bottom-section {
+        display: none;
+    }
+}
