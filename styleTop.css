@@ -126,11 +126,16 @@ body::before {
 }
 
 #nav-open {
+    color: #fff !important;
     background-color: transparent !important;
 }
 
     #nav-open span.bar {
         background-color: #fff !important;
+    }
+
+    #nav-open span.close {
+        color: #000 !important;
     }
 
 #nav-input:checked ~ #nav-open span.bar {
