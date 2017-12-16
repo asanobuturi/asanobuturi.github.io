@@ -78,7 +78,7 @@ article {
 }
 
     article img {
-        width: 100%;
+        max-width: 100%;
         margin: 1px;
         box-shadow: 0 4px 8px 2px rgba(0, 0, 0, 0.2);
     }
@@ -87,7 +87,40 @@ article {
         padding: 90px 2em 1.5em;
         box-shadow: 0 1px 0 0 rgba(0,0,0,0.1);
     }
+blockquote {
+    position: relative;
+    padding: 30px 15px 8px 15px;
+    margin: 10px;
+    box-sizing: border-box;
+    background: #f8f8f8;
+}
 
+    blockquote:before {
+        display: inline-block;
+        position: absolute;
+        top: 5px;
+        left: 3px;
+        vertical-align: middle;
+        font-style: italic;
+        content: "\"";
+        font-family: sans-serif;
+        color: #cfcfcf;
+        font-size: 90px;
+        line-height: 1;
+    }
+
+    blockquote p {
+        padding: 0;
+        margin: 10px 0;
+        line-height: 1.7;
+    }
+
+    blockquote cite {
+        display: block;
+        text-align: right;
+        color: #888888;
+        font-size: 0.9em;
+    }
 h1 {
     font-size: 32px;
     margin-bottom: 1em;
