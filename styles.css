@@ -77,7 +77,7 @@ header {
     color: rgb(20,30,200);
     font-weight: 700;
     padding: 10px;
-    background-color: #fff;
+    background-color: rgba(255,255,255,.8);
     border-radius: 0 0 10px 0;
 }
 
