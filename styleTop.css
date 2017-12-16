@@ -24,7 +24,7 @@
         font-size: 20px;
     }
 }
-
+/*
 .topPageContent {
     background: url(image/buturi2.jpg) no-repeat center;
     background-size: cover;
@@ -32,8 +32,8 @@
     /*overflow: hidden;
     /*position: relative;
     z-index: 0;
-    overflow: hidden;*/
-}
+    overflow: hidden;
+}*/
 /*
     .topPageContent:before {
         content: '';
@@ -50,7 +50,18 @@
         bottom: -5px;
         z-index: -1;
     }*/
-
+body::before {
+    content: "";
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100vh;
+    background: url(image/buturi2.jpg) center/cover no-repeat;
+    -webkit-background-size: cover;
+}
 
 .frosted {
     margin: 40px auto;
@@ -121,6 +132,7 @@
     #nav-open span.bar {
         background-color: #fff !important;
     }
+
 #nav-input:checked ~ #nav-open span.bar {
     background-color: #000 !important;
 }
