@@ -5,7 +5,7 @@
 
 html {
     height: 100%;
-    font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴシック Pro',游ゴシック体, 'Yu Gothic', YuGothic, HelveticaNeue, "Helvetica Neue", Helvetica, Arial, Roboto, "Droid Sans", メイリオ, Meiryo,"ＭＳ Ｐゴシック", sans-serif;
+    font-family: Arial,Helvetica,”游ゴシック”,YuGothic,”Hiragino Kaku Gothic ProN”,Meiryo, sans-serif;
 }
 
 body {
@@ -295,17 +295,18 @@ section.section--center {
 .main-title {
     font-size: 60px;
     font-weight: 700;
-    padding: 90px 0px 1em;
+    padding: 90px 0 0;
+    margin: 0 0px 1em;
 }
 
 .sub-title {
     font-size: 30px;
     font-weight: 700;
-    padding: 90px 0px 1em;
+    margin: 90px 0px 1em;
 }
 
 .main-title + .sub-title {
-    padding-top: 1em;
+    margin-top: 0;
 }
 
 .footer {
