@@ -149,46 +149,49 @@ body::before {
 }
 
     .headline .news .news-article {
-        width: 90%;
         padding: 1.2em 0.7em 1.2em;
         font-size: 14px;
     }
 
-        .headline .news .news-article + .news-article {
-            border-top: dotted 1px #e6e6e6;
-        }
+    .headline .news.news-article_wrap {
+        width: 100%;
+    }
 
-        .headline .news .news-article .news-link {
-            display: block;
-            text-decoration: none;
-            width: 100%;
-            position: relative;
-        }
+    .headline .news .news-article + .news-article {
+        border-top: dotted 1px #e6e6e6;
+    }
 
-            .headline .news .news-article .news-link:after {
-                content: "";
-                display: block;
-                width: 8px;
-                height: 8px;
-                border-top: #666 2px solid;
-                border-right: #666 2px solid;
-                -webkit-transform: rotate(45deg);
-                -ms-transform: rotate(45deg);
-                transform: rotate(45deg);
-                position: absolute;
-                right: -10px;
-                top: 0;
-                bottom: 0;
-                margin: auto;
-            }
+    .headline .news .news-article .news-link {
+        display: block;
+        text-decoration: none;
+        width: 100%;
+        position: relative;
+    }
 
-        .headline .news .news-article .news-date {
-            padding-right: 1.5em;
-            font-weight: 700;
-        }
+    .headline .news .news-article .arrow {
+        content: "";
+        display: block;
+        width: 8px;
+        height: 8px;
+        border-top: #666 2px solid;
+        border-right: #666 2px solid;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+        position: absolute;
+        right: -10px;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+    }
 
-        .headline .news .news-article .news-text {
-        }
+    .headline .news .news-article .news-date {
+        padding-right: 1.5em;
+        font-weight: 700;
+    }
+
+    .headline .news .news-article .news-text {
+    }
 
 .contact {
     letter-spacing: -4px;
