@@ -1,5 +1,6 @@
 ﻿
 .welcome-slogan {
+    font-family: "じゅん 501","Jun 501",Arial,Helvetica,"游ゴシック",YuGothic,"Hiragino Kaku Gothic ProN",Meiryo, sans-serif;
     color: white;
     font-size: 80px;
     font-weight: 500;
@@ -8,6 +9,7 @@
 }
 
 .welcome-slogan-small {
+    font-family: "じゅん 501","Jun 501",Arial,Helvetica,"游ゴシック",YuGothic,"Hiragino Kaku Gothic ProN",Meiryo, sans-serif;
     color: white;
     font-size: 30px;
     font-weight: 500;
