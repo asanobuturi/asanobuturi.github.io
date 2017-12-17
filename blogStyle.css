@@ -8,7 +8,7 @@
 
 .articleBlock {
     font-size: 16px;
-    line-height: 170%;
+    line-height: 1.7em;
     background-color: #fff;
     padding: 0px;
     margin-bottom: 3em;
@@ -48,6 +48,7 @@
         font-family: "じゅん 501","Jun 501",Arial,Helvetica,"Hiragino Kaku Gothic ProN",Meiryo, sans-serif;
         font-size: 32px;
         font-weight: bold;
+        line-height: 1.3em;
     }
 
     .articleUnit .date {
@@ -58,6 +59,12 @@
 
     .articleUnit .readMore {
     }
+
+@media (max-width: 500px) {
+    .articleUnit .title a {
+        font-size: 20px;
+    }
+}
 
 #main {
     margin: auto;

@@ -350,10 +350,6 @@ section.section--center {
         display: none;
     }
 
-    .title {
-        display: none !important;
-    }
-
     .mobile {
         display: block !important;
     }
