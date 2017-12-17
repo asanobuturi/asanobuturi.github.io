@@ -13,6 +13,11 @@
     padding: 0px;
     margin-bottom: 3em;
 }
+@media (max-width: 500px) {
+    .articleBlock {
+        font-size: 12px;
+    }
+}
 
     .articleBlock h1 {
         padding: 1.25em 0;
@@ -20,7 +25,7 @@
     }
 
 #blogBlock {
-    padding: 0em 2em;
+    padding: 0 5%;
 }
 
 .blogPosts {
@@ -37,11 +42,11 @@
     padding: 0;
     display: inline-block;
     text-align: left;
-    width: 90%;
+    width: 100%;
 }
 
     .articleUnit p {
-        margin: 0.5em;
+        margin: 0.5em 0;
     }
 
     .articleUnit .title a {
