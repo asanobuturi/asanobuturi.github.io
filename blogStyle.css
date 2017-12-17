@@ -45,6 +45,7 @@
     }
 
     .articleUnit .title a {
+        font-family: "じゅん 501","Jun 501",Arial,Helvetica,"游ゴシック",YuGothic,"Hiragino Kaku Gothic ProN",Meiryo, sans-serif;
         font-size: 32px;
         font-weight: bold;
     }
@@ -87,6 +88,7 @@ article {
         padding: 90px 2em 1.5em;
         box-shadow: 0 1px 0 0 rgba(0,0,0,0.1);
     }
+
 blockquote {
     position: relative;
     padding: 30px 15px 8px 15px;
@@ -121,6 +123,7 @@ blockquote {
         color: #888888;
         font-size: 0.9em;
     }
+
 h1 {
     font-family: "じゅん 501","Jun 501",Arial,Helvetica,"游ゴシック",YuGothic,"Hiragino Kaku Gothic ProN",Meiryo, sans-serif;
     font-size: 32px;
@@ -183,91 +186,93 @@ pre, .pre-style {
     padding: 1px 4px
 }
 
-pre.prettyprint, .pre-style {
-    font-weight: 400;
-    word-break: normal;
-    font: 14px/20px Roboto Mono,monospace;
-    margin: 16px 0;
-    overflow-x: auto;
-    padding: 8px;
-    position: relative;
-    border: 0px;
-}
+    pre.prettyprint, .pre-style {
+        font-weight: 400;
+        word-break: normal;
+        font: 14px/20px Roboto Mono,monospace;
+        margin: 16px 0;
+        overflow-x: auto;
+        padding: 8px;
+        position: relative;
+        border: 0px;
+    }
 
-pre::-webkit-scrollbar {
-    height: 8px;
-    width: 4px;
-}
+    pre::-webkit-scrollbar {
+        height: 8px;
+        width: 4px;
+    }
 
 @media (max-width: 500px) {
     pre.prettyprint, .pre-style {
         font: 10px/16px Roboto Mono,monospace;
     }
+
     pre::-webkit-scrollbar {
         height: 6px;
         width: 3px;
     }
 }
-    pre::-webkit-scrollbar-corner {
-        background: 0;
-    }
 
-    pre::-webkit-scrollbar-thumb {
-        background: rgba(0,0,0,.26);
-    }
+pre::-webkit-scrollbar-corner {
+    background: 0;
+}
 
-    #embedded-explorer .com-google-api-explorer-client-Resources-Css-jsonString, pre .com {
-        color: #d81b60
-    }
+pre::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,.26);
+}
 
-    .devsite-dark-code pre .com {
-        color: #f06292
-    }
+#embedded-explorer .com-google-api-explorer-client-Resources-Css-jsonString, pre .com {
+    color: #d81b60
+}
 
-    #embedded-explorer .com-google-api-explorer-client-Resources-Css-jsonNumber, pre .lit, pre .dec {
-        color: #c53929
-    }
+.devsite-dark-code pre .com {
+    color: #f06292
+}
 
-    .devsite-dark-code pre .lit, .devsite-dark-code pre .dec {
-        color: #fbc02d
-    }
+#embedded-explorer .com-google-api-explorer-client-Resources-Css-jsonNumber, pre .lit, pre .dec {
+    color: #c53929
+}
 
-    pre .kwd, pre .tag {
-        color: #3b78e7
-    }
+.devsite-dark-code pre .lit, .devsite-dark-code pre .dec {
+    color: #fbc02d
+}
 
-    .devsite-dark-code pre .kwd, .devsite-dark-code pre .tag {
-        color: #4dd0e1
-    }
+pre .kwd, pre .tag {
+    color: #3b78e7
+}
 
-    #embedded-explorer .com-google-api-explorer-client-Resources-Css-jsonBoolean, pre .str, pre .atv {
-        color: #0d904f
-    }
+.devsite-dark-code pre .kwd, .devsite-dark-code pre .tag {
+    color: #4dd0e1
+}
 
-    .devsite-dark-code pre .str, .devsite-dark-code pre .atv {
-        color: #9ccc65
-    }
+#embedded-explorer .com-google-api-explorer-client-Resources-Css-jsonBoolean, pre .str, pre .atv {
+    color: #0d904f
+}
 
-    #embedded-explorer .com-google-api-explorer-client-Resources-Css-jsonKey, pre .typ, pre .atn {
-        color: #9c27b0
-    }
+.devsite-dark-code pre .str, .devsite-dark-code pre .atv {
+    color: #9ccc65
+}
 
-    .devsite-dark-code pre .typ, .devsite-dark-code pre .atn {
-        color: #ce93d8
-    }
+#embedded-explorer .com-google-api-explorer-client-Resources-Css-jsonKey, pre .typ, pre .atn {
+    color: #9c27b0
+}
 
-    a code, td a code {
-        color: #039be5
-    }
+.devsite-dark-code pre .typ, .devsite-dark-code pre .atn {
+    color: #ce93d8
+}
 
-    a .atv, a .atn, a .com, a .dec, a .kwd, a .lit, a .str, a .tag, a .typ, .prettyprint :not(.devsite-github-link) > a:not(.devsite-github-link) {
-        color: #039be5;
-        -moz-osx-font-smoothing: auto;
-        -webkit-font-smoothing: auto;
-        font-weight: 700
-    }
+a code, td a code {
+    color: #039be5
+}
+
+a .atv, a .atn, a .com, a .dec, a .kwd, a .lit, a .str, a .tag, a .typ, .prettyprint :not(.devsite-github-link) > a:not(.devsite-github-link) {
+    color: #039be5;
+    -moz-osx-font-smoothing: auto;
+    -webkit-font-smoothing: auto;
+    font-weight: 700
+}
 
 
-    li.L0, li.L1, li.L2, li.L3, li.L4, li.L5, li.L6, li.L7, li.L8, li.L9 {
-        list-style-type: decimal !important;
-    }
+li.L0, li.L1, li.L2, li.L3, li.L4, li.L5, li.L6, li.L7, li.L8, li.L9 {
+    list-style-type: decimal !important;
+}
