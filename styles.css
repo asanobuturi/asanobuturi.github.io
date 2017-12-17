@@ -59,7 +59,7 @@ header {
     top: 0;
     left: -340px;
     height: 100%;
-    transition: right .3s, left .3s;
+    transition: right .5s, left .8s;
     background-color: #fff;
     z-index: 1000;
     width: 300px;
@@ -86,7 +86,7 @@ header {
         height: 4px;
         background-color: rgb(20,30,200);
         border-radius: 4px;
-        transition: all 0.3s;
+        transition: all 0.8s;
         transform-origin: 0 0;
         margin: 0 0 8px;
     }
@@ -124,9 +124,8 @@ header {
     }
 
     #nav-input:checked ~ #nav-open span.bar1 {
-        -webkit-transform: translateY(25px) rotate(-30deg);
-        transform: translateY(25px) rotate(-30deg);
-        width: 53px;
+        -webkit-transform: translateY(23px) rotate(-30deg);
+        transform: translateY(23px) rotate(-30deg);
     }
 
     #nav-input:checked ~ #nav-open span.bar2 {
@@ -136,7 +135,6 @@ header {
     #nav-input:checked ~ #nav-open span.bar3 {
         -webkit-transform: translateY(-25px) rotate(30deg);
         transform: translateY(-25px) rotate(30deg);
-        width: 53px;
     }
 
     #nav-input:checked ~ #nav-open span.menu {
