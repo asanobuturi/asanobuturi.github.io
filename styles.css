@@ -5,7 +5,7 @@
 
 html {
     height: 100%;
-    font-family: Arial,Helvetica,"Hiragino Kaku Gothic ProN",Meiryo, sans-serif;
+    font-family: Arial, "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic ProN", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "Meiryo UI", sans-serif, "游ゴシック", "Yu Gothic", "游ゴシック体", "YuGothic";
 }
 
 body {
@@ -79,7 +79,7 @@ header {
     padding: 10px;
     background-color: rgba(255,255,255,.8);
     border-radius: 0 0 10px 0;
-    font-family: "じゅん 501","Jun 501",Arial,Helvetica,"Hiragino Kaku Gothic ProN",Meiryo, sans-serif;
+    font-family: "じゅん 501","Jun 501", Arial, "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic ProN", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "Meiryo UI", sans-serif, "游ゴシック", "Yu Gothic", "游ゴシック体", "YuGothic";
 }
 
     #nav-open span.bar {
@@ -296,14 +296,14 @@ section.section--center {
     font-weight: 700;
     padding: 90px 0 0;
     margin: 0 0px 1em;
-    font-family: "じゅん 501","Jun 501",Arial,Helvetica,"Hiragino Kaku Gothic ProN",Meiryo, sans-serif;
+    font-family: "じゅん 501","Jun 501", Arial, "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic ProN", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "Meiryo UI", sans-serif, "游ゴシック", "Yu Gothic", "游ゴシック体", "YuGothic";
 }
 
 .sub-title {
     font-size: 30px;
     font-weight: 700;
     margin: 90px 0px 1em;
-    font-family: "じゅん 501","Jun 501",Arial,Helvetica,"Hiragino Kaku Gothic ProN",Meiryo, sans-serif;
+    font-family: "じゅん 501","Jun 501", Arial, "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic ProN", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "Meiryo UI", sans-serif, "游ゴシック", "Yu Gothic", "游ゴシック体", "YuGothic";
 }
 
 .main-title + .sub-title {
