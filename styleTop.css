@@ -144,6 +144,29 @@ body::before {
     background-color: #000 !important;
 }
 
+.headline .contentsbox {
+    display: inline-block;
+    margin: 10px 26px;
+    color: #2e3233;
+    text-decoration: none;
+}
+
+    .headline .contentsbox .headline-ja {
+        font-size: 25px;
+    }
+
+@media (max-width: 700px) {
+    .headline .contentsbox {
+        margin: 10px 6px;
+    }
+}
+
+@media (max-width: 600px) {
+    .headline .contentsbox .headline-ja {
+        font-size: 17px;
+    }
+}
+
 .headline .news {
     padding-bottom: 3px;
     text-align: left;
