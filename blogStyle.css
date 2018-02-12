@@ -97,9 +97,15 @@ article {
     }
 
     article header {
-        padding: 90px 2em 1.5em;
+        padding: 10px 2em 1.5em;
         box-shadow: 0 1px 0 0 rgba(0,0,0,0.1);
     }
+
+@media (max-width: 500px) {
+    article header {
+        padding: 60px 2em 1.5em;
+    }
+}
 
 blockquote {
     position: relative;
