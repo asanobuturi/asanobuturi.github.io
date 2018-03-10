@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /blog/20170000/
+Sitemap: https://asanobuturi.github.io/sitemap.xml
