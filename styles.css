@@ -33,7 +33,11 @@ dd {
 
 main {
     text-align: center;
-    min-height: 100%;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch;
 }
 
 .mobile {
