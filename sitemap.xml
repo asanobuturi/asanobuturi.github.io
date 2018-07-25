@@ -4,7 +4,7 @@
   <loc>https://asanobuturi.github.io/</loc>
 </url>
 <url>
-  <loc>https://asanobuturi.github.io/blog/</loc>
+  <loc>https://asanobuturi.github.io/blog/index.html</loc>
 </url>
 <url>
   <loc>https://asanobuturi.github.io/about.html</loc>
@@ -16,6 +16,9 @@
   <loc>https://asanobuturi.github.io/game.html</loc>
 </url>
 <url>
-  <loc>https://asanobuturi.github.io/blog/20171217_2</loc>
+  <loc>https://asanobuturi.github.io/blog/20171217_2/index.html</loc>
+</url>
+<url>
+  <loc>https://asanobuturi.github.io/blog/20171217/index.html</loc>
 </url>
 </urlset>
