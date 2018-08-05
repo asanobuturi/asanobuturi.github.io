@@ -55,7 +55,7 @@ header {
 
 #nav-drawer {
     position: absolute;
-    max-width: 340px;
+    max-width: 300px;
 }
 
 #nav-content {
@@ -91,7 +91,7 @@ header {
         height: 4px;
         background-color: rgb(20,30,200);
         border-radius: 4px;
-        transition: all 0.8s;
+        transition: all 0.5s;
         transform-origin: 0 0;
         margin: 0 0 8px;
     }
@@ -113,7 +113,7 @@ header {
     z-index: 1;
     width: 100%;
     height: 100%;
-    transition: background-color 1.1s;
+    transition: background-color 0.7s;
 }
 
 #nav-input {
@@ -160,7 +160,7 @@ header {
     margin: 0;
     font-size: 100%;
     font-weight: 400;
-    line-height: 24px;
+    line-height: 16px;
     letter-spacing: 0;
     flex-shrink: 0;
     padding: 16px 40px;
