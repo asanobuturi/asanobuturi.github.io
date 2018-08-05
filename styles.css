@@ -63,7 +63,7 @@ header {
     top: 0;
     left: -340px;
     height: 100%;
-    transition: right .5s, left .8s;
+    transition: right .3s, left .4s;
     background-color: #fff;
     z-index: 1000;
     width: 300px;
