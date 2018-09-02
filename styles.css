@@ -352,7 +352,7 @@ section.section--center {
 .gameList {
     margin: auto;
     text-align: center;
-    padding: 2em 0.5em;
+    padding: 0em 0.5em 2em;
 }
 
     .gameList .gameList-item {
@@ -371,14 +371,19 @@ section.section--center {
             vertical-align: top;
         }
 
-            .gameList .gameList-item .gameList-thumb img {
+            .gameList .gameList-item .gameList-thumb a {
                 width: 100%;
                 display: block;
             }
+                .gameList .gameList-item .gameList-thumb a img {
+                    width: 100%;
+                    display: block;
+                }
 
         .gameList .gameList-item .gameList-content {
             display: inline-block;
             width: 60%;
+            font-size: 20px;
         }
 
             .gameList .gameList-item .gameList-content h2 {
