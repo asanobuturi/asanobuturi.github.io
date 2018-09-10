@@ -397,8 +397,8 @@ section.section--center {
                 .gameList .gameList-item .gameList-content h2 a {
                     text-decoration: none;
                     font-weight: bold;
-                    color: #ffac1e;
-                    border-bottom: dotted 2px rgb(90,170,230);
+                    color: #ee7a12;
+                    border-bottom: dotted 2px rgb(70,80,210);
                 }
 
 @media (max-width: 500px) {
@@ -433,8 +433,6 @@ section.section--center {
             .gameList .gameList-item .gameList-content h2 a {
                 text-decoration: none;
                 font-weight: bold;
-                color: #ffac1e;
-                border-bottom: dotted 2px rgb(90,170,230);
             }
 }
 
