@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ブログ|浅野学園物理部</title>
+
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../../blogStyle.css">
+    <link rel="shortcut icon" href="../../image/favicon.ico">
+    <script type="text/javascript" src="//typesquare.com/accessor/script/typesquare.js?YME8OdI00sA%3D" charset="utf-8"></script>
+</head>
+<body>
+    <div id="nav-drawer">
+        <input id="nav-input" type="checkbox" class="nav-unshown">
+        <label id="nav-open" for="nav-input">
+            <span class="bar bar1"></span>
+            <span class="bar bar2"></span>
+            <span class="bar bar3"></span>
+            <span class="menu">MENU</span>
+            <span class="close">CLOSE</span>
+        </label>
+        <label id="nav-close" for="nav-input"></label>
+        <div id="nav-content">
+            <a class="nav-link" href="../../">ホーム</a>
+            <a class="nav-link" href="../../about.html">物理部とは</a>
+            <a class="nav-link" href="../../document.html">部誌</a>
+            <a class="nav-link" href="../../game/index.html">ゲーム</a>
+            <a class="nav-link isActive" href="../">ブログ</a>
+            <div class="nav-separator"></div>
+            <a class="nav-link" href="http://d.hatena.ne.jp/apc/">ブログ(外部サイト)</a>
+        </div>
+    </div>
+    <main>
+        <div id="main">
+            <article class="blogArticle">
+                <header>
+                    <h1>タイトル</h1>
+                    <div class="postDate"><time datetime="2017-00-00">2017年00月00日</time></div>
+                </header>
+                <div class="content">
+                    <p>前置き的な何か。「久々の更新です。この記事は前回のつづきです。」とか。ここでいい感じに本題に入れるように。</p>
+                    <p>これは，デフォルトの記事です。これをコピーして，書き換えます。</p>
+
+                    <h2>内容１</h2>
+
+                    <p>
+                        内容１の内容は無いようです。<br />
+                        内容１は特に内容がないようです。
+                    </p>
+                    <p>
+                        とりあえず段落を分けてみましたが，やっぱり内容はないようです。<br />
+                        やっぱり内容１の内容は無いようです。内容は，無いようです。（大事なことなので二回言いました）
+                    </p>
+                    <h2>内容２</h2>
+                    <p>
+                        h2が入って，内容が内容２に変わったので，期待していた人もいるかもですが，やっぱり内容はない模様です。
+                        とりあえず，いつものソースを載せておきます。
+                    </p>
+
+                    <pre class="prettyprint lang-cpp">
+#include "DxLib.h"
+
+int GetFps()
+{
+	static int OldTime = -1;
+	static int Count = 0;
+
+	static int result = -1;
+
+	if (OldTime == -1) {
+		OldTime = GetNowCount();
+		Count = -1;
+	}
+	Count++;
+
+	if (Count == 10) {
+		result = (int)(1000.*10. / (GetNowCount() - OldTime) + 0.5);
+		OldTime = GetNowCount();
+		Count = 0;
+	}
+
+	return result;
+}
+
+int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
+	LPSTR lpCmdLine, int nCmdShow)
+{
+	int WindowSizeX,WindowSizeY,WindowColorBit;
+
+	GetDefaultState(&WindowSizeX, &WindowSizeY, &WindowColorBit);
+	SetGraphMode(WindowSizeX, WindowSizeY, WindowColorBit);
+
+	//ChangeWindowMode( TRUE );
+
+	SetBackgroundColor(255, 255, 255);
+
+	if (DxLib_Init() == -1)
+		return -1;
+
+	SetDrawScreen(DX_SCREEN_BACK);
+
+	while (ProcessMessage() == 0 && CheckHitKey(KEY_INPUT_ESCAPE) == 0) {
+		ClearDrawScreen();
+
+
+
+		ScreenFlip();
+	}
+
+	DxLib_End();
+	return 0;
+}
+</pre>
+                    <p>
+                        まあ，これを載せることで少しはそれっぽくなったかな。
+                    </p>
+                    <p>
+                        そろそろ，ここに書く内容が無いようなので，コピペして内容を増やそうかと思いましたが，やっぱりやめておきます。<br />
+                        とりあえず，まあ，内容が無いので，何か書こうかとも思いましたが，ここには内容が無いページにしなくてはならないので，
+                        ここに内容を書くときは来ないようです。
+                    </p>
+
+                    <h2>まとめ</h2>
+                    <p>
+                        まとめると，やっぱり最後まで内容はないようです。
+                    </p>
+
+                    <p>終わり。最後まで読んでいただき、ありがとうございました。みたいに一言付け加えるのもいいかも。</p>
+                </div>
+                <nav class="nextPrev">
+                    <div class="next">次へ<a href="../次のページ">次のページのタイトル &gt;</a></div>
+                    <div class="prev">前へ<a href="../前のページ">前のページのタイトル &gt;</a></div>
+                </nav>
+            </article>
+        </div>
+        <footer class="footer">
+            <div class="">
+                <p class="copylight">&copy; 2015 Asano Physics Club</p>
+            </div>
+        </footer>
+    </main>
+</body>
+</html>
