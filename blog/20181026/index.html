@@ -46,8 +46,13 @@
                         ここにあるソフトは基本的に無料なのでよければ調べてみてください。
                     </p>
                     <p><u><b>※これには個人的な意見が<font color="red">とても多く</font>含まれています。</b></u></p>
-
-                    <h2>プログラミング</h2>
+                    <h2>目次</h2>
+                    <h3>
+                        <a href="#programing">・プログラミング</a><br>
+                        <a href="#music_and_movie">・音楽・動画関係</a><br>
+                        <a href="#image">・画像</a><br>
+                    </h3>
+                    <a name="programing"><h2>プログラミング</h2></a>
 		            <h3>Visual Studio 2017 Community</h3>
                     <p>
                         物理部のパソコン班のほとんどが使っています。<br />
@@ -77,10 +82,10 @@
                         <s>結局Javaあきらめてたので今は使われていません。</s>
                     </p>
 
-                    <h2>音楽・動画関係</h2>
+                    <a name="music_and_movie"><h2>音楽・動画関係</h2></a>
                     <h3>Domino</h3>
                     <p>
-                        MIDIファイルという楽譜のようなものを作る作曲ソフトです。<br>
+                        MIDIファイルという楽譜のような形式の音楽ファイルを作る作曲ソフトです。<br>
                         これで文化祭の自動演奏装置のデータなどをいろいろしていました。
                     </p>
 
@@ -104,7 +109,7 @@
                         再生だけでなく、ほかの形式への変換も可能です。
                     </p>
 
-                    <h2>画像</h2>
+                    <a name="image"><h2>画像</h2></a>
                     <h3>ペイント</h3>
                     <p>
                         Windows標準のソフトがなぜか物理部の絵師に使われている...<br>
@@ -134,75 +139,27 @@
                             <cite><a href="https://ja.wikipedia.org/wiki/ベクタ形式">出典: フリー百科事典『ウィキペディア（Wikipedia）』</a></cite>
                         </blockquote>
                     </p>
-                    <pre class="prettyprint lang-cpp">
-#include "DxLib.h"
 
-int GetFps()
-{
-	static int OldTime = -1;
-	static int Count = 0;
-
-	static int result = -1;
-
-	if (OldTime == -1) {
-		OldTime = GetNowCount();
-		Count = -1;
-	}
-	Count++;
-
-	if (Count == 10) {
-		result = (int)(1000.*10. / (GetNowCount() - OldTime) + 0.5);
-		OldTime = GetNowCount();
-		Count = 0;
-	}
-
-	return result;
-}
-
-int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
-	LPSTR lpCmdLine, int nCmdShow)
-{
-	int WindowSizeX,WindowSizeY,WindowColorBit;
-
-	GetDefaultState(&WindowSizeX, &WindowSizeY, &WindowColorBit);
-	SetGraphMode(WindowSizeX, WindowSizeY, WindowColorBit);
-
-	//ChangeWindowMode( TRUE );
-
-	SetBackgroundColor(255, 255, 255);
-
-	if (DxLib_Init() == -1)
-		return -1;
-
-	SetDrawScreen(DX_SCREEN_BACK);
-
-	while (ProcessMessage() == 0 && CheckHitKey(KEY_INPUT_ESCAPE) == 0) {
-		ClearDrawScreen();
-
-
-
-		ScreenFlip();
-	}
-
-	DxLib_End();
-	return 0;
-}
-</pre>
+                    <h3>GIMP</h3>
                     <p>
-                        まあ，これを載せることで少しはそれっぽくなったかな。
-                    </p>
-                    <p>
-                        そろそろ，ここに書く内容が無いようなので，コピペして内容を増やそうかと思いましたが，やっぱりやめておきます。<br />
-                        とりあえず，まあ，内容が無いので，何か書こうかとも思いましたが，ここには内容が無いページにしなくてはならないので，
-                        ここに内容を書くときは来ないようです。
+                        結構本格的な画像編集ソフト（と思っている）。<br>
+                        たまに使われています。<br>
+                        GIMP難しいからあんまり書けません...
                     </p>
 
-                    <h2>まとめ</h2>
+                    <h3>手軽に透明.png</h3>
                     <p>
-                        まとめると，やっぱり最後まで内容はないようです。
+                        そのまんまの機能があります。<br>
+                        機能が透明化のみなので手軽に使うことができます。<br>
+                        よく透明化だけする人にはオススメです。
                     </p>
-
-                    <p>終わり。最後まで読んでいただき、ありがとうございました。みたいに一言付け加えるのもいいかも。</p>
+                   <h2>おわりに</h2>
+                    <p>
+                        書いてみてわかりましたが、物理部員は結構メジャーなソフトを使っているようですね。
+                        <br><br><br>
+                        ...と、いうことでですね、以上です。<br>
+                        最後まで読んでいただきありがとうございました。
+                    </p>
                 </div>
                 <nav class="nextPrev">
                     <div class="next">次へ<a href="../次のページ">次のページのタイトル &gt;</a></div>
