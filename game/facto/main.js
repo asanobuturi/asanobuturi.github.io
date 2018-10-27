@@ -41,88 +41,88 @@ var BodyNum;
 var Setting = { effect: '0', number: '0', sound: '0' };
 
 var numbers = [
-    [-1, 20],
-    [2, 70],
-    [3, 70],
-    [4, 70],
-    [5, 70],
-    [6, 70],
-    [7, 70],
-    [8, 70],
-    [9, 70],
-    [10, 100],
-    [11, 100],
-    [12, 100],
-    [13, 100],
-    [14, 100],
-    [15, 100],
-    [16, 100],
-    [17, 100],
+    [-1, 25],
+    [2, 120],
+    [3, 120],
+    [4, 120],
+    [5, 120],
+    [6, 120],
+    [7, 120],
+    [8, 120],
+    [9, 120],
+    [10, 120],
+    [11, 120],
+    [12, 120],
+    [13, 120],
+    [14, 120],
+    [15, 120],
+    [16, 120],
+    [17, 80],
     [18, 100],
-    [19, 35],
-    [20, 100],
-    [21, 100],
-    [22, 100],
+    [19, 70],
+    [20, 70],
+    [21, 70],
+    [22, 50],
     [23, 30],
-    [24, 100],
-    [25, 100],
+    [24, 80],
+    [25, 80],
     [26, 50],
-    [27, 100],
-    [28, 100],
+    [27, 70],
+    [28, 70],
     [29, 30],
-    [30, 100],
+    [30, 70],
     [31, 30],
     [32, 30],
     [33, 30],
-    [34, 30],
+    [34, 20],
     [35, 30],
     [36, 30],
-    [37, 30],
-    [38, 30],
-    [39, 30],
+    [37, 20],
+    [38, 20],
+    [39, 20],
     [40, 30],
-    [41, 30],
-    [42, 30],
-    [43, 30],
-    [44, 30],
-    [45, 30],
-    [46, 30],
-    [48, 30],
-    [49, 30],
-    [50, 30],
+    [41, 20],
+    [42, 20],
+    [43, 20],
+    [44, 20],
+    [45, 20],
+    [46, 20],
+    [48, 10],
+    [49, 10],
+    [50, 20],
     [51, 5],
-    [52, 5],
+    [52, 6],
     [55, 5],
-    [56, 5],
+    [56, 4],
     [58, 5],
-    [60, 5],
-    [62, 5],
-    [63, 5],
-    [64, 5],
-    [65, 5],
-    [66, 5],
-    [68, 5],
-    [69, 5],
-    [70, 5],
-    [72, 5],
-    [74, 5],
-    [75, 5],
-    [76, 5],
-    [77, 5],
-    [78, 5],
-    [80, 5],
-    [81, 5],
-    [82, 5],
-    [84, 5],
-    [85, 5],
-    [86, 5],
-    [88, 5],
+    [60, 4],
+    [62, 3],
+    [63, 3],
+    [64, 4],
+    [65, 4],
+    [66, 4],
+    [68, 4],
+    [69, 4],
+    [70, 4],
+    [72, 4],
+    [74, 4],
+    [75, 4],
+    [76, 3],
+    [77, 3],
+    [78, 3],
+    [80, 3],
+    [81, 3],
+    [82, 3],
+    [84, 3],
+    [85, 3],
+    [86, 3],
+    [88, 3],
     [90, 5],
-    [92, 5],
-    [93, 5],
-    [95, 5],
-    [96, 5],
-    [98, 5],
+    [92, 3],
+    [93, 3],
+    [95, 3],
+    [96, 3],
+    [98, 3],
     [99, 5],
     [100, 5],
     [111, 3],
@@ -423,7 +423,7 @@ function init() {
         case '-3': BodyNum = 4; break;
         default: BodyNum = Math.floor(WorldMul * 0.85);
     }
-
+    numbers[0][1]=Math.floor(200/Math.sqrt(BodyNum));
     mainCont = document.createElementNS(ns, 'g')
     svg.appendChild(mainCont);
 
@@ -1537,28 +1537,31 @@ input[type=button]:active {\
 top: 3px;\
 box-shadow: none;\
 }\
-@media (max-device-height: 500px){\
-input[type=button] {\
-font-size: 3em;\
-}\
-input[type=button]:active {\
-top: 3px;\
-box-shadow: none;\
-}\
-}\
 @media (max-device-width: 600px){\
 input[type=button] {\
-font-size: 6em;\
+font-size: 100px;\
 }\
 input[type=button]:active {\
-top: 3px;\
+top: 2px;\
 box-shadow: none;\
 }\
+div div {margin: 40px auto;}\
 }\
-    </style>\
-    <div style="text-align:center;"><input id="startButton" type="button" value="すたーと" style="" onclick="var div = document.getElementById(\'container\');while(div.firstChild)div.removeChild(div.firstChild);init();main();" /></div>\
-    <div style="text-align:center;"><input type="button" value="設定" style=""onclick="ClickSettings()" /></div>\
-            ';
+@media (max-device-height: 400px){\
+input[type=button] {\
+font-size: 50px;\
+}\
+input[type=button]:active {\
+top: 2px;\
+box-shadow: none;\
+}\
+div div {margin: 5px auto;}\
+}\
+</style>\
+<div style="text-align:center;"><input id="startButton" type="button" value="すたーと" style="" onclick="var div = document.getElementById(\'container\');while(div.firstChild)div.removeChild(div.firstChild);init();main();" /></div>\
+<div style="text-align:center;"><input type="button" value="設定" style=""onclick="ClickSettings()" /></div>\
+<div style="text-align:center;"><input type="button" value="遊び方" style=""onclick="location.href=\'./help/\'" /></div>\
+';
 }
 BackSettings();
 

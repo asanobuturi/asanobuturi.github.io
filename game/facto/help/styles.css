@@ -1,0 +1,459 @@
+﻿html, body, ul {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    height: 100%;
+    font-family: Arial, "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic ProN", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "Meiryo UI", sans-serif, "游ゴシック", "Yu Gothic", "游ゴシック体", "YuGothic";
+}
+
+body {
+    background-color: #f4f4f4;
+    height: 100%;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+a {
+    color: rgb(50,90,180);
+    display: inline-table;
+    vertical-align: middle;
+}
+
+    a:visited {
+        color: rgb(90, 80, 190);
+    }
+
+dd {
+    margin: 0px;
+}
+
+main {
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+}
+
+.mobile {
+    display: none !important;
+}
+
+header {
+    padding-top: 96px;
+}
+
+    header #logo-image {
+        vertical-align: middle;
+        height: 50px;
+    }
+
+#nav-drawer {
+    position: absolute;
+    max-width: 300px;
+}
+
+#nav-content {
+    position: fixed;
+    top: 0;
+    left: -340px;
+    height: 100%;
+    transition: right .3s, left .4s;
+    background-color: #fff;
+    z-index: 1000;
+    width: 300px;
+    padding: 100px 0px;
+}
+
+#nav-open {
+    width: 48px;
+    height: 50px;
+    position: fixed;
+    cursor: pointer;
+    z-index: 1001;
+    top: 0;
+    left: 0;
+    color: rgb(20,30,200);
+    font-weight: 700;
+    padding: 10px;
+    background-color: rgba(255,255,255,.8);
+    border-radius: 0 0 10px 0;
+    font-family: "ヒラギノUD丸ゴ W6 JIS2004","Hiragino UD Sans Rd W6 JIS2004", Arial, "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic ProN", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "Meiryo UI", sans-serif, "游ゴシック", "Yu Gothic", "游ゴシック体", "YuGothic";
+}
+
+    #nav-open span.bar {
+        display: block;
+        height: 4px;
+        background-color: rgb(20,30,200);
+        border-radius: 4px;
+        transition: all 0.5s;
+        transform-origin: 0 0;
+        margin: 0 0 8px;
+    }
+
+    #nav-open span.bar3 {
+        margin-bottom: 5px;
+    }
+
+    #nav-open span.close {
+        display: none;
+    }
+
+#nav-close {
+    cursor: pointer;
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    transition: background-color 0.7s;
+}
+
+#nav-input {
+    display: none;
+    z-index: 1000;
+}
+
+    #nav-input:checked ~ #nav-content {
+        left: 0;
+    }
+
+    #nav-input:checked ~ #nav-open span.bar {
+    }
+
+    #nav-input:checked ~ #nav-open span.bar1 {
+        -webkit-transform: translateY(23px) rotate(-30deg);
+        transform: translateY(23px) rotate(-30deg);
+    }
+
+    #nav-input:checked ~ #nav-open span.bar2 {
+        opacity: 0;
+    }
+
+    #nav-input:checked ~ #nav-open span.bar3 {
+        -webkit-transform: translateY(-25px) rotate(30deg);
+        transform: translateY(-25px) rotate(30deg);
+    }
+
+    #nav-input:checked ~ #nav-open span.menu {
+        display: none;
+    }
+
+    #nav-input:checked ~ #nav-open span.close {
+        display: block;
+    }
+
+    #nav-input:checked ~ #nav-close {
+        pointer-events: auto;
+        background-color: rgba(0,0,0,.3);
+    }
+
+
+#nav-content .nav-link {
+    margin: 0;
+    font-size: 100%;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: 0;
+    flex-shrink: 0;
+    padding: 16px 40px;
+    margin: 0;
+    color: #757575;
+    display: block;
+    color: #fff;
+    line-height: 64px;
+    padding: 0 24px
+}
+
+#nav-content .nav-separator {
+    height: 1px;
+    background-color: #333;
+    margin: 8px 0;
+}
+
+#nav-content .nav-link {
+    color: #808080;
+    font-weight: 700;
+    font-size: 16px;
+    background-color: transparent !important;
+    border-right: 8px solid transparent;
+}
+
+    #nav-content .nav-link:hover {
+        border-right: 8px solid rgb(90,170,230);
+        color: rgb(90,170,230);
+    }
+
+    #nav-content .nav-link.isActive {
+        border-right: 8px solid rgb(90,170,230);
+        color: rgb(90,170,230);
+    }
+
+.nav-content .nav-link.isActive2 {
+    border-right: 8px solid rgb(90,170,230);
+}
+
+/*
+.header {
+    overflow: visible;
+    background-color: white;
+}
+
+    .header .material-icons {
+        color: #767777 !important;
+    }
+
+    .header .mdl-layout__drawer-button {
+        background: transparent;
+        color: #767777;
+    }
+
+    .header .mdl-navigation {
+        direction: ltr;
+        -webkit-justify-content: flex-end;
+        -ms-flex-pack: end;
+        justify-content: flex-end;
+        width: 800px;
+    }
+
+    .header .mdl-navigation__link {
+        color: #757575;
+        font-weight: 700;
+        font-size: 16px;
+        height: 60px;
+        line-height: 68px;
+        background-color: transparent !important;
+        border-bottom: 4px solid transparent;
+    }
+
+        .header .mdl-navigation__link:hover {
+            border-bottom: 4px solid rgb(90,170,230);
+            color: black;
+        }
+
+        .header .mdl-navigation__link.isActive {
+            border-bottom: 4px solid rgb(90,170,230);
+            color: black;
+        }
+
+        .header .mdl-navigation__link.isActive2 {
+            border-bottom: 4px solid rgb(90,170,230);
+        }
+
+
+.drawer-separator {
+    height: 1px;
+    background-color: #dcdcdc;
+    margin: 8px 0;
+}
+
+.drawer {
+    border-right: none;
+}
+
+    .drawer .mdl-navigation__link {
+        color: #757575;
+        font-weight: 700;
+        font-size: 16px;
+        display: inline-block;
+        background-color: transparent !important;
+        border-right: 8px solid transparent;
+    }
+
+        .drawer .mdl-navigation__link.mdl-navigation__link:hover {
+            border-right: 8px solid rgb(90,170,230);
+            color: black;
+        }
+
+        .drawer .mdl-navigation__link.mdl-navigation__link.isActive {
+            border-right: 8px solid rgb(90,170,230);
+            color: black;
+        }
+
+        .drawer .mdl-navigation__link.mdl-navigation__link.isActive2 {
+            border-right: 8px solid rgb(90,170,230);
+        }
+
+.mdl-layout__content {
+    background-color: #f5f5f5;
+}
+.mdl-layout__content section {
+    position: relative;
+    margin-top: 3em;
+    margin-bottom: 3em;
+}
+
+section.section--center {
+    max-width: 80%;
+}
+*/
+
+.main-title {
+    font-size: 60px;
+    font-weight: 700;
+    padding: 90px 0 0;
+    margin: 0 0px 1em;
+    font-family: "ヒラギノUD丸ゴ W6 JIS2004","Hiragino UD Sans Rd W6 JIS2004", Arial, "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic ProN", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "Meiryo UI", sans-serif, "游ゴシック", "Yu Gothic", "游ゴシック体", "YuGothic";
+}
+
+.sub-title {
+    font-size: 30px;
+    font-weight: 700;
+    margin: 90px 0px 1em;
+    font-family: "ヒラギノUD丸ゴ W6 JIS2004","Hiragino UD Sans Rd W6 JIS2004", Arial, "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic ProN", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "Meiryo UI", sans-serif, "游ゴシック", "Yu Gothic", "游ゴシック体", "YuGothic";
+}
+
+.main-title + .sub-title {
+    margin-top: 0;
+}
+
+.footer {
+    background-color: gray;
+    padding: 16px 40px;
+}
+    /*
+    .footer a:hover {
+        color: rgb(90,170,230);
+    }
+
+    .footer .mdl-mega-footer--top-section::after {
+        border-bottom: none;
+    }
+
+    .footer .mdl-mega-footer--middle-section::after {
+        border-bottom: none;
+    }
+
+    .footer .mdl-mega-footer--bottom-section {
+        position: relative;
+    }
+
+        .footer .mdl-mega-footer--bottom-section a {
+            margin-right: 2em;
+        }
+
+    .footer .mdl-mega-footer--right-section a .material-icons {
+        position: relative;
+        top: 6px;
+    }
+    */
+    .footer .copylight {
+        font-weight: 300;
+        color: #f5f5f5;
+    }
+
+.gameList {
+    margin: auto;
+    text-align: center;
+    padding: 0em 0.5em 2em;
+}
+
+    .gameList .gameList-item {
+        margin: 1em auto;
+        text-align: left;
+        padding: 2em 0.5em;
+        background-color: #fff;
+        max-width: 70%;
+    }
+
+        .gameList .gameList-item .gameList-thumb {
+            max-width: 30%;
+            display: inline-block;
+            margin: auto;
+            margin-right: 1em;
+            vertical-align: top;
+        }
+
+            .gameList .gameList-item .gameList-thumb a {
+                width: 100%;
+                display: block;
+            }
+                .gameList .gameList-item .gameList-thumb a img {
+                    width: 100%;
+                    display: block;
+                }
+
+        .gameList .gameList-item .gameList-content {
+            display: inline-block;
+            width: 60%;
+            font-size: 20px;
+        }
+
+            .gameList .gameList-item .gameList-content h2 {
+                font-family: "ヒラギノUD丸ゴ W6 JIS2004","Hiragino UD Sans Rd W6 JIS2004", Arial, "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic ProN", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "Meiryo UI", sans-serif, "游ゴシック", "Yu Gothic", "游ゴシック体", "YuGothic";
+                margin: 0;
+                padding: 0;
+                font-size: 26px;
+                font-weight: bold;
+            }
+
+                .gameList .gameList-item .gameList-content h2 a {
+                    text-decoration: none;
+                    font-weight: bold;
+                    color: #ee7a12;
+                    border-bottom: dotted 2px rgb(70,80,210);
+                }
+
+@media (max-width: 500px) {
+    .gameList .gameList-item .gameList-content {
+        font-size: 12px;
+    }
+}
+@media (max-width: 400px) {
+    .gameList .gameList-item .gameList-thumb {
+        max-width: 100%;
+        display: block;
+        margin: 0;
+    }
+
+        .gameList .gameList-item .gameList-thumb img {
+            width: 100%;
+        }
+
+    .gameList .gameList-item .gameList-content {
+        display: block;
+        width: 100%;
+    }
+
+        .gameList .gameList-item .gameList-content h2 {
+            font-family: "ヒラギノUD丸ゴ W6 JIS2004","Hiragino UD Sans Rd W6 JIS2004", Arial, "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic ProN", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "Meiryo UI", sans-serif, "游ゴシック", "Yu Gothic", "游ゴシック体", "YuGothic";
+            margin: 0;
+            padding: 0;
+            font-size: 26px;
+            font-weight: bold;
+        }
+
+            .gameList .gameList-item .gameList-content h2 a {
+                text-decoration: none;
+                font-weight: bold;
+            }
+}
+
+@media (max-width: 900px) {
+    .navigation-container {
+        display: none;
+    }
+
+    .mobile {
+        display: block !important;
+    }
+
+    .main-title {
+        font-size: 40px;
+    }
+
+    .sub-title {
+        font-size: 18px;
+    }
+
+    /*  .footer .mdl-mega-footer--bottom-section {
+        display: none;
+    }*/
+}
