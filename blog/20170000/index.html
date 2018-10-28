@@ -41,98 +41,93 @@
                     <div class="postDate"><time datetime="2017-00-00">2017年00月00日</time></div>
                 </header>
                 <div class="content">
-                    <p>前置き的な何か。「久々の更新です。この記事は前回のつづきです。」とか。ここでいい感じに本題に入れるように。</p>
                     <p>これは，デフォルトの記事です。これをコピーして，書き換えます。</p>
 
                     <h2>内容１</h2>
-
                     <p>
                         内容１の内容は無いようです。<br />
                         内容１は特に内容がないようです。
                     </p>
                     <p>
                         とりあえず段落を分けてみましたが，やっぱり内容はないようです。<br />
-                        やっぱり内容１の内容は無いようです。内容は，無いようです。（大事なことなので二回言いました）
+                        やっぱり内容１の内容は無いようです。内容は，無いようです。（大事なことなので２回(ry
                     </p>
                     <h2>内容２</h2>
                     <p>
                         h2が入って，内容が内容２に変わったので，期待していた人もいるかもですが，やっぱり内容はない模様です。
                         とりあえず，いつものソースを載せておきます。
                     </p>
+                    <p>
+                        ちなみに，このソースの，ここまでやるかとも思わせるスペースのインデントは，Visual Studioで編集していた（過去形）からで，
+めんどくさければこんな風にしても何にも問題ない。そして，今，TeraPadで編集しているので，もうインデントしない。めんどい。
+</p>
+<h2>編集方法講座～</h2>
+<p>
+急に始まりました編集方法講座。今日のテーマはこれ。
+</p>
+<h3>ブログの更新方法</h3>
+<p>といことで，ここの更新方法について書きたいと思います。</p>
+<h3>github pagesとは</h3>
+<p><a href="https://techacademy.jp/magazine/6445">無料で使える！GitHub Pagesを使ってWebページを公開する方法</a><br/>ここにまとまってた。これを参照。（丸投げ）</p>
+<h3>というかそもそもGitHubとは</h3>
+<p><a href="https://techacademy.jp/magazine/6235">今さら聞けない！GitHubの使い方【超初心者向け】</a><br/>ここにまとまってた。これを参照。（丸投げ(２回目)）</p>
+<h3>編集方法</h3>
+<ol style="list-style-type: decimal">
+<li>GitHub Desktopをインストール。<br/><a href="https://desktop.github.com/">https://desktop.github.com/</a></li>
+<li>GitHub Desktopを開いて，File→Clone repository</li>
+<li>URLのタブに，「https://github.com/asanobuturi/asanobuturi.github.io」を入力。</li>
+<li>Cloneを押す。<br/>
+クローンされると，マイドキュメント の GitHub フォルダ内にasanobuturi.github.ioができているはず。<br/>
+それを編集し，GitHub Desktopでコミット，プッシュすれば，数十秒後くらいに更新される。</li>
+</ol>
 
-                    <pre class="prettyprint lang-cpp">
-#include "DxLib.h"
-
-int GetFps()
-{
-	static int OldTime = -1;
-	static int Count = 0;
-
-	static int result = -1;
-
-	if (OldTime == -1) {
-		OldTime = GetNowCount();
-		Count = -1;
-	}
-	Count++;
-
-	if (Count == 10) {
-		result = (int)(1000.*10. / (GetNowCount() - OldTime) + 0.5);
-		OldTime = GetNowCount();
-		Count = 0;
-	}
-
-	return result;
-}
-
-int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
-	LPSTR lpCmdLine, int nCmdShow)
-{
-	int WindowSizeX,WindowSizeY,WindowColorBit;
-
-	GetDefaultState(&WindowSizeX, &WindowSizeY, &WindowColorBit);
-	SetGraphMode(WindowSizeX, WindowSizeY, WindowColorBit);
-
-	//ChangeWindowMode( TRUE );
-
-	SetBackgroundColor(255, 255, 255);
-
-	if (DxLib_Init() == -1)
-		return -1;
-
-	SetDrawScreen(DX_SCREEN_BACK);
-
-	while (ProcessMessage() == 0 && CheckHitKey(KEY_INPUT_ESCAPE) == 0) {
-		ClearDrawScreen();
-
-
-
-		ScreenFlip();
-	}
-
-	DxLib_End();
-	return 0;
+<h3>ブログの更新方法</h3>
+<ol style="list-style-type: decimal">
+<li>blogフォルダー内の20170000(これ)をコピー，名前を適当な日付に。</li>
+<li>そのフォルダ内のindex.html(これ)を編集。</li>
+<li>「time datetime="2017-00-00"」と，「2017年00月00日」を，その適当な日付に。</li>
+<li>このページの最後のほうの，次へと前へを編集。<br/>次がなければ適当な文章に。<br/>前の記事のそれも編集忘れずに。</li>
+<li>pとか，h2とか，preとか，imgとか，を使って編集。</li>
+</ol>
+<p>
+HTMLの編集方法は…，自分で勉強してね（）
+</p>
+<p>
+画像は，
+<img src="buturi.jpg" />
+こんな風に。
+</p>
+<p>ソースコードは
+<pre class="prettyprint lang-cpp">
+#include &lt;iostream&gt;
+int main(){
+    std::cout &lt;&lt; &quot;はろーわーるど&quot; &lt;&lt; std::endl;
 }
 </pre>
-                    <p>
-                        まあ，これを載せることで少しはそれっぽくなったかな。
-                    </p>
-                    <p>
-                        そろそろ，ここに書く内容が無いようなので，コピペして内容を増やそうかと思いましたが，やっぱりやめておきます。<br />
-                        とりあえず，まあ，内容が無いので，何か書こうかとも思いましたが，ここには内容が無いページにしなくてはならないので，
-                        ここに内容を書くときは来ないようです。
-                    </p>
+こんなふうに，エスケープしてから載せないと，タグと間違えられる。<br />
+変換するときは，<a href="http://devroom.azurewebsites.net/Devtools/HtmlEncode">これ</a>が便利。<br />
+</p>
 
-                    <h2>まとめ</h2>
-                    <p>
-                        まとめると，やっぱり最後まで内容はないようです。
-                    </p>
+<p>ローカルでこのファイルを開くと，読み込みに時間がかかるのは，ウエブフォントのせい。</p>
 
-                    <p>終わり。最後まで読んでいただき、ありがとうございました。みたいに一言付け加えるのもいいかも。</p>
+<p>引用するときは，
+<blockquote>
+<p>引用（いんよう、英語：citation, quotation）とは、広義には、自己のオリジナル作品のなかで他人の著作を副次的に紹介する行為、先人の芸術作品やその要素を副次的に自己の作品に取り入れること。
+報道や批評、研究などの目的で、自らの著作物に他の著作物の一部を採録したり、ポストモダン建築で過去の様式を取り込んだりすることを指す。
+狭義には、各国の著作権法の引用の要件を満たして行われる合法な無断転載等のこと。</p>
+<cite><a href="https://ja.wikipedia.org/wiki/%E5%BC%95%E7%94%A8">引用 - Wikipedia</a></cite>
+</blockquote>
+こんなふうに。</p>
+
+<p>そいうえば，テーブルとかのcssをまだ書いていないのだけれども，使いたい人がいれば，誰かに書いてほしい。</p>
+
+
+<h2>まとめ</h2>
+<p>最後まで読んでいただき、ありがとうございました。更新がんばれー</p>
                 </div>
                 <nav class="nextPrev">
-                    <div class="next">次へ<a href="../次のページ">次のページのタイトル &gt;</a></div>
-                    <div class="prev">前へ<a href="../前のページ">前のページのタイトル &gt;</a></div>
+                    <div class="next">次へ<a href="../20170000/">次のページのタイトル &gt;</a></div>
+                    <div class="prev">前へ<a href="../20170000/">前のページのタイトル &gt;</a></div>
                 </nav>
             </article>
         </div>
