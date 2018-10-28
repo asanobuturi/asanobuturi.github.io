@@ -142,8 +142,10 @@ blockquote {
         font-size: 0.9em;
     }
 
-h1 {
+h1,h2,h3,h4,h5,h6,h7,h8,h9 {
     font-family: "ヒラギノUD丸ゴ W6 JIS2004","Hiragino UD Sans Rd W6 JIS2004", Arial, "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic ProN", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "Meiryo UI", sans-serif, "游ゴシック", "Yu Gothic", "游ゴシック体", "YuGothic";
+}
+h1 {
     font-size: 32px;
     margin-bottom: 1em;
     font-weight: bold;
@@ -151,7 +153,6 @@ h1 {
 }
 
 h2 {
-    font-family: "ヒラギノUD丸ゴ W6 JIS2004","Hiragino UD Sans Rd W6 JIS2004", Arial, "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic ProN", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "Meiryo UI", sans-serif, "游ゴシック", "Yu Gothic", "游ゴシック体", "YuGothic";
     border-left: 5px solid rgba(0,0,0,0.4);
     margin: 1.5em -30px 1em;
     padding: 0.75em 0.5em;
@@ -159,6 +160,13 @@ h2 {
     font-weight: bold;
 }
 
+h3 {
+    border-bottom: 2px solid rgba(0,0,0,0.4);
+    margin: 1.5em 0 1em;
+    padding: 0.2em 0.5em;
+    font-size: 20px;
+    font-weight: bold;
+}
 
 .content {
     padding: 1em 30px 3em;
@@ -188,6 +196,14 @@ h2 {
         border-left: 3px solid rgba(0,0,0,0.4);
         margin-left: -20px;
         font-size: 20px;
+        font-weight: bold;
+    }
+
+    h3 {
+        margin: 0.5em 0 0.2em;
+        padding: 0.2em 0.2em;
+        border-bottom: 1.5px solid rgba(0,0,0,0.4);
+        font-size: 18px;
         font-weight: bold;
     }
 
