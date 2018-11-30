@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ブログ|浅野学園物理部</title>
+
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../../blogStyle.css">
+    <link rel="shortcut icon" href="../../image/favicon.ico">
+    <script type="text/javascript" src="//typesquare.com/accessor/script/typesquare.js?YME8OdI00sA%3D" charset="utf-8"></script>
+</head>
+<body>
+    <div id="nav-drawer">
+        <input id="nav-input" type="checkbox" class="nav-unshown">
+        <label id="nav-open" for="nav-input">
+            <span class="bar bar1"></span>
+            <span class="bar bar2"></span>
+            <span class="bar bar3"></span>
+            <span class="menu">MENU</span>
+            <span class="close">CLOSE</span>
+        </label>
+        <label id="nav-close" for="nav-input"></label>
+        <div id="nav-content">
+            <a class="nav-link" href="../../">ホーム</a>
+            <a class="nav-link" href="../../about.html">物理部とは</a>
+            <a class="nav-link" href="../../document.html">部誌</a>
+            <a class="nav-link" href="../../game/index.html">ゲーム</a>
+            <a class="nav-link isActive" href="../">ブログ</a>
+            <div class="nav-separator"></div>
+            <a class="nav-link" href="http://d.hatena.ne.jp/apc/">ブログ(外部サイト)</a>
+        </div>
+    </div>
+    <main>
+        <div id="main">
+            <article class="blogArticle">
+                <header>
+                    <h1>MIDIについて語る　その二</h1>
+                    <div class="postDate"><time datetime="2018-11-30">2018年11月30日</time></div>
+                </header>
+                <div class="content">
+                    <p>
+                        前回はMIDIについて少し話しましたが、今回はMIDIを使って<br>
+                        作曲、打ち込みのやり方を書いていきたいと思います。
+                    </p>
+                    <h2>ソフトの導入</h2>
+                    <p>
+                        まず最初に<a href="../20181026/index.html#music_and_movie">ここ</a>でも紹介していた、MIDIファイルを作成する「Domino」というソフトを導入します。<br>
+                        ほかにもMIDIファイルを作成するソフトはあるのですが、<br>
+                        これが一番初心者に分かりやすいかつ、MIDIのたいていの機能があるので<br>
+                        今回はこれを使いたいと思います。<s style="color:#fff">ただDomino以外が使えないだけ</s>
+                        <br>
+                        では<a href="http://takabosoft.com/domino">Domino公式ホームページ</a>にアクセスしてください。<br>
+                        右側にダウンロードのボタンがあるのでダウンロードしてください。<br>
+                        すると「Domino xxx.zip」（現時点で143）というZIPファイルが保存されるので、お好きな場所に展開してください。<br>
+                        なお、Dominoは管理者権限のいるようなインストールはしないのでご安心を。<br>
+                        では解凍したZIPファイルのDomino.exeというファイルを開いてください。<br>
+                        <a name="setting"></a>するとこの様な画面になると思います。<br>
+                        <image src="scsh1.png"></image>
+                        そしたら左上の「ファイル(F)」→「環境設定(E)...」と環境設定を開いてください。<br>
+                        そして「MIDI OUT デバイス」を「Microsoft GS Wavetable Synth」に変更してください。<br>
+                        <image src="scsh2.png"></image>
+                        同様に「音源（音源定義ファイル）」を「GSm(Microsoft GS Wavetable SW Synth)」に変更してください。<br>
+                        変更が終わったら「OK」を押して環境設定を終了してください。<br>
+                        これで導入は完了です。
+                    </p>
+                    <h2>Dominoの使い方</h2>
+                    <p>
+                        <h3>とりあえず音を出してみる</h3>
+                        <p>
+                            ではピアノの右側の好きなところを左クリックしてみて下さい。<br>
+                            するとこのように青い四角ができるはずです。<br>
+                            <image src="scsh3.png"></image>
+                            ではスペースキーか上部にある緑の三角の再生ボタンを押してください。<br>
+                            ピアノの音が出たはずです。もしできていないなら<a href="#setting">環境設定</a>を見直してみてください。<br>
+                        </p>
+                        <h3>楽器を変えてみる</h3>
+                        <p>
+                            次に楽器を変えてみましょう。<br>
+                            左にあるこの部分をダブルクリックしてください。<br>
+                            <image src="scsh4.png"></image>
+                            するとこのような画面が出てくるので、<br>
+                            <image src="scsh5.png"></image>
+                            左のマップからオルガンを選択し、「PC#」を「017 Organ 1」に変更してください。<br>
+                            <image src="scsh6.png"></image>
+                            ではまた再生してみてください。音が変わりましたね。
+                        </p>
+                    </p>
+                    <h3>まとめ</h3>
+                    <p>
+                        今回でDominoで作曲する一歩を踏み出しました。<br>
+                        ということで次回に続きます
+                    </p>
+                </div>
+                <nav class="nextPrev">
+                    <div class="next">次へ<a href="">coming soon... &gt;</a></div>
+                    <div class="prev">前へ<a href="../20181123/">MIDIについて語る その一 &gt;</a></div>
+                </nav>
+            </article>
+        </div>
+        <footer class="footer">
+            <div class="">
+                <p class="copylight">&copy; 2015 Asano Physics Club</p>
+            </div>
+        </footer>
+    </main>
+</body>
+</html>
