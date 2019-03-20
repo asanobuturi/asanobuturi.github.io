@@ -348,6 +348,10 @@ section.section--center {
         font-weight: 300;
         color: #f5f5f5;
     }
+    .footer .note {
+        font-weight: 300;
+        color: #f5f5f5;
+    }
 
 .gameList {
     margin: auto;
