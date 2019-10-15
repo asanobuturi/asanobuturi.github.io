@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>顔認識の仕組み|浅野学園物理部</title>
+
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" href="../../../styles.css">
+    <link rel="stylesheet" href="../../../documentstyle.css">
+    <link rel="shortcut icon" href="../../../image/favicon.ico">
+    <script type="text/javascript" src="//typesquare.com/accessor/script/typesquare.js?YME8OdI00sA%3D" charset="utf-8"></script>
+</head>
+<body>
+    <div id="nav-drawer">
+        <input id="nav-input" type="checkbox" class="nav-unshown">
+        <label id="nav-open" for="nav-input">
+            <span class="bar bar1"></span>
+            <span class="bar bar2"></span>
+            <span class="bar bar3"></span>
+            <span class="menu">MENU</span>
+            <span class="close">CLOSE</span>
+        </label>
+        <label id="nav-close" for="nav-input"></label>
+        <div id="nav-content">
+            <a class="nav-link" href="../../../">ホーム</a>
+            <a class="nav-link" href="../../../about.html">物理部とは</a>
+            <a class="nav-link isActive" href="../../../document.html">部誌</a>
+            <a class="nav-link" href="../../../game/index.html">ゲーム</a>
+            <a class="nav-link" href="../../">ブログ</a>
+            <div class="nav-separator"></div>
+            <a class="nav-link" href="http://d.hatena.ne.jp/apc/">ブログ(外部サイト)</a>
+        </div>
+    </div>
+    <main>
+        <div id="main">
+            <article class="documentcontent">
+                <header class="documenttitle">
+                    <h1>顔認識の仕組み</h1>
+                    <p class="author">中学2年・K.N.</p>
+                    <a href="https://twitter.com/intent/tweet?url=https://asanobuturi.github.io/document/2019/face/index.html&text=浅野学園物理部部誌2019「顔認識の仕組み」&via=Uchi54_APC&related=Uchi54_APC" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </header>
+                <div class="document">
+                    <h2>そもそも顔認識とは</h2>
+                    <p>こんにちは、中学2年の永井康太です。最近「顔認識」という言葉をIT化が進むにつれてよく聞くようになってきています。そもそも顔認識とはどういう技術なのかというと、例えばこのようなものです。</p>
+                    <h2>顔認識の仕組み①</h2>
+                    <p>まずは顔認識の概要についてお話します。</p>
+                    <ul>
+                        <li class="asterisk-decimal"><p>判定する画像の一部を使って判定する。</p></li>
+                        <li class="asterisk-decimal"><p>様々な基準を使ってその部分が顔かどうか判定する。</p></li>
+                        <li class="asterisk-decimal"><p>もし顔ではないと判定された場合、その部分が顔ではないと決定する。もし顔であると判定された場合は(1)に戻って判定をする。</p></li>
+                    </ul>
+                    <p>これを繰り返して顔を認識します。要するに一回一回の精度は低い判定を、何度も重ねて実行することによって精度を上げているのです。</p>
+                    <h2>顔認識の仕組み②</h2>
+                    <p>次に判定方法についてお話します。判定方法にはいろいろなものがありますが、今回はHaar Cascades検出器について話します。顔の中でも今回は花の判定について説明します。</p>
+                    <p>まず鼻は中央のほうが端の方よりも光が当たりやすく明るくなるという特徴があります。この特徴を生かして鼻を判定します。しかしこの特徴は単純で素早く判定できる一方、判定精度は低いため多くの判定をすることで判定精度を高めます。</p>
+                    <p>このように明るさの特徴を用いて判定をしています。</p>
+                    <h2>さいごに</h2>
+                    <p>ここまでこの記事を読んでいただきありがとうございました。私の文章力が低いせいでこのようなわかりにくく内容も薄い文章になってしまいましたが、この記事を通して少しでも顔認識に興味を持ってくれたら幸いです。</p>
+                    <h2>参考文献</h2>
+                    <p>使用した顔の画像：<a href="https://www.pakutaso.com/20190706207post-22263.html ">https://www.pakutaso.com/20190706207post-22263.html </a></p>
+                    <p>
+                        参考にさせていただいたサイト：<br>
+                        <a href="https://qiita.com/FukuharaYohei/items/ec6dce7cc5ea21a51a82 ">https://qiita.com/FukuharaYohei/items/ec6dce7cc5ea21a51a82 </a><br>
+                        <a href="https://kotobank.jp/word/%E9%A1%94%E8%AA%8D%E8%AD%98-190393">https://kotobank.jp/word/%E9%A1%94%E8%AA%8D%E8%AD%98-190393</a><br>
+                        <a href="https://code-graffiti.com/opencv-face-detection-with-haar-cascades-in-python/#toc4 ">https://code-graffiti.com/opencv-face-detection-with-haar-cascades-in-python/#toc4 </a>
+                    </p>
+                </div>
+                <nav class="nextPrev">
+                        <div class="prev">前へ<a href="../algorithm/index.html">素晴らしいアルゴリズムの世界 &gt;</a></div>
+                    <div class="next">次へ<a href="../ownmade-pc/index.html">自作PCについていろいろ &gt;</a></div>
+                </nav>
+            </article>
+        </div>
+        <footer class="footer">
+            <div class="">
+                <p class="copylight">&copy; 2015 Asano Physics Club</p>
+            </div>
+        </footer>
+    </main>
+</body>
+</html>

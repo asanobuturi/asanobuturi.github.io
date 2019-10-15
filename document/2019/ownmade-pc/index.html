@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>自作PCについていろいろ|浅野学園物理部</title>
+
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" href="../../../styles.css">
+    <link rel="stylesheet" href="../../../documentstyle.css">
+    <link rel="shortcut icon" href="../../../image/favicon.ico">
+    <script type="text/javascript" src="//typesquare.com/accessor/script/typesquare.js?YME8OdI00sA%3D" charset="utf-8"></script>
+</head>
+<body>
+    <div id="nav-drawer">
+        <input id="nav-input" type="checkbox" class="nav-unshown">
+        <label id="nav-open" for="nav-input">
+            <span class="bar bar1"></span>
+            <span class="bar bar2"></span>
+            <span class="bar bar3"></span>
+            <span class="menu">MENU</span>
+            <span class="close">CLOSE</span>
+        </label>
+        <label id="nav-close" for="nav-input"></label>
+        <div id="nav-content">
+            <a class="nav-link" href="../../../">ホーム</a>
+            <a class="nav-link" href="../../../about.html">物理部とは</a>
+            <a class="nav-link isActive" href="../../../document.html">部誌</a>
+            <a class="nav-link" href="../../../game/index.html">ゲーム</a>
+            <a class="nav-link" href="../../">ブログ</a>
+            <div class="nav-separator"></div>
+            <a class="nav-link" href="http://d.hatena.ne.jp/apc/">ブログ(外部サイト)</a>
+        </div>
+    </div>
+    <main>
+        <div id="main">
+            <article class="documentcontent">
+                <header class="documenttitle">
+                    <h1>自作PCについていろいろ</h1>
+                    <p class="author">中学2年・K.T.</p>
+                    <a href="https://twitter.com/intent/tweet?url=https://asanobuturi.github.io/document/2019/ownmade-pc/index.html&text=浅野学園物理部部誌2019「自作PCについていろいろ」&via=Uchi54_APC&related=Uchi54_APC" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </header>
+                <div class="document">
+                    <h2>そもそも自作PCとは</h2>
+                    <p>自作PCとは文字通り、自分で作る (組み立てる)PCのことです。よく勘違いしている方がいるのですが、はんだ付けなどの難しい電子工作は一切ありません。自作PCの利点はメーカー製PCにない構成が組めることです。具体的にはRyzen系CPUを搭載したPCはメーカー製ではまだ少ないです。またゲームや画像編集に必須なグラフィクカードを搭載したPCもメーカー製には少ないです。対して欠点は故障した場合PC全体としての保証がないため原因を特定してパーツ単位の保証を受ける必要があることです。この作業はPCに対しての知識が求められ初心者には向いていないと言われる要因の一つです。</p>
+                    <h2>パーツを選ぼう</h2>
+                    <p>PCを組むときはまずパーツ選びから始めます。この作業が組み立ての何十倍も重要です。</p>
+                    <ul>
+                        <li class="asterisk-1">
+                            <p>この先専門用語が増えますが、このようにお考えください。</p>
+                            <li class="check">コア→おっさんの数</li>
+                            <li class="check">スレッド→ペンの数</li>
+                            <li class="check">周波数→ペンを動かす速さ</li>
+                            <li class="check">ターボブースト→おっさん残業時脳での速さ</li>
+                            <li class="check">ストレージ→引き出し</li>
+                            <li class="check">メモリ→机の大きさ</li>
+                            <li class="check">グラボ→色鉛筆</li>
+                            <li class="check">OS→おっさんの話す言語</li>
+                            <li class="check">水冷式のPC→おっさんを無限に残業させることができる無敵アイテム</li>
+                            <li class="check">マザーボード→おっさんたちの職場</li>
+                        </li>
+                    </ul>
+                    <h3>CPU</h3>
+                    <p>前述の通り、CPUはPCの脳と表現されます。そのためCPUの性能はPC全体の性能にかかわっていきます。一般PC向けにCPUを製造しているメーカーは基本的にアメリカのIntelとAMDの二社だけです。皆さんの使っているPCの多くはIntel製CPUだと思います。ノートパソコンを使用している方はキーボードの右下あたりをご覧ください。</p>
+                    <img src="image/image1.png" class="image-float-right" style="max-width: 15em;">
+                    <p>このようなロゴマークの入ったシールが貼られている場合、それはIntel製CPUを搭載しています。</p>
+                    <p>Intel製CPUと、AMD製CPUを比較するとこのようになります。もちろん製品によって差はありますが、メーカーの一般的な特徴としてお考え下さい。</p>
+                    <table>
+                        <tr>
+                            <td><p>メーカー</p></td>
+                            <td><p>Intel</p></td>
+                            <td><p>AMD</p></td>
+                        </tr>
+                        <tr>
+                            <td><p>コア数</p></td>
+                            <td><p>普通</p></td>
+                            <td><p>多い</p></td>
+                        </tr>
+                        <tr>
+                            <td><p>周波数</p></td>
+                            <td><p>高い</p></td>
+                            <td><p>Zen2以前は低かった</p></td>
+                        </tr>
+                        <tr>
+                            <td><p>価格</p></td>
+                            <td><p>高い(供給不足)</p></td>
+                            <td><p>安い</p></td>
+                        </tr>
+                        <tr>
+                            <td><p>ソフトの最適化具合</p></td>
+                            <td colspan="2"><p>基本的にIntelが標準</p></td>
+                        </tr>
+                    </table>
+                    <h3>マザーボード</h3>
+                    <img src="image/image2.jpg">
+                    <p>マザーボードに色々なパーツを取り付けることで、各パーツが連携してPC全体が動作します。ここがPCの土台となる場所です。</p>
+                    <p>自作市場のマザーボードは、基本的に台湾メーカーが独占しています。ここでは有名なメーカーをいくつか解説していこうと思います。</p>
+                    <ol>
+                        <li class="asterisk-decimal">
+                            <h1>ASUS</h1>
+                            <p>マザーボード界の重鎮で、BIOSやドライバー系で使いやすいことが有名でシェア率が世界一です。</p>
+                        </li>
+                        <li class="asterisk-decimal">
+                            <h1>ASRock</h1>
+                            <p>元ASUS子会社で、マザーボード会の変態(褒め言葉)として有名です。また超高耐久なことでも有名です。</p>
+                        </li>
+                        <li class="asterisk-decimal">
+                            <h1>MSI</h1>
+                            <p>PCゲーマー向けのマザーボードを多く製造しているメーカーです。オーバークロック(CPUなどの性能をブーストさせること)をするときに向いています。</p>
+                        </li>
+                        <li class="asterisk-decimal">
+                            <h1>GIGABYTE</h1>
+                            <p>ファンコントロールなどのソフトウェアが強く、RGBのフルカラーで光る、かっこいいPCを組むとき向いています。</p>
+                        </li>
+                    </ol>
+                    <h3>グラフィックボード</h3>
+                    <img src="image/image3.jpg">
+                    <p>グラフィックボード(通称グラボ)は映像処理を担当するパーツです。「グラボのメーカー」という言葉には二つの意味があります。実際にグラフィック処理を担当するチップを製造する企業と、チップやファンを実装したボードとして販売する企業です。チップはNVIDIAやAMDが、ボードは先程紹介したマザボメーカーなどが製造していることが多いです。</p>
+                    <h2>組み立て</h2>
+                    <p>ここではPCの組み立てについて書きたいと思います。</p>
+                    <h3>CPUの取り付け</h3>
+                    <p>CPUの取り付け方法はIntelとAMDで方法が違います。</p>
+                    <ol>
+                        <li class="asterisk-1">
+                            <h1>Intelの場合</h1>
+                            <ol>
+                                <li class="asterisk-decimal"><p>CPUソケットのロックを外す。</p></li>
+                                <li class="asterisk-decimal"><p>右側のレバーをとる。</p></li>
+                                <li class="asterisk-decimal"><p>奥まで押せばカバーが開く。</p></li>
+                                <li class="asterisk-decimal"><p>CPUソケットを至近距離から目視して、「ピン折れ」が無いかチェック。あった場合は初期不良のため、すぐ交換返品を依頼する。</p></li>
+                                <li class="asterisk-decimal"><p>CPUを「ソッ」と置く。</p></li>
+                                <li class="asterisk-decimal"><p>ロックを閉じ、カバーを外してCPUの取り付けは完了。</p></li>
+                            </ol>
+                        </li>
+                        <li class="asterisk-1">
+                            <h1>AMDの場合</h1>
+                            <ol>
+                                <li class="asterisk-decimal"><p>ロックを外す。</p></li>
+                                <li class="asterisk-decimal"><p>CPU本体の左下にある三角形の印と、CPUソケットの三角形の印をあわせて向きを揃え、「ポトッ」と置く感じで取り付ける。</p></li>
+                            </ol>
+                        </li>
+                    </ol>
+                    <p>これでCPUの取り付けは完了です。</p>
+                    <img src="image/image4.jpg">
+                    <h3>メモリの取り付け</h3>
+                    <p>メモリはCPUソケットのそばにあるメモリスロットに押し込むと装着できます。</p>
+                    <img src="image/image5.jpg">
+                    <h3>ケースへの取り付け</h3>
+                    <p>ケースへの取り付けはCPUクーラーの取り付けを行ってからにしましょう。</p>
+                    <ol>
+                        <li class="asterisk-decimal"><p>スペンサーをケースに取り付ける。</p></li>
+                        <li class="asterisk-decimal"><p>スペンサーとマザーボードの穴を合わせる。</p></li>
+                        <li class="asterisk-decimal"><p>ねじ止めする。</p></li>
+                    </ol>
+                    <p>これでCPUクーラーの取付は終わりです。</p>
+                    <h3>グラボの取り付け</h3>
+                    <p>取り付けの前に電源の取り付けをしてください。</p>
+                    <ol>
+                        <li class="asterisk-decimal"><p>ケースのスロットをあらかじめ開けておく。</p></li>
+                        <li class="asterisk-decimal"><p>PCIEスロットにグラボを挿す。</p></li>
+                        <li class="asterisk-decimal"><p>ケースにネジで固定する。</p></li>
+                    </ol>
+                    <h2>後書きのようなもの</h2>
+                    <p>現在日本の自作PC市場は縮小の一途をたどっています。それに対して、どうにかこれを防ぎたいとこの部誌を書きました。見づらい文章でしたが、最後まで読んでいただきありがとうございました。</p>
+                    <h2>参考文献</h2>
+                    <p><a href="https://chimolog.co/bto-selfmade-ryzen-pc/">https://chimolog.co/bto-selfmade-ryzen-pc/</a></p>
+                    <p><a href="https://ja.wikipedia.org/wiki/%E8%87%AA%E4%BD%9C%E3%83%91%E3%82%BD%E3%82%B3%E3%83%B3">https://ja.wikipedia.org/wiki/%E8%87%AA%E4%BD%9C%E3%83%91%E3%82%BD%E3%82%B3%E3%83%B3</a></p>
+                    <p><a href="https://twitter.com/jeministars/status/1083442975235989504">https://twitter.com/jeministars/status/1083442975235989504</a></p>
+                    <p><a href="https://twitter.com/WesternDigiJPN/status/1148149352986136576">https://twitter.com/WesternDigiJPN/status/1148149352986136576</a></p>
+                    <p><a href="https://twitter.com/WesternDigiJPN/status/1151303495229644800">https://twitter.com/WesternDigiJPN/status/1151303495229644800</a></p>    
+                </div>
+                <nav class="nextPrev">
+                        <div class="prev">前へ<a href="../face/index.html">顔認識について &gt;</a></div>
+                    <div class="next">次へ<a href="../sort/index.html">いろんなソート &gt;</a></div>
+                </nav>
+            </article>
+        </div>
+        <footer class="footer">
+            <div class="">
+                <p class="copylight">&copy; 2015 Asano Physics Club</p>
+            </div>
+        </footer>
+    </main>
+</body>
+</html>

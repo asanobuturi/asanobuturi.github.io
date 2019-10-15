@@ -1,0 +1,239 @@
+.documenttitle{
+    padding: 1em;
+    margin: 1em auto;
+    background-color: #fff;
+    max-width: 70%;
+    text-align: left;
+}
+.documenttitle .documenticon{
+    float: left;
+    width: 7em;
+    margin-right: 1em;
+}
+.documenttitle h1{
+    margin-top: 0;
+    color: orange;
+    border-bottom: solid 1px #ccc;
+    font-size:28px;
+}
+.documenttitle p{
+    text-decoration: none;
+    font-weight: normal;
+    font-size: 16px;
+    margin: 0;
+}
+
+ol{
+    padding-left: 0px;
+}
+
+.author::before{
+    content: "✎";
+}
+
+blockquote {
+    position: relative;
+    padding: 30px 15px 8px 15px;
+    margin: 10px;
+    box-sizing: border-box;
+    background: #f8f8f8;
+}
+
+    blockquote:before {
+        display: inline-block;
+        position: absolute;
+        top: 5px;
+        left: 3px;
+        vertical-align: middle;
+        font-style: italic;
+        content: "\"";
+        font-family: sans-serif;
+        color: #cfcfcf;
+        font-size: 90px;
+        line-height: 1;
+    }
+
+    blockquote p {
+        padding: 0;
+        margin: 15px 0;
+        line-height: 1.7;
+    }
+
+    blockquote cite {
+        display: block;
+        text-align: right;
+        color: #888888;
+        font-size: 0.9em;
+    }
+
+h2{
+    padding: 0.75em 0.5em;
+    border-left: solid rgb(138, 138, 138) 5px;
+}
+
+h3{
+    padding: 0.25em 0;
+    margin: 1em 0;
+    border-bottom: solid rgb(138, 138, 138) 2px;
+}
+
+h4{
+    padding: 0.25em 0;
+    margin: 1em 0;
+    border-bottom: solid rgb(138, 138, 138) 2px;
+}
+
+li{
+    margin-left:1em;
+    padding-left:1em;
+    text-indent: -1em;
+}
+
+li p{
+    text-indent: 0;
+}
+li.asterisk-1{
+    list-style: disc outside;
+}
+
+p.kome::before{
+    content: "※";
+}
+
+p.kome{
+    padding-left:1em;
+    text-indent: -1em;
+    color: #555;
+}
+
+li.check{
+    list-style: "✓" outside;
+}
+
+li.asterisk-2{
+    list-style: "\27A3" outside;
+}
+
+li.asterisk-decimal{
+    list-style: decimal outside;
+}
+
+.next{
+    margin-bottom: 1em;
+}
+
+.prev{
+    margin-bottom: 1em;
+}
+
+.document{
+    padding: 1em;
+    margin: 1em auto;
+    background-color: #fff;
+    max-width: 70%;
+    text-align: left;
+}
+.document .documentcontent{
+    padding: 1em 0;
+    margin: 0 1em;
+}
+.document .documentcontent a{
+    font-size: 24px;
+    font-weight: bold;
+}
+.document .documentcontent h2{
+    font-size: 16px;
+    font-weight: normal;
+}
+.document .documentcontent p{
+    font-size: 16px;
+    font-weight: normal;
+    color: #555;
+}
+.document .documentcontent .link-2{
+    font-size: 16px;
+    font-weight: normal;
+    margin-bottom: 0;
+    text-align: right;
+}
+.documentcontent + .documentcontent{
+    border-top: solid 1px #ccc;
+}
+
+.documentdetail{
+    border-left: none;
+    padding: 0;
+}
+
+.documenticon{
+    height: 8em;
+}
+
+li h1{
+    font-size: 18px;
+    font-weight: normal;
+}
+
+.image-float-right{
+    max-width: 45% !important;
+    float: right;
+}
+
+.image-float-left{
+    max-width: 45% !important;
+    float: left;
+}
+
+.images-side{
+    display: flex;
+    justify-content: space-between;
+}
+
+.image-side{
+    display: inline-block;
+}
+
+#main .documentcontent .document img{
+    max-width: 90%;
+    margin: 1em;
+}
+
+h2 sub{
+    font-weight: normal;
+    font-size:60%;
+}
+
+.text-center{
+    text-align: center;
+}
+
+table{
+    width: 95%;
+    border: solid 1px black;
+    margin: 1em auto;
+}
+
+table td{
+    border: solid 1px black;
+}
+
+.text-bold{
+    font-weight: bold;
+}
+
+.caption{
+    margin: 1em 0 0 0 !important;
+}
+
+.mathjax-center{
+    text-align: center !important;
+}
+
+blockquote h1{
+    font-size: 20px;
+}
+
+#proof-qed{
+    text-align: right;
+    margin-right: 1em;
+}

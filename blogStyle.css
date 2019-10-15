@@ -38,6 +38,11 @@
         padding: 1em 0em 1em;
     }
 
+.author{
+    font-size:20px;
+    font-weight: normal;
+}
+
 .articleUnit {
     padding: 0;
     display: inline-block;
@@ -309,4 +314,8 @@ a .atv, a .atn, a .com, a .dec, a .kwd, a .lit, a .str, a .tag, a .typ, .prettyp
 
 li.L0, li.L1, li.L2, li.L3, li.L4, li.L5, li.L6, li.L7, li.L8, li.L9 {
     list-style-type: decimal !important;
+}
+
+.asterisk-1::before{
+    content: "ああああ";
 }

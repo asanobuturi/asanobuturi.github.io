@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>アクションゲームのブロックの当たり判定|浅野学園物理部</title>
+
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" href="../../../styles.css">
+    <link rel="stylesheet" href="../../../documentstyle.css">
+    <link rel="shortcut icon" href="../../../image/favicon.ico">
+    <script type="text/javascript" src="//typesquare.com/accessor/script/typesquare.js?YME8OdI00sA%3D" charset="utf-8"></script>
+</head>
+<body>
+    <div id="nav-drawer">
+        <input id="nav-input" type="checkbox" class="nav-unshown">
+        <label id="nav-open" for="nav-input">
+            <span class="bar bar1"></span>
+            <span class="bar bar2"></span>
+            <span class="bar bar3"></span>
+            <span class="menu">MENU</span>
+            <span class="close">CLOSE</span>
+        </label>
+        <label id="nav-close" for="nav-input"></label>
+        <div id="nav-content">
+            <a class="nav-link" href="../../../">ホーム</a>
+            <a class="nav-link" href="../../../about.html">物理部とは</a>
+            <a class="nav-link isActive" href="../../../document.html">部誌</a>
+            <a class="nav-link" href="../../../game/index.html">ゲーム</a>
+            <a class="nav-link" href="../../">ブログ</a>
+            <div class="nav-separator"></div>
+            <a class="nav-link" href="http://d.hatena.ne.jp/apc/">ブログ(外部サイト)</a>
+        </div>
+    </div>
+    <main>
+        <div id="main">
+            <article class="documentcontent">
+                <header class="documenttitle">
+                    <h1>アクションゲームのブロックの当たり判定</h1>
+                    <p class="author">中学2年・S.K.</p>
+                    <a href="https://twitter.com/intent/tweet?url=https://asanobuturi.github.io/document/2019/action-block/index.html&text=浅野学園物理部部誌2019「アクションゲームのブロックの当たり判定」&via=Uchi54_APC&related=Uchi54_APC" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </header>
+                <div class="document">
+                    <p class=kome>注意！この私の部誌は日本語がおかしいところが多々ありますのでご注意ください。</p>
+                    <h2>ゲームはフレームごとに処理されている</h2>
+                    <p>この部誌を読んでいるみなさん、こんにちは！突然ですが皆さんは「ゲームはフレームごとに処理されている」ということを知っていますが?</p>
+                    <p>「フレームってなんぞや?」と思うかもしれませんが、実はビデオゲームというのはパラパラ漫画のように素早く画面が切り替わって、1画面ずつゲームの処理が行われているのです。この一画面をフレームと言い、一秒間にフレームがいくつ切り替わるかの値をFPSという単位で表します。ディスプレイの性能の関係で、大抵のゲームは60FPSか30FPSで動作するように設計しますが、処理が追いつかなくなるとまれに遅れることもあります。</p>
+                    <p>それではこの1フレームの間に度の湯なことが起こっているかの具体例をあげましょう。例えば某マ○オの移動です。実際は素早くフレームが切り替わっているのでなめらかに移動しているように見えますが、実は一枚一枚はただの静止画なのです!</p>
+                    <p>どういうことかを理解知るために、まずは右の図を見てください。例えば、一枚目のフレームでプレイヤーがAの一に、二枚目のフレームでプレイヤーがBのいちに居た場合には、画面の前ではプレイヤーが左から右へなめらかに移動しているように見えるのです。</p>
+                    <p>
+                        <img src="image/image1.gif" class="caption">
+                        図1
+                    </p>
+                    <h2>プレイヤーとブロックの当たり判定</h2>
+                    <p>ここからが本題です。この章では「プレイヤーとブロックの当たり判定」について説明します。そもそも、当たり判定とはなにかわかりますか?簡単に言えば、ゲームの中にある何かと、また何かとが当たっている(触れている)華道家の判定です。</p>                    
+                    <p>この技術を使えば、例えばアイテムとプレイヤーが当たっているかを判定して、当たっていた場合にアイテムが消えてプレイヤーが回復したりなどの動作を実装することができます。</p>
+                    <p>これは<span class="text-bold">ただ触れているかどうかだけ</span>を調べればいいので簡単です。ですがマ○オとブロックの当たり判定となるとそう簡単にはいきません。なぜかというと、「マ○オがブロックに対してどちらの方向から当たったのか」まで調べなくてはならないからです。</p>
+                    <p>どうしてこのようなことを調べなくてはいけないのでしょうか。それはブロックに当たったときにその当たってきた方向に戻さなくてはならないからです。ここで戻さなければ、マ○オはプレイヤーがその方向の操作をやめるまでずっとブロックにめり込み続けてしまいます。</p>
+                    <p>例えば、図2のように上から当たってきたのなら上に戻し、また左からなら図3のように左に戻します。</p>
+                    <p>
+                        <img src="image/image2.gif" class="caption">
+                        図2
+                    </p>
+                    <p>
+                        <img src="image/image3.gif" class="caption">
+                        図3
+                    </p>
+                    <p>ということで、「どの方向からブロックに当たったのか」を調べなければいけないのですが、これが難しいのです。この調べ方は色々ありますが、私は次のような方法で調べています。</p>
+                    <p>図4を見てください。</p>
+                    <p>
+                        <img src="image/image4.gif" class="caption">
+                        図4
+                    </p>
+                    <p>この図を1ブロックだと思ってください。まずこのようにブロックを分けて考えます。(ブロックの見た目を変えるわけではありません。図の中でわかりやすいように変更しているだけです。)まずブロック全体ではなく灰色の部分だけに重点を置いてあたりを調べます。そして触れていた場合には、プレイヤーが上へ移動している途中なら図5のように下に戻し、</p>
+                    <p>
+                        <img src="image/image5.gif" class="caption">
+                        図5
+                    </p>
+                    <p>図6のように下に移動しているか、または当たっているのに動きは止まっているという場合には下へ戻します。</p>
+                    <p>
+                        <img src="image/image6.gif" class="caption">
+                        図6
+                    </p>
+                    <p>内側の灰色には触れておらず、右側の黒色に触れているなら図7のように右へ戻し、左なら図8のように左へ戻します。</p>
+                    <p>
+                        <img src="image/image7.gif" clas="caption">
+                        図7
+                        <img src="image/image8.gif" class="caption">
+                        図8
+                    </p>
+                    <p>と、言う仕組みです。</p>
+                    <p>皆さん、ここまでお読みいただきありがとうございます。よければ僕の作った「真顔のアクションver2.0」<sup>*</sup>を遊んでみてください。このゲームもこの当たり判定が使われていますよ!</p>
+                    <p>それではまた!</p>
+                    <img src="image/image9.gif">
+                    <p class="kome">編集部注:文化祭のみでの展示です。</p>
+                </div>
+                <nav class="nextPrev">
+                        <div class="prev">前へ<a href="../competition/index.html">「競争」 &gt;</a></div>
+                    <div class="next">次へ<a href="../ufo/index.html">自作クレーンゲームの考察 &gt;</a></div>
+                </nav>
+            </article>
+        </div>
+        <footer class="footer">
+            <div class="">
+                <p class="copylight">&copy; 2015 Asano Physics Club</p>
+            </div>
+        </footer>
+    </main>
+</body>
+</html>
