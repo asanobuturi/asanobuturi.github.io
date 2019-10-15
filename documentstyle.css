@@ -176,12 +176,18 @@ li h1{
 
 .image-float-right{
     max-width: 45% !important;
+    max-height: 10em;
     float: right;
 }
 
 .image-float-left{
     max-width: 45% !important;
+    max-height: 10em;
     float: left;
+}       
+
+.float-clear{
+    clear: both;
 }
 
 .images-side{
