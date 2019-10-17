@@ -193,12 +193,11 @@ li h1{
 .images-side{
     display: flex;
     justify-content: space-between;
-    max-width: 100%;
 }
 
 .image-side{
     display: inline-block;
-    max-width: 50%;
+    max-width: 45% !important;
 }
 
 #main .documentcontent .document img{
