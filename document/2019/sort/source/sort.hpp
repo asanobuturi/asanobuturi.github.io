@@ -12,7 +12,7 @@ namespace {
   extern void* enabler;
 }
 
-namespace yaito {
+namespace yk {
 
   template<class Iter>
   constexpr bool is_forward_iterator =
@@ -90,8 +90,8 @@ namespace yaito {
     std::rotate(lmid, mid, rmid);
     Iter new_mid = std::lower_bound(first, last, pivot, comp);
     if (first == new_mid || new_mid == last)return;
-    yaito::inplace_merge(first, lmid, new_mid, comp);
-    yaito::inplace_merge(new_mid, rmid, last, comp);
+    yk::inplace_merge(first, lmid, new_mid, comp);
+    yk::inplace_merge(new_mid, rmid, last, comp);
   }
 
   template<class Iter, class Comp, std::enable_if_t<is_forward_iterator<Iter>, void*&> = enabler>
@@ -102,7 +102,7 @@ namespace yaito {
     auto mid = std::next(first, size / 2);
     inplace_merge_sort(first, mid, comp);
     inplace_merge_sort(mid, last, comp);
-    yaito::inplace_merge(first, mid, last, comp);
+    yk::inplace_merge(first, mid, last, comp);
   }
 
   template<class Iter, std::enable_if_t<is_forward_iterator<Iter>, void*&> = enabler>
