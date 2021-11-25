@@ -8,35 +8,48 @@ body{
     scroll-behavior: smooth;
 }
 
-#main{
-    display: flex;
-    width: 900px;
-    margin: 1em auto;
-    gap: 1em;
-}
-.documentcontent{
-    flex: 1;
-    width: calc(100% - 250px - 1em)
-}
-#sidebar{
-    padding: 0;
-    flex-basis:250px;
-    display:block;
+@media screen and (min-width: 900px){ /*パソコン用*/
+    #main{
+        display: flex;
+        width: 900px;
+        margin: 1em auto;
+        gap: 1em;
+    }
+    .documentcontent{
+        flex: 1;
+        width: calc(100% - 250px - 1em)
+    }
+    #sidebar{
+        padding: 0;
+        flex-basis:250px;
+        display:block;
+    }
+    
+    #sidemenu{
+        background-color: #fff;
+        margin-bottom:1em;
+        padding:1em;
+    }
+    #sidemenu a{
+        color:#444;
+        text-decoration-color: #0000;
+    }
+    #sidemenu a:hover{
+        color:rgba(50,90,180);
+        text-decoration-color: rgb(50, 89, 180);
+        transition: all 0.4s;
+    }        
 }
 
-#sidemenu{
-    background-color: #fff;
-    margin-bottom:1em;
-    padding:1em;
-}
-#sidemenu a{
-    color:#444;
-    text-decoration-color: #0000;
-}
-#sidemenu a:hover{
-    color:rgba(50,90,180);
-    text-decoration-color: rgb(50, 89, 180);
-    transition: all 0.4s;
+@media screen and (max-width:900px){/*スマホ用*/
+    #main{
+        display: block;
+        margin: 5em auto 1em;/*ハンバーガーボタンがパンくずリストに重ならないようにする雑な応急処置。上になんかメニューとかおいたほうがいいと思う*/
+    }
+    
+    #sidebar{
+        display: none;
+    }
 }
 
 #breadcrumbs{
