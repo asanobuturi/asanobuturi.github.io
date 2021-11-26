@@ -129,17 +129,19 @@ header {
     }
 
     #nav-input:checked ~ #nav-open span.bar1 {
-        -webkit-transform: translateY(23px) rotate(-30deg);
-        transform: translateY(23px) rotate(-30deg);
+        -webkit-transform: translateX(6px) rotate(30deg);
+        transform: translateX(6px) rotate(30deg);
     }
 
     #nav-input:checked ~ #nav-open span.bar2 {
         opacity: 0;
+        -webkit-transform: translateX(4px);
+        transform: translateX(4px);
     }
 
     #nav-input:checked ~ #nav-open span.bar3 {
-        -webkit-transform: translateY(-25px) rotate(30deg);
-        transform: translateY(-25px) rotate(30deg);
+        -webkit-transform: translateX(4px) rotate(-30deg);
+        transform: translateX(4px) rotate(-30deg);
     }
 
     #nav-input:checked ~ #nav-open span.menu {
