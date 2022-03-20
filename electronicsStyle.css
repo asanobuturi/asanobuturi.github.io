@@ -31,7 +31,6 @@
     .works .thumb {
         width: 40%;
         display: inline-block;
-        margin: auto;
         margin-right: 1em;
         vertical-align: top;
     }
@@ -55,7 +54,6 @@
         text-decoration: none;
         color: rgb(231,182,60);
         margin: 0;
-        padding: 0;
         font-weight: bold;
         padding: 0.25em 0;
     }
@@ -138,6 +136,5 @@
             font-weight: bold;
             margin: 0;
             padding: 0;
-            font-weight: bold;
         }
 }
