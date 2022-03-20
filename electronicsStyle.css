@@ -1,0 +1,143 @@
+.worksBlock {
+    line-height: 1.7em;
+    background-color: #fff;
+    margin-bottom: 3em;
+    padding: 0.5em 0.5em 1.5em;
+    display: inline-block;
+    text-align: left;
+}
+@media (max-width: 700px) {
+    .worksBlock {
+        font-size: 12px;
+    }
+}
+
+.works {
+    text-align: left;
+    margin:0em;
+    padding:1em 0em;
+    max-width: 100%;
+}
+
+    .works + .works {
+        border-top: dotted 1px rgba(0, 0, 0, 0.6);
+    }
+
+
+    .works p {
+        margin: 0.5em 0;
+    }
+
+    .works .thumb {
+        width: 40%;
+        display: inline-block;
+        margin: auto;
+        margin-right: 1em;
+        vertical-align: top;
+    }
+        .works .thumb a {
+            width: 100%;
+            display: block;
+        }
+
+        .works .thumb a video {
+            width: 100%;
+            display: block;
+        }
+
+.works .content {
+    display: inline-block;
+    width: 50%;
+    font-size: 16px;
+}
+    
+    .works .content a .work-title {
+        text-decoration: none;
+        color: #444;
+        margin: 0;
+        padding: 0;
+        font-weight: bold;
+        padding: 0.25em 0;
+    }
+
+        .works .content a .work-title .work-number {
+        font-size: 22px;
+            font-family: "ヒラギノ明朝 ProN W3", "HiraMinProN-W3", "ヒラギノUD丸ゴ W6 JIS2004","Hiragino UD Sans Rd W6 JIS2004", Arial, "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic ProN", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "Meiryo UI", sans-serif, "游ゴシック", "Yu Gothic", "游ゴシック体", "YuGothic";
+        }
+
+        .works .content a .work-title .name {
+        font-size: 27px;
+            font-family: "ヒラギノ角ゴ ProN W6", "HiraKakuProN-W6", "ヒラギノUD丸ゴ W6 JIS2004","Hiragino UD Sans Rd W6 JIS2004", Arial, "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic ProN", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "Meiryo UI", sans-serif, "游ゴシック", "Yu Gothic", "游ゴシック体", "YuGothic";
+        }
+
+    .works .content .uploadDate date {
+        font-size:20px;
+    }
+
+    .works .content .updateDate date {
+        font-size:20px;
+    }
+
+    .works .content .text {
+    }
+
+    .works .content .readMore {
+    }
+
+#main {
+    margin: auto;
+    padding: 0 3%;
+    box-sizing: border-box;
+    max-width: 950px;
+    width: 100%;
+    float: none;
+}
+
+
+                
+
+@media (max-width: 700px) {
+    .works .content {
+        font-size: 12px;
+    }
+    .works .content .uploadDate date {
+        font-size:16px;
+    }
+
+    .works .content .updateDate date {
+        font-size:16px;
+    }
+    
+    .works .content a .work-title .work-number {
+        font-size: 18px;
+        }
+
+    .works .content a .work-title .name {
+        font-size: 22px;
+        }
+}
+@media (max-width: 550px) {
+    .works .thumb {
+        width: 100%;
+        display: block;
+        margin: 0;
+    }
+
+        .works .thumb video {
+            width: 100%;
+        }
+
+    .works .content {
+        display: block;
+        width: 100%;
+        text-align:center;
+    }
+
+        .works .content a h2 {
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0;
+            padding: 0;
+            font-weight: bold;
+        }
+}
