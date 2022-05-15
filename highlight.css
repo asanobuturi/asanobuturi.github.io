@@ -1,0 +1,76 @@
+/*
+PandocでMarkdownからHTMLに変換されたドキュメントの中のコードにシンタックスハイライトを与えるCSS。
+適宜CSSを追加してください。
+*/
+
+div.sourceCode{
+    background-color: #282c34;
+    border-radius: 0.3em;
+    padding: 1em;
+}
+
+div.sourceCode pre{
+    margin: 0;
+}
+
+
+code{
+    background-color: #e7e7e7;
+    border: 0.5px solid #d3d3d3;
+    color: #353535;
+    font-size: 16px;
+    font-family: Consolas,Monaco;
+    border-radius: 0.2em;
+    padding: 0.1em;
+}
+
+pre code{
+    border:0;
+    color: #bdc1d3;
+    background-color: #282c34;
+    border-radius: 0;
+}
+
+pre code .kw{
+    color: #c678dd;
+}
+
+pre code .fu{
+    color: #53a9e9;
+}
+
+pre code .cf{
+    color: #4eb1ba;
+}
+
+pre code .op{
+    color: #56b6c2;
+}
+
+pre code .co{
+    color: #71848e;
+}
+
+pre code .dv{
+    color: #d19a66;
+}
+
+pre code .at{
+    color: #e06c67;
+}
+
+pre code .dt{
+    color: #e06c67;
+}
+
+pre code .er{
+    color: #d19a66;
+}
+
+pre code .ot{
+    color: #d19a66;
+}
+
+pre code .st{
+    color: #56b6c2;
+}
