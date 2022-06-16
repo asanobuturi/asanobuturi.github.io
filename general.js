@@ -1,4 +1,4 @@
-window.addEventListener("load", (event) => {
+window.addEventListener('load', (event) => {
     const sidebar=
     `
     <input id="nav-input" type="checkbox" class="nav-unshown">
