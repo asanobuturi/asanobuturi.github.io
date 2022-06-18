@@ -1,5 +1,9 @@
 window.addEventListener("load", (event) => {
-    function blog() {
+    async function getBlogData(){
+        return await (await fetch("/blog/blog.json")).json();
+    };
+    (async()=>{
+        const pages = await getBlogData();
         if (location.pathname == "/blog/" || location.pathname == "/blog/index.html") { //ブログのインデックスなら
             const block = document.getElementById("blogBlock");
             for (let i = 0;i<pages["pages"].length;i++){
@@ -43,12 +47,5 @@ window.addEventListener("load", (event) => {
                 }
             }
         }
-    }
-    async function getBlogData(){
-        return await (await fetch("/blog/blog.json")).json();
-    };
-    (async()=>{
-        const pages = await getBlogData();
-        blog();
     })()
 });
