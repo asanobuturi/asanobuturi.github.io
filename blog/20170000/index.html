@@ -1,125 +1,97 @@
-﻿<!doctype html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ブログ|浅野学園物理部</title>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115439668-1"></script>
+  <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+          dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'UA-115439668-1');
+  </script>
 
-    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
-    <link rel="stylesheet" href="../../styles.css">
-    <link rel="stylesheet" href="../../blogStyle.css">
-    <link rel="shortcut icon" href="../../image/favicon.ico">
-    <script type="text/javascript" src="../blog.js"></script>
-    <script type="text/javascript" src="//typesquare.com/accessor/script/typesquare.js?YME8OdI00sA%3D" charset="utf-8"></script>
+  <meta property="og:url" content="https://asanobuturi.github.io/blog/20170000/index.html"/>
+  <meta property="og:title" content="ブログ記事のテンプレート|浅野学園物理部"/>
+  <meta property="og:description" content=""/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:image" content="https://asanobuturi.github.io/blog/20170000/thumbnail.jpg"/><!--ここまでOGP設定-->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@Uchi54_APC" /> <!--ここまでTwitterカード設定-->
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML' async></script><!--MathJax適用(LaTeX数式表示用)-->
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="description" content="あああああ" />
+
+  <title>ブログ記事のテンプレート|浅野学園物理部</title>
+
+  <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+  <link rel="stylesheet" href="../../styles.css">
+  <link rel="stylesheet" href="../../blog_new.css">
+  <link rel="stylesheet" href="../../highlight.css"><!--シンタックスハイライト-->
+  <link rel="shortcut icon" href="../../image/favicon.ico">
+
+  <script type="text/javascript" src="//typesquare.com/accessor/script/typesquare.js?YME8OdI00sA%3D" charset="utf-8"></script>
+  <script src="https://kit.fontawesome.com/1e291c4f9b.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div id="nav-drawer">
-    </div>
-    <main>
-        <div id="main">
-            <article class="blogArticle">
-                <header>
-                    <h1>タイトル</h1>
-                    <div class="postDate"><time datetime="2017-00-00">2017年00月00日</time></div>
-                </header>
-                <div class="content">
-                    <p>これは，デフォルトの記事です。これをコピーして，書き換えます。</p>
-
-                    <h2>内容１</h2>
-                    <p>
-                        内容１の内容は無いようです。<br />
-                        内容１は特に内容がないようです。
-                    </p>
-                    <p>
-                        とりあえず段落を分けてみましたが，やっぱり内容はないようです。<br />
-                        やっぱり内容１の内容は無いようです。内容は，無いようです。（大事なことなので２回(ry
-                    </p>
-                    <h2>内容２</h2>
-                    <p>
-                        h2が入って，内容が内容２に変わったので，期待していた人もいるかもですが，やっぱり内容はない模様です。
-                        とりあえず，いつものソースを載せておきます。
-                    </p>
-                    <p>
-                        ちなみに，このソースの，ここまでやるかとも思わせるスペースのインデントは，Visual Studioで編集していた（過去形）からで，
-めんどくさければこんな風にしても何にも問題ない。そして，今，TeraPadで編集しているので，もうインデントしない。めんどい。
-</p>
-<h2>編集方法講座～</h2>
-<p>
-急に始まりました編集方法講座。今日のテーマはこれ。
-</p>
-<h3>ブログの更新方法</h3>
-<p>といことで，ここの更新方法について書きたいと思います。</p>
-<h3>github pagesとは</h3>
-<p><a href="https://techacademy.jp/magazine/6445">無料で使える！GitHub Pagesを使ってWebページを公開する方法</a><br/>ここにまとまってた。これを参照。（丸投げ）</p>
-<h3>というかそもそもGitHubとは</h3>
-<p><a href="https://techacademy.jp/magazine/6235">今さら聞けない！GitHubの使い方【超初心者向け】</a><br/>ここにまとまってた。これを参照。（丸投げ(２回目)）</p>
-<h3>編集方法</h3>
-<ol style="list-style-type: decimal">
-<li>GitHub Desktopをインストール。<br/><a href="https://desktop.github.com/">https://desktop.github.com/</a></li>
-<li>GitHub Desktopを開いて，File→Clone repository</li>
-<li>URLのタブに，「https://github.com/asanobuturi/asanobuturi.github.io」を入力。</li>
-<li>Cloneを押す。<br/>
-クローンされると，マイドキュメント の GitHub フォルダ内にasanobuturi.github.ioができているはず。<br/>
-それを編集し，GitHub Desktopでコミット，プッシュすれば，数十秒後くらいに更新される。</li>
-</ol>
-
-<h3>ブログの更新方法</h3>
-<ol style="list-style-type: decimal">
-<li>blogフォルダー内の20170000(これ)をコピー，名前を適当な日付に。</li>
-<li>そのフォルダ内のindex.html(これ)を編集。</li>
-<li>「time datetime="2017-00-00"」と，「2017年00月00日」を，その適当な日付に。</li>
-<li>このページの最後のほうの，次へと前へを編集。<br/>次がなければ適当な文章に。<br/>前の記事のそれも編集忘れずに。</li>
-<li>pとか，h2とか，preとか，imgとか，を使って編集。</li>
-</ol>
-<p>
-HTMLの編集方法は…，自分で勉強してね（）
-</p>
-<p>
-画像は，
-<img src="buturi.jpg" />
-こんな風に。
-</p>
-<p>ソースコードは
-<pre class="prettyprint lang-cpp">
-#include &lt;iostream&gt;
-int main(){
-    std::cout &lt;&lt; &quot;はろーわーるど&quot; &lt;&lt; std::endl;
-}
-</pre>
-こんなふうに，エスケープしてから載せないと，タグと間違えられる。<br />
-変換するときは，<a href="http://devroom.azurewebsites.net/Devtools/HtmlEncode">これ</a>が便利。<br />
-</p>
-
-<p>ローカルでこのファイルを開くと，読み込みに時間がかかるのは，ウエブフォントのせい。</p>
-
-<p>引用するときは，
-<blockquote>
-<p>引用（いんよう、英語：citation, quotation）とは、広義には、自己のオリジナル作品のなかで他人の著作を副次的に紹介する行為、先人の芸術作品やその要素を副次的に自己の作品に取り入れること。
-報道や批評、研究などの目的で、自らの著作物に他の著作物の一部を採録したり、ポストモダン建築で過去の様式を取り込んだりすることを指す。
-狭義には、各国の著作権法の引用の要件を満たして行われる合法な無断転載等のこと。</p>
-<cite><a href="https://ja.wikipedia.org/wiki/%E5%BC%95%E7%94%A8">引用 - Wikipedia</a></cite>
-</blockquote>
-こんなふうに。</p>
-
-<p>そいうえば，テーブルとかのcssをまだ書いていないのだけれども，使いたい人がいれば，誰かに書いてほしい。</p>
-
-
-<h2>まとめ</h2>
-<p>最後まで読んでいただき、ありがとうございました。更新がんばれー</p>
-                </div>
-                <nav class="nextPrev">
-                    <div class="next">次へ<a href="../20170000/">次のページのタイトル &gt;</a></div>
-                    <div class="prev">前へ<a href="../20170000/">前のページのタイトル &gt;</a></div>
-                </nav>
-            </article>
-        </div>
-        <footer class="footer">
-            <div class="">
-                <p class="copylight">&copy; 2015 Asano Physics Club</p>
+  <div id="nav-drawer">
+  </div>
+  <main>
+    <div id="main">
+        <div class="documentcontent"><article>
+            <div id="breadcrumbs">
+                <i class="fas fa-home"></i><a href="../../index.html">ホーム</a><i class="fas fa-angle-right"></i><a href="../index.html">ブログ</a><i class="fas fa-angle-right"></i>ブログ記事のテンプレート
             </div>
-        </footer>
-    </main>
-    <script type="text/javascript" src="../../general.js"></script>
+            <header class="documenttitle">
+                <h1>ブログ記事のテンプレート</h1>
+                <p class="author"><i class="fas fa-user-edit"></i>著者名</p>
+                <a href="https://twitter.com/intent/tweet?url=https://asanobuturi.github.io/blog/20170000/index.html&text=ブログ記事のテンプレート|浅野学園物理部&via=Uchi54_APC&related=Uchi54_APC" class="twitter-share-button" data-show-count="false">Tweet</a>
+                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script><!--Twitterのシェアボタンの中身(URL・記事タイトル)も記述すること-->
+            </header>
+            <div class="document">
+              <p>これは、デフォルトの記事です。</p>
+              <p>2014年度入学(黄)のとある先輩がこのサイトを作ってくれた時に、ブログ記事のテンプレートも用意してくれていたのですが、最近はMarkdownで原稿を書けばPandocを使ってすぐにHTMLファイルを生成することが出来るようになったので、このデフォルトの記事もそれに合わせて更新しました。</p>
+              <p>昔の版はGitから参照してください。</p>
+              <p>この文章のHTMLファイルがあるのと同じフォルダーに、<code>template.html</code>というファイルと、<code>config.yaml</code>という二つのファイルがあるので、それを自分のパソコンにコピーするなりダウンロードするなりしてください。Pandocをインストールしたうえで、これらのファイルを原稿のMarkdownファイルを同じフォルダーに置き、<code>pandoc ファイル名.md -d config.yaml</code>というコマンドを実行すれば、HTMLファイルが一瞬で生成されます。</p>
+              <p>物理部のGoogleドライブにも同じファイルをアップしてあります。詳しくはそのGoogleドライブの「資料置き場」においてあるマニュアルを読んでください。</p>
+              <p>ウェブサイトを改修したら、<code>template.html</code>も書き換えてくれると嬉しいです。そのうち、Next.jsなどを使って静的サイト生成の仕組みを作る予定があるみたいなので、そうなればこのテンプレートもいらなくなるかもしれません。</p>
+              <figure>
+              <img src="buturi.jpg" alt="物理" /><figcaption aria-hidden="true">物理</figcaption>
+              </figure>
+            </div>
+            <nav class="nextPrev">
+                <div class="prev">前へ(なし)
+                        &gt;</a></div>
+                <div class="next">次へComing Soon...
+                        &gt;</a></div>
+            </nav>
+        </article></div>
+        <nav id="sidebar">
+            <div id="sidemenu">
+                <div class="side-back"><a href="../index.html">記事の一覧へもどる<i class="fas fa-sign-out-alt"></i></a></div>
+                <div class="side-prev"><i class="fas fa-angle-left"></i><a href="">(なし)</a></div>
+                <div class="side-next"><a href="">Coming Soon...</a><i class="fas fa-angle-right"></i></div>
+            </div>
+            <div id="indexblock">
+                <div class="indextitle">目次</div>
+                <ol class="indexcontents">
+                    
+                </ol>
+            </div>
+        </nav>
+    </div>
+    <footer class="footer">
+        <div class="">
+            <p class="copylight">&copy; 2015-2021 Asano Physics Club</p>
+        </div>
+    </footer>
+</main>
 </body>
 </html>
