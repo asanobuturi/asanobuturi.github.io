@@ -11,12 +11,12 @@ window.addEventListener('load', (event) => {
     </label>
     <label id="nav-close" for="nav-input"></label>
     <div id="nav-content">
-        <a id="home" class="nav-link" href="/index.html">ホーム</a>
-        <a id="about" class="nav-link" href="/about.html">物理部とは</a>
-        <a id="document" class="nav-link" href="/document.html">部誌</a>
-        <a id="game" class="nav-link" href="/game/index.html">ゲーム</a>
-        <a id="blog" class="nav-link" href="/blog/index.html">ブログ</a>
-        <a id="electronics" class="nav-link" href="/electronics/index.html">電工の部屋</a>
+        <a class="nav-link" href="/index.html">ホーム</a>
+        <a class="nav-link" href="/about.html">物理部とは</a>
+        <a class="nav-link" href="/document.html">部誌</a>
+        <a class="nav-link" href="/game/index.html">ゲーム</a>
+        <a class="nav-link" href="/blog/index.html">ブログ</a>
+        <a class="nav-link" href="/electronics/index.html">電工の部屋</a>
         <div class="nav-separator"></div>
         <a class="nav-link" href="http://d.hatena.ne.jp/apc/">ブログ(外部サイト)</a>
     </div>
@@ -28,6 +28,7 @@ window.addEventListener('load', (event) => {
         "/index.html"              : "^/$|^/index.html$",
         "/about.html"              : "^/about.html$",
         "/document.html"           : "^/document.html$",
+        "/document.html"           : "^/document.*$",
         "/game/index.html"         : "^/game/.*$",
         "/blog/index.html"         : "^/blog/.*$",
         "/electronics/index.html" : "^/electronics/.*$",
