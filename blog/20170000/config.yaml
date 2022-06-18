@@ -1,0 +1,33 @@
+metadata:
+  author:
+    - 高三・著者名 #こんな感じで著者名をかく。本名じゃなくてもおｋ。
+  title: ブログ記事書いてみた #記事のタイトルをかく。
+  description: ブログ記事書いてみました。 #適当に説明をかく。
+
+  # ↑ここの3つ(特に上2つ)は絶対に空欄禁止！
+
+variables:
+  id: 20220520 #ディレクトリについている日付を数字8ケタで入力。
+
+  prev-id: 20220508 #前の記事の日付
+  prev-title: 高校数学で描くマンデルブロ集合 #前の記事のタイトル
+
+  next-id: #次の記事の日付。次の記事がまだ書かれていない場合は空欄！
+  next-title: #次の記事のタイトル。同じくまだ書くかれていない場合は空欄！
+
+#ここから下は基本的にいじらないでください
+
+table-of-contents: true
+toc-depth: 2 #より深い見出し(Hタグ)までもくじに含めたい場合は数字を大きくする。2を設定してあるけど大きくしても問題ない。
+shift-heading-level-by: 0
+number-sections: false
+
+html-math-method:
+  method: mathjax
+
+from: markdown
+to: html
+
+template: template.html
+
+output-file: index.html
