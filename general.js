@@ -31,7 +31,7 @@ window.addEventListener('load', (event) => {
         "/document.html"           : "^/document.*$",
         "/game/index.html"         : "^/game/.*$",
         "/blog/index.html"         : "^/blog/.*$",
-        "/electronics/index.html" : "^/electronics/.*$",
+        "/electronics/index.html"  : "^/electronics/.*$",
     };
     
     let path;
