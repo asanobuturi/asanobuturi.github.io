@@ -20,7 +20,6 @@ ol, ul {
 a {
     color: rgb(50,90,180);
     display: inline-table;
-    vertical-align: middle;
 }
 
 a:visited {

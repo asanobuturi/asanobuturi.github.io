@@ -58,7 +58,7 @@ window.addEventListener("load", (event) => {
                         <div class="side-next"><i class="fas fa-angle-left"></i><a href="">Coming Soon...</a></div>
                         <div class="side-prev"><a href="${pages["pages"][i+1]["URL"]}">${pages["pages"][i+1]["name"]}<i class="fas fa-angle-right"></i></a></div>
                         `;
-                    } else if (i == pages["pages"].length -1) { //最古
+                    } else if (i == pages["pages"].length - 1) { //最古
                         sidemenu.innerHTML = 
                         `
                         <div class="side-back"><a href="../index.html">記事の一覧へもどる<i class="fas fa-sign-out-alt"></i></a></div>
