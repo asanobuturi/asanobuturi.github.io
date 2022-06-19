@@ -57,15 +57,16 @@
                 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script><!--Twitterのシェアボタンの中身(URL・記事タイトル)も記述すること-->
             </header>
             <div class="document">
-              <p>これは、デフォルトの記事です。</p>
-              <p>2014年度入学(黄)のとある先輩がこのサイトを作ってくれた時に、ブログ記事のテンプレートも用意してくれていたのですが、最近はMarkdownで原稿を書けばPandocを使ってすぐにHTMLファイルを生成することが出来るようになったので、このデフォルトの記事もそれに合わせて更新しました。</p>
-              <p>昔の版はGitから参照してください。</p>
-              <p>この文章のHTMLファイルがあるのと同じフォルダーに、<code>template.html</code>というファイルと、<code>config.yaml</code>という二つのファイルがあるので、それを自分のパソコンにコピーするなりダウンロードするなりしてください。Pandocをインストールしたうえで、これらのファイルを原稿のMarkdownファイルを同じフォルダーに置き、<code>pandoc ファイル名.md -d config.yaml</code>というコマンドを実行すれば、HTMLファイルが一瞬で生成されます。</p>
-              <p>物理部のGoogleドライブにも同じファイルをアップしてあります。詳しくはそのGoogleドライブの「資料置き場」においてあるマニュアルを読んでください。</p>
-              <p>ウェブサイトを改修したら、<code>template.html</code>も書き換えてくれると嬉しいです。そのうち、Next.jsなどを使って静的サイト生成の仕組みを作る予定があるみたいなので、そうなればこのテンプレートもいらなくなるかもしれません。</p>
-              <figure>
-              <img src="buturi.jpg" alt="物理" /><figcaption aria-hidden="true">物理</figcaption>
-              </figure>
+                <p>これは、デフォルトの記事です。</p>
+                <p>2014年度入学(黄)のとある先輩がこのサイトを作ってくれた時に、ブログ記事のテンプレートも用意してくれていたのですが、最近はMarkdownで原稿を書けばPandocを使ってすぐにHTMLファイルを生成することが出来るようになったので、このデフォルトの記事もそれに合わせて更新しました。</p>
+                <p>昔の版はGitから参照してください。</p>
+                <p>この文章のHTMLファイルがあるのと同じフォルダーに、<code>template.html</code>というファイルと、<code>config.yaml</code>という二つのファイルがあるので、それを自分のパソコンにコピーするなりダウンロードするなりしてください。Pandocをインストールしたうえで、これらのファイルを原稿のMarkdownファイルを同じフォルダーに置き、<code>pandoc ファイル名.md -d config.yaml</code>というコマンドを実行すれば、HTMLファイルが一瞬で生成されます。</p>
+                <p>物理部のGoogleドライブにも同じファイルをアップしてあります。詳しくはそのGoogleドライブの「資料置き場」においてあるマニュアルを読んでください。</p>
+                <p>ウェブサイトを改修したら、<code>template.html</code>も書き換えてくれると嬉しいです。そのうち、Next.jsなどを使って静的サイト生成の仕組みを作る予定があるみたいなので、そうなればこのテンプレートもいらなくなるかもしれません。</p>
+                <p><code>blog.json</code>に新しい記事のデータを追加し、記事に<code>blog.js</code>を読み込むとNextPrevを自動生成してくれます。</p>
+                <figure>
+                <img src="buturi.jpg" alt="物理" /><figcaption aria-hidden="true">物理</figcaption>
+                </figure>
             </div>
             <nav class="nextPrev">
                 <div class="prev">前へ(なし)
@@ -94,5 +95,6 @@
         </div>
     </footer>
 </main>
+<script type="text/javascript" src="../../general.js"></script>
 </body>
 </html>
