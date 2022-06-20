@@ -49,7 +49,6 @@
     <div id="main">
         <div class="documentcontent"><article>
             <div id="breadcrumbs">
-                <i class="fas fa-home"></i><a href="../../index.html">ホーム</a><i class="fas fa-angle-right"></i><a href="../index.html">ブログ</a><i class="fas fa-angle-right"></i>$title$
             </div>
             <header class="documenttitle">
                 <h1>$title$</h1>
@@ -61,17 +60,10 @@
               $body$
             </div>
             <nav class="nextPrev">
-                <div class="prev">前へ$if(prev-id)$<a href="../$prev-id$/index.html">「$prev-title$」$else$(なし)$endif$
-                        &gt;</a></div>
-                <div class="next">次へ$if(next-id)$<a href="../$next-id$/index.html">「$next-title$」$else$Coming Soon...$endif$
-                        &gt;</a></div>
             </nav>
         </article></div>
         <nav id="sidebar">
             <div id="sidemenu">
-                <div class="side-back"><a href="../index.html">記事の一覧へもどる<i class="fas fa-sign-out-alt"></i></a></div>
-                <div class="side-prev"><i class="fas fa-angle-left"></i><a href="$if(prev-id)$../$prev-id$/index.html$endif$">$if(prev-id)$「$prev-title$」$else$(なし)$endif$</a></div>
-                <div class="side-next"><a href="$if(next-id)$../$next-id$/index.html$endif$">$if(next-id)$「$next-title$」$else$Coming Soon...$endif$</a><i class="fas fa-angle-right"></i></div>
             </div>
             <div id="indexblock">
                 <div class="indextitle">目次</div>
@@ -83,7 +75,7 @@
     </div>
     <footer class="footer">
         <div class="">
-            <p class="copylight">&copy; 2015-2021 Asano Physics Club</p>
+            <p class="copylight">&copy; 2015-2022 Asano Physics Club</p>
         </div>
     </footer>
 </main>
