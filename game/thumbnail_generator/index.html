@@ -11,6 +11,7 @@
         <link href="https://fonts.googleapis.com/css2?family=M+PLUS+2:wght@800&display=swap" rel="stylesheet">
 
         <script defer src="script.js" type="text/javascript"></script>
+        <meta name="robots" content="noindex">
     </head>
     <body>
         <h1>物理部ウェブサイトサムネイルジェネレーター</h1>
@@ -18,9 +19,9 @@
         <p>Google FontsをつかってM Plusフォントをダウンロードして使っています。</p>
         <p>ダウンロードボタンをクリックしてダウンロードしてください。</p>
         <h2>設定</h2>
-        <label for="text_1">一行目の文字を入力
+        <label for="text_1">メインの文字を入力(二行まで)
         <textarea id="text_1"></textarea></label>
-        <label for="text_2">二行目の文字を入力(省略可)
+        <label for="text_2">サブの文字を入力(省略可)
         <input id="text_2"></input></label>
         <label for="color">色を選択
         <select name="color" id="color">
@@ -28,7 +29,7 @@
             <option value="yellow">黄(電工の部屋)</option>
         </select></label>
         <input id="dl_button" type="button" value="ダウンロード"/>
-        <h3>生成された画像</h3>
+        <h2>生成された画像</h2>
         <canvas id="canvas" width="1200" height="630"></canvas>
     </body>
 </html>
