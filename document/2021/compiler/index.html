@@ -230,7 +230,7 @@ Primary = [&amp;]()-&gt;Ptr&lt;Node&gt;{
     return node;
 };</code></pre>
                     <p>これらがそれぞれのEBNFの要素を関数として実装した結果です。また式全体すなわち与えられたトークン列は <code class="code-simple">Expr</code> としてみなすことができるので、最初に <code class="code-simple">Expr</code> 関数を呼び出します。それが <code class="code-simple">ソース6</code> です。</p>
-                    <figcaption>ソース6</figcaption>                    
+                    <figcaption>ソース6</figcaption>
 <pre class="cpp:ソース6"><code class="language-cpp">Ptr&lt;Node&gt; program = Expr(); //全体の抽象構文木はprogramに格納される</code></pre>
                     <figure>
                     <img src="戻り値の関係.png" class="img-right" width="130" alt="戻り値の関係(ソース7)" /><figcaption aria-hidden="true">戻り値の関係(ソース7)</figcaption>
@@ -342,7 +342,7 @@ Primary = [&amp;]()-&gt;Ptr&lt;Node&gt;{
                     </tbody>
                     </table>
                     <p>割り算の命令だけは書かなかったのですが、これはなぜかというと除算命令は他の四則演算と仕様が違うので同列に書けなかったからです。除算命令を実装したいときは代わりに以下のコードを使ってください。</p>
-                    <pre class="plaintext"><code class="language-text">cqo 
+                    <pre class="plaintext"><code class="language-text">cqo
 idiv rdi</code></pre>
                     <p>これの詳細を知りたい人はググってください。</p>
                     <p>これで準備が整いました。実際に <code class="code-simple">4 * 2 + 3 * 7</code> を計算するアセンブリコードを書いてみましょう。以下に示すのはあくまでアセンブリのコードであり、今まで紹介してきたC++のコードとは全く別物なので勘違いしないでください。</p>
@@ -353,18 +353,18 @@ main:
     #アセンブリの場合エントリポイントはmainなのでその中で処理を書く
     push 4
     push 2
-    
+
     pop rdi
     pop rax
     #この段階でrdiには2, raxには4が格納されている
-    
+
     imul rax, rdi #ここで4 * 2の演算を実行して8がraxに新たに保存される
     push rax #そして8をスタックにプッシュ
 
     push 3
     push 7
     #この段階でスタックは{ 8, 3, 7 }という並びになっている
- 
+
     pop rdi
     pop rax
     #この段階でrdiには7, raxには3が格納されています
@@ -438,7 +438,7 @@ main:
 
     //構文木の頂点から走査を始める
     Recursive(program);
-    
+
     //計算結果をraxにポップする
     res += &quot;\tpop rax\n&quot;;
 
@@ -460,17 +460,17 @@ main:
                      std::ofstream assembly_file{ &quot;result.s&quot; };
                      assembly_file &lt;&lt; assembly_code;
                      assembly_file.close();
-                    
+
                      //result.sをバイナリファイルに変換する
                      int res = system(&quot;wsl cc -o result result.s&quot;);
-                    
+
                      //もしccコマンドが正常終了しなかったらエラーログを出す
                      if (res != 0)std::cout &lt;&lt; &quot;Assembling didn&#39;t go well.\n&quot;;
-                    
+
                      return 0;
-                    
+
                     }
-                    
+
                     int Run() {
                      //resに式の演算結果が保存されるのでそれを出力
                      int res = system(&quot;wsl ./result&quot;);
@@ -581,7 +581,7 @@ case NODETYPE::LESS_OR_EQUAL:
                     <figcaption>ソース28</figcaption>
                     <pre class="plaintext:ソース28"><code class="language-text">1 == 1 &lt;= 0</code></pre>
                     <h2 id="おわりに">10.おわりに</h2>
-                    <p>さあ、ここまで比較演算子の実装まで終わりました。私はC言語の主要な機能(ローカル変数、関数、ポインタなど)を実装したのですが、私が今これを執筆しているのが2021年9月25日で、時間がキツキツになっているのでここで終わりとしたいと思います。今回の部誌でコンパイラについて興味を持ってくれる人がいたら幸いです。もし、私のコードの全体が見たい人がいたら1章に載せたメールアドレスに連絡してください。読んでいただきありがとうございました！！</p>                    
+                    <p>さあ、ここまで比較演算子の実装まで終わりました。私はC言語の主要な機能(ローカル変数、関数、ポインタなど)を実装したのですが、私が今これを執筆しているのが2021年9月25日で、時間がキツキツになっているのでここで終わりとしたいと思います。今回の部誌でコンパイラについて興味を持ってくれる人がいたら幸いです。もし、私のコードの全体が見たい人がいたら1章に載せたメールアドレスに連絡してください。読んでいただきありがとうございました！！</p>
                 </div>
                 <nav class="nextPrev">
                     <div class="prev">前へ<a href="../coilgun/index.html">「コイルガン 4年間のすべて」
@@ -619,7 +619,7 @@ case NODETYPE::LESS_OR_EQUAL:
             </div>
         </footer>
     </main>
-    <script type="text/javascript" src="../../general.js"></script>
+    <script type="text/javascript" src="/general.js"></script>
 </body>
 
 </html>
