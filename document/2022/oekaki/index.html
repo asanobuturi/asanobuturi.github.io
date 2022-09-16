@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115439668-1"></script>
+  <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+          dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'UA-115439668-1');
+  </script>
+
+  <meta property="og:url" content="https://asanobuturi.github.io/document/2022/oekaki/index.html"/>
+  <meta property="og:title" content="Stable
+Diffusionをインストールしてお絵かきする|浅野学園物理部"/>
+  <meta property="og:description" content=""/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:image" content="https://asanobuturi.github.io/document/2022/oekaki/thumbnail.jpg"/><!--ここまでOGP設定-->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@Uchi54_APC" /> <!--ここまでTwitterカード設定-->
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML' async></script><!--MathJax適用(LaTeX数式表示用)-->
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="description" content="Stable
+DiffusionというAI画像生成ソフトをインストールして絵をかいてみます" />
+
+  <title>Stable
+Diffusionをインストールしてお絵かきする|浅野学園物理部</title>
+
+  <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+  <link rel="stylesheet" href="https://asanobuturi.github.io/styles.css">
+  <link rel="stylesheet" href="https://asanobuturi.github.io/blog_new.css">
+  <link rel="stylesheet" href="https://asanobuturi.github.io/highlight.css"><!--シンタックスハイライト-->
+  <link rel="shortcut icon" href="https://asanobuturi.github.io/image/favicon.ico">
+
+  <script type="text/javascript" src="//typesquare.com/accessor/script/typesquare.js?YME8OdI00sA%3D" charset="utf-8"></script>
+  <script src="https://kit.fontawesome.com/1e291c4f9b.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+  <div id="nav-drawer">
+  </div>
+  <main>
+    <div id="main">
+        <div class="documentcontent"><article>
+            <div id="breadcrumbs">
+                <i class="fas fa-home"></i><a href="https://asanobuturi.github.io/index.html">ホーム</a><i class="fas fa-angle-right"></i><a href="https://asanobuturi.github.io/document.html">部誌</a><i class="fas fa-angle-right"></i><a href="../index.html">2022年度部誌</a><i class="fas fa-angle-right"></i>Stable
+Diffusionをインストールしてお絵かきする
+            </div>
+            <header class="documenttitle">
+                <h1>Stable Diffusionをインストールしてお絵かきする</h1>
+                <p class="author"><i class="fas fa-user-edit"></i>中２
+S.K.</p>
+                <a href="https://twitter.com/intent/tweet?url=https://asanobuturi.github.io/document/2022/oekaki/index.html&text=Stable
+Diffusionをインストールしてお絵かきする|浅野学園物理部&via=Uchi54_APC&related=Uchi54_APC" class="twitter-share-button" data-show-count="false">Tweet</a>
+                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script><!--Twitterのシェアボタンの中身(URL・記事タイトル)も記述すること-->
+            </header>
+            <div class="document">
+              <h2 id="はじめに">はじめに</h2>
+              <p>物理部中２のPC班員です。中３から部誌を書こうと思っていましたが、ちょうどいいネタが転がり込んできたので書くことにしました。</p>
+              <h2
+              id="使うライブラリのインストール">使うライブラリのインストール</h2>
+              <p>今回使うStable
+              Diffusionは最近オープンソース化され、商用利用も可能という素晴らしいライブラリです。
+              PCの推奨スペックはVRAM10G以上のnvidiaのGPUで、今回はRTX3060というGPUを使っていきます。</p>
+              <h3
+              id="リポジトリにアクセスするためのトークンを作る">1.リポジトリにアクセスするためのトークンを作る</h3>
+              <p>まず<a
+              href="https://huggingface.co">ここ</a>にアクセスして右上の<code>Sign Up</code>からアカウントを作成し、次に<a
+              href="https://huggingface.co/CompVis/stable-diffusion-v1-4">ここ</a>にアクセスして<code>Access repository</code>をクリックした後、サイト右上のアカウントアイコンをクリックして<code>Settings</code>から左の<code>Access Tokens</code>からトークンを作成する。このトークンが後で必要になるのでメモしておく。</p>
+              <figure>
+              <img src="img/tokens.png" alt="CreateTokens" />
+              <figcaption aria-hidden="true">CreateTokens</figcaption>
+              </figure>
+              <h3
+              id="必要なソフトとライブラリ">2.必要なソフトとライブラリ</h3>
+              <h4 id="python">Python</h4>
+              <p>まずは今回のコードを書くためにプログラミング言語のPythonをインストールする。
+              <a
+              href="http://python.org">Python公式サイト</a>からpythonのインストーラーをダウンロードしてインストールする。インストール時にPythonをパスに追加するオプションを選択するのを忘れずに。</p>
+              <figure>
+              <img src="img/install_python.png" width="400"
+              alt="Python" />
+              <figcaption aria-hidden="true">Python</figcaption>
+              </figure>
+              <h4 id="ドライバ">ドライバ</h4>
+              <figure>
+              <img src="img/nvidia_driver.png"
+              title="ドライバダウンロード" width="400" alt="Driver" />
+              <figcaption aria-hidden="true">Driver</figcaption>
+              </figure>
+              <p>今回はAIの演算にCUDAというnvidia製のグラフィックボードについているものを使うので、<a
+              href="https://www.nvidia.co.jp/Download/index.aspx?lang=jp">ここ</a>からドライバを手に入れてインストールする。</p>
+              <h4 id="cuda-toolkit">CUDA Toolkit</h4>
+              <p><a
+              href="https://developer.nvidia.com/cuda-downloads">ここ</a>からダウンロードしてインストールする。
+              そしてコマンドプロンプトで<code>nvcc -V</code>を実行して正常にインストールされているかを確認する。
+              このとき<code>release</code>の後にある数字をメモしておく。</p>
+              <h4 id="cudnn">cuDNN</h4>
+              <p><a
+              href="https://developer.nvidia.com/rdp/cudnn-download">ここ</a>からダウンロードして解凍した<code>bin</code>フォルダにパスを通す。
+              この時、ダウンロードにnvidiaデベロッパーアカウントが必要なので作成する。</p>
+              <h4 id="pytorch">PyTorch</h4>
+              <p><a
+              href="https://pytorch.org/get-started/locally/">ここ</a>からPyTorchをインストールするためのコマンドを生成する。
+              * PyTorch Build: Stable * Your
+              OS:使用しているコンピュータのOSを選択 * Package:Pip *
+              Language:Python * Compute
+              Platform:先ほどメモしたReleaseの数字に合うものを選択
+              その後、生成されたコマンド(<code>Run this Command</code>にある文字列)を実行してPyTorchをインストールする。
+              インストール後、以下のコマンドでPyTorchからGPUが使用可能かを試す。Trueになれば使用可能。</p>
+              <pre><code>PS C:\Users\hoge&gt; python
+Python 3.10.6 (tags/v3.10.6:9c7b4bd, Aug  1 2022, 21:53:49) [MSC v.1932 64 bit (AMD64)] on win32
+Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+&gt;&gt;&gt; import torch #時間がかかるので注意
+&gt;&gt;&gt; torch.cuda.is_available()
+True
+&gt;&gt;&gt;</code></pre>
+              <h4 id="その他">その他</h4>
+              <p>ライブラリを使用するためのライブラリをインストールする。コマンドプロンプトで
+              <code>pip install diffusers==0.2.4 transformers scipy ftfy</code>
+              を実行する。</p>
+              <h2 id="生成">生成</h2>
+              <div class="sourceCode" id="cb2"><pre
+              class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch <span class="im">import</span> autocast</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> diffusers <span class="im">import</span> StableDiffusionPipeline</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>pipe <span class="op">=</span> StableDiffusionPipeline.from_pretrained</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>(<span class="st">&quot;CompVis/stable-diffusion-v1-4&quot;</span>,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>revision<span class="op">=</span><span class="st">&quot;fp16&quot;</span>, torch_dtype<span class="op">=</span>torch.float16, </span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>use_auth_token<span class="op">=</span><span class="st">&quot;ここにさっき作成したトークンを入力&quot;</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>pipe <span class="op">=</span> pipe.to(<span class="st">&quot;cuda&quot;</span>)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>prompt <span class="op">=</span> <span class="bu">input</span>(<span class="st">&quot;prompt:&quot;</span>)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>pipe.safety_checker <span class="op">=</span> <span class="kw">lambda</span> images, <span class="op">**</span>kwargs: (images, <span class="va">False</span>)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> autocast(<span class="st">&quot;cuda&quot;</span>):</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    image <span class="op">=</span> pipe(prompt)[<span class="st">&quot;sample&quot;</span>][<span class="dv">0</span>]</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>image.save(<span class="ss">f&quot;</span><span class="sc">{</span>prompt<span class="sc">}</span><span class="ss">.png&quot;</span>)</span></code></pre></div>
+              <p>以上のコマンドをpythonで実行することで実行したディレクトリに画像が生成される。</p>
+              <h2
+              id="生成したお気に入りの画像たち">生成したお気に入りの画像たち</h2>
+              <p><img src="img/sample1.png" /> <img
+              src="img/sample2.png" /> <img src="img/sample3.png" />
+              <img src="img/sample4.png" /></p>
+              <h2 id="参考文献">参考文献</h2>
+              <p><a href="https://huggingface.co"
+              class="uri">https://huggingface.co</a></p>
+              <p><a
+              href="https://zenn.dev/ryu2021/articles/3d5737408b06fe"
+              class="uri">https://zenn.dev/ryu2021/articles/3d5737408b06fe</a></p>
+              <p><a
+              href="https://twitter.com/kawai_nae/status/1561843126842851328"
+              class="uri">https://twitter.com/kawai_nae/status/1561843126842851328</a></p>
+            </div>
+            <nav class="nextPrev">
+                <div class="prev">前へ<a href="../bucho/index.html">「部長挨拶」
+                        &gt;</a></div>
+                <div class="next">次へ<a href="../plarail/index.html">「プラレールの改造について」
+                        &gt;</a></div>
+            </nav>
+        </article></div>
+        <nav id="sidebar">
+            <div id="sidemenu">
+                <div class="side-back"><a href="../index.html">記事の一覧へもどる<i class="fas fa-sign-out-alt"></i></a></div>
+                <div class="side-prev"><i class="fas fa-angle-left"></i><a href="../bucho/index.html">「部長挨拶」</a></div>
+                <div class="side-next"><a href="../plarail/index.html">「プラレールの改造について」</a><i class="fas fa-angle-right"></i></div>
+            </div>
+            <div id="indexblock">
+                <div class="indextitle">目次</div>
+                <ol class="indexcontents">
+                    <ul>
+                    <li><a href="#はじめに"
+                    id="toc-はじめに">はじめに</a></li>
+                    <li><a href="#使うライブラリのインストール"
+                    id="toc-使うライブラリのインストール">使うライブラリのインストール</a></li>
+                    <li><a href="#生成" id="toc-生成">生成</a></li>
+                    <li><a href="#生成したお気に入りの画像たち"
+                    id="toc-生成したお気に入りの画像たち">生成したお気に入りの画像たち</a></li>
+                    <li><a href="#参考文献"
+                    id="toc-参考文献">参考文献</a></li>
+                    </ul>
+                </ol>
+            </div>
+        </nav>
+    </div>
+    <footer class="footer">
+        <div class="">
+            <p class="copylight">&copy; 2015-2022 Asano Physics Club</p>
+        </div>
+    </footer>
+</main>
+</body>
+</html>
