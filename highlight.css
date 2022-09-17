@@ -74,3 +74,11 @@ pre code .ot{
 pre code .st{
     color: #56b6c2;
 }
+
+pre code .pp{
+    color: #c678dd;
+}
+
+pre code .im{
+    color: #7cc370;
+}
