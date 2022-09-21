@@ -1,0 +1,77 @@
+{
+    "year": "2019",
+    "pages": [
+        {
+            "name": "部長挨拶",
+            "URL": "/document/2019/bucho-aisatu/index.html",
+            "writer": "部長",
+            "desc": "部長による冒頭の挨拶です"
+        },
+        {
+            "name": "中学生が考える人工知能",
+            "URL": "/document/2019/chu-gakuse-/index.html",
+            "writer": "T.F.",
+            "desc": "最近良く耳にする「人工知能」を、中3の部員が一から作ってみました"
+        },
+        {
+            "name": "素晴らしいアルゴリズムの世界",
+            "URL": "/document/2019/algorithm/index.html",
+            "writer": "中野",
+            "desc": "大規模なデータを上手く扱うには、効率化されたアルゴリズムが必須です"
+        },
+        {
+            "name": "顔認識の仕組み",
+            "URL": "/document/2019/face/index.html",
+            "writer": "K.N.",
+            "desc": "画像の中から人間の「顔」を発見する仕組みとは?"
+        },
+        {
+            "name": "自作PCについていろいろ",
+            "URL": "/document/2019/ownmade-pc/index.html",
+            "writer": "竹村",
+            "desc": "自作erの部員が、自作PCについて語ります"
+        },
+        {
+            "name": "いろんなソート",
+            "URL": "/document/2019/sort/index.html",
+            "writer": "Y.K.",
+            "desc": "数値などのデータを大きさ順に並び替えるアルゴリズムを「ソート」といいます"
+        },
+        {
+            "name": "「競争」",
+            "URL": "/document/2019/competition/index.html",
+            "writer": "H.F.",
+            "desc": "競争をすることの意味とは"
+        },
+        {
+            "name": "アクションゲームのブロックの当たり判定",
+            "URL": "/document/2019/action-block/index.html",
+            "writer": "S.K.",
+            "desc": "アクションゲームのブロックの当たり判定について"
+        },
+        {
+            "name": "自作クレーンゲームの考察",
+            "URL": "/document/2019/ufo/index.html",
+            "writer": "部長",
+            "desc": "部長が去年から作り続けていた作品の集大成です"
+        },
+        {
+            "name": "基礎からはじめるトランジスタ",
+            "URL": "/document/2019/transistor/index.html",
+            "writer": "R.S.",
+            "desc": "多くの電子部品の中でも非常に重要なはたらきをするトランジスタの、1万文字に渡る丁寧な解説"
+        },
+        {
+            "name": "φの累乗とフィボナッチ数列",
+            "URL": "/document/2019/su-gaku/index.html",
+            "writer": "檸檬色のトラウマ",
+            "desc": "2019年は数研と物理部が特別コラボ!"
+        },
+        {
+            "name": "編集後記",
+            "URL": "/document/2019/edit/index.html",
+            "writer": "編集長",
+            "desc": "編集担当(ぼく)の感想です"
+        }
+    ]
+}

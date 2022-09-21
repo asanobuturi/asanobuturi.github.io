@@ -1,39 +1,62 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ja">
-<head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115439668-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
+    <head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115439668-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+            gtag('config', 'UA-115439668-1');
+        </script>
 
-        gtag('config', 'UA-115439668-1');
-    </script>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>「競争」|浅野学園物理部</title>
+        <meta property="og:url" content="https://asanobuturi.github.io/document/2019/competition/index.html"/>
+        <meta property="og:title" content="「競争」|浅野学園物理部"/>
+        <meta property="og:description" content="競争をすることの意味とは"/>
+        <meta property="og:type" content="website"/>
+        <meta property="og:image" content="https://asanobuturi.github.io/document/2019/competition/thumbnail.jpg"/><!--ここまでOGP設定-->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@Uchi54_APC" /> <!--ここまでTwitterカード設定-->
 
-    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
-    <link rel="stylesheet" href="../../../styles.css">
-    <link rel="stylesheet" href="../../../documentstyle.css">
-    <link rel="shortcut icon" href="../../../image/favicon.ico">
-    <script type="text/javascript" src="//typesquare.com/accessor/script/typesquare.js?YME8OdI00sA%3D" charset="utf-8"></script>
-</head>
-<body>
-    <div id="nav-drawer">
-    </div>
-    <main>
-        <div id="main">
-            <article class="documentcontent">
-                <header class="documenttitle">
-                    <h1>「競争」</h1>
-                    <p class="author">中学3年・H.F.</p>
-                    <a href="https://twitter.com/intent/tweet?url=https://asanobuturi.github.io/document/2019/competition/index.html&text=浅野学園物理部部誌2019「競争」&via=Uchi54_APC&related=Uchi54_APC" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-                </header>
-                <div class="document">
-                        <h2>はじめに<sub>読もうね！</sub></h2>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML' async></script><!--MathJax適用(LaTeX数式表示用)-->
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <meta name="description" content="競争をすることの意味とは" />
+
+        <title>「競争」|浅野学園物理部</title>
+
+        <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+        <link rel="stylesheet" href="https://asanobuturi.github.io/styles.css">
+        <link rel="stylesheet" href="https://asanobuturi.github.io/blog_new.css">
+        <link rel="stylesheet" href="https://asanobuturi.github.io/highlight.css"><!--シンタックスハイライト-->
+        <link rel="shortcut icon" href="https://asanobuturi.github.io/image/favicon.ico">
+
+        <script type="text/javascript" src="//typesquare.com/accessor/script/typesquare.js?YME8OdI00sA%3D" charset="utf-8"></script>
+        <script src="https://kit.fontawesome.com/1e291c4f9b.js" crossorigin="anonymous"></script>
+
+    </head>
+    <body>
+        <div id="nav-drawer">
+        </div>
+        <main>
+            <div id="main">
+                <div class="documentcontent"><article>
+                    <div id="breadcrumbs">
+                    </div>
+                    <header class="documenttitle">
+                        <h1 id="title"></h1>
+                        <p class="author"><i class="fas fa-user-edit"></i></p>
+                        <a href="https://twitter.com/intent/tweet?url=https://asanobuturi.github.io/document/2022/base_n/index.html&text=n進法のおはなし|浅野学園物理部&via=Uchi54_APC&related=Uchi54_APC" class="twitter-share-button" data-show-count="false">Tweet</a>
+                        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script><!--Twitterのシェアボタンの中身(URL・記事タイトル)も記述すること-->
+                    </header>
+                    <div class="document">
+                        <h2 id="はじめに">はじめに<sub>読もうね！</sub></h2>
                         <p>浅野学園物理部の展示に来てくださり、そして、この記事を読んでくださりありがとうございま   す。</p>
                         <p>部誌っていうのは例年、その一年間部活動において何をしたか、どんなことをしたか、っていうの を書く場という雰囲気がありますが、特に規則があるわけではないし、普段物理部がやっていること   は他の方々が十分というほど、紹介してくれているので扱うのは少しにします。</p>
                         <p>正直、部誌に中途半端に専門的なことを描くことを好みません。</p>
@@ -43,25 +66,25 @@
                         <p>です。</p>
                         <p>要するに、自分と同じくらいのレベルの人からしか評価を受けないからです。</p>
                         <p>なので僕は、物理あるいはプログラミング、電子工作に興味がある人ない人、関係なく読んでもら いたいので、そういった知識が必要になることが少なくなるよう、持論を展開することにしました。   そこで、昨年の文化祭から今までに僕がフラッと考察した「競争」することがどんな影響をもたらす かについてちょっとした考察を紹介させてください。</p>
-                        <h2>競争について<sub>競争ってイイコト？</sub></h2>
+                        <h2 id="競争について">競争について<sub>競争ってイイコト？</sub></h2>
                         <p>そもそも、「競争」とはどういうことでしょうか。「競争」というのは、二つ以上の物や人が互い に優劣を争うこととされています（Wikipedia「競争」を参考）。</p>
                         <img src="image/image1.png" class="image-float-right" style="max-width: 50%;">
                         <p>つまり、競争とは、必ず競う相手がいて成立するものとなっているので、そこには、団体戦であっ たら「それぞれの団体」だったり、完全に個人戦であったら「個人」というものが、おのずと確立さ   れるようになるでしょう。</p>
                         <p>そして、競争することによってその相手達よりもより良くなろうとして自己の能力の向上を図るこ とができるのです。加えて、競争し終えた後に、その相手との仲が深まることもあり得ます。</p>
                         <p>というわけで、「競争」がどういった場面にあるかを紹介していきます。</p>
-                        <h2 class="float-clear">競技プログラミング<sub>唯一の物理部関連</sub></h2>
+                        <h2 class="float-clear" id="競技プログラミング">競技プログラミング<sub>唯一の物理部関連</sub></h2>
                         <p>「競技プログラミング」とは、出された問題をなるべく早く正確に処理するプログラムをつくる、 という競技のことです（アルゴリズムについての記事がより詳しく説明しています。）。僕らは自宅   で参加可能なコンテストに個人で参加しています。</p>
                         <p>ここ最近、物理部のPC班員の中で、僕を含めて3～4人くらいの人が競技プログラミングに手をつ   けていて、他の部員との勝ち負けや、知らない人を含めた全体の順位で競ったり、ゲーム感覚で新た な分野への技術的発展に努めています。</p>
                         <img src="image/image2.png" class="image-float-right">
                         <p>僕が参加しているコンテストはだいたい週に一回、土曜日もしくは日曜日の夜に開催されていて、 そのコンテストが終わった後は参加した物理部員によって、この問題までできただとか、こういうや   り方のほうがいいだとか、どっちのほうが速かったとか、ほとんどわかっていたけどちょっとミスし ていた愚痴などのチャットで溢れかえります。</p>
                         <p>そして、次の部活動の際にできなかったところを先輩に質問したりすることで、交流が増えてにぎ やかな雰囲気になります。</p>
                         <p>こうして物理部内では、競争を頻繁に経験することで、お互いに切磋琢磨して、プログラミング技 術向上に向けて日々精進しております。</p>
-                        <h2 class="float-clear">ライバルの存在<sub>物理部ネタ終了</sub></h2>
+                        <h2 class="float-clear" id="ライバルの存在">ライバルの存在<sub>物理部ネタ終了</sub></h2>
                         <p>こういったことはもちろん、競技プログラミングに限らず、私生活のあらゆる部分に当てはまりま す。</p>
                         <p>例えば、勉強面において「こんなやつよりはいい点取りたい」とか、「今回こそはこの友達より良 い順位とってやる」などといった目標や意気込みがあると、勉強もやる気が出てくるはずです。</p>
                         <p>その他の場面でも「こいつよりはいいことしたい」、「あの人と同じくらいできたら良いな」、   「あの人のためにやってあげよう」のように、やるべき理由を見出すことができれば、やる気も多少 は出てくるでしょう。競技プログラミングでも、今日こそは買ってやるぞ、と思えば、やる気がみな   ぎってきます。</p>
                         <p>いい意味でも悪い意味でも、こういった「ライバル」を見つけると、自然と評価が変わってくるか もしれません。</p>
-                        <h2>資本主義<sub>いきなり国家レベル</sub></h2>
+                        <h2 id="資本主義">資本主義<sub>いきなり国家レベル</sub></h2>
                         <img src="image/image3.png" class="image-float-right">
                         <p>最後に紹介したい競争の例が「資本主義」です。スケールが今までと違いすぎる気はしますが、言 いたいことは同じです。</p>
                         <p>2024年度上期からの新しい一万円札のデザインになる渋沢栄一<sup>*1</sup>は日本資本主義の    父と称されるほど、西欧から日本に資本主義の考え方を普及させた人とされています。今では当たり  前になっている資本主義、とは一体どんな考え方なのか説明します。</p>
@@ -82,13 +105,13 @@
                         <p>それはもちろん、「競争」です。</p>
                         <p>資本主義経済のもとでは、誰もが会社を設立することができ、たくさんの商品やサービスを売って 利益を追求することが可能です。しかし残念なことに、他の人もかんたんに会社を設立することがで   きるので、そこにはライバルとなる会社が必ず存在します。</p>
                         <p>そうなると、それらの会社との価格や技術の競争に負けないように、どちらがより便利で、ニーズ に合ったものを作れるかを日々考えなければなりません。その結果として、大きな技術の発展を迎え   ることができるのです。</p>
-                        <h3>注釈</h3>
+                        <h3 id="注釈">注釈</h3>
                         <ol style="color: gray;">
                             <li class="check">「渋沢栄一」について：1830年~1931年。一代にして財閥を形成した、わ が校設立者である浅野総一郎も彼の助けを得て大きく成長したとか…</li>
                             <li class="check">「市場」について：シジョウ、と読む。イチバではない。「取引が行われ    ている場所のすべて」のこととされる。例えば本の場合、本屋さんは市場の一部。それ以外に    も、ネットショップやコンビニなど本が売られている場所をすべて含めると、市場になる。</    li>
                         </ol>
                         <p>さて、これで一応三つの「競争」の紹介は終わりました。ですが、もう少しこの記事は続きます。 資本主義の話に詳しい方や先のページが見えてしまった方はもう気づいているかもしれませんが、こ   こから先はもちろん<span style="color: red; font-weight: bold;">アレ</span>でございま   す。</p>
-                        <h2>敗北と孤独<sub>共産趣味者はいないって？</sub></h2>
+                        <h2 id="敗北と孤独">敗北と孤独<sub>共産趣味者はいないって？</sub></h2>
                         <img src="image/image4.png" class="image-float-right" style="max-width: 50%;">
                         <p>競争にはいろんないいところがあるということを紹介してきましたが、そんないいところだけの話 なんてあるわけがありません。これからは競争に付きまとう問題点に焦点を当てます。その問題は、   競争の基本的な考え方にある「個人」の確立、そしてもう一つは、「敗北」です。</p>
                         <p>しかし、これらを克服すれば、必ずや充実した生活が訪れるでしょう。</p>
@@ -113,29 +136,47 @@
                         <p>経済で生じた欠陥を政治で補ってあげる。そういう点で見ると、資本主義＋民主主義というのはなかなか良い選択だったのかもしれません。</p>
                         <p>勉強などにおいては教育というものもそれに似たことなのではないかと思います。先生から生徒へ、先輩から後輩へ、技術や学問を伝え、向上させてなるべく均一になるようにする。</p>
                         <p>頭がいい人が偉い、お金持ちが偉いからそれに従えとかいう、弱肉強食の世界ではなく、僕はこういうことならわかるから、これを教えてあげるよ、などいった共存共栄の社会になってほしいですね。</p>
-                        <h2>終わりに<sub>終わり悪ければ・・・？</sub></h2>
+                        <h2 id="終わりに">終わりに<sub>終わり悪ければ・・・？</sub></h2>
                         <p>僕は今年で部誌を書くのが二回目で、去年よりはいいこと書いたかなと思うのですが、文章を書く能力がだいぶ追いつかないというのが感想の主なところです。</p>
                         <p>この持論については少しだけネットの記事を参考にしたところもありますが、大半は、僕が登下校中に歩きながら興味本位に考えたことばかりなので、鵜呑みにするのは危険です。読みにくかったかもしれませんが、これを読んで何か自分の中で変わったことがあれば、僕はそれを嬉しく思います。</p>
                         <p>では来年に向けてネタを探すことにします。</p>
-                        <h2>参考文献など<sub>アルティメットサンクス！</sub></h2>
+                        <h2 id="参考文献など">参考文献など<sub>アルティメットサンクス！</sub></h2>
                         <p><a href="https://ja.m.wikipedia.org/wiki/%E7%AB%B6%E4%BA%89">Wikipedia-競争</a></p>
                         <p><a href="http://takapi-blog.jp/market/">市場の説明のところ</a></p>
                         <p><a href="http://www.kyoritsu-wu.ac.jp/nichukou/sub/sub_gensya/Economy/Socialism/capitalism.htm">資本主義の構成要素のところ</a></p>
                         <p>いらすとやから、競技プログラミングの画像と、新一万円札の画像と、村八分の画像</p>
-                    </div>
                 </div>
-                <nav class="nextPrev">
-                        <div class="prev">前へ<a href="../sort/index.html">いろんなソート &gt;</a></div>
-                    <div class="next">次へ<a href="../action-block/index.html">アクションゲームのブロックの当たり判定 &gt;</a></div>
+                    <nav class="nextPrev">
+                    </nav>
+                </article></div>
+                <nav id="sidebar">
+                    <div id="sidemenu"></div>
+                    <div id="indexblock">
+                        <div class="indextitle">目次</div>
+                        <ol class="indexcontents">
+                            <li><a href="#はじめに">はじめに</a></li>
+                            <li><a href="#競争について">競争について</a></li>
+                            <li><a href="#競技プログラミング">競技プログラミング</a></li>
+                            <li><a href="#ライバルの存在">ライバルの存在</a></li>
+                            <li><a href="#資本主義">資本主義</a>
+                                <ol>
+                                    <li><a href="#注釈">注釈</a></li>
+                                </ol>
+                            </li>
+                            <li><a href="#敗北と孤独">敗北と孤独</a></li>
+                            <li><a href="#終わりに">終わりに</a></li>
+                            <li><a href="#参考文献など">参考文献など</a></li>
+                        </ol>
+                    </div>
                 </nav>
-            </article>
-        </div>
-        <footer class="footer">
-            <div class="">
-                <p class="copylight">&copy; 2015 Asano Physics Club</p>
             </div>
-        </footer>
-    </main>
+            <footer class="footer">
+                <div class="">
+                    <p class="copylight">&copy; 2015-2022 Asano Physics Club</p>
+                </div>
+            </footer>
+        </main>
     <script type="text/javascript" src="/general.js"></script>
-</body>
+    <script type="text/javascript" src="../document.js"></script>
+    </body>
 </html>
