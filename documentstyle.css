@@ -1,7 +1,7 @@
 .documenttitle{
     padding: 1em;
     margin: 1em auto;
-    background-color: #fff;
+    background-color: white;
     max-width: 70%;
     text-align: left;
 }
@@ -14,7 +14,7 @@
     margin-top: 0;
     color: orange;
     border-bottom: solid 1px #ccc;
-    font-size:28px;
+    font-size:32px;
 }
 .documenttitle p{
     text-decoration: none;
