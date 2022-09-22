@@ -361,14 +361,6 @@ section.section--center {
     padding: 0em 0.5em 2em;
 }
 
-.gameList .gameList-item {
-    margin: 1em auto;
-    text-align: left;
-    padding: 2em 0.5em;
-    background-color: #fff;
-    max-width: 70%;
-}
-
 .gameList .gameList-item .gameList-thumb {
     max-width: 30%;
     display: inline-block;
@@ -441,6 +433,10 @@ section.section--center {
         text-decoration: none;
         font-weight: bold;
     }
+
+    .document-thumb {
+        display: none !important;
+    }
 }
 
 @media (max-width: 900px) {
@@ -463,4 +459,29 @@ section.section--center {
     /*  .footer .mdl-mega-footer--bottom-section {
         display: none;
     }*/
+
+    .gameList .gameList-item {
+        margin: 1em auto;
+        text-align: left;
+        padding: 2em 0.5em;
+        background-color: #fff;
+        max-width: 100%;
+    }
+}
+
+@media screen and (min-width:900px){/*パソコン用*/
+    .gameList .gameList-item {
+        margin: 1em auto;
+        text-align: left;
+        padding: 2em 0.5em;
+        background-color: #fff;
+        max-width: 70%;
+    }
+}
+
+@media (min-width: 691px) {
+    .document-thumb {
+        height: 200px;
+        width: 141.64px;
+    }
 }
