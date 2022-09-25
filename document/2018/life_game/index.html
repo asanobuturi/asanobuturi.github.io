@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115439668-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+            gtag('config', 'UA-115439668-1');
+        </script>
+
+        <meta property="og:url" content="https://asanobuturi.github.io/document/2018/life_game/index.html"/>
+        <meta property="og:title" content="ライフゲームをC++で実装してみた話|浅野学園物理部"/>
+        <meta property="og:description" content="ライフゲームを自力で実装した部員がライフゲームについて語ります。"/>
+        <meta property="og:type" content="website"/>
+        <meta property="og:image" content="https://asanobuturi.github.io/document/2018/life_game/thumbnail.jpg"/><!--ここまでOGP設定-->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@Uchi54_APC" /> <!--ここまでTwitterカード設定-->
+
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML' async></script><!--MathJax適用(LaTeX数式表示用)-->
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <meta name="description" content="ライフゲームを自力で実装した部員がライフゲームについて語ります。" />
+
+        <title>ライフゲームをC++で実装してみた話|浅野学園物理部</title>
+
+        <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+        <link rel="stylesheet" href="https://asanobuturi.github.io/styles.css">
+        <link rel="stylesheet" href="https://asanobuturi.github.io/blog_new.css">
+        <link rel="stylesheet" href="https://asanobuturi.github.io/highlight.css"><!--シンタックスハイライト-->
+        <link rel="shortcut icon" href="https://asanobuturi.github.io/image/favicon.ico">
+
+        <script type="text/javascript" src="//typesquare.com/accessor/script/typesquare.js?YME8OdI00sA%3D" charset="utf-8"></script>
+        <script src="https://kit.fontawesome.com/1e291c4f9b.js" crossorigin="anonymous"></script>
+
+        <script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML"> //数式用
+        </script>
+    </head>
+    <body>
+        <div id="nav-drawer">
+        </div>
+        <main>
+            <div id="main">
+                <div class="documentcontent"><article>
+                    <div id="breadcrumbs">
+                    </div>
+                    <header class="documenttitle">
+                        <h1 id="title"></h1>
+                        <p class="author"><i class="fas fa-user-edit"></i></p>
+                        <a href="" class="twitter-share-button" data-show-count="false">Tweet</a>
+                        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script><!--Twitterのシェアボタンの中身(URL・記事タイトル)も記述すること-->
+                    </header>
+                    <div class="document">
+                        <h2 id="はじめに">はじめに</h2>
+                            <p>実は「実装してみた」要素の少ない紹介記事であるがお許しを(盛大なタイトル詐欺)。</p>
+                        <h2 id="ライフゲームとは？">Life Game(ライフゲーム)とは？</h2>
+                            <blockquote>
+                                <p>ライフゲーム(Conway's Game of Life)は1970年にイギリスの数学者ジョン・ホートン・コンウェイ(John Horton Conway)が考案した生命の誕生、進化、淘汰などのプロセスを簡易的なモデルで再現したシミュレーションゲームである。単純なルールでその模様の変化を楽しめるため、パズルの要素を持っている。</p>
+                                <figcaption>Wikipedia より</figcaption>
+                            </blockquote>
+                            <p>というもの、と言ってもわからないと思うので、ひとまずルールを書いておく。説明が簡潔で理解しやすかったため、これもまた Wikipediaから。 (一部視認性のために改変済み)最後に完成形のスクリーンショットを貼っておくので、イメージとしてはそれを参照して欲しい。</p>
+                            <p>ライフゲームでは初期状態のみでその後の状態が決定される。碁盤のような格子があり、一つの格子はセル（細胞）と呼ばれる。各セルには8つの近傍のセルがある (ムーア近傍) 。各セルには「生」と「死」の2つの状態があり、あるセルの次のステップ（世代）の状態は周囲の8つのセルの今の世代における状態により決定される。</p>
+                            <p>セルの生死は次のルールに従う。</p>
+                            <p>また、中央のセルにおける次のステップでの生死の例を示す。生きているセルは■、死んでいるセルは□で表す。</p>
+                            <ul>
+                                <div style="display:flex;">
+                                    <div>
+                                        <li><b>誕生</b></li>
+                                        <p>死んでいるセルに隣接する生きたセルがちょうど3つあれば、次の世代が誕生する。</p>
+                                    </div>
+                                    <img src="./images/img1.jpg" width="10%" height="10%">
+                                </div>
+                                <div style="display:flex;">
+                                    <div>
+                                        <li><b>生存</b></li>
+                                        <p>生きているセルに隣接する生きたセルが2つか3つならば、次の世代でも生存する。</p>
+                                    </div>
+                                    <img src="./images/img2.jpg" width="10%" height="10%">
+                                </div>
+                                <div style="display:flex;">
+                                    <div>
+                                        <li><b>過疎</b></li>
+                                        <p>生きているセルに隣接する生きたセルが1つ以下ならば、過疎により死滅する。</p>
+                                    </div>
+                                    <img src="./images/img3.jpg" width="10%" height="10%">
+                                </div>
+                                <div style="display:flex;">
+                                    <div>
+                                        <li><b>過密</b></li>
+                                        <p>生きているセルに隣接する生きたセルが4つ以上ならば、過密により死滅する。</p>
+                                    </div>
+                                    <img src="./images/img4.jpg" width="10%" height="10%">
+                                </div>
+                            </ul>
+                        <h2 id="取り敢えずやりたいこと">取り敢えずやりたいこと</h2>
+                            <p>さて、ライフゲームを作るに当たって、画面の確保、描画などはDXライブラリに丸投げする予定なので、処理機構を考える。</p>
+                            <p>やりたいこととしては、<br>
+                                すべてのセルを見る<br>
+                                →周りにある、生きているセルのカウント<br>
+                                →基準のセルが生きているか確認<br>
+                                →カウントに基づいて生死を決定する<br>
+                                こんな感じ。</p>
+                            <p>セルは2次元配列を用意すれば良いが、取り敢えずvectorでいいだろう。ここで、セルのカウント後セルの状態を変更するのだが、変更後の状態をそのまま適応すると次のセルについて確認するときに影響してしまうので、コピーを用意してそちらに書き込むことにする。</p>
+                            <p>つまり、セルの状態を保存するモノを2つ用意して、1つ目を見て生きたセルのカウントをし、その結果を2つ目に書き込んで最後に反映する。</p>
+                            <div class="sourceCode" id="cb1"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>vector<span class="op">&lt;</span>vector<span class="op">&lt;</span><span class="dt">bool</span><span class="op">&gt;</span> <span class="op">&gt;</span> map<span class="op">(</span>ARRAY_SIZE<span class="op">,</span> vector<span class="op">&lt;</span><span class="dt">bool</span><span class="op">&gt;(</span>ARRAY_SIZE<span class="op">,</span> <span class="kw">false</span><span class="op">));</span></span>
+                            <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>vector<span class="op">&lt;</span>vector<span class="op">&lt;</span><span class="dt">bool</span><span class="op">&gt;</span> <span class="op">&gt;</span> map2<span class="op">(</span>ARRAY_SIZE<span class="op">,</span> vector<span class="op">&lt;</span><span class="dt">bool</span><span class="op">&gt;(</span>ARRAY_SIZE<span class="op">,</span> <span class="kw">false</span><span class="op">));</span></span></code></pre></div>
+                        <h2 id="書いてみよう">書いてみよう</h2>
+                            <p>とりあえず周辺の8つをチェックしたいが、取り敢えず自分を含めた9個をforで走査し自分自身を除くことにする。</p>
+                            <p>配列外参照チェックの処理を書くのが面倒なので、配列外参照をしたときに例外を投げてくれるatメンバ関数で若干楽をしてみる。</p>
+                            <p>下に挙げるのはライフゲームの核となる部分。</p>
+                            <div class="sourceCode" id="cb1"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> y <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> y <span class="op">&lt;</span> ARRAY_SIZE<span class="op">;</span> y<span class="op">++)</span><span class="co">//ARRAY_SIZE:これの自乗個の</span></span>
+                            <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> x <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> x <span class="op">&lt;</span> ARRAY_SIZE<span class="op">;</span> x<span class="op">++)</span> <span class="op">{</span><span class="co">//マス上で動かす。</span></span>
+                            <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>            <span class="dt">int</span> count <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+                            <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> y2 <span class="op">=</span> <span class="op">-</span><span class="dv">1</span><span class="op">;</span> y2 <span class="op">&lt;</span> <span class="dv">2</span><span class="op">;</span> y2<span class="op">++)</span> <span class="op">{</span></span>
+                            <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>                <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> x2 <span class="op">=</span> <span class="op">-</span><span class="dv">1</span><span class="op">;</span> x2 <span class="op">&lt;</span> <span class="dv">2</span><span class="op">;</span> x2<span class="op">++)</span> <span class="op">{</span></span>
+                            <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>                try</span>
+                            <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>                <span class="op">{</span></span>
+                            <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">if</span> <span class="op">(</span>map<span class="op">.</span>at<span class="op">(</span>y <span class="op">+</span> y2<span class="op">).</span>at<span class="op">(</span>x <span class="op">+</span> x2<span class="op">)</span></span>
+                            <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>                    <span class="op">&amp;&amp;</span> <span class="op">!(</span>x2 <span class="op">==</span> <span class="dv">0</span> <span class="op">&amp;&amp;</span> y2 <span class="op">==</span> <span class="dv">0</span><span class="op">))</span>count<span class="op">++;</span><span class="co">//周辺の生きたセルの数</span></span>
+                            <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>                <span class="op">}</span></span>
+                            <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>                catch <span class="op">(</span><span class="dt">const</span> std<span class="op">::</span>exception<span class="op">&amp;)</span> <span class="op">{}</span><span class="co">//ここで若干楽をする</span></span>
+                            <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>                <span class="op">}</span></span>
+                            <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span></span>
+                            <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="op">(</span>map<span class="op">[</span>y<span class="op">][</span>x<span class="op">])</span> <span class="op">{</span><span class="co">//↓過疎および過密判定</span></span>
+                            <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="op">(</span>count <span class="op">&lt;=</span> <span class="dv">1</span> <span class="op">||</span> count <span class="op">&gt;=</span> <span class="dv">4</span><span class="op">)</span>map2<span class="op">[</span>y<span class="op">][</span>x<span class="op">]</span> <span class="op">=</span> false<span class="op">;</span></span>
+                            <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+                            <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span> <span class="cf">if</span> <span class="op">(</span>count <span class="op">==</span> <span class="dv">3</span><span class="op">)</span>map2<span class="op">[</span>y<span class="op">][</span>x<span class="op">]</span> <span class="op">=</span> true<span class="op">;</span> <span class="co">//誕生部分</span></span>
+                            <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+                            <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>map <span class="op">=</span> map2<span class="op">;</span></span></code></pre></div>
+                        <h2 id="改善">改善</h2>
+                            <p>ここまでにおいては、最初のパターンを起動時に配置していたのだが、自由に操作するために書き込みモードと実行モードの2つのモードを用意することにした。</p>
+                            <p>enumでWRITE,MAINの2つを宣言しswitch-caseで管理する。</p>
+                            <p>また垂直同期待ちのトグル、マウスホイールによる更新頻度の調整機能も付けた。</p>
+                            <p>ここでとある先輩から上下左右の端を繋げてはどうかとアドバイスが来たので、先程の周囲の8つをチェックする部分をこのように書き換えた。</p>
+                            <div class="sourceCode" id="cb1"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="op">(</span>map<span class="op">.</span>at<span class="op">((</span>ARRAY_SIZE <span class="op">+</span> y <span class="op">+</span> y2<span class="op">)</span> <span class="op">%</span> ARRAY_SIZE<span class="op">).</span>at<span class="op">((</span>ARRAY_SIZE <span class="op">+</span> x <span class="op">+</span> x2<span class="op">)</span> <span class="op">%</span> AR</span>
+                            <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>RAY_SIZE<span class="op">)</span> <span class="op">&amp;&amp;</span> <span class="op">!(</span>x2 <span class="op">==</span> <span class="dv">0</span> <span class="op">&amp;&amp;</span> y2 <span class="op">==</span> <span class="dv">0</span><span class="op">))</span>count<span class="op">++;</span></span></code></pre></div>
+                            <p>これで範囲内に収まるようになった。</p>
+                        <h2 id="パターンの紹介">パターンの紹介</h2>
+                            <p>ライフゲームのルールは前述したようにかなり簡素なものだが、これだけで様々なセルの動く様子を観察することができる。Wikiにもたくさん例があるのだが、ここでも取り上げておく。</p>
+                            <ul>
+                                <div style="display:flex;">
+                                    <div>
+                                        <li><b>固定物体</b></li>
+                                        <p>名前の通り、変化しないパターンである。その代表格が「ブロック」これはそれぞれの生きている(黒)セルの周辺に3つ生きているセルがあるので、どれも生存し続ける。</p>
+                                    </div>
+                                    <img src="./images/img5.jpg" width="10%" height="10%">
+                                </div>
+                                <div style="display:flex;">
+                                    <div>
+                                        <li><b>振動子</b></li>
+                                        <p>一定の周期で元に戻るパターン。代表格としては「ブリンカー」誕生と過疎を繰り返し、縦と横交互に縦棒ができる。</p>
+                                        <p>名前の由来は、画面の更新頻度が高いモニタでこれを観察するとかなり点滅して見えるからである。</p>
+                                    </div>
+                                    <img src="./images/img6.jpg" width="10%" height="10%">
+                                </div>
+                                <div style="display:flex;">
+                                    <div>
+                                        <li><b>移動物体</b></li>
+                                        <p>同じような形を保ったまま移動するパターン。代表格が「グライダー」高確率で発生しやすく、最小であるため大人気。</p>
+                                    </div>
+                                    <img src="./images/img7.jpg" width="10%" height="10%">
+                                </div>
+                                <li><b>繁殖型</b></li>
+                                <p>生きているセルに隣接する生きたセルが4つ以上ならば、過密により死滅する。</p>
+                                <img src="./images/img8.jpg">
+                                <p>スペースさえあれば無限にセルが増え続けるパターン。代表格は「ゴスペル(又はゴスパー)のグライダー銃」これは無限にグライダーを打ち続ける機構で、初めて発見された増殖型であるため発見者の名前がつけられた。</p>
+                            </ul>
+                        <h2 id="まとめ">まとめ</h2>
+                            <p>ライフゲームを楽しめる Golly というフリーソフトがあり、こちらはかなり高速に動かせるのでオススメしたい。後はニコニコ動画に「ライフゲームの世界」というタイトルの分かりやすく面白い動画があるので、こちらを見るとなおライフゲームの面白みが分かるかと思う。</p>
+                        </div>
+                    <nav class="nextPrev">
+                    </nav>
+                </article></div>
+                <nav id="sidebar">
+                    <div id="sidemenu"></div>
+                    <div id="indexblock">
+                        <div class="indextitle">目次</div>
+                        <ol class="indexcontents">
+                            <li><a href="#はじめに">はじめに</a></li>
+                            <li><a href="#ライフゲームとは？">Life Game(ライフゲーム)とは？</a></li>
+                            <li><a href="#取り敢えずやりたいこと">取り敢えずやりたいこと</a></li>
+                            <li><a href="#書いてみよう">書いてみよう</a></li>
+                            <li><a href="#改善">改善</a></li>
+                            <li><a href="#パターンの紹介">パターンの紹介</a></li>
+                            <li><a href="#まとめ">まとめ</a></li>
+                        </ol>
+                    </div>
+                </nav>
+            </div>
+            <footer class="footer">
+                <div class="">
+                    <p class="copylight">&copy; 2015-2022 Asano Physics Club</p>
+                </div>
+            </footer>
+        </main>
+    <script type="text/javascript" src="/general.js"></script>
+    <script type="text/javascript" src="../document.js"></script>
+    </body>
+</html>

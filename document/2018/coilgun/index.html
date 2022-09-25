@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115439668-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+            gtag('config', 'UA-115439668-1');
+        </script>
+
+        <meta property="og:url" content="https://asanobuturi.github.io/document/2018/coligun/index.html"/>
+        <meta property="og:title" content="「コイルの用法！コイルガンの逆襲」|浅野学園物理部"/>
+        <meta property="og:description" content="コイルガンを制作した部員がコイルガンの効率化について語ります。"/>
+        <meta property="og:type" content="website"/>
+        <meta property="og:image" content="https://asanobuturi.github.io/document/2018/coligun/thumbnail.jpg"/><!--ここまでOGP設定-->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@Uchi54_APC" /> <!--ここまでTwitterカード設定-->
+
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML' async></script><!--MathJax適用(LaTeX数式表示用)-->
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <meta name="description" content="コイルガンを制作した部員がコイルガンの効率化について語ります。" />
+
+        <title>「コイルの用法！コイルガンの逆襲」|浅野学園物理部</title>
+
+        <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+        <link rel="stylesheet" href="https://asanobuturi.github.io/styles.css">
+        <link rel="stylesheet" href="https://asanobuturi.github.io/blog_new.css">
+        <link rel="stylesheet" href="https://asanobuturi.github.io/highlight.css"><!--シンタックスハイライト-->
+        <link rel="shortcut icon" href="https://asanobuturi.github.io/image/favicon.ico">
+
+        <script type="text/javascript" src="//typesquare.com/accessor/script/typesquare.js?YME8OdI00sA%3D" charset="utf-8"></script>
+        <script src="https://kit.fontawesome.com/1e291c4f9b.js" crossorigin="anonymous"></script>
+
+        <script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML"> //数式用
+        </script>
+    </head>
+    <body>
+        <div id="nav-drawer">
+        </div>
+        <main>
+            <div id="main">
+                <div class="documentcontent"><article>
+                    <div id="breadcrumbs">
+                    </div>
+                    <header class="documenttitle">
+                        <h1 id="title"></h1>
+                        <p class="author"><i class="fas fa-user-edit"></i></p>
+                        <a href="" class="twitter-share-button" data-show-count="false">Tweet</a>
+                        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script><!--Twitterのシェアボタンの中身(URL・記事タイトル)も記述すること-->
+                    </header>
+                    <div class="document">
+                        <p>こんにちは。中二の鈴木です。今回の物理部展ではコイルガンを出展しましたが、それと関連しコイルの原理を物理的な観点から説明し、その応用としてコイルガンの解説をします。難解な語句も頻出しますが、そこは注訳を参考にして読み進めて頂けると幸いです。</p>
+                    <h2 id="コイルとは何か">コイルとは何か</h2>
+                        <p>そもそもコイルとは何か？コイルとは紐状の物を渦巻き状、らせん状に巻いた物をそう呼ぶ。コイルはバネとして利用する時、圧縮コイルの場合は圧縮すると自己の弾性力で抵抗する力が、引張コイルの場合も引っ張ると自己の弾性力で抵抗する力が生まれる。コイルばねは荷重に比例して弾性力も増加し、なおかつ生産が安価で可能な為幅広い分野で利用されている。一昔前までは乗り物等にも客室の動揺を低減するために利用されていた。（今は空気ばねが主流だが...）</p>
+                    <h3 id="電磁石としての利用">電磁石としての利用</h3>
+                        <p>電磁石として利用する場合、導体に電流を流すと僅かな磁力が発生するが、その力をコイルとして巻かれた導体で発生させる。すると纏まった磁力、要は磁性体を近づけると反応したりするような強さの力になる。これは巻き数を増やせば増やすほど増大する（注:これは導線が電気抵抗のない理想的な状態でのことであって、実際には巻き数を増やすと電気抵抗が増大するため電流が減り、実際の磁力が単純に増えていく訳ではない）。</p>
+                        <p>電磁石の利用法としては、主にモーター、リレー（継電器とも呼ぶ）、ソレノイド等が一般的に挙げられる。あまり一般的ではないが、ここでは電磁石の利用法としてコイルガンを解説することにしよう。</p>
+                    <h2 id="コイルガンとは何か">コイルガンとは何か</h2>
+                        <p>コイルガンとはその名の通りコイルの磁力で弾丸を加速させ、対象物に発射するものである。中空状のコイルに磁性体の弾丸を押し込み、同時に電流を流すと、コイルが磁気を帯びるため弾丸は中央方向に吸引される。しかし、そのままでいると弾丸が中央で留まってしまい、弾丸を発射することは出来ない。そこで、弾丸が中央付近まで吸引されたと同時に電流を切り、そのまま惰性で発射してしまうのだ。この仕組みを実現するために主に大容量、高耐電圧のコンデンサーを半導体スイッチで一瞬だけ電流を流す。機械的なスイッチでは損失が大きく、また大電流で接点部分が溶着してしまうことも考えられるためこのような大電流を扱う分野で利用することは少なくなっている。</p>
+                    <h2 id="コイルガンの効率の低さと、その解決法">コイルガンの効率の低さと、その解決法</h2>
+                        <p>この単純なコイルガンでの効率は 5%程度しか出せない。理由としては主にコイルの磁力不足、コイルの電気抵抗による損失、コイルと弾丸との距離やデンサーの通電時間とコイルの長さが合わず、弾丸が引き戻されてしまうことが挙げられる。</p>
+                    <h3 id="コイルの巻き数を増やす">コイルの巻き数を増やす</h3>
+                        <p>コイルの磁力不足の場合、コイルの巻き数を増やすと磁力が増し、その分弾丸を吸引する力は増大する。しかし、その場合電気抵抗が増大し損失が増え、また通電時間が長くなりコイルの長さを調整しないと弾丸が中央を越えても通電し続け弾丸が引き戻されてしまう欠点がある。</p>
+                    <h3 id="弾丸を誘導しコイルを巻くパイプを薄いものにする">弾丸を誘導しコイルを巻くパイプを薄いものにする</h3>
+                        <p>パイプを薄いものにすれば、その分弾丸に働く磁力は増大するが、パイプの強度が下がりコイル巻きの途中や使用中に折れてしまう危険がある。そこで薄く、丈夫なアルミパイプを使うと強度は上がるが渦電流が流れ効率が下がる原因になる。渦電流とは、伝導体を磁場内で動かしたりして生ずる渦状の誘導電流である。これが物体の運動を妨げる力として働いてしまい、コイルガンにとってはやっかいなものだ。極端な話モーターの鉄芯と同様にケイ素鋼板を積層させたものを使う等の対策をすれば良いのだが、それを個人レベルでやるのはほぼ無理であるため、大抵はアクリル等のプラスチック製パイプを利用する。アクリルだからと言って、弾丸の動きは速すぎて見ることも出来ないことは断っておこう。</p>
+                    <h3 id="コイルの抵抗を減らして通電時間を短くする">コイルの抵抗を減らして通電時間を短くする</h3>
+                        <p>コイルの電気抵抗を減らすとそもそもの電気抵抗による損失が減り、その影響で電流が増大し結果的に通電時間も短くなる。しかし、一般的にコイルに利用されるエナメル線の導体は銅。これ以上電気抵抗を減ずるには金か銀を利用するしかないが、当然高価すぎるので無理な話である。導体断面積を大きくすれば電気抵抗は減るが、巻き数が減るため磁力も減る。超伝導を使うなんて夢のまた夢だ。</p>
+                    <h3 id="コイルをコンデンサーの容量、電圧に合った長さにする">コイルをコンデンサーの容量、電圧に合った長さにする</h3>
+                        <p>コイルの長さを調整すれば、通電時間が長すぎてコイルが引き戻されることは避けられる。それが一番確実である。</p>
+                    <h3 id="コイルとコンデンサーの回路を増やし多段式とする">コイルとコンデンサーの回路を増やし多段式とする</h3>
+                        <p>また、多段式とすると一つ一つのコンデンサーを小容量化しても威力を確保することが可能になり、総じて制作価格を低減させられる。さながら一つのコイルガンで加速した弾丸を次のコイルガンで加速しているようである。しかし、二段目以降のコイルは電流を流すタイミングが重要になり、タイミングを誤ればかえって効率を低下させる原因にもなりかねない。対策としては、タイマー回路やマイコン制御で通電間隔を調整する、或いは赤外線ダイオードとフォトトランジスタで弾丸を検出することが考えられる。しかし前者は調整がとても面倒で、後者は赤外線の扱いの難しさがある。</p>
+                    <h2 id="コンデンサーを効率良く利用するための工夫">コンデンサーを効率良く利用するための工夫</h2>
+                        <p>コンデンサーの容量は静電容量×電圧²で、電圧が高い方がより多くのエネルギーをためることが出来る。その高電圧を得るため大抵のコイルガンでは昇圧回路を挟み、250~400V程度に昇圧してからコンデンサーに電力をためる。昇圧回路には昇圧チョッパ回路が利用される昇圧チョッパ回路は直流電源とインダクタ、またインダクタ～GND方面と負荷の方面で切り替えられるスイッチで構成される。実際はそのような機械的なスイッチは損失が大きいため片方で半導体スイッチによりOn/Offを制御し、もう片方はダイオードで逆流を防ぐ。スイッチがOnの時、電源～インダクタ～GND が導通しインダクタに電流が蓄えられる。スイッチをOffにすると電源～インダクタ～負荷～GNDが導通するが、インダクタに蓄えられた電流はすぐに無くなることがないので、ダイオードを介して高圧側に注入される。これで昇圧回路が成立する。</p>
+                        <p>このように、一通りコイルガンの仕組みについて解説してみた。まだ経験の浅いこともあり違和感のある説明になってしまったかもしれないが...</p>
+                    <h2 id="参考にさせていただいたサイト">参考にさせていただいたサイト</h2>
+                        <ul>
+                            <li>EML 制作記録(仮)『コイルガンの作り方というか考察』</li>
+                            <a href="http://emllaboratory.blog.fc2.com/blog-entry-9.html">http://emllaboratory.blog.fc2.com/blog-entry-9.html</a>
+                            <li>多段式コイルガン『多段式コイルガンの仕組み』</li>
+                            <a href="http://yorozulab.web.fc2.com/msc/mscoil.html">http://yorozulab.web.fc2.com/msc/mscoil.html</a>
+                            <li>Energy Chord『昇圧チョッパ回路の原理イメージ』</li>
+                            <a href="http://energychord.com/children/energy/pe/dcdc/contents/dcdc_boost_intro.html">http://energychord.com/children/energy/pe/dcdc/contents/dcdc_boost_intro.html</a>
+                        </ul>
+                    </div>
+                    <nav class="nextPrev">
+                    </nav>
+                </article></div>
+                <nav id="sidebar">
+                    <div id="sidemenu"></div>
+                    <div id="indexblock">
+                        <div class="indextitle">目次</div>
+                        <ol class="indexcontents">
+                            <li><a href="#コイルとは何か">コイルとは何か</a>
+                                <ol>
+                                    <li><a href="#電磁石としての利用">電磁石としての利用</a></li>
+                                </ol>
+                            </li>
+                            <li><a href="#コイルガンとは何か">コイルガンとは何か</a></li>
+                            <li><a href="#コイルガンの効率の低さと、その解決法">コイルガンの効率の低さと、その解決法</a>
+                                <ol>
+                                    <li><a href="#コイルの巻き数を増やす">コイルの巻き数を増やす</a></li>
+                                    <li><a href="#弾丸を誘導しコイルを巻くパイプを薄いものにする">弾丸を誘導しコイルを巻くパイプを薄いものにする</a></li>
+                                    <li><a href="#コイルの抵抗を減らして通電時間を短くする">コイルの抵抗を減らして通電時間を短くする</a></li>
+                                    <li><a href="#コイルをコンデンサーの容量、電圧に合った長さにする">コイルをコンデンサーの容量、電圧に合った長さにする</a></li>
+                                    <li><a href="#コイルとコンデンサーの回路を増やし多段式とする">コイルとコンデンサーの回路を増やし多段式とする</a></li>
+                                </ol>
+                            </li>
+                            <li><a href="#コンデンサーを効率良く利用するための工夫">コンデンサーを効率良く利用するための工夫</a></li>
+                            <li><a href="#参考にさせていただいたサイト">参考にさせていただいたサイト</a></li>
+                        </ol>
+                    </div>
+                </nav>
+            </div>
+            <footer class="footer">
+                <div class="">
+                    <p class="copylight">&copy; 2015-2022 Asano Physics Club</p>
+                </div>
+            </footer>
+        </main>
+    <script type="text/javascript" src="/general.js"></script>
+    <script type="text/javascript" src="../document.js"></script>
+    </body>
+</html>

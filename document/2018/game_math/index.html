@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115439668-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+            gtag('config', 'UA-115439668-1');
+        </script>
+
+        <meta property="og:url" content="https://asanobuturi.github.io/document/2018/game_math/index.html"/>
+        <meta property="og:title" content="ゲームプログラムと数学が出会うとき|浅野学園物理部"/>
+        <meta property="og:description" content="いろいろな物理・数学に関することを部員が語ります。"/>
+        <meta property="og:type" content="website"/>
+        <meta property="og:image" content="https://asanobuturi.github.io/document/2018/game_math/thumbnail.jpg"/><!--ここまでOGP設定-->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@Uchi54_APC" /> <!--ここまでTwitterカード設定-->
+
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML' async></script><!--MathJax適用(LaTeX数式表示用)-->
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <meta name="description" content="いろいろな物理・数学に関することを部員が語ります。" />
+
+        <title>ゲームプログラムと数学が出会うとき|浅野学園物理部</title>
+
+        <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+        <link rel="stylesheet" href="https://asanobuturi.github.io/styles.css">
+        <link rel="stylesheet" href="https://asanobuturi.github.io/blog_new.css">
+        <link rel="stylesheet"
+            href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.6.0/build/styles/default.min.css">
+        <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.6.0/build/highlight.min.js"></script>
+        <link rel="shortcut icon" href="https://asanobuturi.github.io/image/favicon.ico">
+
+        <script type="text/javascript" src="//typesquare.com/accessor/script/typesquare.js?YME8OdI00sA%3D" charset="utf-8"></script>
+        <script src="https://kit.fontawesome.com/1e291c4f9b.js" crossorigin="anonymous"></script>
+
+        <script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML"> //数式用
+        </script>
+    </head>
+    <body>
+        <div id="nav-drawer">
+        </div>
+        <main>
+            <div id="main">
+                <div class="documentcontent"><article>
+                    <div id="breadcrumbs">
+                    </div>
+                    <header class="documenttitle">
+                        <h1 id="title"></h1>
+                        <p class="author"><i class="fas fa-user-edit"></i></p>
+                        <a href="" class="twitter-share-button" data-show-count="false">Tweet</a>
+                        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script><!--Twitterのシェアボタンの中身(URL・記事タイトル)も記述すること-->
+                    </header>
+                    <div class="document">
+                            <p>シューティングゲームばかり作っている中２の中野です。今回はいろいろな物理・数学に関することをここに記したいと思います（内容は至って真面目です。期待しないでください）。</p>
+                        <h2 id="微分の基礎">微分の基礎</h2>
+                            <p>第一章では微分の基本中の基本について説明します。まず、微分とは読んで字の如く“微小部分で考える”ということです。たとえば正比例などのグラフの場合は直線なので、傾きが一定です（傾きの求め方：\( \frac{𝛥𝑦}{𝛥𝑥} \)（ここの𝛥というのは変化量という意味です））。しかし直線じゃない線を考えた場合に、\(𝛥𝑥\)の範囲を変えると\(𝛥𝑦\)が変わってしまいます。では例として
+                                \( 𝑦 = 4.9𝑥2 \)
+                                を考えてみましょう。</p>
+                            <ul>
+                                <li style="list-style: decimal outside;">x=2 から x=3 の変化を考える場合</li>
+                                \[ \frac{𝛥𝑦}{𝛥𝑥} = \frac{(4.9 × 3 × 3) - (4.9 × 2 × 2)}{3 - 2} = 44.1 - 19.6 = 24.5 \]
+                                <li style="list-style: decimal outside;">x=2 から x=4 の範囲を考える場合</li>
+                                \[ \frac{𝛥𝑦}{𝛥𝑥} = \frac{(4.9 × 4 × 4) - (4.9 × 2 × 2)}{4 - 2} = 29.4 \]
+                            </ul>
+                            <p>上記より𝛥𝑥の範囲によって傾きが違うことがわかります。では、いよいよ本題に入りましょう。上記の変数を使って考えてみましょう。\(𝑥 = 2\)から\(𝑥 = 2 + ℎ\)の範囲まで考えることにしましょう。</p>
+                            \[ \frac{𝛥𝑦}{𝛥𝑥} = \frac{4.9(2 + ℎ)^2 - 4.9 × 2^2}{(2 + ℎ) - 2} = \frac{19.6ℎ + 4.9ℎ^2}{ℎ} = 19.6 + 4.9ℎ \]
+                            <p>微分とは“微小部分で考える”という意味でした。要はここで言う\(𝛥𝑥 = ℎ\)を極限まで小さくする（0に限りなく近づける）ということです。このℎを限りなく0に近づけることを数学で</p>
+                            \[ \lim_{h \to 0} 19.6 + 4.9ℎ = 19.6 \]
+                            <p>この19.6のことを俗に“微分係数”とよびます。ここまで微分の導入（基本中の基本）をやってきました。これで数学に興味のある人が増えたら幸いです。</p>
+                        <h2 id="ゲームにおける重力の考え方">ゲームにおける重力の考え方</h2>
+                            <p>皆さんはマ○オとかのゲームでジャンプするシーンを知っていますよね。本章ではそのようなゲームにおける、ジャンプのプログラムについて考えてみましょう。まず有名なこちらの2式を見てください。</p>
+                            <figure>
+                                \[ y_t = ν_0t - \frac{1}{2} gt^2 \]
+                                \[ ν^2 - ν^2_0 = -2gy_{max} \]
+                                <figcaption aria-hidden="true">\(𝑦𝑚𝑎𝑥 = 最高点[𝑚]\) , \(𝑦𝑡 = 時間によって変化する𝑦座標\) , \(𝑣 = 時間によって変化する物体の速さ\),  \(𝑣_0 = 物体の初速度\),  \(𝑔 = 9.8[𝑚/𝑠2]\) (重力加速度), \(𝑡 = 時間\)</figcaption>
+                            </figure>
+                            <p>基本的にはこれで求めることができます。しかし、プログラミングでは初速度を考えづらい状況がほとんどですよね。よって速さの概念を無くしましょう。移項などを繰り返すと、結局\( y_t = \sqrt{2gy_{max}t} - \frac{1}{2}gt^2 \)という式が作れます。ではこれをプログラミングで表現してみましょう。ちなみに言語はC言語、テキストエディタ・デバッガはVisual Studio 2017 Community、ライブラリはDXライブラリを使っています。Visual StudioはMicrosoft社から無料でダウンロードできます。<a href="https://docs.microsoft.com/ja-jp/visualstudio/install/install-visual-studio">ここ</a>に詳しいことが書いてあります。DX ライブラリは「画像を表示する」とか「特定のキーを監視する」ときに便利なライブラリです。詳しいことは<a href="http://dxlib.o.oo7.jp/">ここ</a>からどうぞ。ではこれをプログラミングで表現してみましょう。</p>
+                            <pre><code> #include DxLib.h
+                                        #include &lt;math.h&gt;
+                                        #define g 9.8067
+                                        #define y_max 2.000
+                                        int x = 0;
+                                        int y = 480;
+                                        int time1;
+                                        int time2;
+                                        double t;
+                                        int flag = 0;
+                                        int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
+                                        &nbsp;&nbsp;&nbsp;&nbsp;ChangeWindowMode(TRUE);
+                                        &nbsp;&nbsp;&nbsp;&nbsp;if (DxLib_Init() == -1) {
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return -1;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;}
+                                        &nbsp;&nbsp;&nbsp;&nbsp;while (CheckHitKey(KEY_INPUT_ESCAPE) == FALSE && ProcessMessage() != -) {
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (CheckHitKey(KEY_INPUT_SPACE) == 1 && flag == 0) {
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;flag = 1;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time1 = GetNowCount();
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (flag == 1) {
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DrawPixel(x, 480 - y, GetColor(255, 255, 255));
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time2 = GetNowCount();
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;t = (double)(time2 - time1) / 1000.000;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x += 6;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y = (int)((sqrt(2.000 * g * y_max) * t - 0.500 * g * t * t) * 480.000 / y_max);
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (y < 0) {
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ClearDrawScreen();
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;flag = 0;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y = 0;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x = 0;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ScreenFlip();
+                                        &nbsp;&nbsp;&nbsp;&nbsp;}
+                                        &nbsp;&nbsp;&nbsp;&nbsp;DxLib_End();
+                                        &nbsp;&nbsp;&nbsp;&nbsp;return 0;
+                                        }</code></pre> <!-- 実装方法が天才的なバカですがこれしかできなかったんです... -->
+                            <p>これをVisual Studioにコピペして実行してみてください。点が放物線を描いているように見えるはずです。</p>
+                        <h2 id="二乗を表現する方法">二乗を表現する方法</h2>
+                            <p>1 2 3 4 5 6 7 8 9...などという数を二乗するとそれぞれ 1 4 9 16 25 36 49 64 81...となりますよね？本章はこれらの数列をプログラミングで表現してみたいと思います(すごく原始的です)。まず上の数列を見ると“差”は、3 5 7 9 11 13 15 17...ですよね？そうです、2 ずつ差が増えているのです。これを再現すれば皆さんでも簡単に表現することが可能です。</p>
+                            <pre><code> #include &lt;stdio.h&gt;
+                                        int main(void) {
+                                        &nbsp;&nbsp;&nbsp;&nbsp;int a = 1; //二乗した数
+                                        &nbsp;&nbsp;&nbsp;&nbsp;int b = 1; //二乗する前の数
+                                        &nbsp;&nbsp;&nbsp;&nbsp;int s = 3; //二乗した数たちの最初の差
+                                        &nbsp;&nbsp;&nbsp;&nbsp;while (a <= 10000) { //二乗した数の上限は 10000 まで
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("%d の二乗は%d です\n", b, a); //二乗した数を表示する(改行付き)
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a += s; //次の二乗した数に差を足す
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s += 2; //今の差に 2 を足して次の差にする
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b += 1; //二乗する前の数に 1 ずつ足す
+                                        &nbsp;&nbsp;&nbsp;&nbsp;}
+                                        &nbsp;&nbsp;&nbsp;&nbsp;return 0;
+                                        }</code></pre>
+                            <p>これをコピペしてVisual Studioで実行してみてください。右の図みたいなものができるはずです。</p>
+                            <figure>
+                                <figcaption aria-hidden="true">これをコピペしてVisual Studioで実行してみてください。下の図みたいなものができるはずです。</figcaption>
+                                <img src="./images/img1.jpg">
+                            </figure>
+                        <h2 id="展示作品">展示作品</h2>
+                            <ul>
+                                <li>シューティングゲーム</li>
+                                <p>＜概要＞上から降ってくる緑の弾を方向キーで回避する遊び。<br>＜考察＞弾が降ってくるときに最初の方だけ、ガガガッってなる、<br>というエラーがある(未解決)。</p>
+                                <li>アクションゲーム</li>
+                                <p>＜概要＞Z キーで攻撃、X キーでガード、方向キーで移動。<br> ＜考察＞あまり完成の目処が立っていない為、文化祭で発表されない確率が微小レベルで存在。</p>
+                                <li>放物線</li>
+                                <p>＜概要＞スペースキーの押下で、等間隔で放物線を描く。<br>＜考察＞本部誌の第二章参照。</p>
+                                <li>スクリーンセーバー</li>
+                                <p>＜概要＞物理部と書かれた楕円が色を変えながら反射する。<br>＜考察＞背景も RGB で次第に青っぽく、赤っぽくするようにした。思いの他、難しかった。また、楕円のサイズの関係上、物理部の端っこが楕円の色と重なり気持ち悪くなった。</p>
+                                <figure>
+                                    <img src="./images/img2.jpg">
+                                    <figcaption aria-hidden="true">シューティングゲームの様子</figcaption>
+                                </figure>
+                                <p>今年の僕の部誌はこれでおしまいです。来年また部誌でお会いしましょう。</p>
+                            </ul>
+                        </div>
+                    <nav class="nextPrev">
+                    </nav>
+                </article></div>
+                <nav id="sidebar">
+                    <div id="sidemenu"></div>
+                    <div id="indexblock">
+                        <div class="indextitle">目次</div>
+                        <ol class="indexcontents">
+                            <li><a href="#微分の基礎">微分の基礎</a></li>
+                            <li><a href="#ゲームにおける重力の考え方">ゲームにおける重力の考え方</a></li>
+                            <li><a href="#二乗を表現する方法">二乗を表現する方法</a></li>
+                            <li><a href="#展示作品">展示作品</a></li>
+                        </ol>
+                    </div>
+                </nav>
+            </div>
+            <footer class="footer">
+                <div class="">
+                    <p class="copylight">&copy; 2015-2022 Asano Physics Club</p>
+                </div>
+            </footer>
+        </main>
+    <script type="text/javascript" src="/general.js"></script>
+    <script type="text/javascript" src="../document.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    </body>
+</html>
