@@ -1,6 +1,8 @@
 window.addEventListener("load", (event) => {
     async function getDocumentData(){
-        return await (await fetch("/document/2019/documents.json")).json();
+        year = location.pathname.split("/document/")[1].split("/")[0]
+        console.log(year)
+        return await (await fetch(`/document/${year}/documents.json`)).json();
     };
     (async()=>{
         const pages = await getDocumentData();
@@ -83,6 +85,8 @@ window.addEventListener("load", (event) => {
 
             const Title = document.getElementById("title");
             const Path = document.getElementById("breadcrumbs");
+            const TwitterButton = document.getElementsByClassName("twitter-share-button")[0];
+
 
             for (let i = 0;i<pages["pages"].length;i++){
                 if (pages["pages"][i]["URL"] == location.pathname) {
@@ -93,6 +97,7 @@ window.addEventListener("load", (event) => {
                     <i class="fas fa-angle-right" aria-hidden="true"></i><a href="../index.html">${pages["year"]}年度部誌</a>
                     <i class="fas fa-angle-right" aria-hidden="true"></i><a href="./index.html">${pages["pages"][i]["name"]}</a>
                     `;
+                    TwitterButton.setAttribute("href",`https://twitter.com/intent/tweet?url=${pages["pages"][i]["url"]}&text=${pages["pages"][i]["name"]}&via=Uchi54_APC&related=Uchi54_APC`);
                 }
             }
         }
