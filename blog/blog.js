@@ -8,7 +8,7 @@ window.addEventListener("load", (event) => {
             const block = document.getElementById("blogBlock");
             for (let i = 0;i<pages["pages"].length;i++){
                 let date = pages["pages"][i]["date"].split("/");
-                
+
                 block.innerHTML +=
                 `
                 <div class="blogPosts">
@@ -23,17 +23,17 @@ window.addEventListener("load", (event) => {
             }
         } else {
             const Prev = document.getElementsByClassName("nextPrev")[0];
-            
+
             for (let i = 0;i<pages["pages"].length;i++){
                 if (pages["pages"][i]["URL"] == location.pathname.split("index.html")[0]) {
                     if (i == 0) {
-                        Prev.innerHTML = 
+                        Prev.innerHTML =
                         `
                         <div class="next">次へComing Soon...</div>
                         <div class="prev">前へ<a href="${pages["pages"][i+1]["URL"]}">${pages["pages"][i+1]["name"]} &gt;</a></div>
                         `;
                     } else if (i == pages["pages"].length -1) {
-                        Prev.innerHTML = 
+                        Prev.innerHTML =
                         `
                         <div class="next">次へ<a href="${pages["pages"][i-1]["URL"]}">${pages["pages"][i-1]["name"]} &gt;</a></div>
                         `;
@@ -52,14 +52,14 @@ window.addEventListener("load", (event) => {
             for (let i = 0;i<pages["pages"].length;i++){
                 if (pages["pages"][i]["URL"] == location.pathname.split("index.html")[0]) {
                     if (i == 0) { //最新
-                        sidemenu.innerHTML = 
+                        sidemenu.innerHTML =
                         `
                         <div class="side-back"><a href="../index.html">記事の一覧へもどる<i class="fas fa-sign-out-alt"></i></a></div>
                         <div class="side-next"><i class="fas fa-angle-left"></i><a href="">Coming Soon...</a></div>
                         <div class="side-prev"><a href="${pages["pages"][i+1]["URL"]}">${pages["pages"][i+1]["name"]}<i class="fas fa-angle-right"></i></a></div>
                         `;
                     } else if (i == pages["pages"].length - 1) { //最古
-                        sidemenu.innerHTML = 
+                        sidemenu.innerHTML =
                         `
                         <div class="side-back"><a href="../index.html">記事の一覧へもどる<i class="fas fa-sign-out-alt"></i></a></div>
                         <div class="side-prev"><a href="${pages["pages"][i+1]["URL"]}">${pages["pages"][i+1]["name"]}</a><i class="fas fa-angle-right"></i></div>
@@ -74,14 +74,32 @@ window.addEventListener("load", (event) => {
                     }
                 }
             }
+
+            //const Author = document.getElementsByClassName("author")[0];
+
+            //for (let i = 0;i<pages["pages"].length;i++){
+            //    if (pages["pages"][i]["URL"] == location.pathname) {
+            //        Author.innerHTML = `
+            //        <i class="fas fa-user-edit"></i>${pages["pages"][i]["writer"]}
+            //        `;
+            //    }
+            //}
+
+            //const Title = document.getElementById("title");
+            const Path = document.getElementById("breadcrumbs");
+            const TwitterButton = document.getElementsByClassName("twitter-share-button")[0];
+
+
             for (let i = 0;i<pages["pages"].length;i++){
-                if (pages["pages"][i]["URL"] == location.pathname.split("index.html")[0]) {
-                    document.getElementById("breadcrumbs").innerHTML = 
+                if (pages["pages"][i]["URL"] == location.pathname) {
+                    //Title.innerHTML = pages["pages"][i]["name"];
+                    Path.innerHTML =
                     `
                     <i class="fas fa-home"></i><a href="../../index.html">ホーム</a>
                     <i class="fas fa-angle-right"></i><a href="../index.html">ブログ</a>
                     <i class="fas fa-angle-right"></i><a href="./index.html">${pages["pages"][i]["name"]}</a>
                     `;
+                    TwitterButton.setAttribute("href",`https://twitter.com/intent/tweet?url=${pages["pages"][i]["url"]}&text=${pages["pages"][i]["name"]}&via=Uchi54_APC&related=Uchi54_APC`);
                 }
             }
         }
