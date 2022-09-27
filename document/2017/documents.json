@@ -1,0 +1,77 @@
+{
+    "year": "2017",
+    "pages": [
+        {
+            "name": "御挨拶",
+            "URL": "/document/2017/aisatsu/index.html",
+            "writer": "部長",
+            "desc": "部長による冒頭の挨拶です。"
+        },
+        {
+            "name": "\"落ちる\"動きと当たり判定のプログラミングについて",
+            "URL": "/document/2017/atari-hantei/index.html",
+            "writer": "高一 Y",
+            "desc": "2Dアクションゲームの物理について解説します"
+        },
+        {
+            "name": "自動演奏装置について",
+            "URL": "/document/2017/auto-music-sequencer/index.html",
+            "writer": "高二 K",
+            "desc": "文化祭で展示した鍵盤ハーモニカの自動演奏装置について"
+        },
+        {
+            "name": "\"Arduino\"とは何ぞや？",
+            "URL": "/document/2017/arduino/index.html",
+            "writer": "中3 A.I.",
+            "desc": "Arduinoをご紹介"
+        },
+        {
+            "name": "微分・積分回路の仕組み",
+            "URL": "/document/2017/differentiator-integrator/index.html",
+            "writer": "電工班の高二",
+            "desc": "オペアンプを用いたバンドパスフィルタ、それを応用した微分回路・積分回路について"
+        },
+        {
+            "name": "ホバークラフトをつくろう!!",
+            "URL": "/document/2017/hovercraft/index.html",
+            "writer": "電子工作班　佐藤",
+            "desc": "どこのご家庭にもある材料でかんたんに作るホバークラフト"
+        },
+        {
+            "name": "便利ソフトまとめ(2017年版)",
+            "URL": "/document/2017/useful-softwares/index.html",
+            "writer": "不明",
+            "desc": "便利な無料ソフトウェアをいろいろご紹介"
+        },
+        {
+            "name": "パソコンで絵を描くには？",
+            "URL": "/document/2017/drawing/index.html",
+            "writer": "I.H.",
+            "desc": "パソコンで絵を描いてみよう！"
+        },
+        {
+            "name": "本格的に物理学っぽい話",
+            "URL": "/document/2017/physics/index.html",
+            "writer": "高一 檸檬色のトラウマ@復活",
+            "desc": "重力とはなにか？ニュートン以前からアインシュタイン登場以後までの理論でそれぞれ解説"
+        },
+        {
+            "name": "サブカルについて",
+            "URL": "/document/2017/subculture/index.html",
+            "writer": "中3 O",
+            "desc": "サブカルについて"
+        },
+        {
+            "name": "オタクから見る精神論",
+            "URL": "/document/2017/otaku/index.html",
+            "writer": "N",
+            "desc": "2017年当時のオタクによるオタク批評"
+        },
+        {
+            "name": "編集後記",
+            "URL": "/document/2017/edit/index.html",
+            "writer": "編集(書記)",
+            "desc": "編集を担当した物理部書記の感想"
+        }
+    ]
+}
