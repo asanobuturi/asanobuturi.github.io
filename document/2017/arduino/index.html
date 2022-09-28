@@ -14,7 +14,7 @@
 
   <meta property="og:url" content="https://asanobuturi.github.io/document/2017/arduino/index.html"/>
   <meta property="og:title" content=""Arduino"とは何ぞや？|浅野学園物理部"/>
-  <meta property="og:description" content=""/>
+  <meta property="og:description" content="Arduinoをご紹介"/>
   <meta property="og:type" content="website"/>
   <meta property="og:image" content="https://asanobuturi.github.io/document/2017/arduino/thumbnail.jpg"/><!--ここまでOGP設定-->
   <meta name="twitter:card" content="summary_large_image" />
@@ -52,7 +52,7 @@
             </div>
             <header class="documenttitle">
                 <h1>"Arduino"とは何ぞや？</h1>
-                <p class="author"><i class="fas fa-user-edit"></i>A.I.</p>
+                <p class="author"><i class="fas fa-user-edit"></i>中3 A.I.</p>
                 <a href="https://twitter.com/intent/tweet?url=https://asanobuturi.github.io/document/2017/arduino/index.html&text="Arduino"とは何ぞや？|浅野学園物理部&via=Uchi54_APC&related=Uchi54_APC" class="twitter-share-button" data-show-count="false">Tweet</a>
                 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script><!--Twitterのシェアボタンの中身(URL・記事タイトル)も記述すること-->
             </header>
@@ -66,11 +66,11 @@
               <p>次に、電子工作の限界について説明したいと思います。例えば、ラジオなどの回路は、電子工作だけでできます。私が去年作った壁に沿って走るロボットもできます。しかし、自分の思うように動いてくれるロボットを作るとなると、Arduinoなどのマイクロコンピュータが必要となります。</p>
               <p>この違いは何か？それは、ずばり制御するかしないかです。前者2つのものは我々人間が命令しなくても勝手に動作してくれますが、後者はマイクロコンピュータ(通称マイコン)と呼ばれるものを使い、 パソコンでプログラムを書き、それをマイコンに書き込み、それで制御するロボットはとても複雑な動作をさせることができます。例えば5歩働いて1秒止まり、90°回転して10歩動き・・・あるいは、LEDを2つ並列につなげて、それを数秒ごとに交互に光らせるなど。</p>
               <h2 id="arduino-uno">Arduino Uno</h2>
-              <p>ところでArduino って結局何なのか?ずばりマイコンの一種です。プログラムするときの言語もC言語、C++をもとにしているので、最もポピュラーで、使いやすいマイコンだと思います。Arduinoにもいろいろな種類がありますが、一番有名なのがArduino Uno(アルディーノ ウノ)です。</p>
+              <p>ところでArduinoって結局何なのか?ずばりマイコンの一種です。プログラムするときの言語もC言語、C++をもとにしているので、最もポピュラーで、使いやすいマイコンだと思います。Arduinoにもいろいろな種類がありますが、一番有名なのがArduino Uno(アルディーノ ウノ)です。</p>
               <figure>
               <img src="Arduino_Uno.jpg" alt="Arduino Uno" /><figcaption aria-hidden="true">Arduino Uno</figcaption>
               </figure>
-              <p>価格は 2800 円とおそらく Arduinio の中でもっとも安価なものだと思われます。ピンの数はdigitalが13本とちょうどいい本数となっています。互換品もたくさん出ていて、マルディーノというマルツ部品屋で売っているものもあります。</p>
+              <p>価格は2800円とおそらくArduinioの中でもっとも安価なものだと思われます。ピンの数はdigitalが13本とちょうどいい本数となっています。互換品もたくさん出ていて、マルディーノというマルツ部品屋で売っているものもあります。</p>
               <p>「Arduinoを使って工作しよう!」みたいなArduino関連書籍もたくさん出ていますが、その中で使われているのはほとんどArduino Unoと言っても間違えではないくらい多く使われています。ちなみに大きさは大体てのひらに乗るくらいの小さいものです。</p>
               <h3 id="unoについての説明">Unoについての説明</h3>
               <p>それでは、Arduine Unoについて細かい説明をしていきたいと思います。下の画像に番号がふってあるのでその順番で説明します。</p>
@@ -81,15 +81,15 @@
               <p>2.USB ポート<br> USBケーブルを差し込み、パソコンとの間で通信を行うためのものです。パソコンで作成したプログラムをケーブルを使って書き込んだり、Arduinoとシリアル通信を行ってパソコンから制御できます。</p>
               <p>3.電源ジャック<br> ACアダプタを接続してArduinoに電気を供給します。</p>
               <p>4.リセットボタン<br> Arduino を再起動するボタンです。プログラムを実行しなおしたいときやArduinoの挙動がおかしくなった場合に使います。僕は展示してあるロボットがちゃんと動かなかったときによく押していましたが、リセットというぐらいだから押して、プログラムをもう一度入れなおし、ちゃんと動くものだと 思っていたのに、これを押しても少し動作が止まるだけでした。なので、あまり使う機会はないと思 います。</p>
-              <p>5.各種インターフェース<br> Arduinoの上部と下部にある、電子回路に接続するための小さな穴の空いたソケットです。それぞれのソケットにはGND,Digital5,5V,Analog0などの役割があります。図の上側は主にDigital, 下側は主にAnalogや5V,3.3V などの出力です。</p>
+              <p>5.各種インターフェース<br> Arduinoの上部と下部にある、電子回路に接続するための小さな穴の空いたソケットです。それぞれのソケットにはGND,Digital5,5V,Analog0などの役割があります。図の上側は主にDigital, 下側は主にAnalogや5V,3.3Vなどの出力です。</p>
               <p>6.LED<br> Arduinoの状態を表示するLEDです。パソコンを使ってシリアル通信をしている時には、TXとRXが点滅します。</p>
               <h2 id="その他のarduino">その他のArduino</h2>
-              <p>最後に Arduine Uno以外のものを紹介します。これらを使用するときには、ソフトウェアのツールから、 ボードを選択して、使いたいArduinoの種類を選択する必要があります。</p>
+              <p>最後にArduino Uno以外のものを紹介します。これらを使用するときには、ソフトウェアのツールから、ボードを選択して、使いたいArduinoの種類を選択する必要があります。</p>
               <h3 id="arduino-mega2560">Arduino Mega2560</h3>
               <figure>
               <img src="arduino-mega.jpg" alt="Arduino Mega2560" /><figcaption aria-hidden="true">Arduino Mega2560</figcaption>
               </figure>
-              <p>全自動鍵盤ハーモニカ演奏機(?)でも使われているUnoより大きいArduino です。その特徴は、圧倒的なピン数の多さ。価格は5800円。</p>
+              <p>全自動鍵盤ハーモニカ演奏機(?)でも使われているUnoより大きいArduinoです。その特徴は、圧倒的なピン数の多さ。価格は5800円。</p>
               <h3 id="arduino-due">Arduino Due</h3>
               <figure>
               <img src="arduino-due.jpg" alt="Arduino Due" /><figcaption aria-hidden="true">Arduino Due</figcaption>
@@ -99,17 +99,17 @@
               <figure>
               <img src="arduino_Micro.jpg" alt="Arduino Micro" /><figcaption aria-hidden="true">Arduino Micro</figcaption>
               </figure>
-              <p>Unoより小さいものとなっています。このタイプは、ブレッドボードとよばれるハンダ付けなしで回路を作ることができるものに差し込んで、使うものだと思われます。大きさも小さいモノ消しゴム2個ぐらいだと思います。価格は、3893 円。</p>
+              <p>Unoより小さいものとなっています。このタイプは、ブレッドボードとよばれるハンダ付けなしで回路を作ることができるものに差し込んで、使うものだと思われます。大きさも小さいモノ消しゴム2個ぐらいだと思います。価格は、3893円。</p>
               <h3 id="arduino-nano">Arduino Nano</h3>
               <figure>
               <img src="arduino-nano.jpg" alt="Arduino Nano" /><figcaption aria-hidden="true">Arduino Nano</figcaption>
               </figure>
-              <p>Microよりも小さいArduino。デジタル入出力とアナログ入力 の切り替えができないそうです。Micro よりも一回り小さくなっていて、これもブレッドボードに差し込んで使うものです。価格は4546円</p>
+              <p>Microよりも小さいArduino。デジタル入出力とアナログ入力の切り替えができないそうです。Microよりも一回り小さくなっていて、これもブレッドボードに差し込んで使うものです。価格は4546円</p>
               <h2 id="最後に">最後に</h2>
-              <p>さていかがだったでしょうか。少しでもArduino というものについて、わかっていだだけたでしょうか。 また興味を持った、電子工作にさらに興味を持ったのであれば幸いです。</p>
-              <p>今年は部誌に関して特に何も言われてないのでとてものびのびと書くことができました。 そして、最後まで読んでいただきありがとうございました。また物理部展2017 にお越しいただきありがとうございました。</p>
+              <p>さていかがだったでしょうか。少しでもArduinoというものについて、わかっていだだけたでしょうか。また興味を持った、電子工作にさらに興味を持ったのであれば幸いです。</p>
+              <p>今年は部誌に関して特に何も言われてないのでとてものびのびと書くことができました。そして、最後まで読んでいただきありがとうございました。また物理部展2017 にお越しいただきありがとうございました。</p>
               <h2 id="参考文献">参考文献</h2>
-              <p>「これ1冊でできる! Arduino ではじめる電子工作超入門改訂第2版」</p>
+              <p>「これ1冊でできる!Arduinoではじめる電子工作超入門改訂第2版」</p>
               <h2 id="ランセンス情報">ランセンス情報</h2>
               <p>2022年9月追記：WEB版の発行にあたり、著作権の兼ね合いから画像を一部差し替えました。ライセンス情報を以下に記載します。</p>
               <ul>
