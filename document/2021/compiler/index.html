@@ -48,13 +48,12 @@
         <div id="main">
             <div class="documentcontent"><article>
                 <div id="breadcrumbs">
-                    <i class="fas fa-home"></i><a href="../../../index.html">ホーム</a><i class="fas fa-angle-right"></i><a href="../../../document.html">部誌</a><i class="fas fa-angle-right"></i><a href="../index.html">2021年度部誌</a><i class="fas fa-angle-right"></i>自作コンパイラを実装してみた
                 </div>
                 <header class="documenttitle">
-                    <h1>自作コンパイラを実装してみた</h1>
-                    <p class="author"><i class="fas fa-user-edit"></i>高校2年・中野</p>
-                    <a href="https://twitter.com/intent/tweet?url=https://asanobuturi.github.io/document/2021/compiler/index.html&text=浅野学園物理部部誌2021「自作コンパイラを実装してみた」&via=Uchi54_APC&related=Uchi54_APC" class="twitter-share-button" data-show-count="false">Tweet</a>
-                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    <h1 id="title"></h1>
+                    <p class="author"><i class="fas fa-user-edit"></i></p>
+                    <a href="" class="twitter-share-button" data-show-count="false">Tweet</a>
+                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script><!--Twitterのシェアボタンの中身(URL・記事タイトル)も記述すること-->
                 </header>
                 <div class="document">
                     <h2 id="はじめに">1.はじめに</h2>
@@ -584,17 +583,10 @@ case NODETYPE::LESS_OR_EQUAL:
                     <p>さあ、ここまで比較演算子の実装まで終わりました。私はC言語の主要な機能(ローカル変数、関数、ポインタなど)を実装したのですが、私が今これを執筆しているのが2021年9月25日で、時間がキツキツになっているのでここで終わりとしたいと思います。今回の部誌でコンパイラについて興味を持ってくれる人がいたら幸いです。もし、私のコードの全体が見たい人がいたら1章に載せたメールアドレスに連絡してください。読んでいただきありがとうございました！！</p>
                 </div>
                 <nav class="nextPrev">
-                    <div class="prev">前へ<a href="../coilgun/index.html">「コイルガン 4年間のすべて」
-                            &gt;</a></div>
-                    <div class="next">次へ<a href="../edit/index.html">「次の記事」
-                            &gt;</a></div>
                 </nav>
             </article></div>
             <nav id="sidebar">
                 <div id="sidemenu">
-                    <div class="side-back"><a href="../index.html">記事の一覧へもどる<i class="fas fa-sign-out-alt"></i></a></div>
-                    <div class="side-prev"><a href="../coilgun/index.html"><i class="fas fa-angle-left"></i>「コイルガン 4年間のすべて」</a></div>
-                    <div class="side-next"><a href="../edit/index.html">「編集後記」<i class="fas fa-angle-right"></i></a></div>
                 </div>
                 <div id="indexblock">
                     <div class="indextitle">目次</div>
@@ -620,6 +612,7 @@ case NODETYPE::LESS_OR_EQUAL:
         </footer>
     </main>
     <script type="text/javascript" src="/general.js"></script>
+    <script type="text/javascript" src="/document/document.js"></script>
 </body>
 
 </html>
