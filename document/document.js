@@ -15,7 +15,7 @@ window.addEventListener("load", (event) => {
                 `
                 <div class="documentcontent">
                     <a href="/document/${document_data.year}/${document_data["pages"][i]["folder_name"]}/index.html" class="link-1">${document_data["pages"][i]["name"]}</a>
-                    <h2 class="documentdetail">${document_data["pages"][i]["desc"]}</h2>
+                    <p class="documentdetail">${document_data["pages"][i]["desc"]}</p>
                     <p>著者:${document_data["pages"][i]["writer"]}</p>
                     <a href="/document/${document_data.year}/${document_data["pages"][i]["folder_name"]}/index.html" class="link-2">記事へ>></a>
                 </div>
