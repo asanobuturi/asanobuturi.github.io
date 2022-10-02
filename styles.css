@@ -123,10 +123,10 @@ z-index: 1000;
 #nav-input:checked ~ #nav-content {
     left: 0;
 }
-
+/*
 #nav-input:checked ~ #nav-open span.bar {
 }
-
+*/
 #nav-input:checked ~ #nav-open span.bar1 {
     -webkit-transform: translateX(6px) rotate(30deg);
     transform: translateX(6px) rotate(30deg);
@@ -359,6 +359,16 @@ section.section--center {
     margin: auto;
     text-align: center;
     padding: 0em 0.5em 2em;
+}
+
+.document-release-date {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+}
+
+.gameList-item {
+    position: relative;
 }
 
 .gameList .gameList-item .gameList-thumb {
