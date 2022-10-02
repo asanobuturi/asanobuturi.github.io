@@ -361,11 +361,6 @@ section.section--center {
     padding: 0em 0.5em 2em;
 }
 
-.document-release-date {
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
-}
 
 .gameList-item {
     position: relative;

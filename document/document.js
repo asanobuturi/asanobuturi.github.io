@@ -1,13 +1,11 @@
 window.addEventListener("load", (event) => {
-    async function getDocumentData(){
-        year = location.pathname.split("/document/")[1].split("/")[0]
-        console.log(year)
+    async function getDocumentData(year){
         return await (await fetch(`/document/${year}/documents.json`)).json();
     };
     (async()=>{
-        const document_data = await getDocumentData();
+        const document_data = await getDocumentData(location.pathname.split("/document/")[1].split("/")[0]);
 
-        console.log(document_data);
+        //console.log(document_data);
 
         if (location.pathname == `/document/${document_data.year}/` || location.pathname == `/document/${document_data.year}/index.html`) { //部誌のインデックスなら
             const block = document.getElementsByClassName("document")[0];
