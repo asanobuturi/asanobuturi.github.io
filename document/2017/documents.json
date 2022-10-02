@@ -3,73 +3,73 @@
     "pages": [
         {
             "name": "御挨拶",
-            "URL": "aisatsu",
+            "folder_name": "aisatsu",
             "writer": "部長",
             "desc": "部長による冒頭の挨拶です。"
         },
         {
             "name": "\"落ちる\"動きと当たり判定のプログラミングについて",
-            "URL": "atari-hantei",
+            "folder_name": "atari-hantei",
             "writer": "高一 Y",
             "desc": "2Dアクションゲームの物理について解説します"
         },
         {
             "name": "自動演奏装置について",
-            "URL": "auto-music-sequencer",
+            "folder_name": "auto-music-sequencer",
             "writer": "高二 K",
             "desc": "文化祭で展示した鍵盤ハーモニカの自動演奏装置について"
         },
         {
             "name": "\"Arduino\"とは何ぞや？",
-            "URL": "arduino",
+            "folder_name": "arduino",
             "writer": "中3 A.I.",
             "desc": "Arduinoをご紹介"
         },
         {
             "name": "微分・積分回路の仕組み",
-            "URL": "differentiator-integrator",
+            "folder_name": "differentiator-integrator",
             "writer": "電工班の高二",
             "desc": "オペアンプを用いたバンドパスフィルタ、それを応用した微分回路・積分回路について"
         },
         {
             "name": "ホバークラフトをつくろう!!",
-            "URL": "hovercraft",
+            "folder_name": "hovercraft",
             "writer": "電子工作班　佐藤",
             "desc": "どこのご家庭にもある材料でかんたんに作るホバークラフト"
         },
         {
             "name": "便利ソフトまとめ(2017年版)",
-            "URL": "useful-softwares",
+            "folder_name": "useful-softwares",
             "writer": "不明",
             "desc": "便利な無料ソフトウェアをいろいろご紹介"
         },
         {
             "name": "パソコンで絵を描くには？",
-            "URL": "drawing",
+            "folder_name": "drawing",
             "writer": "I.H.",
             "desc": "パソコンで絵を描いてみよう！"
         },
         {
             "name": "本格的に物理学っぽい話",
-            "URL": "physics",
+            "folder_name": "physics",
             "writer": "高一 檸檬色のトラウマ@復活",
             "desc": "重力とはなにか？ニュートン以前からアインシュタイン登場以後までの理論でそれぞれ解説"
         },
         {
             "name": "サブカルについて",
-            "URL": "subculture",
+            "folder_name": "subculture",
             "writer": "中3 O",
             "desc": "サブカルについて"
         },
         {
             "name": "オタクから見る精神論",
-            "URL": "otaku",
+            "folder_name": "otaku",
             "writer": "N",
             "desc": "2017年当時のオタクによるオタク批評"
         },
         {
             "name": "編集後記",
-            "URL": "edit",
+            "folder_name": "edit",
             "writer": "編集(書記)",
             "desc": "編集を担当した物理部書記の感想"
         }

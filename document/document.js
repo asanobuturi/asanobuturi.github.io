@@ -11,6 +11,7 @@ window.addEventListener("load", (event) => {
             const block = document.getElementsByClassName("document")[0];
             for (let i = 0;i<document_data["pages"].length;i++) {
                 console.log(document_data["pages"][i]["name"]);
+                console.log(document_data["pages"][i]["folder_name"]);
                 block.innerHTML +=
                 `
                 <div class="documentcontent">
@@ -35,34 +36,34 @@ window.addEventListener("load", (event) => {
                     if (i == 0) {
                         Prev.innerHTML =
                         `
-                        <div class="prev">次へ<a href="${document_data["pages"][i+1]["URL"]}">${document_data["pages"][i+1]["name"]} &gt;</a></div>
+                        <div class="prev">次へ<a href="/document/${document_data.year}/${document_data["pages"][i+1]["folder_name"]}/index.html"">${document_data["pages"][i+1]["name"]} &gt;</a></div>
                         `;
                         Sidemenu.innerHTML =
                         `
                         <div class="side-back"><a href="../index.html">記事の一覧へもどる<i class="fas fa-sign-out-alt"></i></a></div>
-                        <div class="side-prev"><a href="${document_data["pages"][i+1]["URL"]}">${document_data["pages"][i+1]["name"]}<i class="fas fa-angle-right"></i></a></div>
+                        <div class="side-prev"><a href="/document/${document_data.year}/${document_data["pages"][i+1]["folder_name"]}/index.html"">${document_data["pages"][i+1]["name"]}<i class="fas fa-angle-right"></i></a></div>
                         `;
                     } else if (i == document_data["pages"].length - 1) {
                         Prev.innerHTML =
                         `
-                        <div class="next">前へ<a href="${document_data["pages"][i-1]["URL"]}">${document_data["pages"][i-1]["name"]} &gt;</a></div>
+                        <div class="next">前へ<a href="${document_data["pages"][i-1]["folder_name"]}">${document_data["pages"][i-1]["name"]} &gt;</a></div>
                         `;
                         Sidemenu.innerHTML =
                         `
                         <div class="side-back"><a href="../index.html">記事の一覧へもどる<i class="fas fa-sign-out-alt"></i></a></div>
-                        <div class="side-prev"><a href="${document_data["pages"][i-1]["URL"]}"><i class="fas fa-angle-left"></i>${document_data["pages"][i-1]["name"]}</a></div>
+                        <div class="side-prev"><a href="${document_data["pages"][i-1]["folder_name"]}"><i class="fas fa-angle-left"></i>${document_data["pages"][i-1]["name"]}</a></div>
                         `;
                     } else {
                         Prev.innerHTML =
                         `
-                        <div class="next">前へ<a href="${document_data["pages"][i-1]["URL"]}">${document_data["pages"][i-1]["name"]} &gt;</a></div>
-                        <div class="prev">次へ<a href="${document_data["pages"][i+1]["URL"]}">${document_data["pages"][i+1]["name"]} &gt;</a></div>
+                        <div class="next">前へ<a href="${document_data["pages"][i-1]["folder_name"]}">${document_data["pages"][i-1]["name"]} &gt;</a></div>
+                        <div class="prev">次へ<a href="/document/${document_data.year}/${document_data["pages"][i+1]["folder_name"]}/index.html"">${document_data["pages"][i+1]["name"]} &gt;</a></div>
                         `;
                         Sidemenu.innerHTML =
                         `
                         <div class="side-back"><a href="../index.html">記事の一覧へもどる<i class="fas fa-sign-out-alt"></i></a></div>
-                        <div class="side-prev"><a href="${document_data["pages"][i+1]["URL"]}">${document_data["pages"][i+1]["name"]}<i class="fas fa-angle-right"></i></a></div>
-                        <div class="side-prev"><a href="${document_data["pages"][i-1]["URL"]}"><i class="fas fa-angle-left"></i>${document_data["pages"][i-1]["name"]}</a></div>
+                        <div class="side-prev"><a href="/document/${document_data.year}/${document_data["pages"][i+1]["folder_name"]}/index.html"">${document_data["pages"][i+1]["name"]}<i class="fas fa-angle-right"></i></a></div>
+                        <div class="side-prev"><a href="${document_data["pages"][i-1]["folder_name"]}"><i class="fas fa-angle-left"></i>${document_data["pages"][i-1]["name"]}</a></div>
                         `;
                     }
 
@@ -76,7 +77,7 @@ window.addEventListener("load", (event) => {
                     <i class="fas fa-angle-right" aria-hidden="true"></i><a href="../index.html">${document_data["year"]}年度部誌</a>
                     <i class="fas fa-angle-right" aria-hidden="true"></i><a href="./index.html">${document_data["pages"][i]["name"]}</a>
                     `;
-                    TwitterButton.setAttribute("href",`https://twitter.com/intent/tweet?url=${document_data["pages"][i]["url"]}&text=${document_data["pages"][i]["name"]}&via=Uchi54_APC&related=Uchi54_APC`);
+                    TwitterButton.setAttribute("href",`https://twitter.com/intent/tweet?url=${location.href}&text=${document_data["pages"][i]["name"]}&via=Uchi54_APC&related=Uchi54_APC`);
                 }
             }
         }
