@@ -3,97 +3,97 @@
     "pages": [
         {
             "name": "ゲームを作るうえで大切なこと",
-            "URL": "/document/2018/game/index.html",
+            "folder_name": "game",
             "writer": "吉田 行人",
             "desc": "プログラミングをして、ゲームやソフトを作る際に大事なことを幾つか紹介しています。"
         },
         {
             "name": "世界一小さな物語",
-            "URL": "/document/2018/world/index.html",
+            "folder_name": "world",
             "writer": "檸檬色のトラウマ＠自称数学研究会の永久機関",
             "desc": "原子や素粒子、電子などの小さな「別世界の」話を図を用いながら紹介しています。"
         },
         {
             "name": "プログラミング入門の言語は何がいいのか",
-            "URL": "/document/2018/lang/index.html",
+            "folder_name": "lang",
             "writer": "永田",
             "desc": "プログラミング言語とはなにか、について、目的別にプログラミング言語の選び方について説明しています。"
         },
         {
             "name": "生体認証について",
-            "URL": "/document/2018/bio_auth/index.html",
+            "folder_name": "bio_auth",
             "writer": "村上渉",
             "desc": "生体認証の様々な種類について、メリットとデメリットを説明しています。"
         },
         {
             "name": "コラム 動的計画法",
-            "URL": "/document/2018/column/index.html",
+            "folder_name": "column",
             "writer": "不明",
             "desc": "効率よく探索するための「動的計画法」について説明しています。"
         },
         {
             "name": "投擲について",
-            "URL": "/document/2018/throwing/index.html",
+            "folder_name": "throwing",
             "writer": "有馬慎太郎",
             "desc": "過去の戦いで大きな役割を果たした投擲武器について部員が語ります。"
         },
         {
             "name": "ゲームプログラミングと数学が出会う時",
-            "URL": "/document/2018/game_math/index.html",
+            "folder_name": "game_math",
             "writer": "中野",
             "desc": "いろいろな物理・数学に関することを部員が語ります。"
         },
         {
             "name": "いったいどのくらい大きな声を出せばブラジルの人に声が届くのか",
-            "URL": "/document/2018/brazil/index.html",
+            "folder_name": "brazil",
             "writer": "清水&柴生田",
             "desc": "皆さんは、「ブラジルの人、聞こえますかー！？」というネタをご存知でしょうか？"
         },
         {
             "name": "３を√５進数で表すと？",
-            "URL": "/document/2018/root5/index.html",
+            "folder_name": "root5",
             "writer": "吉田安紀彦",
             "desc": "物理部員が√５進数やπ進数について考えます。"
         },
         {
             "name": "ライフゲームをC++で実装してみた話",
-            "URL": "/document/2018/life_game/index.html",
+            "folder_name": "life_game",
             "writer": "片山 悠哉",
             "desc": "ライフゲームを自力で実装した部員がライフゲームについて語ります。"
         },
         {
             "name": "電気学の発展",
-            "URL": "/document/2018/electronics/index.html",
+            "folder_name": "electronics",
             "writer": "藤山",
             "desc": "突然ですが皆さん、勉強などの、作業の間の息抜き、きちんとできていますか？他の人が真面目に述べているので、この記事はその息抜き的な記事にしようと思って書いています。"
         },
         {
             "name": "「コイルの用法！コイルガンの逆襲」",
-            "URL": "/document/2018/coilgun/index.html",
+            "folder_name": "coilgun",
             "writer": "鈴木",
             "desc": "コイルガンを制作した部員がコイルガンの効率化について語ります。!"
         },
         {
             "name": "「AMD反撃！シェアを犯される Intel」",
-            "URL": "/document/2018/amd_vs_intel/index.html",
+            "folder_name": "amd_vs_intel",
             "writer": "鈴木",
             "desc": "中２の部員がCPU業界のこれからの展望について語ります。"
         },
         {
             "name": "素数の探し方",
-            "URL": "/document/2018/prime/index.html",
+            "folder_name": "prime",
             "writer": "吉田安紀彦",
             "desc": "部員が素数の探索方法や素数の記録などについて語っていきます。"
         },
         {
             "name": "電子工作や、物理のお話など総集編",
-            "URL": "/document/2018/edit/index.html",
+            "folder_name": "edit",
             "writer": "安藤一生",
             "desc": "電工班長が電子工作の部品や物理について語っていきます。"
         },
         {
             "name": "編集部後記",
-            "URL": "/document/2018/edit/index.html",
+            "folder_name": "edit",
             "writer": "Positron編集部&中２の誰か",
             "desc": "編集担当達の感想です。"
         }

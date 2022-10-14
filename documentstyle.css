@@ -66,7 +66,7 @@ blockquote {
         font-size: 0.9em;
     }
 
-h2{
+h2:not(.document-list-content > h2){
     padding: 0.75em 0.5em;
     border-left: solid rgb(138, 138, 138) 5px;
 }
@@ -83,7 +83,7 @@ h4{
     border-bottom: solid rgb(138, 138, 138) 2px;
 }
 
-li{
+li.indexcontents{
     margin-left:1em;
     padding-left:1em;
     text-indent: -1em;
@@ -243,4 +243,120 @@ blockquote h1{
 #proof-qed{
     text-align: right;
     margin-right: 1em;
+}
+
+/* 部誌の一覧ページ用のcss */
+
+.document-list {
+    margin: auto;
+    text-align: center;
+    padding: 0em 0.5em 2em;
+}
+
+.document-list-release-date {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+}
+
+.document-list-item {
+    position: relative;
+}
+
+.document-list .document-list-item .document-list-thumb {
+    max-width: 30%;
+    display: inline-block;
+    margin: auto;
+    margin-right: 1em;
+    vertical-align: top;
+}
+
+.document-list .document-list-item .document-list-thumb a {
+    width: 100%;
+    display: block;
+}
+
+.document-list .document-list-item .document-list-thumb a img {
+    width: 100%;
+    display: block;
+}
+
+.document-list .document-list-item .document-list-content {
+    display: inline-block;
+    width: 60%;
+    font-size: 20px;
+}
+
+.document-list .document-list-item .document-list-content h2 {
+    font-family: "ヒラギノUD丸ゴ W6 JIS2004","Hiragino UD Sans Rd W6 JIS2004", Arial, "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic ProN", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "Meiryo UI", sans-serif, "游ゴシック", "Yu Gothic", "游ゴシック体", "YuGothic";
+    margin: 0;
+    padding: 0;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.document-list .document-list-item .document-list-content h2 a {
+    text-decoration: none;
+    font-weight: bold;
+    color: orange;
+    border-bottom: dotted 2px blue;
+}
+
+@media (max-width: 500px) {
+    .document-list.document-list-item .document-list-content {
+        font-size: 12px;
+    }
+}
+@media (max-width: 400px) {
+    .document-list .document-list-item .document-list-thumb {
+        max-width: 100%;
+        display: block;
+        margin: 0;
+    }
+
+    .document-list .document-list-item .document-list-thumb img {
+        width: 100%;
+    }
+
+    .document-list .document-list-item .document-list-content {
+        display: block;
+        width: 100%;
+    }
+
+    .document-list .document-list-item .document-list-content h2 {
+        font-family: "ヒラギノUD丸ゴ W6 JIS2004","Hiragino UD Sans Rd W6 JIS2004", Arial, "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic ProN", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "Meiryo UI", sans-serif, "游ゴシック", "Yu Gothic", "游ゴシック体", "YuGothic";
+        margin: 0;
+        padding: 0;
+        font-size: 26px;
+        font-weight: bold;
+    }
+
+    .document-list .document-list-item .document-list-content h2 a {
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .document-thumb {
+        display: none !important;
+    }
+}
+
+@media (max-width: 900px) {
+    .document-list .document-list-item {
+        margin: 1em auto;
+        text-align: left;
+        padding: 2em 0.5em;
+        background-color: #fff;
+        max-width: 100%;
+    }
+}
+
+@media screen and (min-width:900px){/*パソコン用*/
+    .document-list .document-list-item {
+        margin: 1em auto;
+        text-align: left;
+        padding: 2em 0.5em;
+        background-color: #fff;
+        max-width: 70%;
+    }
 }

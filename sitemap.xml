@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
-  <!--  created with free sitemap generation system www.sitemapxml.jp  -->
+  <!-- 各トップページ -->
   <url>
     <loc>https://asanobuturi.github.io/</loc>
     <priority>1.0</priority>
@@ -19,7 +19,7 @@
     <lastmod>2019-10-23T18:07:07+09:00</lastmod>
   </url>
   <url>
-    <loc>https://asanobuturi.github.io/document.html</loc>
+    <loc>https://asanobuturi.github.io/document/index.html</loc>
     <priority>0.8</priority>
     <lastmod>2021-11-25T00:47:00+09:00</lastmod>
   </url>
@@ -34,6 +34,7 @@
     <lastmod>2019-10-23T18:07:07+09:00</lastmod>
   </url>
 
+  <!-- ブログページ -->
   <url>
     <loc>https://asanobuturi.github.io/blog/20171126/index.html</loc>
     <priority>0.6</priority>
@@ -95,22 +96,181 @@
     <lastmod>2019-10-23T18:07:07+09:00</lastmod>
   </url>
   <url>
-    <loc>https://asanobuturi.github.io/game/</loc>
-    <priority>0.8</priority>
+    <loc>https://asanobuturi.github.io/blog/20220508/index.html</loc>
+    <priority>0.6</priority>
+    <lastmod>2022-05-15T11:59:06+09:00</lastmod>
+  </url>
+  <url>
+    <loc>https://asanobuturi.github.io/blog/20220619/index.html</loc>
+    <priority>0.6</priority>
+    <lastmod>2022-06-20T16:37:23+09:00</lastmod>
+  </url>
+
+  <!-- ゲームの個別ページ -->
+  <url>
+    <loc>https://asanobuturi.github.io/game/facto/index.html</loc>
+    <priority>0.7</priority>
     <lastmod>2019-10-23T18:07:07+09:00</lastmod>
   </url>
+
+  <!-- 部誌 -->
+  <!-- 2017年度 -->
+  <url>
+    <loc>https://asanobuturi.github.io/document/2017/index.html</loc>
+    <priority>0.7</priority>
+    <lastmod>2022-09-27T22:13:27+09:00</lastmod>
+  </url>
+  <url>
+    <loc>https://asanobuturi.github.io/document/2017/aisatsu/index.html</loc>
+    <priority>0.6</priority>
+    <lastmod>2022-09-27T22:13:27+09:00</lastmod>
+  </url>
+  <url>
+    <loc>https://asanobuturi.github.io/document/2017/atari-hantei/index.html</loc>
+    <priority>0.6</priority>
+    <lastmod>2022-09-27T22:13:27+09:00</lastmod>
+  </url>
+  <url>
+    <loc>https://asanobuturi.github.io/document/2017/auto-music-sequencer/index.html</loc>
+    <priority>0.6</priority>
+    <lastmod>2022-09-27T22:13:27+09:00</lastmod>
+  </url>
+  <url>
+    <loc>https://asanobuturi.github.io/document/2017/arduino/index.html</loc>
+    <priority>0.6</priority>
+    <lastmod>2022-09-27T22:13:27+09:00</lastmod>
+  </url>
+  <url>
+    <loc>https://asanobuturi.github.io/document/2017/differentiator-integrator/index.html</loc>
+    <priority>0.6</priority>
+    <lastmod>2022-09-27T22:13:27+09:00</lastmod>
+  </url>
+  <url>
+    <loc>https://asanobuturi.github.io/document/2017/hovercraft/index.html</loc>
+    <priority>0.6</priority>
+    <lastmod>2022-09-27T22:13:27+09:00</lastmod>
+  </url>
+  <url>
+    <loc>https://asanobuturi.github.io/document/2017/useful-softwares/index.html</loc>
+    <priority>0.6</priority>
+    <lastmod>2022-09-27T22:13:27+09:00</lastmod>
+  </url>
+  <url>
+    <loc>https://asanobuturi.github.io/document/2017/drawing/index.html</loc>
+    <priority>0.6</priority>
+    <lastmod>2022-09-27T22:13:27+09:00</lastmod>
+  </url>
+  <url>
+    <loc>https://asanobuturi.github.io/document/2017/physics/index.html</loc>
+    <priority>0.6</priority>
+    <lastmod>2022-09-27T22:13:27+09:00</lastmod>
+  </url>
+  <url>
+    <loc>https://asanobuturi.github.io/document/2017/subculture/index.html</loc>
+    <priority>0.6</priority>
+    <lastmod>2022-09-27T22:13:27+09:00</lastmod>
+  </url>
+  <url>
+    <loc>https://asanobuturi.github.io/document/2017/otaku/index.html</loc>
+    <priority>0.6</priority>
+    <lastmod>2022-09-27T22:13:27+09:00</lastmod>
+  </url>
+  <url>
+    <loc>https://asanobuturi.github.io/document/2017/edit/index.html</loc>
+    <priority>0.6</priority>
+    <lastmod>2022-09-27T22:13:27+09:00</lastmod>
+  </url>
+
+  <!-- 2018年度 -->
+  <url>
+    <loc>https://asanobuturi.github.io/document/2018/game/index.html</loc>
+    <priority>0.6</priority>
+    <lastmod>2022-09-25T16:49:58+09:00</lastmod>
+  </url>
+  <url>
+    <loc>https://asanobuturi.github.io/document/2018/world/index.html</loc>
+    <priority>0.6</priority>
+    <lastmod>2022-09-25T16:49:58+09:00</lastmod>
+  </url>
+  <url>
+    <loc>https://asanobuturi.github.io/document/2018/lang/index.html</loc>
+    <priority>0.6</priority>
+    <lastmod>2022-09-25T16:49:58+09:00</lastmod>
+  </url>
+  <url>
+    <loc>https://asanobuturi.github.io/document/2018/bio_auth/index.html</loc>
+    <priority>0.6</priority>
+    <lastmod>2022-09-25T16:49:58+09:00</lastmod>
+  </url>
+  <url>
+    <loc>https://asanobuturi.github.io/document/2018/column/index.html</loc>
+    <priority>0.6</priority>
+    <lastmod>2022-09-25T16:49:58+09:00</lastmod>
+  </url>
+  <url>
+    <loc>https://asanobuturi.github.io/document/2018/throwing/index.html</loc>
+    <priority>0.6</priority>
+    <lastmod>2022-09-25T16:49:58+09:00</lastmod>
+  </url>
+  <url>
+    <loc>https://asanobuturi.github.io/document/2018/game_math/index.html</loc>
+    <priority>0.6</priority>
+    <lastmod>2022-09-25T16:49:58+09:00</lastmod>
+  </url>
+  <url>
+    <loc>https://asanobuturi.github.io/document/2018/brazil/index.html</loc>
+    <priority>0.6</priority>
+    <lastmod>2022-09-25T16:49:58+09:00</lastmod>
+  </url>
+  <url>
+    <loc>https://asanobuturi.github.io/document/2018/root5/index.html</loc>
+    <priority>0.6</priority>
+    <lastmod>2022-09-25T16:49:58+09:00</lastmod>
+  </url>
+  <url>
+    <loc>https://asanobuturi.github.io/document/2018/life_game/index.html</loc>
+    <priority>0.6</priority>
+    <lastmod>2022-09-25T16:49:58+09:00</lastmod>
+  </url>
+  <url>
+    <loc>https://asanobuturi.github.io/document/2018/coilgun/index.html</loc>
+    <priority>0.6</priority>
+    <lastmod>2022-09-25T16:49:58+09:00</lastmod>
+  </url>
+  <url>
+    <loc>https://asanobuturi.github.io/document/2018/amd_vs_intel/index.html</loc>
+    <priority>0.6</priority>
+    <lastmod>2022-09-25T16:49:58+09:00</lastmod>
+  </url>
+  <url>
+    <loc>https://asanobuturi.github.io/document/2018/prime/index.html</loc>
+    <priority>0.6</priority>
+    <lastmod>2022-09-25T16:49:58+09:00</lastmod>
+  </url>
+  <!-- 安藤さんの部誌 -->
+  <!-- 
+  <url>
+    <loc>https://asanobuturi.github.io/document/2018/electronics_and_physics/index.html</loc>
+    <priority>0.6</priority>
+    <lastmod>2022-09-25T16:49:58+09:00</lastmod>
+  </url>
+  -->
+  <url>
+    <loc>https://asanobuturi.github.io/document/2018/edit/index.html</loc>
+    <priority>0.6</priority>
+    <lastmod>2022-09-25T16:49:58+09:00</lastmod>
+  </url>
+  <!--
+  <url>
+    <loc>https://asanobuturi.github.io/document/2018/bushi.pdf</loc>
+    <priority>0.7</priority>
+    <lastmod>2019-10-23T18:07:07+09:00</lastmod>
+  </url>
+  -->
+
+  <!-- 2019年度 -->
   <url>
     <loc>https://asanobuturi.github.io/document/2019/index.html</loc>
-    <priority>0.7</priority>
-    <lastmod>2019-10-23T18:07:07+09:00</lastmod>
-  </url>
-  <url>
-    <loc>https://asanobuturi.github.io/document/2018.pdf</loc>
-    <priority>0.7</priority>
-    <lastmod>2019-10-23T18:07:07+09:00</lastmod>
-  </url>
-  <url>
-    <loc>https://asanobuturi.github.io/game/facto/</loc>
     <priority>0.7</priority>
     <lastmod>2019-10-23T18:07:07+09:00</lastmod>
   </url>
@@ -174,10 +334,118 @@
     <priority>0.6</priority>
     <lastmod>2019-10-23T18:07:07+09:00</lastmod>
   </url>
-  <urL>
-    <loc></loc>
-    <priority></priority>
-    <lastmod></lastmod>
+
+  <!-- 2021年度 -->
+  <url>
+    <loc>https://asanobuturi.github.io/document/2021/index.html</loc>
+    <priority>0.7</priority>
+    <lastmod>2021-11-25T00:47:00+09:00</lastmod>
+  </url>
+  <url>
+    <loc>https://asanobuturi.github.io/document/2021/bucho-aisatu/index.html</loc>
+    <priority>0.6</priority>
+    <lastmod>2021-11-25T00:47:00+09:00</lastmod>
+  </url>
+  <url>
+    <loc>https://asanobuturi.github.io/document/2021/basel/index.html</loc>
+    <priority>0.6</priority>
+    <lastmod>2021-11-25T00:47:00+09:00</lastmod>
+  </url>
+  <url>
+    <loc>https://asanobuturi.github.io/document/2021/game-bgm/index.html</loc>
+    <priority>0.6</priority>
+    <lastmod>2021-11-25T00:47:00+09:00</lastmod>
+  </url>
+  <url>
+    <loc>https://asanobuturi.github.io/document/2021/reverse-ai/index.html</loc>
+    <priority>0.6</priority>
+    <lastmod>2021-11-25T00:47:00+09:00</lastmod>
+  </url>
+  <url>
+    <loc>https://asanobuturi.github.io/document/2021/ryzen/index.html</loc>
+    <priority>0.6</priority>
+    <lastmod>2021-11-25T00:47:00+09:00</lastmod>
+  </url>
+  <url>
+    <loc>https://asanobuturi.github.io/document/2021/importance-of-art/index.html</loc>
+    <priority>0.6</priority>
+    <lastmod>2021-11-25T00:47:00+09:00</lastmod>
+  </url>
+  <url>
+    <loc>https://asanobuturi.github.io/document/2021/essay/index.html</loc>
+    <priority>0.6</priority>
+    <lastmod>2021-11-25T00:47:00+09:00</lastmod>
+  </url>
+  <url>
+    <loc>https://asanobuturi.github.io/document/2021/coilgun/index.html</loc>
+    <priority>0.6</priority>
+    <lastmod>2021-11-25T00:47:00+09:00</lastmod>
+  </url>
+  <url>
+    <loc>https://asanobuturi.github.io/document/2021/edit/index.html</loc>
+    <priority>0.6</priority>
+    <lastmod>2021-11-25T00:47:00+09:00</lastmod>
   </url>
 
+  <!-- 2022年度 -->
+  <url>
+    <loc>https://asanobuturi.github.io/document/2022/index.html</loc>
+    <priority>0.7</priority>
+    <lastmod>2022-11-25T23:57:04+09:00</lastmod>
+  </url>
+  <url>
+    <loc>https://asanobuturi.github.io/document/2022/oekaki/index.html</loc>
+    <priority>0.6</priority>
+    <lastmod>2022-11-25T23:57:04+09:00</lastmod>
+  </url>
+  <url>
+    <loc>https://asanobuturi.github.io/document/2022/plarail/index.html</loc>
+    <priority>0.6</priority>
+    <lastmod>2022-11-25T23:57:04+09:00</lastmod>
+  </url>
+  <url>
+    <loc>https://asanobuturi.github.io/document/2022/coilgun/index.html</loc>
+    <priority>0.6</priority>
+    <lastmod>2022-11-25T23:57:04+09:00</lastmod>
+  </url>
+  <url>
+    <loc>https://asanobuturi.github.io/document/2022/pwm/index.html</loc>
+    <priority>0.6</priority>
+    <lastmod>2022-11-25T23:57:04+09:00</lastmod>
+  </url>
+  <url>
+    <loc>https://asanobuturi.github.io/document/2022/led/index.html</loc>
+    <priority>0.6</priority>
+    <lastmod>2022-11-25T23:57:04+09:00</lastmod>
+  </url>
+  <url>
+    <loc>https://asanobuturi.github.io/document/2022/wittgenstein/index.html</loc>
+    <priority>0.6</priority>
+    <lastmod>2022-11-25T23:57:04+09:00</lastmod>
+  </url>
+  <url>
+    <loc>https://asanobuturi.github.io/document/2022/base_n/index.html</loc>
+    <priority>0.6</priority>
+    <lastmod>2022-11-25T23:57:04+09:00</lastmod>
+  </url>
+  <url>
+    <loc>https://asanobuturi.github.io/document/2022/PC98_beep/index.html</loc>
+    <priority>0.6</priority>
+    <lastmod>2022-11-25T23:57:04+09:00</lastmod>
+  </url>
+  <url>
+    <loc>https://asanobuturi.github.io/document/2022/PC98APCOS/index.html</loc>
+    <priority>0.6</priority>
+    <lastmod>2022-11-25T23:57:04+09:00</lastmod>
+  </url>
+  <url>
+    <loc>https://asanobuturi.github.io/document/2022/server/index.html</loc>
+    <priority>0.6</priority>
+    <lastmod>2022-11-25T23:57:04+09:00</lastmod>
+  </url>
+  <url>
+    <loc>https://asanobuturi.github.io/document/2022/edit/index.html</loc>
+    <priority>0.6</priority>
+    <lastmod>2022-11-25T23:57:04+09:00</lastmod>
+  </url>
 </urlset>

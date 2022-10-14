@@ -1,5 +1,5 @@
 window.addEventListener('load', (event) => {
-    const sidebar=
+    const sidebar =
     `
     <input id="nav-input" type="checkbox" class="nav-unshown">
     <label id="nav-open" for="nav-input">
@@ -27,7 +27,6 @@ window.addEventListener('load', (event) => {
     const URLs={
         "/index.html"              : "^/$|^/index.html$",
         "/about.html"              : "^/about.html$",
-        "/document/index.html"     : "^/document.html$",
         "/document/index.html"     : "^/document.*$",
         "/game/index.html"         : "^/game/.*$",
         "/blog/index.html"         : "^/blog/.*$",
