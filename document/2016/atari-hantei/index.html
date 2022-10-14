@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115439668-1"></script>
+  <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+          dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'UA-115439668-1');
+  </script>
+
+  <meta property="og:url" content="https://asanobuturi.github.io/document/2016/atari-hantei/index.html"/>
+  <meta property="og:title" content="当たり判定|浅野学園物理部"/>
+  <meta property="og:description" content="2Dゲームの当たり判定について"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:image" content="https://asanobuturi.github.io/document/2016/atari-hantei/thumbnail.jpg"/><!--ここまでOGP設定-->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@Uchi54_APC" /> <!--ここまでTwitterカード設定-->
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML' async></script><!--MathJax適用(LaTeX数式表示用)-->
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="description" content="2Dゲームの当たり判定について" />
+
+  <title>当たり判定|浅野学園物理部</title>
+
+  <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/blog_new.css">
+  <link rel="stylesheet" href="/highlight.css"><!--シンタックスハイライト-->
+  <link rel="shortcut icon" href="/image/favicon.ico">
+
+  <script type="text/javascript" src="//typesquare.com/accessor/script/typesquare.js?YME8OdI00sA%3D" charset="utf-8"></script>
+  <script src="https://kit.fontawesome.com/1e291c4f9b.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+  <div id="nav-drawer">
+  </div>
+  <main>
+    <div id="main">
+        <div class="documentcontent"><article>
+            <div id="breadcrumbs">
+                <i class="fas fa-home"></i><a href="/index.html">ホーム</a><i class="fas fa-angle-right"></i><a href="/document.html">部誌</a><i class="fas fa-angle-right"></i><a href="../index.html">2016年度部誌</a><i class="fas fa-angle-right"></i>当たり判定
+            </div>
+            <header class="documenttitle">
+                <h1>当たり判定</h1>
+                <p class="author"><i class="fas fa-user-edit"></i>a524287</p>
+                <a href="https://twitter.com/intent/tweet?url=https://asanobuturi.github.io/document/2016/atari-hantei/index.html&text=当たり判定|浅野学園物理部&via=Uchi54_APC&related=Uchi54_APC" class="twitter-share-button" data-show-count="false">Tweet</a>
+                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script><!--Twitterのシェアボタンの中身(URL・記事タイトル)も記述すること-->
+            </header>
+            <div class="document">
+              <h2 id="はじめに">はじめに</h2>
+              <p>こんにちは。物理部PC班ではゲームを作っていますが，そのゲームを作る中で多分最初の難関が「当たり判定」ではないでしょうか。ここでは，どのようにして当たり判定が行われているのか説明したいと思います。</p>
+              <p>かなり難しくなってしまったので，読み飛ばしてもかまいません。そして，ここに書いてある当たり判定は実際に必要になった時に自分で考えたものなので，もしかしたらもっといい方法があるかもしれません。</p>
+              <p>また，図は適当に書いたものなので，参考程度にしてください。</p>
+              <h2 id="座標とは">座標とは</h2>
+              <p>まずは，「座標」について説明したいと思います。（座標は中学で習うので，ここに書かれていることは分からなくても気にしないでください。）</p>
+              <p>座標とは下のようなものです。例えば，点Aのx座標は７，y座標は５というような感じです。</p>
+              <p><img src="1.png" /></p>
+              <p>ただし，数学で言う座標は普通，↑のことなのですが，コンピューターの画面で言う座標はこれとは違って，一番左上が（０，０）で，横に行くほどｘが大きく，下に行くほどｙが大きく（ｙだけ逆に）なっています。</p>
+              <p>PCやテレビの画面をよく見ると，ドットがたくさんあるのがわかりますか？そうです。これの一つ一つに座標が割り振られていて，一番左上が（０，０）です。そして，今のほとんどのテレビ（フルハイビジョン）は横に1920個，縦に1080個あります。ゲームなどでも，ウインドウの中の一番左上を（０，０）としています。</p>
+              <h2 id="点と点の当たり判定">点と点の当たり判定</h2>
+              <p>さて，ここからは実際に当たり判定を考えていきましょう。</p>
+              <p>まずは，点Aと，点Bの当たり判定をしてみましょう。</p>
+              <p><img src="2.png" /></p>
+              <p>例えば，A（３，５）とB（２，５）があった時，これは重なっていますか？もちろん，重なってないですよね。つまり，点と点の当たり判定をするときはそれぞれx座標とｙ座標が等しいかどうかを判定するだけです。</p>
+              <p><img src="3.png" /></p>
+              <p>つまり，右のとき，「AｘとBｘが等しく，AｙとBｙが等しいとき」，この２つの点は，重なっているということになります。</p>
+              <h2 id="長方形と長方形の当たり判定">長方形と長方形の当たり判定</h2>
+              <p>つぎに，一気にハードルを上げて長方形と長方形の当たり判定をしてみたいと思います。 ただし，長方形は傾いていないものとします。</p>
+              <p><img src="4.png" /></p>
+              <p>例えば上のような２つの長方形があったとします。この２つはどのように当たり判定をすればいいと思いますか？</p>
+              <p>（この微妙な空白を埋めるのに少 しお付き合いください。）</p>
+              <p>実は，一番最初にこれの当たり判定をしようとした時，それぞれの点が長方形の中に入っているかどうかで判定をして，長方形と長方形がクロスしている（スイスの国旗みたいな形）パターンを見落としていて，４時間それに気づかず悩まされたときがあります。（実話）</p>
+              <p>その後，いろいろ調べてみると，下のように判定する方法を見つけました。よく使われる方法は下のようにｘ軸とｙ軸を分けて考えるという方法です。</p>
+              <p><img src="5.png" /></p>
+              <p>まずx軸について。</p>
+              <p>下に，考えられるものをすべて上げてみました。下のどの場合でもあたっていることにすればいいので，「DxがAxより大きく（右にある），CxがBxより小さければ（左にあれば）」当っているということになります。</p>
+              <p><img src="6.png" /></p>
+              <p>同じようにy座標も考えて，「DxがAxより大きく，BxがCxより小さく，DyがAyより大きく，ByがCyより大きければ」当たったということになります。（点Aは点Bより左上，点Cも点Dより左上とする）</p>
+              <h2 id="円と点の当たり判定">円と点の当たり判定</h2>
+              <p>下のような円（半径をｒとする）と点の当たり判定をしてみましょう。</p>
+              <p><img src="7.png" /></p>
+              <p>実は，円と点の当たり判定は長方形と長方形の当たり判定よりはるかに簡単で，「円の中心から点までの距離が円の半径より短ければ当たった，長ければ当たっていない，同じなら点は円上にある」です。（点と点の距離を求める公式は中学で習います。）</p>
+              <h2 id="円と円の当たり判定">円と円の当たり判定</h2>
+              <p><img src="8.png" /></p>
+              <p>一見むずかしそうな気がするのですが，じつはこれも簡単（こんなに小さなところに書 けるくらい）で，「それぞれの中心の距離がそれぞれの半径の和より小さければ」当たったとなります。</p>
+              <h2 id="線分とx軸に平行な線分の当たり判定">線分とx軸に平行な線分の当たり判定</h2>
+              <p>（「線分」とは，長さが決まっている直線のこと。「直線」の長さは無限。<s>あれ，矛盾してる。</s>）</p>
+              <p>線分と線分（x軸に平行かどうかわからない）の当たり判定はかなり難しいので気になる人は自分で考えてみてください。</p>
+              <p><img src="9.png" /></p>
+              <p>まずは，上のような２本の線分があったとします。（Cy＝Dyとする）濃い線を線分AB，薄い線を線分CDとします。</p>
+              <p>最初に，長方形と長方形の当たり判定でもやったように，y軸だけを考えます。</p>
+              <p><img src="10.png" /></p>
+              <p>上の場合は，AyとByの間にCyがないので，絶対に当たらないですよね。つまり，１つ目の条件は「AyとByの間にCyがある」と当たっているです。</p>
+              <p>次に，上の条件に当てはまっているとき。</p>
+              <p><img src="11.png" /></p>
+              <p><u><b>直線</b></u>ABと<u><b>直線</b></u>CDの交点（交わっている点のこと）を求めて， その点が線分CDの上にあるかを判定すれば，当たり判定ができます。つまり，「AyとByの間にCyがあり，２つの直線の交点のx座標がCxとDxの間にあれば」当っているということになります。</p>
+              <h2 id="おわりに">おわりに</h2>
+              <p>ここまで読んでくれてありがとうございます。m(__)m</p>
+              <p>少し駆け足な感じになってしまいました。たぶん最後までわかったという方は少ないのではないのでしょうか。分からなくても入試に出ることは無いと思うので，無理に理解する必要はありませんが，どのようにして当たり判定がされているか少しでも興味を持っていただけたら幸いです。</p>
+            </div>
+            <nav class="nextPrev">
+                <div class="prev">前へ<a href="../high-voltage/index.html">「高電圧」
+                        &gt;</a></div>
+                <div class="next">次へ<a href="../computer/index.html">「スマホ世代の為のパソコン活用の心得」
+                        &gt;</a></div>
+            </nav>
+        </article></div>
+        <nav id="sidebar">
+            <div id="sidemenu">
+                <div class="side-back"><a href="../index.html">記事の一覧へもどる<i class="fas fa-sign-out-alt"></i></a></div>
+                <div class="side-prev"><i class="fas fa-angle-left"></i><a href="../high-voltage/index.html">「高電圧」</a></div>
+                <div class="side-next"><a href="../computer/index.html">「スマホ世代の為のパソコン活用の心得」</a><i class="fas fa-angle-right"></i></div>
+            </div>
+            <div id="indexblock">
+                <div class="indextitle">目次</div>
+                <ol class="indexcontents">
+                    <ul>
+                    <li><a href="#はじめに">はじめに</a></li>
+                    <li><a href="#座標とは">座標とは</a></li>
+                    <li><a href="#点と点の当たり判定">点と点の当たり判定</a></li>
+                    <li><a href="#長方形と長方形の当たり判定">長方形と長方形の当たり判定</a></li>
+                    <li><a href="#円と点の当たり判定">円と点の当たり判定</a></li>
+                    <li><a href="#円と円の当たり判定">円と円の当たり判定</a></li>
+                    <li><a href="#線分とx軸に平行な線分の当たり判定">線分とx軸に平行な線分の当たり判定</a></li>
+                    <li><a href="#おわりに">おわりに</a></li>
+                    </ul>
+                </ol>
+            </div>
+        </nav>
+    </div>
+    <footer class="footer">
+        <div class="">
+            <p class="copylight">&copy; 2015-2016 Asano Physics Club</p>
+        </div>
+    </footer>
+</main>
+<script type="text/javascript" src="/general.js"></script>
+</body>
+</html>
