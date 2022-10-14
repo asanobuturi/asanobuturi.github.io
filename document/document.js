@@ -62,8 +62,8 @@ window.addEventListener("load", (event) => {
                         Sidemenu.innerHTML =
                         `
                         <div class="side-back"><a href="../index.html">記事の一覧へもどる<i class="fas fa-sign-out-alt"></i></a></div>
-                        <div class="side-prev"><a href="/document/${document_data.year}/${document_data["pages"][i+1]["folder_name"]}/index.html"">${document_data["pages"][i+1]["name"]}<i class="fas fa-angle-right"></i></a></div>
-                        <div class="side-prev"><a href="${document_data["pages"][i-1]["folder_name"]}"><i class="fas fa-angle-left"></i>${document_data["pages"][i-1]["name"]}</a></div>
+                        <div class="side-prev"><a href="/document/${document_data.year}/${document_data["pages"][i+1]["folder_name"]}/index.html">${document_data["pages"][i+1]["name"]}<i class="fas fa-angle-right"></i></a></div>
+                        <div class="side-prev"><a href="/document/${document_data.year}/${document_data["pages"][i-1]["folder_name"]}/index.html"><i class="fas fa-angle-left"></i>${document_data["pages"][i-1]["name"]}</a></div>
                         `;
                     }
 
