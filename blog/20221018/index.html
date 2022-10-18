@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115439668-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'UA-115439668-1');
+    </script>
+
+    <meta property="og:url" content="https://asanobuturi.github.io/blog/20221017/index.html"/>
+    <meta property="og:title" content="Windows 11にアップグレードして3ヶ月経ったけど感想を書いてみる|浅野学園物理部"/>
+    <meta property="og:description" content="Windows 11を3ヶ月使ってみた感想を書いていきます。"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:image" content="https://asanobuturi.github.io/blog/20221017/thumbnail.jpg"/><!--ここまでOGP設定-->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@Uchi54_APC" /> <!--ここまでTwitterカード設定-->
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML' async></script><!--MathJax適用(LaTeX数式表示用)-->
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta name="description" content="Windows 11を3ヶ月使ってみた感想を書いていきます。" />
+
+    <title>Windows 11にアップグレードして3ヶ月経ったけど感想を書いてみる|浅野学園物理部</title>
+
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/blog_new.css">
+    <link rel="stylesheet" href="/highlight.css"><!--シンタックスハイライト-->
+    <link rel="shortcut icon" href="/image/favicon.ico">
+
+    <script type="text/javascript" src="//typesquare.com/accessor/script/typesquare.js?YME8OdI00sA%3D" charset="utf-8"></script>
+    <script src="https://kit.fontawesome.com/1e291c4f9b.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="../blog.js"></script>
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": "Windows 11にアップグレードして3ヶ月経ったけど感想を書いてみる",
+            "image": [
+                "https://asanobuturi.github.com/blog/20221017/thumbnail.jpg"
+            ],
+            "datePublished": "2022-10-18T21:07:00+09:00",
+            "dateModified": "2022-10-18T21:07:00+09:00",
+            "author": [
+                {
+                    "@type": "Person",
+                    "name": "中２　杉本",
+                    "url": "",
+                    "jobTitle": "著者"
+                }
+            ],
+            "publisher": [
+                {
+                    "@type":"Organization",
+                    "name": "APC",
+                    "url": "https://tiwtter.com/Uchi54_APC"
+                }
+            ]
+        }
+    </script>
+</head>
+<body>
+    <div id="nav-drawer">
+    </div>
+    <main>
+        <div id="main">
+            <div class="documentcontent">
+                <article>
+                    <div id="breadcrumbs">
+                    </div>
+                    <header class="documenttitle">
+                        <h1 id="title"></h1>
+                        <p class="author"><i class="fas fa-user-edit"></i>中２　杉本</p>
+                        <a href="" class="twitter-share-button" data-show-count="false">Tweet</a>
+                        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script><!--Twitterのシェアボタンの中身(URL・記事タイトル)も記述すること-->
+                    </header>
+                    <div class="document">
+                        <h2 id="あいさつ">あいさつ</h2>
+                        <p>こんにちは。中２の杉本です。なぜか副部長になりました。初日の朝は豪雨に見舞われた打越祭ですが、無事(?)開催できました。ご来場してくださった方々、差し入れをくださったOBの方々（差し入れは顧問が美味しくいただきました）、本来ならば文化祭の仕事はしないはずなのに働いてくれた中１に、この場を借りて感謝いたします。ちなみに僕は初日の朝、シフトの時間が来るまで靴下を乾かし続けていました。</p>
+                        <h2 id="本題">本題</h2>
+                        <p>※この記事は感想を書いてる。インストールの方法などは書いていない。</p>
+                        <h3 id="なぜWindows11にアップグレードしようと思ったか。">なぜWindows 11にアップグレードしようと思ったか。</h3>
+                        <p>去年の8月頃に、Windows 11（以下、Win11と表記）がWindows Insider ProgramのDevチャネルで公開が開始された際、友達が「朝起きたらWin11になっていた」と言っていてとても苦労していた。Win11の記事を見たり友達の話を聞いてみたろころあまり好みのUIでもなく、Androidアプリケーションが使える機能も然程魅力的には思えず、そもそもMacからWindows 10（以下、Win10と表記）の移行がほとんど完了して、スタートメニューのパネルもかなりカスタマイズして自分好みにした直後に、パネルシステムを廃止した新OSが出てきたのである。発狂。まぁ実際発狂はしなかったが、当分アップグレードはしないつもりでいた。</p>
+                        <p>そうは思ったものの、ちょっとだけ試用してみたいと思い、128GBの増設したSSDににプレビュー版Win11をインストールすることにした。</p>
+                        <p>PC正常性チェックという、Microsoftが公式で出しているWin11のインストールが可能か調べるツールがある。今でこそなぜインストールできないかが表示されるが、昔はインストールの可否しか出力されず、置き物と化していました。（その後、一度MicrosoftはPC正常性チェックの公開を一時停止。）そこでなぜできないかを困っていたところ、"WhyNotWin11"というWin11のインストール（アップグレード）できない理由を教えてくれるアプリケーションを見つけます。WhyNotWin11によるとセキュアブートとTPM2.0が確認されないとのことだった。それらの問題を修正後に、Win10のインストールUSBを作成してWin10をインストール、Win11にアップグレードしました。<a href="#s1linked" id="s1link">^1</a></p>
+                        <p>色々使ってみたが、うん、何も変わってない。最初期の頃は確かUIが変わっただけでほとんど中身は変わっておらず（今もそうと言えばそうだが）、ただセキュリティ強化されただけだった。あと、Devチャネルだったこともあり、すぐグラッシュしてしまうのだが、普通ブルスクが出るところ、グリーンスクリーンが出てきたのには驚いた。何だったのだろうか。まぁ大した面白みなかったため増設したSSDはWin11用からLinux用に変えた。</p>
+                        <p>その後、Win11のことなんて忘れてWin10でWSLにデスクトップ環境をインストールして遊んでいたら、LinuxのGUIアプリケーションを動かせる"WSLg"というものがあることを知り、それがWin11でしか動かせないこと<a href="#s2linked" id="s2link">^2</a>を知り、仕方ないので春休みぐらいにアップグレードしたは良いものの、強烈に使いにくく、すぐWin10に戻しましたが、中２の夏休みに入った頃にいい感じのフリーソフトのアプリケーションランチャーとWin11のUIをWin10に戻せる"Explorer patcher"というものも見つけたこともあり、これらを使ってだんだんWin11に慣れていこうということにし、アップグレードすることを決めた。</p>
+                        <h3 id="アップグレードしてみよう">アップグレードしてみよう</h3>
+                        <p>さぁ！アップグレードだ！って思い立ったのは良いものの、Win11ではなんとUEFIブートしかサポートしないとかいう暴挙にMicrosoftが出きたとのこと<a href="#s3linked" id="s3link">^3</a>。PCを自作したときにインストールしたMBRのWin10はアップグレードできないらしく、GPTに変換する必要があった<a href="#s4linked" id="s4link">^4</a>。一度目、春休みのアップグレードの際にはMicrosoft公式の<code>mbr2gpt.exe</code>というツールを使うことでmbrからgptに変換することができた。</p>
+                        <p>そしてWin11を使いづらくてWin10に復元した後、間違いでメインOSのディスクをまっさらにしてしまった。重要なデータ類はHDDにバックアップを取っていたので大した損害は大した損害はなかったものの、再度OSをインストール羽目になってしまった。まぁ再インストールは何事もなかったの良しとしよう。</p>
+                        <p>それでまた夏休みには入るまでそのままWin10を使うのだが、いざWin11にアップデートするとなったときMBRが障壁になっていた。インストールのときの僕は何を考えていたんだ<a href="#s5linked" id="s5link">^5</a>。そして前回と同じように公式の<code>mbr2gpt.exe</code>で変換しようとしてみたところ、なんか色々エラー吐かれてでききなかった。途方にくれていたときに有志の方が開発してくださっている<code>gdisk</code>のWindows版を使用する方法を知ったので、<code>gdisk</code>を使用しすることにし、ちゃんとGPTに変換することができた。</p>
+                        <p>その後は特に大きなトラブルもなく、スムーズにインストール成功、データも残っていた。一つ問題があったのは、Intelが提供しているドライバサポート&アシスタントが作動しなくなったことでだ。まぁIntelから個別に取得すればよかったので特に問題なし。<a href="#s6linked" id="s6link">^6</a></p>
+                        <h3 id="使用した感想">使用した感想</h3>
+                        <h4 id="スタートメニュー">スタートメニュー</h4>
+                        <p>中揃えのスタートメニューやタスクバーは、Macで慣れていたのでストレスにはならなかった。<br>
+                            初期のころは前述したランチャーソフトを使わずにやってみようと努力したが、やはり使いにくかった。スタートニューの下半分が意味分からない機能のために占領されてしまっているために、一面で18個のアプリしかピン止めできない。それでは流石に使いにくいというわけで"CLaunch"というフリーソフトを使用することにした。CLaunchはボタン式のランチャーで、とても愛用している。（今も補助的な役割として使っています。）</p>
+                        <h4 id="UI">UI</h4>
+                        <p>Windows 10時代の角ばっていたUIから、全体的に丸びを帯びたデザインに変貌を遂げた。うっすらウィンドウが透けるMicaというWindows独特のUIはとても良い。</p>
+                        <p>設定、フォト、ペイント、メモ帳、エクスプローラーなどのUIの更新も行われた。個人的には設定とフォトの新しいUIは好みである。エクスプローラーはUIを変えるにしてもリボンUIは廃止しないでほしかった。</p>
+                        <h4 id="WSA">WSA(Windows Subsystem for Android)</h4>
+                        <p>僕がインストールしたときはまだアメリカでしか公開プレビューは公開されておらず、裏口的な方法を利用することでインストールが可能だった。そしてまだアプリストアは使用できなかったが、（できたのか？）"WAS PacMan"というソフトを使用することで<code>.APK</code>からインストールすることができたので、試験的にApple Musicをインストールしてみました。使用してみた感想ですが、割りとサクサク動くが、サウンド関係はまだ弱いようで、Windows版のiTunesで再生したほうがよっぽど音質が良い。ちなみに、ゲームは試していない。スマホゲーは嫌いなのです...<br>
+                            しかし、今は日本でも正式に公開プレビューが開始し、Hyper-Vと共存できるAndroidエミュレーターは少ない上に、ウィンドウにして動かすことができるのはとても素晴らしい。今後の動きに期待だ。</p>
+                        <figure>
+                            <img src="./images/apple_music.png">
+                            <figcaption>ちゃんと曲も聞くことができる（画像は10/17のもの）</figcaption>
+                        </figure>
+                        <h4 id="WSLg">WSLg</h4>
+                        <p>さて、当初の目標であったはずのWSLgだが、特に使い道が見つからずにテスト用アプリケーションである<code>xeyes</code>だけ起動して終わった。今度StableDiffusion関係で活用できないか考えているところだ。</p>
+                        <figure>
+                            <img src="./images/xeyes.png">
+                            <figcaption>起動するとマウスカーソルを目が追いかける（画像は10/17のもの）</figcaption>
+                        </figure>
+                        <h4 id="その他">その他</h4>
+                        <ul>
+                            <li>仮想デスクトップ<br>
+                                まず、仮想デスクトップ周りが強化されたのは嬉しいことだが、仮想デスクトップのスイッチャーを使用している際の<b><u>エクスプローラーのクラッシュが非常に多くなった。</b></u>Win10のときはクラッシュなんて起こったら珍しい方だったが、今では一日に一回ぐらい起きている。
+                                </li>
+                            <li>スナップ機能の強化<br>
+                                殆ど使わない</li>
+                            <li>コンテキストメニュー<br>
+                                なんかモダンになった。これはすぐ戻すべき。</li>
+                        </ul>
+                        <p>あとはセキュリティ周りが強化されていたらしい。素人には全くもって理解できない。</p>
+                        <h3 id="Win11にするにあたって利用したソフト類">Win11にするにあたって利用したソフト類</h3>
+                        <ul>
+                            <li>Explorer Patcher<br>前述の通り、Win11のUIを選択して戻すことができるアプリ。タスクバーはWin11だけどスタートメニューはWin10...みたいなことも可能</li>
+                            <li>CLauch<br>前述の通り、アプリケーションランチャー。スキンを適用することでWin11にあった雰囲気にできる。数あるランチャーソフトの中でもオススメ。</li>
+                            <li>Rufus<br>前述の通り、<code>.iso</code>をUSBに焼くことができるアプリ。Win10のインストーラーを作成する際に使用。</li>
+                            <li>WhyNotWin11<br>前述の通り、Win11へのアップグレードの可否を表示する際に使用。</li>
+                            <li>Winaero Tweaker<br>本来ならばレジストリをいじらなければいけない設定をGUIで行えるようになる。便利。</li>
+                        </ul>
+                        <h3 id="22H2アップデートについて">22H2アップデートについて</h3>
+                        <p>Win11最初の大型アップデートである22H2は、通知機能の改善やタスクマネージャーのUIの変更（中身はもちろん変わっていない）などがあったらしいとのことだが、そんなことはどうでもいい。スタートメニューにフォルダーが作れるようになった。これは大きな進展で、スタートメニューにピン止めできる上限が18しかなく実用性が皆無だったスタートメニューにフォルダが作れるようになり、その上ピン止め可能な段数を増やせる設定も追加されたのである。かなり良いアップデートだったと思う。</p>
+                        <h3 id="結論">結論</h3>
+                        <p>WSLgやWSAなどの最新機能が多くあるため、個人的に感じていたスタートメニューの使い勝手の悪さも22H2のアップデートでかなり改善され、UIの変更に極端な抵抗がなければアップグレードはオススメする。</p>
+                        <h2 id="おわりに">おわりに</h2>
+                        <p>高二の元部長がCEATECに行くらしく、訪問記を書くかもしれないと言っているので次の更新は早くなるかも...?</p>
+                        <h3 id="注釈">注釈</h3>
+                        <small>ここのリンクで戻ると上の方にリンク先があるので注意</small>
+                        <ul>
+                            <li><a href="#s1link" id="s1linked">^1</a><br>当時は<code>.iso</code>が提供されていなかったため、<br>Win10のインストーラーを作成→Win10をインストール→Windows Insider Programでアップグレード<br>という手順を踏む必要があった。</li>
+                            <li><a href="#s2link" id="s2linked">^2</a><br>WSLgの対応Ver.がWin10のビルド22000以降という意味分からないこと（ビルド22000以降はWin11）が書かれていたので、Win10でも動くかもという希望を胸に試しましたができなかった...</li>
+                            <li><a href="#s3link" id="s3linked">^3</a><br>今もそうなのか？というか、これはUEFIをサポートしたマザーボードしか使えないって意味だったのか？</li>
+                            <li><a href="#s4link" id="s4linked">^4</a><br>って思ってたんですが、MBRでUEFIブートすれば良かったのかな？まぁ結局はGPTの方が優れているので、後悔はしていません。</li>
+                            <li><a href="#s5link" id="s5linked">^5</a><br>ちゃんとUEFIのブートエントリを選んだはずなんですが...CSMをオフにしないといけなかったのでしょうか...</li>
+                            <li><a href="#s6link" id="s6linked">^6</a><br>今は治っている。なぜ治ったかは不明</li>
+                        </ul>
+                    </div>
+                    <nav class="nextPrev">
+                    </nav>
+                </article>
+            </div>
+            <nav id="sidebar">
+                <div id="sidemenu">
+                </div>
+                <div id="indexblock">
+                    <div class="indextitle">目次</div>
+                    <ol class="indexcontents">
+                        <li><a href="#あいさつ">あいさつ</a></li>
+                        <li><a href="#なぜWindows11にアップグレードしようと思ったか。">動因</a></li>
+                        <li><a href="#アップグレードしてみよう">アップグレード</a></li>
+                        <li><a href="#使用した感想">使用した感想</a>
+                            <ul>
+                                <li><a href="#スタートメニュー">スタートメニュー</a></li>
+                                <li><a href="#UI">UI</a></li>
+                                <li><a href="#WSA">WSA</a></li>
+                                <li><a href="#WSLg">WSLg</a></li>
+                                <li><a href="#その他">その他</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#Win11にするにあたって利用したソフト類">利用したソフト類</a></li>
+                        <li><a href="#22H2アップデートについて">22H2</a></li>
+                        <li><a href="#結論">結論</a></li>
+                        <li><a href="#おわりに">おわりに</a></li>
+                        <li><a href="#注釈">注釈</a></li>
+                    </ol>
+                </div>
+            </nav>
+        </div>
+        <footer class="footer">
+            <div class="">
+                <p class="copylight">&copy; 2015-2022 Asano Physics Club</p>
+            </div>
+        </footer>
+    </main>
+    <script type="text/javascript" src="/general.js"></script>
+</body>
+</html>

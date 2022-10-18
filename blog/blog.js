@@ -85,14 +85,13 @@ window.addEventListener("load", (event) => {
             //    }
             //}
 
-            //const Title = document.getElementById("title");
+            const Title = document.getElementById("title");
             const Path = document.getElementById("breadcrumbs");
             const TwitterButton = document.getElementsByClassName("twitter-share-button")[0];
 
 
             for (let i = 0;i<pages["pages"].length;i++){
-                if (pages["pages"][i]["URL"] == location.pathname) {
-                    //Title.innerHTML = pages["pages"][i]["name"];
+                if (pages["pages"][i]["URL"] == location.pathname.split("index.html")[0]) {
                     Path.innerHTML =
                     `
                     <i class="fas fa-home"></i><a href="../../index.html">ホーム</a>
@@ -100,6 +99,7 @@ window.addEventListener("load", (event) => {
                     <i class="fas fa-angle-right"></i><a href="./index.html">${pages["pages"][i]["name"]}</a>
                     `;
                     TwitterButton.setAttribute("href",`https://twitter.com/intent/tweet?url=${pages["pages"][i]["url"]}&text=${pages["pages"][i]["name"]}&via=Uchi54_APC&related=Uchi54_APC`);
+                    Title.innerHTML = pages["pages"][i]["name"];
                 }
             }
         }
