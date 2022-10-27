@@ -40,7 +40,11 @@ window.addEventListener('load', (event) => {
             break;
         }
     }
-    document.querySelector(`div#nav-content a[href="${path}"]`).classList.add("isActive");
+    try {
+        document.querySelector(`div#nav-content a[href="${path}"]`).classList.add("isActive");
+    } catch {
+        console.log("なぞのばしょ");
+    }
 
     document.getElementsByClassName("copyright")[0].innerHTML = "Copyright &copy; 2015 - 2022 Asano Physics Club All Rights Reversed.";
 });
