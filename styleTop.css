@@ -215,8 +215,34 @@ body::before {
         font-weight: 700;
     }
 
-    .headline .news .news-article .news-text {
+.headline-group {
+    display: flex;
+    margin:40px auto;
+    width:80%;
+    max-width: 800px;
+    padding:0px;
+}
+
+@media (min-width: 1000px) {
+    .headline-group .headline-child-left {
+        margin-right:10px;
     }
+
+    .headline-group .headline-child-right {
+        margin-left:10px;
+        width:250px;
+        min-width:250px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .headline-group .headline-child-left {
+        display:none;
+    }
+    .headline-group .headline-child-right {
+        width:100%;
+    }
+}
 
 .contact {
     letter-spacing: -4px;
