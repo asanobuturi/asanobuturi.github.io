@@ -61,7 +61,7 @@ body::before {
     z-index: -1;
     width: 100%;
     height: 100vh;
-    background: url(image/buturi2.jpg) center/cover no-repeat;
+    background: url(/image/buturi.webp) center/cover no-repeat;
     -webkit-background-size: cover;
 }
 
