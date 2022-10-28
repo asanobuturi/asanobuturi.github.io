@@ -171,15 +171,18 @@ body::before {
     padding-bottom: 3px;
     text-align: left;
     padding: 0em 0.5em;
+    bottom:0;
 }
 
     .headline .news .news-article {
         padding: 1.2em 0.7em 1.2em;
         font-size: 14px;
+        height:21px;
     }
 
     .headline .news.news-article_wrap {
         width: 100%;
+        position: relative;
     }
 
     .headline .news .news-article + .news-article {
@@ -205,14 +208,18 @@ body::before {
         transform: rotate(45deg);
         position: absolute;
         right: -10px;
-        top: 0;
-        bottom: 0;
         margin: auto;
+        bottom:-15px;
     }
 
     .headline .news .news-article .news-date {
-        padding-right: 1.5em;
         font-weight: 700;
+        position: absolute;
+    }
+
+    .headline .news .news-article .news-text {
+        position: absolute;
+        left:100px;
     }
 
 .headline-group {
