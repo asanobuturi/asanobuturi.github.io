@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115439668-1"></script>
+  <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+          dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'UA-115439668-1');
+  </script>
+
+  <meta property="og:url" content="https://asanobuturi.github.io/blog/20221106/index.html"/>
+  <meta property="og:title" content="話題のアニメ声合成AI「MoeGoe」を使ってみよう|浅野学園物理部"/>
+  <meta property="og:description" content="ツイッターで話題になった最新のアニメ声合成AI「MoeGoe」。その使い方を紹介しつつ、是非についても考える。"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:image" content="https://asanobuturi.github.io/blog/20221106/thumbnail.jpg"/><!--ここまでOGP設定-->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@Uchi54_APC" /> <!--ここまでTwitterカード設定-->
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML' async></script><!--MathJax適用(LaTeX数式表示用)-->
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="description" content="ツイッターで話題になった最新のアニメ声合成AI「MoeGoe」。その使い方を紹介しつつ、是非についても考える。" />
+
+  <title>話題のアニメ声合成AI「MoeGoe」を使ってみよう|浅野学園物理部</title>
+
+  <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+  <link rel="stylesheet" href="../../styles.css">
+  <link rel="stylesheet" href="../../blog_new.css">
+  <link rel="stylesheet" href="../../highlight.css"><!--シンタックスハイライト-->
+  <link rel="shortcut icon" href="../../image/favicon.ico">
+
+  <script type="text/javascript" src="//typesquare.com/accessor/script/typesquare.js?YME8OdI00sA%3D" charset="utf-8"></script>
+  <script src="https://kit.fontawesome.com/1e291c4f9b.js" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="../blog.js"></script>
+  <script type="text/javascript" src="/general.js"></script>
+</head>
+<body>
+  <div id="nav-drawer">
+  </div>
+  <main>
+    <div id="main">
+        <div class="documentcontent"><article>
+            <div id="breadcrumbs">
+            </div>
+            <header class="documenttitle">
+                <h1>話題のアニメ声合成AI「MoeGoe」を使ってみよう</h1>
+                <p class="author"><i class="fas fa-user-edit"></i>高三・N</p>
+                <a href="https://twitter.com/intent/tweet?url=https://asanobuturi.github.io/blog/20221106/index.html&text=話題のアニメ声合成AI「MoeGoe」を使ってみよう|浅野学園物理部&via=Uchi54_APC&related=Uchi54_APC" class="twitter-share-button" data-show-count="false">Tweet</a>
+                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script><!--Twitterのシェアボタンの中身(URL・記事タイトル)も記述すること-->
+            </header>
+            <div class="document">
+              <p>ツイッターで、最近新しく公開された音声合成AI「MoeGoe」が話題になっていたので、試してみました。</p>
+              <h2 id="moegoeとは">MoeGoeとは</h2>
+              <p>まずはこちらをご覧ください。</p>
+              <blockquote class="twitter-tweet">
+              <p lang="ja" dir="ltr">
+              なにやら中国の方が作られた音声合成AI「MoeGoe」の2891人の日本アニメキャラの音声モデルが公開されてしまった！！Hugging Faceでデモが試せる！早速まどマギの５人に喋ってもらった！！うわうわうわ！ヤバいよヤバい本当にヤバいよコレはヤバい！！　　<a href="https://t.co/wzHJdwEvr7">https://t.co/wzHJdwEvr7</a> <a href="https://t.co/EFgUId9qpd">pic.twitter.com/EFgUId9qpd</a>
+              </p>
+              — うみゆき@AI研究 (<span class="citation" data-cites="umiyuki_ai">@umiyuki_ai</span>) <a href="https://twitter.com/umiyuki_ai/status/1588868531416109057?ref_src=twsrc%5Etfw">November 5, 2022</a>
+              </blockquote>
+              <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+              <p>MoeGoeは、最新のアニメ声合成AIです。名称は日本語の「萌え声」が由来だと思われますが、開発者は中国人の方のようです。GitHub及びHuggingFaceでソースコードや学習済みモデルなどが配布されており、誰でも試すことができます。学習済みモデルに関しては、商用利用は固く禁止されています。</p>
+              <p>技術的には、昨年韓国で開発された音声合成技術の「VITS」を応用したものになっているようです。VITSは今年初めごろに日本でも話題を呼び、複数の日本語による実装レポートもWEB上で発表されました。(Qiita「<a href="https://qiita.com/zassou65535/items/00d7d5562711b89689a8">【機械学習】VITSでアニメ声へ変換できるボイスチェンジャー&amp;読み上げ器を作った話</a>」など)</p>
+              <p>VITSの仕組みについては一応英語の論文があるので、そちらをご覧ください。15ページ程度ですが私には読めません。(<a href="https://arxiv.org/abs/2106.06103">https://arxiv.org/abs/2106.06103</a>)</p>
+              <p>また、学習に際しては、アニメのセリフを中心に多くの音声をデータベース化し配信しているウェブサイト「VoiStock」などから収集したデータを一部のモデルで使用しているとのことです。NovelAIがStableDiffusionベースのアニメイラスト生成AIをリリースした際、学習に使用したデータがイラストの無断転載サイトから入手したものであったことがネット上で非難の対象になりましたが、このサイトについても著作権周りのことは少し気がかりです。</p>
+              <p>作者のCjangCjenghさんがビリビリ動画に公開している紹介動画も併せてご覧ください。(<a href="https://www.bilibili.com/video/BV1P8411Y7v5/">https://www.bilibili.com/video/BV1P8411Y7v5/</a>)</p>
+              <h2 id="moegoeを試す方法3つ">MoeGoeを試す方法3つ</h2>
+              <p>MoeGoeは現在、GitHubで公開されているプログラムのほか、HuggingFace上のオンラインデモページ、Microsoft Azure上に構築された合成済み音声を返すAPIとそれを利用したAndroid向けアプリなどが主にリリースされています。</p>
+              <p>とりあえず試してみるだけであれば、すぐにブラウザから使用することができるHuggingFace版を試すのが良いでしょう。Androidユーザーの場合はアプリ版も有用です。以下にリンクを記載しています。</p>
+              <ul>
+              <li><a href="">HuggingFaceのデモページ(ブラウザ版、PC・スマホ等対応)</a></li>
+              <li><a href="https://play.google.com/store/apps/details?id=top.fumiama.moegoe">Android版アプリ(Google Play)</a></li>
+              </ul>
+              <p>この記事では、せっかくなのでGitHubで公開されているものを実際に手元のパソコンで実行することを試みます。(といってもめちゃくちゃ簡単です)</p>
+              <h2 id="moegoeをローカル環境自分のパソコンで実行しよう">MoeGoeをローカル環境(自分のパソコン)で実行しよう</h2>
+              <p><strong>※下記のソフトウェアを使用して発生したいかなる問題についても、私達は責任を負いかねます。</strong></p>
+              <p>現在、MoeGoeのプログラムはWindows用のものしか配布されていないので、実行にはWindowsパソコンが必要です。実装自体はPythonですので、技術的にはMac、Linux等でも実行出来ると思われます(GUIアプリを除く)。</p>
+              <p>また、7-Zip形式の圧縮ファイルを解凍できるソフトウェアが何かしら必要です。7-Zipをインストールしておけば問題ないでしょう。</p>
+              <p>Windowsパソコンさえ用意できれば、実行ファイルは全て完全にexeファイルにまとめられているので、ソースコードのビルドなどに怖気づく必要は全くありません(私はexeファイルがあるのに気づかず、プログラムを地道にビルドしようとしてVisualStudioの依存関係不足で時間を溶かされました)。</p>
+              <p>以下、手順を示します。</p>
+              <h3 id="moegoeの実行ファイルをダウンロード">MoeGoeの実行ファイルをダウンロード</h3>
+              <p>まずは<a href="https://github.com/CjangCjengh/MoeGoe/releases">MoeGoeのGitHubレポジトリにあるReleasesページ</a>をブラウザで開き、最新のMoeGoeの実行ファイル(exeファイル)をダウンロードします。この記事の執筆時点で最新版はVer.3.0.0でした。「MoeGoe.7z」と書かれているファイルをダウンロードし解凍してください。</p>
+              <p><img src="1.jpg" /></p>
+              <p><strong>MoeGoeのReleasesページ：</strong><a href="https://github.com/CjangCjengh/MoeGoe/releases">https://github.com/CjangCjengh/MoeGoe/releases</a></p>
+              <h3 id="便利なmoegoeのguiアプリをダウンロード">便利なMoeGoeのGUIアプリをダウンロード</h3>
+              <p>このファイルだけでも実行することは可能ですが、コマンドライン上での操作となり不便ですので、GUIアプリも続けてダウンロードします。<a href="https://github.com/CjangCjengh/MoeGoe_GUI/releases">MoeGoe GUIのReleasesページ</a>から、最新の「MoeGoe_GUI.exe」をダウンロードします。先ほど解凍したMoeGoeのフォルダーの中に入れておくのが便利ではないでしょうか。</p>
+              <p><img src="2.jpg" /></p>
+              <p><strong>MoeGoe GUIのReleasesページ：</strong><a href="https://github.com/CjangCjengh/MoeGoe_GUI/releases">https://github.com/CjangCjengh/MoeGoe_GUI/releases</a></p>
+              <h3 id="学習済みモデルのダウンロード">学習済みモデルのダウンロード</h3>
+              <p>最後に、各キャラクターのボイスを学習した学習済みモデルをダウンロードします。<a href="https://github.com/CjangCjengh/TTSModels">GitHubページ</a>から好きな物を選んで、それぞれ「Config File」と「Model」を両方ダウンロードしてください。私はMoeGoeのフォルダー内に「models」というフォルダーを作成し、その中に配置しましたが、ファイルがどこに合ってもあとでその場所を適宜指定するだけなので問題ありません。</p>
+              <p>複数のモデルをダウンロードする場合は、以下のように適宜分かりやすいように名前を変更しておいた方が無難です。</p>
+              <p>モデルごとに対応している言語が異なっているので、ダウンロードリンクの上に書かれている対応言語を確認してください。中には日本語非対応のモデルもいくつかあります。</p>
+              <p>「ゼロの使い魔」や「ToLoveるダークネス」など絶妙に古いアニメのモデルが多いです。開発者の推しなのか、ノベルゲームメーカー「ゆずソフト」のキャラクターのモデルがなかなか充実しています。</p>
+              <p>また、下部にあるVoistockモデルは、先述のアニメ音声収集サイトから大量のデータベース化された音声を収集して学習した大型モデルで、3000人弱のキャラ(海外版声優と日本語版声優・同じ声優の演じる別キャラなどの重複はあるとみられる)の音声を学習しているモデルです。これが事実上の標準モデルでしょうか。日本語以外に英語、韓国語、中国語にも対応しています。</p>
+              <p><strong>MoeGoeの学習済みモデルの配布ページ：</strong><a href="https://github.com/CjangCjengh/TTSModels">https://github.com/CjangCjengh/TTSModels</a></p>
+              <h3 id="実際に動かす">実際に動かす</h3>
+              <p>全ての必要ファイルのダウンロードが終わったところで、実際に音声合成を試してみましょう。</p>
+              <p>MoeGoe_GUI.exeを実行します。</p>
+              <p><img src="3.JPG" /></p>
+              <p>このような画面が起動するので、それぞれのメニューについて、上から順に、以下のファイルを指定します。</p>
+              <ul>
+              <li>「打开文件」：「ファイルを開く」の意。このボタンをクリックして、先ほど解凍したフォルダーの中にある「MoeGoe.exe」のファイルを指定する。</li>
+              <li>「VITS」「HuBERT-VITS」「W2V2-VITS」のメニュー：AIモデルの種類を指定する。MoeGoeが現在公開している学習済みモデルのほとんどがVITSなので、基本的にはVITSを指定しておけば問題ない。モデルをダウンロードしたページに、そのモデルがVITSなのか、HuBERT-VITSなのかといったことが書いてあるので確認する。</li>
+              <li>「打开模型」：「モデルを開く」の意。このボタンをクリックして、使いたいモデルの.pthファイルを指定する。</li>
+              <li>「打开配置」：「設定を開く」の意。このボタンをクリックして、先ほど指定したモデルに対応するconfig.jsonファイルを指定する。</li>
+              </ul>
+              <p>モデルを設定出来たら、「文本」の画面に喋らせたい文章の内容を入力し、「说话人」に表示されるリストから、喋らせたいキャラクターを選択します。</p>
+              <p>最後に、保存ボタンをクリックし、保存先を指定すると、合成された音声が保存されます。「重新合成」は上書き保存、「删除」は削除、「播放」は保存した音声の再生、「停止」は再生中の音声の停止です。</p>
+              <p>また、一部の複数言語に対応したモデルを使用する際には、<code>[JA]こんにちは[JA]</code>や<code>[ZH]你好[ZH]</code>のように、中括弧で言語を示す必要があります。日本語はJA、中国語はZH、韓国語はKO、英語はENです。</p>
+              <p><img src="4.JPG" /></p>
+              <p>設定はこのようになります。MoeGoe_GUIのアプリを日本語化してみたのですが、あとでMoeGoe_GUIのソースコードのライセンスが不明なことに気づき、公開はしていません。MoeGoe本体はMITライセンスだったので、いつかMoeGoe_GUIのライセンスが更新されたら、日本語化したものをGitHub上で公開するかもしれません。(ちなみに、「文章を消去」はおそらく誤訳で、発音・アクセント・イントネーションの手動設定？が正しい)</p>
+              <h2 id="合成した音声は載せません">合成した音声は載せません</h2>
+              <p>今の段階では権利関係があまりに不透明すぎると思ったため。</p>
+              <p>代わりに、TwitterやYouTube、ビリビリ動画にあるおすすめの動画をいくつかご紹介します。</p>
+              <ul>
+              <li><a href="https://www.bilibili.com/video/BV1P8411Y7v5/">包含2890名动画角色的VITS语音合成模型(2980人のアニメキャラの声を搭載したVITS音声合成モデル) - ビリビリ動画</a>：冒頭で紹介した、作者のCjangCjenghさんの動画です。58秒ごろから、合成音声のサンプルが流れます。</li>
+              <li><a href="https://youtu.be/k37NYU41O_M">綾地寧々の声を作ってみた - YouTube</a>：同じく作者のCjangCjenghさんがYouTubeに公開している動画です。ビリビリ動画よりも視聴ハードルが低いので、YouTubeじゃないと見れないという場合にはこちらがおすすめです。ただし、少し古いバージョンの合成システムを使用しているものと思われます。</li>
+              <li><a href="https://youtu.be/Vfx81Noux1w">日本語Ｎ１聴解問題 - YouTube</a>：こちらも作者のCjangCjenghさんがYouTubeに公開している動画です。日本語検定1級のリスニング問題を萌え声で再現しています。</li>
+              <li><a href="https://twitter.com/halfmony/status/1589098771639865344">MoeGoeのボイチェン(halfmony氏) - Twitter</a> ：MoeGoe特有のイントネーションの弱さは、適切に発音された音声にボイスチェンジャーをかけることで改善できそう。</li>
+              </ul>
+              <h2 id="感想">感想</h2>
+              <p>音声合成のクオリティは総じて高く、VITSの技術を応用した製品の実用化が待たれます。</p>
+              <p>ただし、単純な音声の精度に関してのみ言えば、企業の資本のもとで、音声合成のために厳密に管理された録音環境で得たデータをもとに開発された音声合成ソフトウェアの方が、明らかに高性能な印象を受けました。最近では、AHS社のVOICEPEAKはかなりレベルの高い音声を出力しています。</p>
+              <p>MoeGoe(VITS)の真価は、音声合成ソフトとしてリリースされていない、一般のアニメのキャラクターの声から学習したモデルを利用できることです。ですが、それにはここ最近議論を巻き起こしているStable Diffusion以上に、権利問題が付きまとう事でしょう。必然的に、個別的な声優さんやキャラクターに一対一で対応する声を生成することになるからです。Stable Diffusionの日本国内向けの紹介記事をおそらく最初期に執筆(<a href="https://note.com/fladdict/n/n13c1413c40de">記事リンク</a>)された、note株式会社の深津貴之さんも、これについて憂慮の念を示しています。</p>
+              <blockquote class="twitter-tweet">
+              <p lang="ja" dir="ltr">
+              これはやりすぎ…というか、個別のクリエイターの狙い撃ちクローンは良くない。こういうのが増えると、色々と拗れてしまう <a href="https://t.co/p1ycQvrNZf">https://t.co/p1ycQvrNZf</a>
+              </p>
+              — 深津 貴之 / THE GUILD / note.com (<span class="citation" data-cites="fladdict">@fladdict</span>) <a href="https://twitter.com/fladdict/status/1588882955363311617?ref_src=twsrc%5Etfw">November 5, 2022</a>
+              </blockquote>
+              <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+              <p>MoeGoeには、日本語の音声しか存在しないはずのキャラクターに対して、声優さんの声を変えないまま中国語、韓国語、英語などの音声を出力できるモデルが存在します。このような技術が発展すれば、映像コンテンツの翻訳の際に、吹き替え版に別の声優さんを起用することなく、日本のアニメをそのままの声で中国語に拭き替えたり、ハリウッドの映画を現地の俳優さんの声のまま日本語に吹き替えたりすることが出来るようになるかもしれません。非常に期待のできる技術なのではないでしょうか。</p>
+              <p>本当に人間の仕事を奪うような、クリエイティビティあふれる生成AIが登場するのも時間の問題なのかもしれません。</p>
+            </div>
+            <nav class="nextPrev">
+            </nav>
+        </article></div>
+        <nav id="sidebar">
+            <div id="sidemenu">
+            </div>
+            <div id="indexblock">
+                <div class="indextitle">目次</div>
+                <ol class="indexcontents">
+                    <ul>
+                    <li><a href="#moegoeとは">MoeGoeとは</a></li>
+                    <li><a href="#moegoeを試す方法3つ">MoeGoeを試す方法3つ</a></li>
+                    <li><a href="#moegoeをローカル環境自分のパソコンで実行しよう">MoeGoeをローカル環境(自分のパソコン)で実行しよう</a></li>
+                    <li><a href="#合成した音声は載せません">合成した音声は載せません</a></li>
+                    <li><a href="#感想">感想</a></li>
+                    </ul>
+                </ol>
+            </div>
+        </nav>
+    </div>
+    <footer class="footer">
+        <div class="">
+            <p class="copylight">&copy; 2015-2022 Asano Physics Club</p>
+        </div>
+    </footer>
+</main>
+</body>
+</html>
