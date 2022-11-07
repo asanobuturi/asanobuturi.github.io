@@ -11,10 +11,10 @@ div.sourceCode{
 
 div.sourceCode pre{
     margin: 0;
+    white-space: pre-wrap;
 }
 
-
-code{
+code:not([class|="language"])code:not(.language-cpp) {
     background-color: #e7e7e7;
     border: 0.5px solid #d3d3d3;
     color: #353535;
@@ -24,62 +24,72 @@ code{
     padding: 0.1em;
 }
 
-pre code{
+div.sourceCode pre code{
+    background-color: #e7e7e7;
+    border: 0.5px solid #d3d3d3;
+    color: #353535;
+    font-size: 14px;
+    font-family: "Cascadia Code";
+    border-radius: 0.2em;
+    padding: 0.1em;
+}
+
+div.sourceCode pre code{
     border:0;
     color: #bdc1d3;
     background-color: #282c34;
     border-radius: 0;
 }
 
-pre code .kw{
+div.sourceCode pre code .kw{
     color: #c678dd;
 }
 
-pre code .fu{
+div.sourceCode pre code .fu{
     color: #53a9e9;
 }
 
-pre code .cf{
+div.sourceCode pre code .cf{
     color: #4eb1ba;
 }
 
-pre code .op{
+div.sourceCode pre code .op{
     color: #56b6c2;
 }
 
-pre code .co{
+div.sourceCode pre code .co{
     color: #71848e;
 }
 
-pre code .dv{
+div.sourceCode pre code .dv{
     color: #d19a66;
 }
 
-pre code .at{
+div.sourceCode pre code .at{
     color: #e06c67;
 }
 
-pre code .dt{
+div.sourceCode pre code .dt{
     color: #e06c67;
 }
 
-pre code .er{
+div.sourceCode pre code .er{
     color: #d19a66;
 }
 
-pre code .ot{
+div.sourceCode pre code .ot{
     color: #d19a66;
 }
 
-pre code .st{
+div.sourceCode pre code .st{
     color: #56b6c2;
 }
 
-pre code .pp{
+div.sourceCode pre code .pp{
     color: #c678dd;
 }
 
-pre code .im{
+div.sourceCode pre code .im{
     color: #7cc370;
 }
 

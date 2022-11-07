@@ -1,0 +1,74 @@
+<!doctype html><html><head><script async src="https://www.googletagmanager.com/gtag/js?id=UA-115439668-1"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());gtag('config','UA-115439668-1');</script><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=description content="浅野学園物理部の公式ホームページです。文化祭情報などを掲載しています。"><meta name=viewport content="width=device-width,initial-scale=1"><link rel=stylesheet href=/styles.css><link rel=stylesheet href=/highlight.css><link rel=icon href=/image/favicon.ico><script type=text/javascript src=//typesquare.com/accessor/script/typesquare.js?YME8OdI00sA%3D></script></head><link rel=stylesheet href=/blog_new.css><link rel=stylesheet href=/highlight.css><script src=https://kit.fontawesome.com/1e291c4f9b.js crossorigin=anonymous></script><title>PC98という古いPCで曲をビープ音で演奏してみた｜浅野学園物理部</title><script type=text/javascript async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML"></script><body><div id=nav-drawer><input id=nav-input type=checkbox class=nav-unshown>
+<label id=nav-open for=nav-input><span class="bar bar1"></span><span class="bar bar2"></span><span class="bar bar3"></span><span class=menu>MENU</span>
+<span class=close>CLOSE</span></label>
+<label id=nav-close for=nav-input></label><div id=nav-content><a class=nav-link href=/index.html>ホーム</a>
+<a class=nav-link href=/about/index.html>物理部とは</a>
+<a class=nav-link href=/document/index.html>部誌</a>
+<a class=nav-link href=/game/index.html>ゲーム</a>
+<a class=nav-link href=/blog/index.html>ブログ</a>
+<a class=nav-link href=/electronic/index.html>電工の部屋</a><div class=nav-separator></div><a class=nav-link href=http://d.hatena.ne.jp/apc/>ブログ(外部サイト)</a></div></div><script src=/general.js></script><main><div id=main><div class=documentcontent><div id=breadcrumbs><i class="fas fa-home"></i><a href=/index.html>ホーム</a>
+<i class="fas fa-angle-right"></i><a href=../../index.html>部誌</a>
+<i class="fas fa-angle-right"></i><a href=../index.html>2022年度部誌</a>
+<i class="fas fa-angle-right"></i><a href=./index.html>PC98という古いPCで曲をビープ音で演奏してみた</a></div><header class=documenttitle><h1 id=title>PC98という古いPCで曲をビープ音で演奏してみた</h1><p class=author><i class="fas fa-user-edit"></i>高二 N.K.</p><a href="https://twitter.com/intent/tweet?text=PC98%e3%81%a8%e3%81%84%e3%81%86%e5%8f%a4%e3%81%84PC%e3%81%a7%e6%9b%b2%e3%82%92%e3%83%93%e3%83%bc%e3%83%97%e9%9f%b3%e3%81%a7%e6%bc%94%e5%a5%8f%e3%81%97%e3%81%a6%e3%81%bf%e3%81%9f&via=Uchi54_APC&related=Uchi54_APC" class=twitter-share-button data-show-count=false>ツイート</a>
+<script async src=https://platform.twitter.com/widgets.js></script></header><div class=document><h2 id=はじめに>はじめに</h2><p>皆さんこんにちは高2のN.Kです。今回はPC98で曲を演奏するという内容なのですがこの記事を書こうと思った理由の中に後輩へ技術を継承するということがあります。というのもPC98を扱える部員が私の4個上の代で途絶えており、私がこの企画をやるのに苦労したからです。もしかしたら後輩がPC98を扱うかもしれないのでしっかりと文章で書いておこうと思います。(いつまで部にあるPC98がもつのかわかりませんが&mldr;)</p><h2 id=pc98とは>PC98とは</h2><p>物理部の文化祭に来てくださるのは小学生が多いので一応軽くPC98の説明をしておきます。
+PC98とはNECが1982年から2003年まで製造・販売を行っていたパソコンのシリーズである「PC-9800」の略称です。
+今回使っていくのは1995年発売の<a href=https://support.nec-lavie.jp/support/product/data/spec/cpu/95110024-1.html>PC9821Xa10</a>という機種で本体標準価格税別268000円だそうです。当時のPCの高価さがうかがえます。</p><p><img src=./yhXmUyS.webp alt></p><h2 id=pc98でのプログラミング>PC98でのプログラミング</h2><p>今回はC言語というプログラミング言語を、統合開発環境はTurboC++4.0を使っていきます。
+統合開発環境とはテキストエディタやプログラミング言語を機械語に変換するコンパイラなどの機能を含むソフトウェア開発のための統合的なプログラミング環境のことでTurboC++は1987年にボーランド社から発売されたTurboCの後継である統合開発環境で今回使うver4.0は1995年に発売されました。</p><p><img src=./3hMrayZ.webp alt></p><h2 id=pc98での操作>PC98での操作</h2><p>PC98のOSはMicrosoftが開発したMS-DOSとなっており、基本的にはCUIと呼ばれる文字列でコンピュータに指示を与えてディスプレイに文字を表示して応答するUIとなっています。
+基本操作はWindowsのコマンドプロンプトと変わらないのでそこまで難しくないです。
+物理部のPC98にはFILMTNというフリーのファイルマネージャが入っているので案外コマンドを入力しなくても何とかなります。</p><p><img src=./FnvF9Jb.webp alt></p><h2 id=日本語入力>日本語入力</h2><p>日本語入力にはATOKというIMEを使います。入力中にXFER+CTRLを押すことで日本語入力になります。F7でカタカナなど後の操作は基本的に今と変わりません。</p><p><img src=./C7pAi43.webp alt></p><h2 id=実際にコードを書く>実際にコードを書く</h2><p>IDEを起動してコードを書いていきます。ここから先はソースコードの一部を公開して、解説していこうと思います。<br>ビープ音の高さは周波数で指定するので周波数と音階を対応させています。
+長さはミリ秒で指定するので同様にミリ秒と音符の長さを対応させています。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=color:#75715e>//音階
+</span><span style=color:#75715e></span><span style=color:#66d9ef>const</span> <span style=color:#66d9ef>int</span> A <span style=color:#f92672>=</span> <span style=color:#ae81ff>440</span>;
+<span style=color:#66d9ef>const</span> <span style=color:#66d9ef>int</span> AF <span style=color:#f92672>=</span> <span style=color:#ae81ff>415</span>;
+<span style=color:#66d9ef>const</span> <span style=color:#66d9ef>int</span> AS <span style=color:#f92672>=</span> BF;
+<span style=color:#66d9ef>const</span> <span style=color:#66d9ef>int</span> B <span style=color:#f92672>=</span> <span style=color:#ae81ff>494</span>;
+<span style=color:#66d9ef>const</span> <span style=color:#66d9ef>int</span> BF <span style=color:#f92672>=</span> <span style=color:#ae81ff>466</span>;
+<span style=color:#66d9ef>const</span> <span style=color:#66d9ef>int</span> C <span style=color:#f92672>=</span> <span style=color:#ae81ff>262</span>;
+<span style=color:#66d9ef>const</span> <span style=color:#66d9ef>int</span> CS <span style=color:#f92672>=</span> DF;
+<span style=color:#66d9ef>const</span> <span style=color:#66d9ef>int</span> D <span style=color:#f92672>=</span> <span style=color:#ae81ff>294</span>;
+<span style=color:#66d9ef>const</span> <span style=color:#66d9ef>int</span> DF <span style=color:#f92672>=</span> <span style=color:#ae81ff>277</span>;
+<span style=color:#66d9ef>const</span> <span style=color:#66d9ef>int</span> DS <span style=color:#f92672>=</span> EF;
+<span style=color:#66d9ef>const</span> <span style=color:#66d9ef>int</span> E <span style=color:#f92672>=</span> <span style=color:#ae81ff>330</span>;
+<span style=color:#66d9ef>const</span> <span style=color:#66d9ef>int</span> EF <span style=color:#f92672>=</span> <span style=color:#ae81ff>311</span>;
+<span style=color:#66d9ef>const</span> <span style=color:#66d9ef>int</span> F <span style=color:#f92672>=</span> <span style=color:#ae81ff>349</span>;
+<span style=color:#66d9ef>const</span> <span style=color:#66d9ef>int</span> FS <span style=color:#f92672>=</span> GF;
+<span style=color:#66d9ef>const</span> <span style=color:#66d9ef>int</span> G <span style=color:#f92672>=</span> <span style=color:#ae81ff>392</span>;
+<span style=color:#66d9ef>const</span> <span style=color:#66d9ef>int</span> GF <span style=color:#f92672>=</span> <span style=color:#ae81ff>370</span>;
+<span style=color:#66d9ef>const</span> <span style=color:#66d9ef>int</span> GS <span style=color:#f92672>=</span> AF;
+<span style=color:#75715e>//音符
+</span><span style=color:#75715e></span><span style=color:#66d9ef>const</span> <span style=color:#66d9ef>int</span> eight <span style=color:#f92672>=</span> sixteen<span style=color:#f92672>*</span><span style=color:#ae81ff>2</span>;
+<span style=color:#66d9ef>const</span> <span style=color:#66d9ef>int</span> four <span style=color:#f92672>=</span> eight<span style=color:#f92672>*</span><span style=color:#ae81ff>2</span>;
+<span style=color:#66d9ef>const</span> <span style=color:#66d9ef>int</span> one <span style=color:#f92672>=</span> two<span style=color:#f92672>*</span><span style=color:#ae81ff>2</span>;
+<span style=color:#66d9ef>const</span> <span style=color:#66d9ef>int</span> sixteen <span style=color:#f92672>=</span> <span style=color:#ae81ff>125</span>;
+<span style=color:#66d9ef>const</span> <span style=color:#66d9ef>int</span> two <span style=color:#f92672>=</span> four<span style=color:#f92672>*</span><span style=color:#ae81ff>2</span>;
+</code></pre></div><p>その次は音声再生用の関数を作ります。<code>playmsg(音符,歌詞,音階,音程)</code>で歌詞つきで音符を再生します。<code>play()</code>はそれの歌詞なし版です。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=color:#66d9ef>void</span> <span style=color:#a6e22e>playmsg</span>(<span style=color:#66d9ef>int</span> ms, <span style=color:#66d9ef>const</span> <span style=color:#66d9ef>char</span> <span style=color:#f92672>*</span>msg, <span style=color:#66d9ef>int</span> code, <span style=color:#66d9ef>int</span> ontei <span style=color:#f92672>=</span> <span style=color:#ae81ff>2</span>) {
+  cout <span style=color:#f92672>&lt;&lt;</span> msg;
+  sound(code <span style=color:#f92672>*</span> ontei);
+  delay(ms);
+  nosound();
+}
+<span style=color:#66d9ef>void</span> <span style=color:#a6e22e>play</span>(<span style=color:#66d9ef>int</span> ms, <span style=color:#66d9ef>int</span> code, <span style=color:#66d9ef>int</span> ontei <span style=color:#f92672>=</span> <span style=color:#ae81ff>2</span>) {
+  playmsg(ms, <span style=color:#e6db74>&#34;&#34;</span>, code, ontei);
+}
+</code></pre></div><p>あとはひたすらこれを使って音を鳴らしていくだけです。
+<code>!(kbhit()&&getch() == 'q')</code>の部分でもしQが押されたら終了するようにしています。
+<code>kbhit()</code>は何かキーが押されたら0以外の数値を返しバッファにキー情報が入ります。それを<code>getch()</code>で受け取ってそのキーがqであったらループを抜けるようにしています。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=color:#66d9ef>int</span> <span style=color:#a6e22e>main</span>() {
+  <span style=color:#66d9ef>while</span>(<span style=color:#f92672>!</span>(kbhit()<span style=color:#f92672>&amp;&amp;</span>getch() <span style=color:#f92672>==</span> <span style=color:#e6db74>&#39;q&#39;</span>)){
+  system(<span style=color:#e6db74>&#34;cls&#34;</span>);
+  cout <span style=color:#f92672>&lt;&lt;</span> endl <span style=color:#f92672>&lt;&lt;</span>
+  <span style=color:#e6db74>&#34;        ミックスナッツを再生中...&#34;</span> <span style=color:#f92672>&lt;&lt;</span> endl;
+  delay(<span style=color:#ae81ff>500</span>);
+  nextline();
+  <span style=color:#66d9ef>goto</span> start;
+  start:
+  playmsg(eight,<span style=color:#e6db74>&#34;袋&#34;</span>,BF);
+  play(eight,BF);
+  play(eight,BF);
+  playmsg(eight,<span style=color:#e6db74>&#34;に&#34;</span>,BF);
+  playmsg(eight,<span style=color:#e6db74>&#34;詰&#34;</span>,B);
+  playmsg(eight,<span style=color:#e6db74>&#34;め&#34;</span>,DF,<span style=color:#ae81ff>4</span>);
+  playmsg(eight,<span style=color:#e6db74>&#34;ら&#34;</span>,EF,<span style=color:#ae81ff>4</span>);
+  playmsg(eight,<span style=color:#e6db74>&#34;れ&#34;</span>,DF,<span style=color:#ae81ff>4</span>);
+  delay(eight);
+  playmsg(four,<span style=color:#e6db74>&#34;た&#34;</span>,AF,<span style=color:#ae81ff>2</span>);
+</code></pre></div><h2 id=おわりに>おわりに</h2><p>文化祭で展示した作品を軽く解説してみました。もう一つPC98の部誌を書いているのでそちらも見ていただけるとありがたいです。今後PC98を後輩が引き継いでくれるのかどうかわかりませんが引き継いでくれたらうれしいですね。ここまで読んでくださりありがとうございました。</p></div><nav class=nextPrev><div class=next>次へ<a href=https://asanobuturi.github.io/document/2022/pc98apcos/>自作OSで文字列をPC98に表示する ></a></div><div class=prev>前へ<a href=https://asanobuturi.github.io/document/2022/base_n/>n進法のおはなし ></a></div></nav></div><nav id=sidebar><div id=sidemenu><div class=side-back><a href=../index.html>記事の一覧へもどる<i class="fas fa-sign-out-alt"></i></a></div><div class=side-next><a href=https://asanobuturi.github.io/document/2022/pc98apcos/>自作OSで文字列をPC98に表示する<i class="fas fa-angle-right"></i></a></div><div class=side-prev><a href=https://asanobuturi.github.io/document/2022/base_n/><i class="fas fa-angle-left"></i>n進法のおはなし</a></div></div><div id=indexblock><div class=indextitle>目次</div><ol class=indexcontents><nav id=TableOfContents><ul><li><a href=#はじめに>はじめに</a></li><li><a href=#pc98とは>PC98とは</a></li><li><a href=#pc98でのプログラミング>PC98でのプログラミング</a></li><li><a href=#pc98での操作>PC98での操作</a></li><li><a href=#日本語入力>日本語入力</a></li><li><a href=#実際にコードを書く>実際にコードを書く</a></li><li><a href=#おわりに>おわりに</a></li></ul></nav></ol></div></nav></div><footer class=footer><p class=copyright>Copyright &copy; 2015 - 2022 Asano Physics Club, All Rights Reversed.</p></footer></main></body></html>

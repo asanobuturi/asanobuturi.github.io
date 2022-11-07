@@ -67,7 +67,7 @@ body{
     text-decoration-color: #000;
 }
 
-.indextitle{
+.indextitle {
     font-size: 24px;
     font-weight: 900;
     padding: 0.2em;
@@ -396,9 +396,6 @@ blockquote h1{
     padding:0.2em auto;
 }
 
-pre{
-    white-space: pre-line !important;
-}
 
 .document table {
     display: table;

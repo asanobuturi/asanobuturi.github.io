@@ -1,181 +1,37 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115439668-1"></script>
-  <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-          dataLayer.push(arguments);
-      }
-      gtag('js', new Date());
-      gtag('config', 'UA-115439668-1');
-  </script>
+<!doctype html><html><head><script async src="https://www.googletagmanager.com/gtag/js?id=UA-115439668-1"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());gtag('config','UA-115439668-1');</script><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=description content="浅野学園物理部の公式ホームページです。文化祭情報などを掲載しています。"><meta name=viewport content="width=device-width,initial-scale=1"><link rel=stylesheet href=/styles.css><link rel=stylesheet href=/highlight.css><link rel=icon href=/image/favicon.ico><script type=text/javascript src=//typesquare.com/accessor/script/typesquare.js?YME8OdI00sA%3D></script></head><link rel=stylesheet href=/blog_new.css><link rel=stylesheet href=/highlight.css><script src=https://kit.fontawesome.com/1e291c4f9b.js crossorigin=anonymous></script><title>PWMについて｜浅野学園物理部</title><script type=text/javascript async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML"></script><body><div id=nav-drawer><input id=nav-input type=checkbox class=nav-unshown>
+<label id=nav-open for=nav-input><span class="bar bar1"></span><span class="bar bar2"></span><span class="bar bar3"></span><span class=menu>MENU</span>
+<span class=close>CLOSE</span></label>
+<label id=nav-close for=nav-input></label><div id=nav-content><a class=nav-link href=/index.html>ホーム</a>
+<a class=nav-link href=/about/index.html>物理部とは</a>
+<a class=nav-link href=/document/index.html>部誌</a>
+<a class=nav-link href=/game/index.html>ゲーム</a>
+<a class=nav-link href=/blog/index.html>ブログ</a>
+<a class=nav-link href=/electronic/index.html>電工の部屋</a><div class=nav-separator></div><a class=nav-link href=http://d.hatena.ne.jp/apc/>ブログ(外部サイト)</a></div></div><script src=/general.js></script><main><div id=main><div class=documentcontent><div id=breadcrumbs><i class="fas fa-home"></i><a href=/index.html>ホーム</a>
+<i class="fas fa-angle-right"></i><a href=../../index.html>部誌</a>
+<i class="fas fa-angle-right"></i><a href=../index.html>2022年度部誌</a>
+<i class="fas fa-angle-right"></i><a href=./index.html>PWMについて</a></div><header class=documenttitle><h1 id=title>PWMについて</h1><p class=author><i class="fas fa-user-edit"></i>高一 H.R.</p><a href="https://twitter.com/intent/tweet?text=PWM%e3%81%ab%e3%81%a4%e3%81%84%e3%81%a6&via=Uchi54_APC&related=Uchi54_APC" class=twitter-share-button data-show-count=false>ツイート</a>
+<script async src=https://platform.twitter.com/widgets.js></script></header><div class=document><p>この記事はコロナ感染中に執筆しているため、もしかしたらおかしな所があるかもしれません。大目に見てください。</p><h2 id=pwmとは>PWMとは</h2><p>PWMは Pulse Width Modulation の略で、直訳するとパルス幅変調となります。アナログ信号をデジタル信号に変調する方式の一つで、ONとOFFの比率を変化させることで擬似的にその間の値を表現するものです。</p><ul><li>用語説明<ul><li>周期：繰り返しの現象が一周りしてまた戻ってくるまでの時間。</li><li>周波数：繰り返しの現象が1秒間に行われている回数。 $$ \frac{1}{\text{周期}} $$</li><li>パルス幅：一周期のうち、ONになっている時間。</li><li>デューティ比：一周期の中でのONの時間の割合。 $$ \frac{\text{パルス幅}}{\text{周期}} $$で計算できる。</li><li>平均電圧：名前の通り、電圧の平均。 $$ \text{デューティ比}\times\text{ONのときの電圧} $$</li><li>実行電圧：周期的に変化する電圧の大きさを表すのに使う値。PWMの場合、$$ \text{ONのときの電圧} \times \sqrt{\text{デューティ比}} $$ で計算できる。</li></ul></li></ul><p><img src=./pwm.webp alt=PWMの画像>{height=300}</p><p>上の画像はPWMの電圧のグラフですが、電流、電力も同じ形になります。</p><h2 id=pwm信号の基本的な作り方>PWM信号の基本的な作り方</h2><p>PWMの信号を生成するには、２つの入力が必要になります。１つ目は変換したいアナログ信号(当たり前)、もう一つは変調に使うためのノコギリ波(三角波でも可)です。
+変換したい信号とノコギリ波の大小を比較し、変換したい信号の値がノコギリ波より大きいときはON、小さいときはOFFを出力することでPWM信号を生成することができます。言葉で説明するより実際に下のグラフをいじってみたほうがわかりやすいでしょう。赤い線がアナログ信号、オレンジの波がノコギリ波、紫の線がPWM信号、青い線がPWM信号の実効値を表しています。半透明の点はドラッグで動かせます。(若干重いです)</p><iframe src=https://www.desmos.com/calculator/cyoadstalt?embed width=500 height=500 style="border:1px solid #ccc" frameborder=0></iframe><p>上のグラフを見て分かる通り、変調に使ったノコギリ波の周期と生成したPWM信号の周期は一致し、変調したいアナログ信号の最大値、最小値はノコギリ波の最大値、最小値のなかに収まっていないといけません。
+また、連続的に変化する信号を変換することもできます。</p><iframe src=https://www.desmos.com/calculator/rtrvr1ukgo?embed width=500 height=500 style="border:1px solid #ccc" frameborder=0></iframe><p>変調するアナログ信号の振幅を大きくし、ノコギリ波の範囲を超えると、音割れのような状態になってしまうのがわかるかと思います。</p><h2 id=arduino-uno上での実行>Arduino Uno上での実行</h2><p>先ほど紹介した方法をArduino Uno上で実行します。
+Arduino Unoには タイマー０、タイマー１、タイマー２の３種類のタイマーがあり、役割や特徴が少しずつ違います。この３つの違い等については割愛します。
+Arduino Unoではタイマーが16Mhzで(1秒間に16,000,000回)カウンタを一ずつ増やしていき、0~255まで数え、255になったらリセットするというのを繰り返しています(自分で設定すれば変えられます)。これをPWMの変調に使うノコギリ波の代わりにします。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;avr/io.h&gt; //タイマーを設定するのに必要なライブラリを読み込む</span><span style=color:#75715e>
+</span><span style=color:#75715e></span>
+<span style=color:#66d9ef>int</span> duty <span style=color:#f92672>=</span> <span style=color:#ae81ff>50</span>; <span style=color:#75715e>//指定したいデューティ比(%)
+</span><span style=color:#75715e></span>
+<span style=color:#66d9ef>void</span> <span style=color:#a6e22e>setup</span>() {
+  pinMode(<span style=color:#ae81ff>11</span>, OUTPUT); <span style=color:#75715e>//11番のピンを出力に設定
+</span><span style=color:#75715e></span>}
 
-  <meta property="og:url" content="https://asanobuturi.github.io/document/2022/pwm/index.html"/>
-  <meta property="og:title" content="PWMについて|浅野学園物理部"/>
-  <meta property="og:description" content=""/>
-  <meta property="og:type" content="website"/>
-  <meta property="og:image" content="https://asanobuturi.github.io/document/2022/pwm/thumbnail.jpg"/><!--ここまでOGP設定-->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:site" content="@Uchi54_APC" /> <!--ここまでTwitterカード設定-->
+<span style=color:#66d9ef>void</span> <span style=color:#a6e22e>loop</span>() {
 
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML' async></script><!--MathJax適用(LaTeX数式表示用)-->
+  <span style=color:#75715e>// タイマーのモードを指定
+</span><span style=color:#75715e></span>  TCCR2A <span style=color:#f92672>=</span> <span style=color:#ae81ff>0b10100001</span>;
+  TCCR2B <span style=color:#f92672>=</span> <span style=color:#ae81ff>0b00000100</span>;
 
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <meta name="description" content="パルス幅変調について高1の電工班員が解説" />
-
-  <title>PWMについて|浅野学園物理部</title>
-
-  <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
-
-  <link rel="stylesheet" href="https://asanobuturi.github.io/styles.css">
-  <link rel="stylesheet" href="https://asanobuturi.github.io/blog_new.css">
-  <link rel="stylesheet" href="https://asanobuturi.github.io/highlight.css"><!--シンタックスハイライト-->
-  <link rel="shortcut icon" href="https://asanobuturi.github.io/image/favicon.ico">
-
-  <script type="text/javascript" src="//typesquare.com/accessor/script/typesquare.js?YME8OdI00sA%3D" charset="utf-8"></script>
-  <script src="https://kit.fontawesome.com/1e291c4f9b.js" crossorigin="anonymous"></script>
-
-</head>
-<body>
-  <div id="nav-drawer">
-  </div>
-  <main>
-    <div id="main">
-        <div class="documentcontent"><article>
-            <div id="breadcrumbs">
-            </div>
-            <header class="documenttitle">
-                <h1 id="title"></h1>
-                <p class="author"></p>
-                <a href="https://twitter.com/intent/tweet?url=https://asanobuturi.github.io/document/2022/pwm/index.html&text=PWMについて|浅野学園物理部&via=Uchi54_APC&related=Uchi54_APC" class="twitter-share-button" data-show-count="false">Tweet</a>
-                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script><!--Twitterのシェアボタンの中身(URL・記事タイトル)も記述すること-->
-            </header>
-            <div class="document">
-              <p>この記事はコロナ感染中に執筆しているため、もしかしたらおかしな所があるかもしれません。大目に見てください。</p>
-              <h2 id="pwmとは">PWMとは</h2>
-              <p>PWMは Pulse Width Modulation
-              の略で、直訳するとパルス幅変調となります。アナログ信号をデジタル信号に変調する方式の一つで、ONとOFFの比率を変化させることで擬似的にその間の値を表現するものです。</p>
-              <ul>
-              <li>用語説明
-              <ul>
-              <li>周期：繰り返しの現象が一周りしてまた戻ってくるまでの時間。</li>
-              <li>周波数：繰り返しの現象が1秒間に行われている回数。
-              <span class="math display">\[ \frac{1}{\text{周期}}
-              \]</span></li>
-              <li>パルス幅：一周期のうち、ONになっている時間。</li>
-              <li>デューティ比：一周期の中でのONの時間の割合。 <span
-              class="math display">\[
-              \frac{\text{パルス幅}}{\text{周期}}
-              \]</span>で計算できる。</li>
-              <li>平均電圧：名前の通り、電圧の平均。 <span
-              class="math display">\[
-              \text{デューティ比}\times\text{ONのときの電圧}
-              \]</span></li>
-              <li>実行電圧：周期的に変化する電圧の大きさを表すのに使う値。PWMの場合、<span
-              class="math display">\[ \text{ONのときの電圧} \times
-              \sqrt{\text{デューティ比}} \]</span> で計算できる。</li>
-              </ul></li>
-              </ul>
-              <figure>
-              <img src="pwm.png" height="300" alt="PWMの画像" />
-              <figcaption aria-hidden="true">PWMの画像</figcaption>
-              </figure>
-              <p>上の画像はPWMの電圧のグラフですが、電流、電力も同じ形になります。</p>
-              <h2
-              id="pwm信号の基本的な作り方">PWM信号の基本的な作り方</h2>
-              <p>PWMの信号を生成するには、２つの入力が必要になります。１つ目は変換したいアナログ信号(当たり前)、もう一つは変調に使うためのノコギリ波(三角波でも可)です。
-              変換したい信号とノコギリ波の大小を比較し、変換したい信号の値がノコギリ波より大きいときはON、小さいときはOFFを出力することでPWM信号を生成することができます。言葉で説明するより実際に下のグラフをいじってみたほうがわかりやすいでしょう。赤い線がアナログ信号、オレンジの波がノコギリ波、紫の線がPWM信号、青い線がPWM信号の実効値を表しています。半透明の点はドラッグで動かせます。(若干重いです)</p>
-              <iframe src="https://www.desmos.com/calculator/cyoadstalt?embed" width="500" height="500" style="border: 1px solid #ccc" frameborder="0">
-              </iframe>
-              <p>上のグラフを見て分かる通り、変調に使ったノコギリ波の周期と生成したPWM信号の周期は一致し、変調したいアナログ信号の最大値、最小値はノコギリ波の最大値、最小値のなかに収まっていないといけません。
-              また、連続的に変化する信号を変換することもできます。</p>
-              <iframe src="https://www.desmos.com/calculator/rtrvr1ukgo?embed" width="500" height="500" style="border: 1px solid #ccc" frameborder="0">
-              </iframe>
-              <p>変調するアナログ信号の振幅を大きくし、ノコギリ波の範囲を超えると、音割れのような状態になってしまうのがわかるかと思います。</p>
-              <h2 id="arduino-uno上での実行">Arduino Uno上での実行</h2>
-              <p>先ほど紹介した方法をArduino Uno上で実行します。 Arduino
-              Unoには
-              タイマー０、タイマー１、タイマー２の３種類のタイマーがあり、役割や特徴が少しずつ違います。この３つの違い等については割愛します。
-              Arduino
-              Unoではタイマーが16Mhzで(1秒間に16,000,000回)カウンタを一ずつ増やしていき、0~255まで数え、255になったらリセットするというのを繰り返しています(自分で設定すれば変えられます)。これをPWMの変調に使うノコギリ波の代わりにします。</p>
-              <div class="sourceCode" id="cb1"><pre
-              class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;avr/io.h&gt;</span><span class="pp"> </span><span class="co">//タイマーを設定するのに必要なライブラリを読み込む</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> duty <span class="op">=</span> <span class="dv">50</span><span class="op">;</span> <span class="co">//指定したいデューティ比(%)</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> setup<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  pinMode<span class="op">(</span><span class="dv">11</span><span class="op">,</span> OUTPUT<span class="op">);</span> <span class="co">//11番のピンを出力に設定</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> loop<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="co">// タイマーのモードを指定</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  TCCR2A <span class="op">=</span> <span class="bn">0b10100001</span><span class="op">;</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  TCCR2B <span class="op">=</span> <span class="bn">0b00000100</span><span class="op">;</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Dutyの比指定</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  OCR2A <span class="op">=</span> <span class="dv">255</span><span class="op">*</span>duty<span class="op">/</span><span class="dv">100</span><span class="op">;</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
-              <p>上のプログラムを実行すると周波数：982Hz、デューティ比：約50％のPWMがArduino
-              Unoの11番のピンから出てくるはずです。これでも十分短いプログラムですが、単にArduinoでPWMを使いたいだけだったら下の一文で使うことができます。</p>
-              <div class="sourceCode" id="cb2"><pre
-              class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>analogWrite<span class="op">(</span>pin<span class="op">,</span>x<span class="op">);</span></span></code></pre></div>
-              <p>pin にはPWMを出力したいピンの番号、x
-              には出力したいアナログ信号の大きさを入れるだけでPWMが出てきます。これはArduino側がPWMを使うためにもとから用意してあるもので、これであれば、デューティ比などの小難しいことを考えずに初心者でも扱うことができます。</p>
-              <h2 id="pwmの使い道">PWMの使い道</h2>
-              <p>PWMは主にインバータという直流を交流に変換する回路で使用されています。また、鉄道車両の制御にも使われています。
-              電子工作においてはサーボモーターやステッピングモータといったモーターを制御するのに使っています。また、擬似的にアナログの値を表現できるため、LEDの明るさを変えるのにも使われていたりと、マイコンを使った電子工作には欠かせないものとなっています。</p>
-              <h2
-              id="pwm信号からアナログ信号への変換">PWM信号からアナログ信号への変換</h2>
-              <p>最後に、PWM信号からアナログ信号へ変換する方法を紹介します。PWM信号はローパスフィルター(ハイカットフィルター)という高い周波数を通さないフィルターを通すことで元のアナログ信号を得ることができます。しかし、LEDの光量を調節する場合やモーターの制御に使用する場合は必要ないので、これを使う機会は少ないかもしれません。</p>
-              <h2 id="参考資料">参考資料</h2>
-              <p>PWMの解説 - しなぷすのハード製作記<br />
-              <a href="https://synapse.kyoto/glossary/pwm/page001.html"
-              class="uri">https://synapse.kyoto/glossary/pwm/page001.html</a></p>
-              <p>パルス幅変調 - Wikipedia<br />
-              <a href="https://ja.wikipedia.org/wiki/パルス幅変調"
-              class="uri">https://ja.wikipedia.org/wiki/パルス幅変調</a></p>
-            </div>
-            <nav class="nextPrev">
-            </nav>
-        </article></div>
-        <nav id="sidebar">
-            <div id="sidemenu">
-            </div>
-            <div id="indexblock">
-                <div class="indextitle">目次</div>
-                <ol class="indexcontents">
-                    <ul>
-                    <li><a href="#pwmとは"
-                    id="toc-pwmとは">PWMとは</a></li>
-                    <li><a href="#pwm信号の基本的な作り方"
-                    id="toc-pwm信号の基本的な作り方">PWM信号の基本的な作り方</a></li>
-                    <li><a href="#arduino-uno上での実行"
-                    id="toc-arduino-uno上での実行">Arduino
-                    Uno上での実行</a></li>
-                    <li><a href="#pwmの使い道"
-                    id="toc-pwmの使い道">PWMの使い道</a></li>
-                    <li><a href="#pwm信号からアナログ信号への変換"
-                    id="toc-pwm信号からアナログ信号への変換">PWM信号からアナログ信号への変換</a></li>
-                    <li><a href="#参考資料"
-                    id="toc-参考資料">参考資料</a></li>
-                    </ul>
-                </ol>
-            </div>
-        </nav>
-    </div>
-    <footer class="footer">
-        <div class="">
-            <p class="copyright">&copy; 2015-2022 Asano Physics Club</p>
-        </div>
-    </footer>
-</main>
-<script type="text/javascript" src="/general.js"></script>
-<script type="text/javascript" src="/document/document.js"></script>
-</body>
-</html>
+  <span style=color:#75715e>// Dutyの比指定
+</span><span style=color:#75715e></span>  OCR2A <span style=color:#f92672>=</span> <span style=color:#ae81ff>255</span><span style=color:#f92672>*</span>duty<span style=color:#f92672>/</span><span style=color:#ae81ff>100</span>;
+}
+</code></pre></div><p>上のプログラムを実行すると周波数：982Hz、デューティ比：約50％のPWMがArduino Unoの11番のピンから出てくるはずです。これでも十分短いプログラムですが、単にArduinoでPWMを使いたいだけだったら下の一文で使うことができます。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp>analogWrite(pin,x);
+</code></pre></div><p>pin にはPWMを出力したいピンの番号、x には出力したいアナログ信号の大きさを入れるだけでPWMが出てきます。これはArduino側がPWMを使うためにもとから用意してあるもので、これであれば、デューティ比などの小難しいことを考えずに初心者でも扱うことができます。</p><h2 id=pwmの使い道>PWMの使い道</h2><p>PWMは主にインバータという直流を交流に変換する回路で使用されています。また、鉄道車両の制御にも使われています。
+電子工作においてはサーボモーターやステッピングモータといったモーターを制御するのに使っています。また、擬似的にアナログの値を表現できるため、LEDの明るさを変えるのにも使われていたりと、マイコンを使った電子工作には欠かせないものとなっています。</p><h2 id=pwm信号からアナログ信号への変換>PWM信号からアナログ信号への変換</h2><p>最後に、PWM信号からアナログ信号へ変換する方法を紹介します。PWM信号はローパスフィルター(ハイカットフィルター)という高い周波数を通さないフィルターを通すことで元のアナログ信号を得ることができます。しかし、LEDの光量を調節する場合やモーターの制御に使用する場合は必要ないので、これを使う機会は少ないかもしれません。</p><h2 id=参考資料>参考資料</h2><p>PWMの解説 - しなぷすのハード製作記<br><a href=https://synapse.kyoto/glossary/pwm/page001.html>https://synapse.kyoto/glossary/pwm/page001.html</a></p><p>パルス幅変調 - Wikipedia<br><a href=https://ja.wikipedia.org/wiki/%E3%83%91%E3%83%AB%E3%82%B9%E5%B9%85%E5%A4%89%E8%AA%BF>https://ja.wikipedia.org/wiki/パルス幅変調</a></p></div><nav class=nextPrev><div class=next>次へ<a href=https://asanobuturi.github.io/document/2022/led/>知れば知るほど知りたくなるLEDの世界 ></a></div><div class=prev>前へ<a href=https://asanobuturi.github.io/document/2022/coilgun/>ゼロから始めるコイルガン製作 ></a></div></nav></div><nav id=sidebar><div id=sidemenu><div class=side-back><a href=../index.html>記事の一覧へもどる<i class="fas fa-sign-out-alt"></i></a></div><div class=side-next><a href=https://asanobuturi.github.io/document/2022/led/>知れば知るほど知りたくなるLEDの世界<i class="fas fa-angle-right"></i></a></div><div class=side-prev><a href=https://asanobuturi.github.io/document/2022/coilgun/><i class="fas fa-angle-left"></i>ゼロから始めるコイルガン製作</a></div></div><div id=indexblock><div class=indextitle>目次</div><ol class=indexcontents><nav id=TableOfContents><ul><li><a href=#pwmとは>PWMとは</a></li><li><a href=#pwm信号の基本的な作り方>PWM信号の基本的な作り方</a></li><li><a href=#arduino-uno上での実行>Arduino Uno上での実行</a></li><li><a href=#pwmの使い道>PWMの使い道</a></li><li><a href=#pwm信号からアナログ信号への変換>PWM信号からアナログ信号への変換</a></li><li><a href=#参考資料>参考資料</a></li></ul></nav></ol></div></nav></div><footer class=footer><p class=copyright>Copyright &copy; 2015 - 2022 Asano Physics Club, All Rights Reversed.</p></footer></main></body></html>
