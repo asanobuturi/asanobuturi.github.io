@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115439668-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+            gtag('config', 'UA-115439668-1');
+        </script>
+
+        <meta property="og:url" content="https://asanobuturi.github.io/document/2018/column/index.html"/>
+        <meta property="og:title" content="コラム 動的計画法|浅野学園物理部"/>
+        <meta property="og:description" content="効率よく探索するための「動的計画法」について説明しています。"/>
+        <meta property="og:type" content="website"/>
+        <meta property="og:image" content="https://asanobuturi.github.io/document/2018/column/thumbnail.jpg"/><!--ここまでOGP設定-->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@Uchi54_APC" /> <!--ここまでTwitterカード設定-->
+
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML' async></script><!--MathJax適用(LaTeX数式表示用)-->
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <meta name="description" content="効率よく探索するための「動的計画法」について説明しています。" />
+
+        <title>コラム 動的計画法|浅野学園物理部</title>
+
+        <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+        <link rel="stylesheet" href="https://asanobuturi.github.io/styles.css">
+        <link rel="stylesheet" href="https://asanobuturi.github.io/blog_new.css">
+        <link rel="stylesheet" href="https://asanobuturi.github.io/highlight.css"><!--シンタックスハイライト-->
+        <link rel="shortcut icon" href="https://asanobuturi.github.io/image/favicon.ico">
+
+        <script type="text/javascript" src="//typesquare.com/accessor/script/typesquare.js?YME8OdI00sA%3D" charset="utf-8"></script>
+        <script src="https://kit.fontawesome.com/1e291c4f9b.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <div id="nav-drawer">
+        </div>
+        <main>
+            <div id="main">
+                <div class="documentcontent"><article>
+                    <div id="breadcrumbs">
+                    </div>
+                    <header class="documenttitle">
+                        <h1 id="title"></h1>
+                        <p class="author"><i class="fas fa-user-edit"></i></p>
+                        <a href="" class="twitter-share-button" data-show-count="false">Tweet</a>
+                        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script><!--Twitterのシェアボタンの中身(URL・記事タイトル)も記述すること-->
+                    </header>
+                    <div class="document">
+                        <p>例えば、探し物が家の中にあるはずなのに見つからないとしましょう。そのときに、まず家を部屋ごとに分けます。そして、その各部屋を、また細かく分けます。例えば部屋を50m 四方くらいに分けていくとします。すると、その50cm四方の中に探し物があるかどうかは簡単に分かると思います。それを繰り返していくと、その部屋に探し物があるかがわかるはずです。</p>
+                        <p>というように、いきなり答えを出すのが難しい問題（家に探し物があるか？）を解くときに、その問題を小さな問題（50cm四方の中に探し物があるか？）に分け、その小さな問題をすべて解くことで最終的な問題の答えを出す方法を、分割統治法といいます。</p>
+                        <p>この分割統治法は、数学の問題を解くのにも使えます。中学受験をしようとしている、または経験した人なら、次のような問題を解いたことがあると思います。</p>
+                        <figure>
+                            <figcaption aria-hidden="true">問. 図のような道があったとします。このとき、左下から右上まで遠回りしないで行く道順は何通りありますか。（上の図）</figcaption>
+                            <img src="./images/img1.jpg">
+                            <img src="./images/img2.jpg">
+                        </figure>
+                        <p>この問題は、交点それぞれに、その交点まで行く道順の数を書き込んでいくことで答えが出せます。（下の図）例えば、図の点Aでは、点Aの左から来るのは6通り、下から来るのが4通りなので、点Aに行く道順は 6+4=10通りです。これを繰り返すと、右上まで行く道順は225通りと出ます。</p>
+                        <p>この場合は、「全部で何通りあるか」という問題を、「ある交点まで行く方法は、それぞれ何通りか」という問題に分割しています。また、このように小さな問題を解くときに、他の結果を再利用（左と下の道順の数を利用して次の道順の数を求める）するような分割統治法のことを動的計画法といいます。</p>
+                        <p>では、動的計画法を使って、１つ問題を解いてみましょう。</p>
+                        <figure>
+                            <figcaption aria-hidden="true">問. Aくんは、（1から6までのサイコロだと問題が複雑になって、ただでさえ狭いこのページの余白で計算できなくなってしまうので）1から3の数字が書いてあるサイコロとすごろくを用意し、Aくんの駒をスタートに置きました。Aくんの駒は、1から3の数字が書いてあるサイコロを振って、1が出たら1つすすみ、2が出たら2つすすみ、3が出たら1つもどります。ただし、スタートより前には戻れないので、そのときはスタートにとどまります。<br>このとき、サイコロを5回投げたら、スタートから3つ進んだところにAくんの駒があるようなサイコロの目の出方は何通りあるでしょう。必要なら下の図を使ってください。</figcaption>
+                            <img src="./images/img3.jpg">
+                        </figure>
+                    </div>
+                    <nav class="nextPrev">
+                    </nav>
+                </article></div>
+                <nav id="sidebar">
+                    <div id="sidemenu"></div>
+                    <div id="indexblock">
+                        <div class="indextitle">目次</div>
+                        <span>なし</span>
+                    </div>
+                </nav>
+            </div>
+            <footer class="footer">
+                <div class="">
+                    <p class="copyright">&copy; 2015-2022 Asano Physics Club</p>
+                </div>
+            </footer>
+        </main>
+    <script type="text/javascript" src="/general.js"></script>
+    <script type="text/javascript" src="/document/document.js"></script>
+    </body>
+</html>

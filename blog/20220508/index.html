@@ -1,458 +1,160 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115439668-1"></script>
-  <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-          dataLayer.push(arguments);
-      }
-      gtag('js', new Date());
-      gtag('config', 'UA-115439668-1');
-  </script>
-
-  <meta property="og:url" content="https://asanobuturi.github.io/blog/20220508/index.html"/>
-  <meta property="og:title" content="高校数学で描くマンデルブロ集合|浅野学園物理部"/>
-  <meta property="og:description" content=""/>
-  <meta property="og:type" content="website"/>
-  <meta property="og:image" content="https://asanobuturi.github.io/blog/20220508/thumbnail.jpg"/><!--ここまでOGP設定-->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:site" content="@Uchi54_APC" /> <!--ここまでTwitterカード設定-->
-
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML' async></script><!--MathJax適用(LaTeX数式表示用)-->
-
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <meta name="description" content="数学によってもたらされる美しい図像「マンデルブロ集合」を高校数学の知識だけで描画することを試みます。" />
-
-  <title>高校数学で描くマンデルブロ集合|浅野学園物理部</title>
-
-  <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
-
-  <link rel="stylesheet" href="../../styles.css">
-  <link rel="stylesheet" href="../../blog_new.css">
-  <link rel="stylesheet" href="../../highlight.css"><!--シンタックスハイライト-->
-  <link rel="shortcut icon" href="../../image/favicon.ico">
-
-  <script type="text/javascript" src="//typesquare.com/accessor/script/typesquare.js?YME8OdI00sA%3D" charset="utf-8"></script>
-  <script src="https://kit.fontawesome.com/1e291c4f9b.js" crossorigin="anonymous"></script>
-  <script type="text/javascript" src="../blog.js"></script>
-
-  <style>
-      .youtube {
-      width: 100%;
-      aspect-ratio: 16 / 9;
-    }
-    .youtube iframe {
-      width: 100%;
-      height: 100%;
-    }
-  </style>
-
-</head>
-<body>
-  <div id="nav-drawer">
-  </div>
-  <main>
-    <div id="main">
-        <div class="documentcontent"><article>
-            <div id="breadcrumbs">
-                <i class="fas fa-home"></i><a href="../../index.html">ホーム</a><i class="fas fa-angle-right"></i><a href="../index.html">ブログ</a><i class="fas fa-angle-right"></i>高校数学で描くマンデルブロ集合
-            </div>
-            <header class="documenttitle">
-                <h1>高校数学で描くマンデルブロ集合</h1>
-                <p class="author"><i class="fas fa-user-edit"></i>高三・永田</p>
-                <a href="https://twitter.com/intent/tweet?url=https://asanobuturi.github.io/blog/20220508/index.html&text=高校数学で描くマンデルブロ集合|浅野学園物理部&via=Uchi54_APC&related=Uchi54_APC" class="twitter-share-button" data-show-count="false">Tweet</a>
-                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script><!--Twitterのシェアボタンの中身(URL・記事タイトル)も記述すること-->
-            </header>
-            <div class="document">
-                <h2 id="はじめに">はじめに</h2>
-                <p>お久しぶりです。2019年に最後のブログを投稿してから3年以上が経ったようなのですが、当時中学2年だった私もいつの間にか高校三年になってしまいました。物理部がブログではなくTwitterを積極的に使うようになってからは、このウェブサイトも部誌の電子版の公開以外で使うことはほとんどなくなったのです。浅野を卒業する前にもう一度くらいはブログ記事を執筆しておきたいと思い、今回キーボードをたたいています。 前置きはさておき、今回は久しぶり(そりゃそうだろ)に技術的な記事になります。</p>
-                <h2 id="対象読者">対象読者</h2>
-                <p>日本の高校一年生相当以上の基本的な数学の知識を有している人。必要な知識を前半部分で解説し、高校一年生、あるいは中学生程度でもある程度は理解できるように書いているつもりです。</p>
-                <p>加えて、基本的なプログラミングの知識を有している人。今回はJavascriptを使用しますが、for文、変数などの一般的な文法が分かっていればおおよそ意味はつかめると思います。</p>
-                <h2 id="マンデルブロ集合とは">マンデルブロ集合とは</h2>
-                <p>マンデルブロ集合というものを知っていますか？実態はただの複素数の集合<sup>[※]</sup>なのですが、よくこのような写真の形でウェブ上に共有されることがあります。</p>
-                <blockquote>
-                <h4 id="集合とは">※集合とは</h4>
-                <p>日本では「数学A」で学習する概念。 数やその他さまざまなものの集まりのこと。集合を構成する「要素」は数だけでなく、(たぶん)確率や式であったり、数学以外の分野に集合の考え方を応用すれば「単語」や「情報」であるパターンもある(と思う)。 マンデルブロ集合は、数、そのなかでも複素数の集合である。つまり、マンデルブロ集合の中には(<span class="math inline">\(-0.2+0.5i\)</span>)や(<span class="math inline">\(0.1-0.3i\)</span>)などの様々な複素数が大量に収納されている。(複素数については後程解説します。)</p>
-                </blockquote>
-                <p><img src="1024px-Mandel_zoom_00_mandelbrot_set.jpg" alt="マンデルブロ集合の画像" /> <img src="1024px-Mandel_zoom_12_satellite_spirally_wheel_with_julia_islands.jpg" alt="一部を拡大したマンデルブロ集合の画像" /></p>
-                <p>画像出典：<a href="https://en.wikipedia.org/wiki/File:Mandel_zoom_00_mandelbrot_set.jpg">Wikimedia Commons</a>(CC BY-SA 3.0) <br>下の画像は一部を拡大したもの。</p>
-                <iframe class="youtube" src="https://www.youtube.com/embed/gva-evKs_8A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-                </iframe>
-                <p>このように、マンデルブロ集合をある規則にしたがって画像に落とし込むと、非常に美しい幾何学模様をみせるため、YouTubeをはじめインターネット上にはマンデルブロ集合を描画した映像がたくさん投稿されています。</p>
-                <p>この記事では、このようなマンデルブロ集合の写真を、高校数学の知識だけで描画することを試みます。なお、今回は<strong>上記の写真や映像のようなカラフルな色付けは行いません</strong>。</p>
-                <p>マンデルブロ集合の実態は、以下の漸化式が無限大に発散しないような複素数<span class="math inline">\(C\)</span>の集まりです。(より正確な定義を後程記載)</p>
-                <p><span class="math display">\[
-                \begin {cases}
-                Z_0 = 0\\
-                Z_{n+1} = {Z_n}^2 + C
-                \end {cases}
-                \]</span></p>
-                <p>このように定義されるマンデルブロ集合を構成する各複素数を複素数平面上に黒い点としてプロットしていくと、おおよそ上記の写真のような画像が得られます。</p>
-                <p>さて、一応ここまで高校数学の用語だけを用いて解説してきましたが、まだ該当範囲を学んでいない人にとってはちんぷんかんぷんだと思いますので、ここから一つ一つ噛み砕いて理解していきましょう。</p>
-                <p>ここから下は、複素数、複素数平面、漸化式、極限についての基礎知識の解説が続きます。これらを既に理解している方は、「マンデルブロ集合の要素を調べる」の章まで読み飛ばして頂いて構いません。</p>
-                <h2 id="複素数数学ⅱで学習とは">複素数(数学Ⅱで学習)とは</h2>
-                <p>中学三年で習う平方根(ルート)を思い出してください。 <span class="math inline">\(2\times2=4\)</span>であるとき、<span class="math inline">\(4\)</span>のルートすなわち<span class="math inline">\(\sqrt4\)</span>は<span class="math inline">\(2\)</span>となります。同様に<span class="math inline">\(3\times3=9\)</span>なので、<span class="math inline">\(\sqrt9=3\)</span>です。このように、ある数に対して、2乗することでその「ある数」となるような「別のある数」を求めるのがルートの計算です。</p>
-                <p>なお、<span class="math inline">\((-2)\times(-2)=4\)</span>でもあるため、正確には<span class="math inline">\(\sqrt4=\pm2\)</span>となります。また、<span class="math inline">\(\sqrt2\)</span>などの値もコンピューターなどを使うことでおおよそ<span class="math inline">\(\pm1.41421356\)</span>という値(近似値)を求めることが出来ます。実際に電卓でこの数を2乗してみれば、約2(1.999999993…くらい)になることが確認できると思います。</p>
-                <h3 id="虚数の定義">虚数の定義</h3>
-                <p>さて、ここで負の数のルートを考えてみます。 <span class="math inline">\(\sqrt{-1}\)</span>はいくつでしょうか？</p>
-                <p><span class="math inline">\(\sqrt1\)</span>であれば答えは<span class="math inline">\(\pm1\)</span>、すなわち<span class="math inline">\(1\)</span>と<span class="math inline">\(-1\)</span>ですが、2乗して<span class="math inline">\(-1\)</span>となるような数は存在するのでしょうか？</p>
-                <p>はい、そんな数は存在しません。正確には、実数(整数、分数&amp;少数、ルートや円周率などの無理数)の中には存在しません。そこで、先ほど2乗して<span class="math inline">\(2\)</span>になるような、少数で正確に表せない数を<span class="math inline">\(\sqrt2\)</span>という記号で表したように、2乗して<span class="math inline">\(-1\)</span>になるような数を<span class="math inline">\(i\)</span>という記号を用いて考えることになったのです。つまり、<span class="math inline">\(i^2=-1\)</span>であり、<span class="math inline">\(\pm i=\sqrt{-1}\)</span>です。このような、2乗して負の数になるような数を、「虚数」と呼びます。</p>
-                <p>この、<span class="math inline">\(\pm i =\sqrt{-1}\)</span>で定義される数<span class="math inline">\(i\)</span>には、「虚数単位」という名前がついています。<span class="math inline">\(\pm i\)</span>とあるように、この方程式の解はプラスマイナスの2つがありますが、虚数単位はそのどちらか片方のみを表します(計算の途中でプラスとマイナスをごっちゃにして考えなければどちらでも問題ない)。</p>
-                <p>虚数単位を使うことで、<span class="math inline">\(\sqrt{-1}\)</span>だけでなく負の数のルートをなんでも表すことが出来るようになります。</p>
-                <p>例えば<span class="math inline">\(\sqrt{-5}\)</span>は<span class="math inline">\(\sqrt{-5}=\sqrt{-1}\times\sqrt5\)</span>と書き換えられますから、<span class="math inline">\(\sqrt{-5}=\pm\sqrt5i\)</span>です。同様に<span class="math inline">\(\sqrt{-4}=\pm2i\)</span>、<span class="math inline">\(\sqrt{-12}=\pm2\sqrt3i\)</span>という風に表すことが可能です。</p>
-                <p>二次方程式の解の公式で、<span class="math inline">\(x^2+bx+c=0\)</span>の解<span class="math inline">\(x=\frac{-b\pm\sqrt{b^2-4ac}}{2ac}\)</span>のルートの中身<span class="math inline">\((b^2-4ac)\)</span>が負の数になると「この二次方程式は実数解をもたない」だと言ったり、正の場合は「異なる実数解を2つもつ」というフレーズが出てきたりするように、ことあるごとに実数解という面倒な言葉を使うのは、ルートの中身が負の数であった場合には虚数解(複素数解)があるということの裏返しだとも考えられますね。</p>
-                <h3 id="複素数の定義">複素数の定義</h3>
-                <p>先ほど定義した虚数単位<span class="math inline">\(i\)</span>と2つの実数<span class="math inline">\(a,b\)</span>を用いて、<span class="math display">\[Z = a+bi\]</span>と表すことの出来る数を「複素数」と呼びます。例えば<span class="math inline">\(3+4i\)</span>という風に表される数のことです。</p>
-                <p>「<span class="math inline">\(5\)</span>」のような普通の実数も、<span class="math inline">\(a=5,b=0\)</span>を代入してみれば<span class="math inline">\(Z=5+0i=5\)</span>と表せるので、複素数の一種と考えることが出来ます。逆に「<span class="math inline">\(\sqrt{-25}\)</span>」のような虚数(「純虚数」と呼びます)も、<span class="math inline">\(Z=0+5i=5i\)</span>と表せるので当然複素数の一部です。</p>
-                <p>ちなみに、このときに<span class="math inline">\(a\)</span>の項を「実部」、<span class="math inline">\(bi\)</span>の項を「虚部」と呼ぶことがあるので覚えておきましょう。</p>
-                <p>今までに出てきたいろいろな数のカテゴリー(体系)をまとめてみました。</p>
-                <figure>
-                <img src="various-numbers.png" alt="さまざまな数" /><figcaption aria-hidden="true">さまざまな数</figcaption>
-                </figure>
-                <p>複素数の計算は、普通の一次多項式の計算と全く同じように行うことが出来ます。 例えば<span class="math inline">\((1+2i)+(3+2i)\)</span>という計算は、そのまま<span class="math inline">\(4+4i\)</span>という風に計算できますし、<span class="math inline">\((1+2i)^2\)</span>のような場合は展開公式をそのまま使って<span class="math inline">\((1+4i+4i^2)\)</span>となります。<span class="math inline">\(i^2=-1\)</span>なので、最終的には<span class="math inline">\(-3+4i\)</span>です。</p>
-                <h2 id="複素数平面数学ⅲで学習とは">複素数平面(数学Ⅲで学習)とは</h2>
-                <p>数直線というものがありますよね。</p>
-                <figure>
-                <img src="su-chokusen.png" alt="数直線" /><figcaption aria-hidden="true">数直線</figcaption>
-                </figure>
-                <p>一定間隔に引いた目盛りに数を割り当てて、ある数がどの位の大きさなのかを比較しやすくしたものです。複素数を数直線上に描くことを考えてみましょう。 例えば、複素数<span class="math inline">\(1+2i\)</span>はどこにあるでしょうか？</p>
-                <p>残念ながら、先ほどの「さまざまな数」の図で示したように、実数の中に<span class="math inline">\(1+2i\)</span>のような複素数は含まれません。そのため、実数を描いている数直線上に複素数を描くことは出来ません。 ですが、<span class="math inline">\(Z=a+bi\)</span>であらわされる複素数<span class="math inline">\(Z\)</span>のうち、<span class="math inline">\(a\)</span>部分だけなら実数なので、これだけなら数直線上にも描くことが出来ます。</p>
-                <p>複素数平面は、これに加え、虚数単位<span class="math inline">\(i\)</span>の係数<span class="math inline">\(b\)</span>を、数直線と垂直な方向に新たに作った軸上に描くことで、複素数<span class="math inline">\(Z=a+bi\)</span>を<span class="math inline">\(ab\)</span>平面上に描くことが出来るようにした平面のことを言います。<span class="math inline">\(Z=X+Yi\)</span>と考えれば、<span class="math inline">\(XY\)</span>平面の点<span class="math inline">\((X,Y)\)</span>に点を描くという単純な作業になります。</p>
-                <p>ということで、複素数<span class="math inline">\(1+2i\)</span>は、複素数平面上ではこのような場所にあります。</p>
-                <figure>
-                <img src="complex-plane.png" alt="複素数平面" /><figcaption aria-hidden="true">複素数平面</figcaption>
-                </figure>
-                <p>この時、<span class="math inline">\(a\)</span>軸のことを実軸、<span class="math inline">\(b\)</span>軸のことを虚軸といいます。</p>
-                <p>複素数をこのような平面上に描くことは、ド・モアブルの定理などにより複素数が図形的意味を持つことになるため非常に便利なのですが、マンデルブロ集合の描画においてあまり重要ではなく、解説が非常に長くなるためここではその解説は省きます。詳しくは、数学Ⅲの教科書を読んでみてください。</p>
-                <h3 id="複素数の絶対値">複素数の絶対値</h3>
-                <p>実数で「絶対値」というものを考えたように、複素数にも「絶対値」の概念が存在します。複素数の絶対値の概念はマンデルブロ集合において重要な意味を持つので、ここで理解しておきましょう。</p>
-                <p>実数における絶対値は、「<span class="math inline">\(|-2|=2\)</span>」や「<span class="math inline">\(|3|=3\)</span>」、「<span class="math inline">\(|-\sqrt{2}|=\sqrt{2}\)</span>」というように、数をすべて正の数にするような計算だとして覚えている人も多いと思います。しかし、あえて「符号を外す」とせずに、あくまで「原点からの距離」なんだという考え方を聞いたことがある人もいるのではないのでしょうか。絶対値を「原点からの距離」とする定義は、複素数の絶対値や別単元のベクトルの絶対値を考えるうえで有用です。</p>
-                <p>複素数平面において、複素数の絶対値を「原点からの距離」だとして考えてみましょう。 複素数<span class="math inline">\(1+2i\)</span>と原点との距離<span class="math inline">\(|1+2i|\)</span>は、先ほどの図より、三平方の定理を用いて求められます。 よって、<span class="math inline">\(|1+2i|=\sqrt{1^2+2^2}=\sqrt5\)</span>となります。 より一般的に、複素数<span class="math inline">\(a+bi\)</span>の絶対値は、<span class="math inline">\(|a+bi|=\sqrt{a^2+b^2}\)</span>で求めることが出来ます。</p>
-                <h2 id="数列と漸化式数学bで学習とは">数列と漸化式(数学Bで学習)とは</h2>
-                <p><span class="math inline">\(\{1,3,5,7,9,11,...\}\)</span>というような数の並びのことを「数列」と呼びます。この数列は1から始まり、2ずつ増えていくような数列(等差数列)です。このとき、数列の各要素を「項」といい、特に一番最初の項(この場合は1)を「初項」と呼びます。 数列は、<span class="math inline">\(\{a_n\}=\{1,3,5,7,9,11,...\}\)</span>と表されることもあります。このとき、<span class="math inline">\(a_1\)</span>は初項<span class="math inline">\(1\)</span>を意味し、<span class="math inline">\(a_2\)</span>と書けば2個目の項、すなわち<span class="math inline">\(3\)</span>のことを意味します。</p>
-                <p>数列は先ほどのように各項を順番に一覧にして表すほかに、「一般項」を用いて表すことがあります。 先ほどの数列<span class="math inline">\(\{a_n\}\)</span>の一般項は<span class="math inline">\(a_n=2n-1\)</span>です。一般項は<span class="math inline">\(n\)</span>番目の項を<span class="math inline">\(n\)</span>を用いて表すことが出来るように一般化した式のことで、一般項の<span class="math inline">\(n\)</span>に任意の数を代入すれば、そのときの<span class="math inline">\(a_n\)</span>の値を求めることが出来ます。</p>
-                <p>例えば、先ほどの数列<span class="math inline">\(\{a_n\}\)</span>の初項(1番目の項)は<span class="math inline">\(1\)</span>でしたが、一般項<span class="math inline">\(a_n=2n-1\)</span>に<span class="math inline">\(n=1\)</span>を代入してみると、<span class="math inline">\(a_1=2\times1-1=2-1=1\)</span>となり、実際に1番目の項を計算で求めることが出来るようになっています。</p>
-                <p>数列のもう一つの表し方が、「漸化式」を使う方法です。先ほどの数列<span class="math inline">\(\{a_n\}\)</span>を漸化式を用いて表すと以下のようになります。 <span class="math display">\[
-                \begin{cases}
-                a_1=1\\
-                a_{n+1}=a_n+2
-                \end{cases}
-                \]</span> 漸化式は、<span class="math inline">\(n\)</span>番目の項と<span class="math inline">\(n+1\)</span>番目の項との関係性を式で表すことで数列を表す方法です(nとn+2、nとn+1とn+2など特殊なパターンもある)。 数列<span class="math inline">\(\{a_n\}\)</span>は項を重ねるごとに2ずつ増えていくので、<span class="math inline">\(a_{n+1}\)</span>(<span class="math inline">\(n+1\)</span>番目の項)はひとつ前の項<span class="math inline">\(a_n\)</span>(<span class="math inline">\(n\)</span>番目の項)よりも2大きくなります。それを式であらわしたのが2番目の式<span class="math inline">\(a_{n+1}=a_n+2\)</span>です。この式だけではどの数字からスタートしてプラス2ずつ数えていくのかがわからないので、初項<span class="math inline">\(a_1=1\)</span>の情報を追加しています。</p>
-                <p>これが漸化式です。</p>
-                <p>今回扱った<span class="math inline">\(\{a_n\}\)</span>のように、一般項を求めることが出来る漸化式もある一方で、ほとんどの漸化式は漸化式のまま計算せざるを得ず、一般項を求めることは困難です。一般項が分かっていれば、例えば100個目の項を求めたいときには一般項に100を代入して計算するだけで簡単に100個目の項を求めることが出来ますが、漸化式しか分かっていない数列で100個目の項を求めようとすると、漸化式に一つ前の項を代入して新しい項を求めていく計算を99回も繰り返さなくてはなりません。</p>
-                <h2 id="無限大の極限数学ⅲで学習について軽く解説">無限大の極限(数学Ⅲで学習)について軽く解説</h2>
-                <p>極限の考え方についてかる～～く解説します。</p>
-                <p>ちなみに、無限大ではなく0に近づける極限については数学Ⅱの微分法の単元で学習します。</p>
-                <p>極限の計算というのは、以下のようなものです。</p>
-                <p><span class="math display">\[\lim_{x\to\infty}{\frac{1}{x}}=0\]</span></p>
-                <p>limというのは英語の「limit」の略です。この計算では、<span class="math inline">\(x\)</span>の値をどんどん大きくしていって、無限大まで大きくしていくと(<span class="math inline">\(x\to\infty\)</span>)、関数<span class="math inline">\(\frac{1}{x}\)</span>の値はいくつになるのか、ということを考えています。</p>
-                <p><span class="math inline">\(\frac{1}{1}\)</span>は1ですよね。分母を少し大きくして、<span class="math inline">\(\frac{1}{2}\)</span>は0.5です。さらに分母を大きくして、<span class="math inline">\(\frac{1}{10}\)</span>は0.1となります。もっともっと分母を大きくして、例えば<span class="math inline">\(\frac{1}{1000}\)</span>ではかなり小さくなって、0.001になります。同様にしてどんどん分母<span class="math inline">\(x\)</span>を大きくして、無限大まで近づけていけば、<span class="math inline">\(\frac{1}{x}\)</span>は次第にゼロになっていくだろう、というのが今回の計算の「雰囲気」です。</p>
-                <p>このようなとき、関数<span class="math inline">\(\frac{1}{x}\)</span>は<span class="math inline">\(x\to\infty\)</span>の極限で<span class="math inline">0</span>に収束する、と言います。</p>
-                <p>逆に、</p>
-                <p><span class="math display">\[\lim_{x\to\infty}{\frac{x}{10000}}=\infty\]</span></p>
-                <p>というような計算では、はじめは<span class="math inline">\(\frac{x}{10000}\)</span>の値は1よりも小さな数であるものの、次第に<span class="math inline">\({\frac{1000.....0000}{10000}}\)</span>というように分子がどんどん大きくなっていくから、結局<span class="math inline">\(x\)</span>が無限大まで大きくなってしまえば<span class="math inline">\(\frac{x}{10000}\)</span>の値も無限大になるだろう、という風に考えます。</p>
-                <p>このようなときには、関数<span class="math inline">\(\frac{x}{10000}\)</span>は<span class="math inline">\(x\to\infty\)</span>の極限で無限大に発散する、と言います。</p>
-                <p>このように、普通の計算では扱えない、無限大のような数における関数の値を考えるのが、極限の考え方です。</p>
-                <h2 id="マンデルブロ集合の要素を調べる">マンデルブロ集合の要素を調べる</h2>
-                <p>さて、マンデルブロ集合の定義をもう一度正確に確認してみます。</p>
-                <blockquote>
-                <p>マンデルブロ集合は、以下の漸化式で表される複素数列<span class="math inline">\(Z_n\)</span>の絶対値<span class="math inline">\(|Z_n|が\)</span><span class="math inline">\(n\to\infty\)</span>の極限で無限大に発散しないような複素数<span class="math inline">\(C\)</span>の集合 <span class="math display">\[\begin {cases}Z_0 = 0\\Z_{n+1} = Z_n^2 + C\end {cases}\]</span></p>
-                </blockquote>
-                <p>つまり、ある複素数<span class="math inline">\(C\)</span>がマンデルブロ集合に含まれるかどうかを調べるには、<span class="math inline">\(C\)</span>を<span class="math inline">\(Z_n\)</span>の漸化式にあてはめて、そのときに<span class="math inline">\(|Z_n|\)</span>が無限大に発散するかしないかを調べればよさそうです。</p>
-                <h3 id="実際に漸化式に値を代入して計算する">実際に漸化式に値を代入して計算する</h3>
-                <p>試しに、<span class="math inline">\(C=0+0i(=0)\)</span>という複素数がマンデルブロ集合に含まれるかを調べてみましょう。漸化式に代入すると</p>
-                <p><span class="math display">\[\begin {cases}Z_0 = 0\\Z_{n+1} = {Z_n}^2 + 0\end {cases}\]</span></p>
-                <p>実際に計算してみます。</p>
-                <p><span class="math inline">\(Z_0=0,\\Z_1={Z_0}^2+0=0^2+0=0,\\Z_2={Z_1}^2+0=0,\\Z_4=0,Z_5=0,Z_6=0,...\)</span></p>
-                <p><span class="math inline">\(C=0\)</span>のときは<span class="math inline">\(Z_n\)</span>は明らかに常に<span class="math inline">\(0\)</span>となり、これが発散することはなさそうです。ということで<span class="math inline">\(C=0\)</span>はマンデルブロ集合に含まれるということが分かります。</p>
-                <p><span class="math inline">\(C=1\)</span>のときはどうでしょうか。漸化式に代入すると</p>
-                <p><span class="math display">\[\begin {cases}Z_0 = 0\\Z_{n+1} = {Z_n}^2 + 1\end {cases}\]</span></p>
-                <p>となり、実際に計算すると(ここからは実際の計算は省略します)<span class="math inline">\(Z_n = \{0,1,2,5,26,677...\}\)</span>という風になりこれは恐らく発散します。</p>
-                <p><span class="math inline">\(C=-1\)</span>では<span class="math inline">\(Z_n=\{0,-1,0,-1,0,-1,...\}\)</span>となりこれは0と1の値を交互に取る(振動する)ので、収束することはあらねど無限大に発散することもありません。</p>
-                <p>このように、人間が見ればある程度は無限大に発散するかどうかを見分けることが可能ですが、コンピューターが大量の複素数について毎回判定するようなプログラムを書くことは困難です。また、今回は分かりやすい整数だったため発散の判定がしやすかったものの、実際のマンデルブロ集合には複素数も含まれており、さらにその実部、虚部の係数(<span class="math inline">\(Z=a+bi\)</span>の<span class="math inline">\(a\)</span>や<span class="math inline">\(b\)</span>のこと)も細かい小数である場合がほとんどです。その場合の発散判定は困難を極めるでしょう。</p>
-                <h2 id="確実に発散することを判定する方法">「確実に発散する」ことを判定する方法</h2>
-                <p>しかし、ありがたいことに、<span class="math inline">\(|Z_n|&gt;2\)</span>となるような項が一つでも見つかった時点で、その数列<span class="math inline">\({Z_n}\)</span>の絶対値はいずれ必ず無限大に発散する、ということが分かっています。この証明は少し長くなるで、興味のある方はこちらのメニューを開いて確認してください。計算は少々複雑ですが、やっていること自体は簡単です。</p>
-                <details>
-                <summary>
-                証明(左のボタンで展開)
-                </summary>
-                <p><span class="math inline">\(n=k\)</span>において、初めて<span class="math inline">\(|Z_n|&gt;2\)</span>になったとすると、三角不等式(<span class="math inline">\(|A+B| \geqq |A|-|B|\)</span>)より、</p>
-                <p><span class="math inline">\(|Z_{k+1}|=|{Z_k}^2+C|\geqq|{Z_k}^2|-|C|\)</span>となる。(漸化式より)</p>
-                <p>ここで、<span class="math inline">\(k=1\)</span>のときは<span class="math inline">\(|Z_k|=|Z_1|=|0^2+C|=|C|\)</span>、<span class="math inline">\(k&gt;1\)</span>のときは<span class="math inline">\(|Z_k|&gt;2&gt;|Z_1|=|C|\)</span>となり、いずれにしても<span class="math inline">\(|Z_k|\geqq|C|\)</span>となり、先ほどの式を書き換えていくと</p>
-                <p><span class="math display">\[\begin{align}
-                |Z_{k+1}|&amp;\geqq|{Z_k}^2|-|C|\notag\\
-                &amp;\geqq|{Z_k}^2|-|Z_k|\notag\\
-                &amp;=|Z_k|(|Z_k|-1)\\
-                &amp;&gt;|Z_k|\qquad(\because|Z_k|-1&gt;1)\\
-                &amp;&gt;2\notag
-                \end{align}\]</span></p>
-                <p>となる。同様にして(随所省略)、 <span class="math display">\[\begin{align}
-                |Z_{k+2}|&amp;\geqq|{{Z_{k+1}}^2}|-|C|\notag\\
-                &amp;&gt;|Z_{k+1}|(|Z_{k+1}|-1)\notag\\
-                &amp;\geqq|Z_k|(|Z_k|-1)(|Z_{k+1}|-1)\qquad(\because(1))\notag\\
-                &amp;&gt;|Z_k|(|Z_k|-1)(|Z_k|-1)\qquad(\because(2))\notag\\
-                &amp;=|Z_k|(|Z_k|-1)^2\notag
-                \end{align}\]</span> これを繰り返すと、<span class="math inline">\(|Z_{k+3}|&gt;|Z_k|(|Z_k|-1)^3\)</span>、<span class="math inline">\(|Z_{k+4}|&gt;|Z_k|(|Z_k|-1)^4\)</span>、…となることがわかり、自然数<span class="math inline">\(m\)</span>について</p>
-                <p><span class="math display">\[|Z_{k+m}|&gt;|Z_k|(|Z_k|-1)^m\]</span></p>
-                <p>であることがわかる。 ここで、<span class="math inline">\(|Z_k|-1&gt;1\)</span>なので、<span class="math inline">\(k+m\to\infty\)</span>すなわち<span class="math inline">\(m\to\infty\)</span>のとき、</p>
-                <p><span class="math display">\[|Z_k|(|Z_k|-1)^m\to\infty\]</span></p>
-                <p>である。よって、<span class="math inline">\(|Z_k|&gt;2\)</span>となる<span class="math inline">\(k\)</span>が存在するとき、</p>
-                <p><span class="math display">\[\lim_{n\to\infty}|Z_n|=\infty\]</span></p>
-                <p>となる。(証明終わり)</p>
-                ※<a href="https://twitter.com/Azicore">Azicore</a>様のウェブサイトを参考にしています。ありがとうございます！リンク：(<a href="https://azisava.sakura.ne.jp/mandelbrot/">https://azisava.sakura.ne.jp/mandelbrot/</a>)
-                </details>
-                <p>なお、<span class="math inline">\(|C|&gt;2\)</span>の場合、<span class="math inline">\(Z_1=0^2+C=C&gt;2\)</span>となり、その時点で<span class="math inline">\(Z_n\)</span>が発散することがわかります。そのため、マンデルブロ集合に含まれる複素数<span class="math inline">\(C\)</span>は全て必ず<span class="math inline">\(|C|\leqq2\)</span>となります。なので、マンデルブロ集合を調べる際には<span class="math inline">\(|C|\leqq2\)</span>の範囲でのみ計算することが一般的です。</p>
-                <p>ということで、この性質により、マンデルブロ集合に含まれる(=無限大に発散しない)ことの判定はできないものの、マンデルブロ集合に含まれない(=無限大に発散する)ことの判定はそこそこ簡単にできるようになりました。<span class="math inline">\(Z_n\)</span>を<span class="math inline">\(n\)</span>がある程度の大きさになるまで計算してみて、それが2よりも大きくなれば確実に<span class="math inline">\(Z_n\)</span>は無限大に発散するのだとわかります。</p>
-                <p>また、<span class="math inline">\(Z_n\)</span>が発散しないことを調べるのも、少々強引ではありますが<span class="math inline">\(n\)</span>をそこそこ大きな数にしても<span class="math inline">\(Z_n\)</span>が2を超えないという場合に、その時はもはやずっと発散しないものと判断してしまえば、正確ではないものの近似的に「<span class="math inline">\(Z_n\)</span>が発散しないような<span class="math inline">\(C\)</span>の集合」、すなわちマンデルブロ集合を求めることが出来ます。</p>
-                <p>このときの「そこそこ大きな数」を「しきい値」と呼ぶことにし、<span class="math inline">\(n\)</span>がしきい値になるまで<span class="math inline">\(Z_n\)</span>を繰り返し計算し、その間に<span class="math inline">\(Z_n&gt;2\)</span>となれば発散判定、その間に<span class="math inline">\(Z_n&gt;2\)</span>を超えることが無ければ発散しなかったと判定することにします。</p>
-                <h2 id="描画プログラムを書く">描画プログラムを書く</h2>
-                <p>さて、先ほどの章で考えたアルゴリズムに基づいて、マンデルブロ集合を描画するプログラムを書いてみましょう。</p>
-                <p>今回は、WEB上でマンデルブロ集合を表示させたかったので、Javascriptを用います。なお、筆者は今回初めてJavascriptをコーディングしたため、あまり推奨されていないような書き方をしているところがあるかもしれませんが、ご承知おきください。</p>
-                <h3 id="入力された複素数がマンデルブロ集合に含まれるかどうかを判定する関数">入力された複素数がマンデルブロ集合に含まれるかどうかを判定する関数</h3>
-                <p>今回のキモはここがほとんどです。先ほどの章で考えたように、与えられた複素数<span class="math inline">\(C\)</span>に対して数列<span class="math inline">\(Z_n\)</span>が発散するかどうかを考え、<span class="math inline">\(C\)</span>がマンデルブロ集合に含まれる(=発散しない)場合戻り値として<code>true</code>を返し、そうでない(=無限大に発散する)場合に<code>false</code>を返すような関数を作ります。</p>
-                <div class="sourceCode" id="cb1"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">calculate</span>(complex<span class="op">,</span>threshold){<span class="co">//complex=複素数, threshold=しきい値</span></span>
-                <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> z <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-                <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> threshold<span class="op">;</span> i<span class="op">++</span>) {</span>
-                <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        z <span class="op">=</span> math<span class="op">.</span><span class="fu">add</span>(math<span class="op">.</span><span class="fu">pow</span>(z<span class="op">,</span><span class="dv">2</span>)<span class="op">,</span>complex)<span class="op">;</span></span>
-                <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (math<span class="op">.</span><span class="fu">abs</span>(z)<span class="op">&gt;</span><span class="dv">2</span>) {</span>
-                <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="kw">false</span><span class="op">;</span> <span class="co">//発散する</span></span>
-                <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>            <span class="cf">break</span><span class="op">;</span></span>
-                <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        }</span>
-                <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    }</span>
-                <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="kw">true</span><span class="op">;</span> <span class="co">//収束する</span></span>
-                <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-                <p>今回、Javascript上で複素数を扱うため、<code>math.js</code>という外部ライブラリを使用しました(記事の終わりにリンクを掲載しています)。引数の<code>complex</code>にはmath.jsの複素数オブジェクトを入力する必要があります。</p>
-                <p>有名なプログラミング言語であれば、何かしら複素数など高度な数学を扱うことのできるライブラリは存在していると思います。PytonのNumPyなんかは有名ですよね。複素数の簡単な計算には四則演算以外は使用しないので、自分で実装しても問題ないでしょう。</p>
-                <p>また、引数<code>threshold</code>は先ほど定義した「しきい値」です。</p>
-                <p>書いたプログラムを解説していきます。</p>
-                <div class="sourceCode" id="cb2"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> z <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span></code></pre></div>
-                <p>ここでは初項<span class="math inline">\(Z_0=0\)</span>を宣言しています。</p>
-                <div class="sourceCode" id="cb3"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> threshold<span class="op">;</span> i<span class="op">++</span>) {</span>
-                <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>        z <span class="op">=</span> math<span class="op">.</span><span class="fu">add</span>(math<span class="op">.</span><span class="fu">pow</span>(z<span class="op">,</span><span class="dv">2</span>)<span class="op">,</span>complex)<span class="op">;</span></span></code></pre></div>
-                <p>forループを<code>threshold</code>回だけ回し、先ほど宣言した<code>z</code>に<span class="math inline">\(Z_{i+1}\)</span>(このiはfor分が繰り返されるたびに1ずつ加算されるただのカウンタ変数。虚数単位ではない。)を代入しています。</p>
-                <p><code>math.add(a,b)</code>は<code>a+b</code>の計算、<code>math.pow(a,b)</code>は<code>a^b</code>の計算をそれぞれ行う、math.jsの関数です。このプログラムが漸化式<span class="math inline">\(Z_{n+1}={Z_n}^2+C\)</span>を表していることが分かると思います。</p>
-                <div class="sourceCode" id="cb4"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (math<span class="op">.</span><span class="fu">abs</span>(z)<span class="op">&gt;</span><span class="dv">2</span>) {</span>
-                <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="kw">false</span><span class="op">;</span> <span class="co">//発散する</span></span>
-                <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">break</span><span class="op">;</span></span>
-                <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-                <p><code>math.abs(a)</code>は<code>a</code>の絶対値を求めるmath.jsの関数です。<span class="math inline">\(|Z_n|&gt;2\)</span>の場合に発散する判定を行う処理を行っています。発散する場合<code>complex</code>はマンデルブロ集合には含まれないので、戻り値として<code>false</code>を帰しています。</p>
-                <p>3行目の<code>break;</code>はforループを強制的に抜け出す処理です。発散することが明らかになった以上、さらに<span class="math inline">\(Z_n\)</span>を求めていく必要はないためここで終了しています。</p>
-                <div class="sourceCode" id="cb5"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="cf">return</span> <span class="kw">true</span><span class="op">;</span></span></code></pre></div>
-                <p>しきい値まで<span class="math inline">\(Z_n\)</span>を求めきった後、それでもまだ<span class="math inline">\(|Z_n|&gt;2\)</span>とならない場合、<span class="math inline">\(|Z_n|\)</span>は発散しないと判断して戻り値<code>true</code>を返しています。</p>
-                <h3 id="描画したい範囲の全ての複素数についてマンデルブロ集合に含まれるかどうかを調べる">描画したい範囲の全ての複素数についてマンデルブロ集合に含まれるかどうかを調べる</h3>
-                <p>描画したい範囲の全ての複素数について、マンデルブロ集合に含まれるかどうかを今作った関数を用いて判定し、その結果(先ほどの関数で<code>true</code>もしくは<code>false</code>が返ってくる)を配列に保存しておくような関数を作ります。</p>
-                <div class="sourceCode" id="cb6"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">mandelbrot</span>(centerre<span class="op">,</span>centerim<span class="op">,</span>magnification<span class="op">,</span>threshold){</span>
-                <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-                <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">//width,heightにはHTMLのcanvas要素の縦横ピクセル数を代入済み</span></span>
-                <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
-                <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (width<span class="op">&gt;</span>height){<span class="co">//画面の縦幅に描画する集合の範囲の縦幅を合わせる</span></span>
-                <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        <span class="kw">var</span> cpp <span class="op">=</span> <span class="dv">4</span><span class="op">/</span>height<span class="op">/</span>magnification<span class="op">;</span><span class="co">// 座標 per ピクセル</span></span>
-                <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>        <span class="kw">var</span> initre <span class="op">=</span> centerre <span class="op">-</span> cpp<span class="op">*</span>(width<span class="op">/</span><span class="dv">2</span>)<span class="op">;</span></span>
-                <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>        <span class="kw">var</span> initim <span class="op">=</span> centerim <span class="op">+</span> cpp<span class="op">*</span>(height<span class="op">/</span><span class="dv">2</span>)<span class="op">;</span></span>
-                <span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    }<span class="cf">else</span>{<span class="co">//画面の横幅に描画する集合の範囲の横幅を合わせる</span></span>
-                <span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>        <span class="kw">var</span> cpp <span class="op">=</span> <span class="dv">4</span><span class="op">/</span>width<span class="op">/</span>magnification<span class="op">;</span><span class="co">// 座標 per ピクセル</span></span>
-                <span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>        <span class="kw">var</span> initre <span class="op">=</span> centerre <span class="op">-</span> cpp<span class="op">*</span>(width<span class="op">/</span><span class="dv">2</span>)<span class="op">;</span></span>
-                <span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>        <span class="kw">var</span> initim <span class="op">=</span> centerim <span class="op">+</span> cpp<span class="op">*</span>(height<span class="op">/</span><span class="dv">2</span>)<span class="op">;</span></span>
-                <span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    }</span>
-                <span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a></span>
-                <span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> pos<span class="op">;</span></span>
-                <span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a></span>
-                <span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> width<span class="op">;</span> i<span class="op">++</span>) {</span>
-                <span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>        man_set<span class="op">.</span><span class="fu">push</span>([])<span class="op">;</span></span>
-                <span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> (<span class="kw">let</span> j <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> j <span class="op">&lt;</span> height<span class="op">;</span> j<span class="op">++</span>) {</span>
-                <span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>            pos <span class="op">=</span> math<span class="op">.</span><span class="fu">complex</span>(</span>
-                <span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>                initre<span class="op">+</span>cpp<span class="op">*</span>i<span class="op">,</span></span>
-                <span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>                initim<span class="op">-</span>cpp<span class="op">*</span>j</span>
-                <span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>                )<span class="op">;</span></span>
-                <span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>            universal_set<span class="op">.</span><span class="fu">push</span>(pos)<span class="op">;</span></span>
-                <span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>            man_set[i]<span class="op">.</span><span class="fu">push</span>(<span class="fu">calculate</span>(pos<span class="op">,</span>threshold))<span class="op">;</span></span>
-                <span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>        }</span>
-                <span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>    }</span>
-                <span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-                <p>画面の中心の複素数座標を指定することで描画範囲を指定するような仕様にしたかったため、そこから左上の座標を計算する必要ができコードがやや複雑になりました。</p>
-                <p>引数はそれぞれ<code>centerre</code>が中心部の座標の実部、<code>centerim</code>が中心部の座標の虚部、<code>magnification</code>が倍率、<code>threshold</code>が「しきい値」です。</p>
-                <p>それではこの関数も上から順に処理を説明していきます。</p>
-                <div class="sourceCode" id="cb7"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">//width,heightにはHTMLのcanvas要素の縦横ピクセル数を代入済み</span></span>
-                <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-                <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (width<span class="op">&gt;</span>height){<span class="co">//画面の縦幅に描画する集合の範囲の縦幅を合わせる</span></span>
-                <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> cpp <span class="op">=</span> <span class="dv">4</span><span class="op">/</span>height<span class="op">/</span>magnification<span class="op">;</span><span class="co">// 座標 per ピクセル</span></span>
-                <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> initre <span class="op">=</span> centerre <span class="op">-</span> cpp<span class="op">*</span>(width<span class="op">/</span><span class="dv">2</span>)<span class="op">;</span></span>
-                <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> initim <span class="op">=</span> centerim <span class="op">+</span> cpp<span class="op">*</span>(height<span class="op">/</span><span class="dv">2</span>)<span class="op">;</span></span>
-                <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>}<span class="cf">else</span>{<span class="co">//画面の横幅に描画する集合の範囲の横幅を合わせる</span></span>
-                <span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> cpp <span class="op">=</span> <span class="dv">4</span><span class="op">/</span>width<span class="op">/</span>magnification<span class="op">;</span><span class="co">// 座標 per ピクセル</span></span>
-                <span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> initre <span class="op">=</span> centerre <span class="op">-</span> cpp<span class="op">*</span>(width<span class="op">/</span><span class="dv">2</span>)<span class="op">;</span></span>
-                <span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> initim <span class="op">=</span> centerim <span class="op">+</span> cpp<span class="op">*</span>(height<span class="op">/</span><span class="dv">2</span>)<span class="op">;</span></span>
-                <span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-                <p>中心部の座標、描画先の画面(今回はHTMLのcanvas要素)の縦横の画素数、拡大倍率をもとに、描画先の画面の左上端の座標を計算しています。</p>
-                <p>マンデルブロ集合全体は(<span class="math inline">\(|Z_n|\leqq2\)</span>なので)正方形の範囲に収まるため、画面が横長の場合は、画面の縦いっぱいに拡大して表示するようにし、それ以外、すなわち画面が縦長か正方形の場合は画面の横いっぱいに拡大して表示するよう場合分けしたうえで計算しています。</p>
-                <p>ここの計算は説明が面倒なのでプログラムを読める人は自力で解釈してください(すみません)。</p>
-                <div class="sourceCode" id="cb8"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> pos<span class="op">;</span></span>
-                <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
-                <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> width<span class="op">;</span> i<span class="op">++</span>) {</span>
-                <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    man_set<span class="op">.</span><span class="fu">push</span>([])<span class="op">;</span></span>
-                <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">let</span> j <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> j <span class="op">&lt;</span> height<span class="op">;</span> j<span class="op">++</span>) {</span>
-                <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>        pos <span class="op">=</span> math<span class="op">.</span><span class="fu">complex</span>(</span>
-                <span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>            initre<span class="op">+</span>cpp<span class="op">*</span>i<span class="op">,</span></span>
-                <span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>            initim<span class="op">-</span>cpp<span class="op">*</span>j</span>
-                <span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>            )<span class="op">;</span></span>
-                <span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>        universal_set<span class="op">.</span><span class="fu">push</span>(pos)<span class="op">;</span></span>
-                <span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>        man_set[i]<span class="op">.</span><span class="fu">push</span>(<span class="fu">calculate</span>(pos<span class="op">,</span>threshold))<span class="op">;</span></span>
-                <span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    }</span>
-                <span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-                <p>計算する座標を一時的に保存しておくため、変数<code>pos</code>をはじめに定義しています。</p>
-                <p>配列<code>man_set</code>は二次元配列です。二次元の平面である複素数平面と対応させています。</p>
-                <p>forループを二重に回しながら、ループ毎に<code>pos</code>に新しい複素数座標を代入し、先ほど定義したcalculate関数でその複素数がマンデルブロ集合に含まれるかどうかを調べ、結果を二次元配列<code>man_set</code>に<code>true</code>もしくは<code>false</code>の形で保存しています。</p>
-                <p>posに代入しているのはmath.jsの複素数オブジェクトです。</p>
-                <p>これで、配列<code>man_set</code>には画面の縦ピクセル数×横ピクセル数個の大量の複素数についてそれぞれ「マンデルブロ集合に含まれるかどうか」が保存されるようになります。</p>
-                <p>なお、<code>man_set</code>はこの関数の外でグローバル変数として既に定義しているので、あとで他の関数の中からでも呼び出すことが出来ます。</p>
-                <p>できればC++のポインタのような機能をつかって、参照渡しのようなものを実現したかったです。おそらくなにか方法はあるのでしょう…。調べてみると「Javascriptには参照渡しも値渡しも存在しない」だの「参照の値渡しである」だのという記述があり、余計わからなくなりました。</p>
-                <h3 id="指定範囲のマンデルブロ集合を保存した配列を実際に描画する">指定範囲のマンデルブロ集合を保存した配列を実際に描画する</h3>
-                <p>ここからはもう簡単です。先ほど、配列<code>man_set</code>に描画先画面の全画素に対応する各複素数がマンデルブロ集合に含まれるかどうかを保存したので、あとはその配列全体を読んで、1ピクセルずつ色を塗っていくような関数を作るだけです。</p>
-                <div class="sourceCode" id="cb9"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> canvas <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&quot;canvas&quot;</span>)<span class="op">;</span></span>
-                <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> ctx <span class="op">=</span> canvas<span class="op">.</span><span class="fu">getContext</span>(<span class="st">&quot;2d&quot;</span>)<span class="op">;</span></span>
-                <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
-                <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">draw_set</span>(set){</span>
-                <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> width<span class="op">;</span> i<span class="op">++</span>) {</span>
-                <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> (<span class="kw">let</span> j <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> j <span class="op">&lt;</span> height<span class="op">;</span> j<span class="op">++</span>) {</span>
-                <span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> (set[i][j]){</span>
-                <span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>                ctx<span class="op">.</span><span class="fu">fillRect</span>(i<span class="op">,</span>j<span class="op">,</span><span class="dv">1</span><span class="op">,</span><span class="dv">1</span>)<span class="op">;</span></span>
-                <span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>            }</span>
-                <span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>        }</span>
-                <span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    }</span>
-                <span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-                <p>上から説明していきます。</p>
-                <div class="sourceCode" id="cb10"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> canvas <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&quot;canvas&quot;</span>)<span class="op">;</span></span>
-                <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> ctx <span class="op">=</span> canvas<span class="op">.</span><span class="fu">getContext</span>(<span class="st">&quot;2d&quot;</span>)<span class="op">;</span></span></code></pre></div>
-                <p>描画先のcanvas(“canvas”というIDを設定済み)を指定し、そのcanvasに対して描画をするためのコンテキストというものを取得しています。詳しくはよくわかりません…。標準で用意されているcanvasへの描画用のAPIのようなものだと思います。</p>
-                <div class="sourceCode" id="cb11"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">draw_set</span>(set){</span>
-                <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    ctx<span class="op">.</span><span class="at">fillStyle</span> <span class="op">=</span> <span class="st">&quot;black&quot;</span><span class="op">;</span></span>
-                <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> width<span class="op">;</span> i<span class="op">++</span>) {</span>
-                <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> (<span class="kw">let</span> j <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> j <span class="op">&lt;</span> height<span class="op">;</span> j<span class="op">++</span>) {</span>
-                <span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> (set[i][j]){</span>
-                <span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>                ctx<span class="op">.</span><span class="fu">fillRect</span>(i<span class="op">,</span>j<span class="op">,</span><span class="dv">1</span><span class="op">,</span><span class="dv">1</span>)<span class="op">;</span></span>
-                <span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>            }</span>
-                <span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>        }</span>
-                <span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    }</span>
-                <span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-                <p>引数<code>set</code>には二次元配列<code>man_set</code>を与えます。<code>fillStyle</code>では描画色を設定しています。</p>
-                <p>あとはforループを二重に回し、<code>fillRect()</code>という関数で指定した座標にひとつづつ点を打つだけです。</p>
-                <h3 id="仕上げのプログラム">仕上げのプログラム</h3>
-                <p>ここまでに用意した三つの関数を使って、実際に画面に描画するまでの処理を行う関数を作ります。</p>
-                <div class="sourceCode" id="cb12"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">draw</span>(set){</span>
-                <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    ctx<span class="op">.</span><span class="fu">clearRect</span>(<span class="dv">0</span><span class="op">,</span><span class="dv">0</span><span class="op">,</span><span class="dv">800</span><span class="op">,</span><span class="dv">800</span>)<span class="op">;</span></span>
-                <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    ctx<span class="op">.</span><span class="at">strokeStyle</span> <span class="op">=</span> (<span class="st">&quot;black&quot;</span>)<span class="op">;</span></span>
-                <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    ctx<span class="op">.</span><span class="at">lineWidth</span> <span class="op">=</span> <span class="dv">5</span><span class="op">;</span></span>
-                <span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    ctx<span class="op">.</span><span class="fu">strokeRect</span>(<span class="dv">0</span><span class="op">,</span><span class="dv">0</span><span class="op">,</span>canvas<span class="op">.</span><span class="at">width</span><span class="op">,</span>canvas<span class="op">.</span><span class="at">height</span>)<span class="op">;</span></span>
-                <span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">draw_set</span>(set)<span class="op">;</span></span>
-                <span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>}</span>
-                <span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
-                <span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">init</span>(){</span>
-                <span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>    canvas<span class="op">.</span><span class="at">width</span> <span class="op">=</span> <span class="bu">window</span><span class="op">.</span><span class="at">innerWidth</span><span class="op">;</span></span>
-                <span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>    canvas<span class="op">.</span><span class="at">height</span> <span class="op">=</span> <span class="bu">window</span><span class="op">.</span><span class="at">innerHeight</span><span class="op">;</span></span>
-                <span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>    width <span class="op">=</span> canvas<span class="op">.</span><span class="at">width</span><span class="op">;</span></span>
-                <span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>    height <span class="op">=</span> canvas<span class="op">.</span><span class="at">height</span><span class="op">;</span></span>
-                <span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mandelbrot</span>(<span class="dv">0</span><span class="op">,</span><span class="dv">0</span><span class="op">,</span><span class="dv">1</span><span class="op">,</span><span class="dv">30</span>)<span class="op">;</span></span>
-                <span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">draw</span>(man_set)<span class="op">;</span></span>
-                <span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>}</span>
-                <span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a></span>
-                <span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a><span class="bu">window</span><span class="op">.</span><span class="fu">addEventListener</span>(<span class="st">&quot;load&quot;</span><span class="op">,</span>init)<span class="op">;</span></span></code></pre></div>
-                <p>上から説明していきます。</p>
-                <div class="sourceCode" id="cb13"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">draw</span>(set){</span>
-                <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    ctx<span class="op">.</span><span class="fu">clearRect</span>(<span class="dv">0</span><span class="op">,</span><span class="dv">0</span><span class="op">,</span><span class="dv">800</span><span class="op">,</span><span class="dv">800</span>)<span class="op">;</span></span>
-                <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    ctx<span class="op">.</span><span class="at">strokeStyle</span> <span class="op">=</span> (<span class="st">&quot;black&quot;</span>)<span class="op">;</span></span>
-                <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    ctx<span class="op">.</span><span class="at">lineWidth</span> <span class="op">=</span> <span class="dv">5</span><span class="op">;</span></span>
-                <span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    ctx<span class="op">.</span><span class="fu">strokeRect</span>(<span class="dv">0</span><span class="op">,</span><span class="dv">0</span><span class="op">,</span>canvas<span class="op">.</span><span class="at">width</span><span class="op">,</span>canvas<span class="op">.</span><span class="at">height</span>)<span class="op">;</span></span>
-                <span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">draw_set</span>(man_set)<span class="op">;</span></span>
-                <span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-                <p>必要ないかもしれませんが、マンデルブロ集合を描画する作業や枠線を描く作業などを一括で行う関数を作っておきました。座標軸を描き加えたりする場合には、ここにそのような処理を書き足すようにしようと思っています。</p>
-                <p>引数<code>set</code>には、マンデルブロ集合を保存した配列、<code>man_set</code>を渡して使用します。</p>
-                <div class="sourceCode" id="cb14"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">init</span>(){</span>
-                <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    canvas<span class="op">.</span><span class="at">width</span> <span class="op">=</span> <span class="bu">window</span><span class="op">.</span><span class="at">innerWidth</span><span class="op">;</span></span>
-                <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    canvas<span class="op">.</span><span class="at">height</span> <span class="op">=</span> <span class="bu">window</span><span class="op">.</span><span class="at">innerHeight</span><span class="op">;</span></span>
-                <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    width <span class="op">=</span> canvas<span class="op">.</span><span class="at">width</span><span class="op">;</span></span>
-                <span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    height <span class="op">=</span> canvas<span class="op">.</span><span class="at">height</span><span class="op">;</span></span>
-                <span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mandelbrot</span>(<span class="dv">0</span><span class="op">,</span><span class="dv">0</span><span class="op">,</span><span class="dv">1</span><span class="op">,</span><span class="dv">30</span>)<span class="op">;</span></span>
-                <span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">draw</span>(man_set)<span class="op">;</span></span>
-                <span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>}</span>
-                <span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="bu">window</span><span class="op">.</span><span class="fu">addEventListener</span>(<span class="st">&quot;load&quot;</span><span class="op">,</span>init)<span class="op">;</span></span></code></pre></div>
-                <p><code>init()</code>関数は、WEBページが読み込まれたとき、一番最初に一度だけ実行される関数です。<code>window.addEventListener("load",init)</code>というところで、そのことを指定しています。</p>
-                <p>init関数の中で<code>canvas.width</code>及び<code>canvas.height</code>にWEBページの画面サイズを代入し、画面いっぱいにcanvasの要素を広げて表示するようにしています。変数<code>width</code>及び<code>height</code>にも、画面のサイズを代入し直しています。</p>
-                <p>そして、先ほど定義した<code>mandelbrot()</code>関数で、マンデルブロ集合を保存した配列を作成します。今回は、引数に、中心の座標(0,0)、倍率(1倍)、発散判定を行うときの「しきい値」(30回)を指定して計算しています。</p>
-                <p>最後に、前項で定義したばかりの<code>draw()</code>関数に、マンデルブロ集合を保存した配列<code>man_set</code>を渡し、マンデルブロ集合を描画して完了となります。</p>
-                <h3 id="実際に動かしてみる">実際に動かしてみる</h3>
-                <p>ここまでに書いたJavascriptのコードを<code>script.js</code>などの名前で保存し、以下のようなHTMLファイルを新たに作成します。</p>
-                <div class="sourceCode" id="cb15"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span></span>
-                <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;html&gt;</span></span>
-                <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;head&gt;</span></span>
-                <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/head&gt;</span></span>
-                <span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;body&gt;</span></span>
-                <span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;canvas</span> <span class="er">id</span><span class="ot">=</span><span class="st">&quot;canvas&quot;</span> <span class="er">width</span><span class="ot">=</span><span class="st">&quot;100%&quot;</span> <span class="er">height</span><span class="ot">=</span><span class="st">&quot;100%&quot;</span><span class="kw">&gt;&lt;/canvas&gt;</span></span>
-                <span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;script</span><span class="ot">  type=</span><span class="st">&quot;text/javascript&quot;</span> <span class="er">src</span><span class="ot">=</span><span class="st">&quot;math.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span></span>
-                <span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;script</span><span class="ot">  type=</span><span class="st">&quot;text/javascript&quot;</span> <span class="er">src</span><span class="ot">=</span><span class="st">&quot;script.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span></span>
-                <span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/body&gt;</span></span>
-                <span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/html&gt;</span></span></code></pre></div>
-                <p>実際は<code>&lt;link&gt;</code>要素でCSSを適用したりしていますが、最低限これだけのHTMLが書かれていれば、先ほどのJavascriptコードでマンデルブロ集合を描画することが出来ます。</p>
-                <p>以下の画面で実際に描画プログラムを動かしているのでご確認ください。なお、ここではブログに埋め込むため一部を書き換えています。</p>
-                <canvas width="100px" height="200px" id="canvas"></canvas>
-                <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.5.3/math.js"></script>
-                <script type="text/javascript" src="script.js"></script>
-                <h2 id="おわりに次回予告">おわりに・次回予告</h2>
-                <p>最後まで読んでいただきありがとうございました！</p>
-                <p>次回は、マンデルブロ集合描画の高速化と、画像の着色をやってみようと思っています。実現するかはわかりませんが、お楽しみに。</p>
-                <h2 id="参考文献">参考文献</h2>
-                <ul>
-                <li><a href="https://ja.wikipedia.org/wiki/%E3%83%9E%E3%83%B3%E3%83%87%E3%83%AB%E3%83%96%E3%83%AD%E9%9B%86%E5%90%88">Wikipedia日本語版「マンデルブロ集合」</a></li>
-                <li><a href="https://azisava.sakura.ne.jp/mandelbrot/">「マンデルブロ集合の不思議な世界」(Azicoreさんのブログ)</a></li>
-                </ul>
-                <h2 id="その他のリンク">その他のリンク</h2>
-                <ul>
-                <li><a href="https://mathjs.org/">Math.js(今回使用したJavascriptのライブラリ)</a></li>
-                </ul>
-            </div>
-            <nav class="nextPrev">
-                <div class="prev">前へ<a href="../20190306/index.html">「Aviutlについて、導入など」
-                        &gt;</a></div>
-                <div class="next">次へComing Soon...
-                        &gt;</a></div>
-            </nav>
-        </article></div>
-        <nav id="sidebar">
-            <div id="sidemenu">
-            </div>
-            <div id="indexblock">
-                <div class="indextitle">目次</div>
-                <ol class="indexcontents">
-                    <ul>
-                    <li><a href="#はじめに">はじめに</a></li>
-                    <li><a href="#対象読者">対象読者</a></li>
-                    <li><a href="#マンデルブロ集合とは">マンデルブロ集合とは</a></li>
-                    <li><a href="#複素数数学ⅱで学習とは">複素数(数学Ⅱで学習)とは</a></li>
-                    <li><a href="#複素数平面数学ⅲで学習とは">複素数平面(数学Ⅲで学習)とは</a></li>
-                    <li><a href="#数列と漸化式数学bで学習とは">数列と漸化式(数学Bで学習)とは</a></li>
-                    <li><a href="#無限大の極限数学ⅲで学習について軽く解説">無限大の極限(数学Ⅲで学習)について軽く解説</a></li>
-                    <li><a href="#マンデルブロ集合の要素を調べる">マンデルブロ集合の要素を調べる</a></li>
-                    <li><a href="#確実に発散することを判定する方法">「確実に発散する」ことを判定する方法</a></li>
-                    <li><a href="#描画プログラムを書く">描画プログラムを書く</a></li>
-                    <li><a href="#おわりに次回予告">おわりに・次回予告</a></li>
-                    <li><a href="#参考文献">参考文献</a></li>
-                    <li><a href="#その他のリンク">その他のリンク</a></li>
-                    </ul>
-                </ol>
-            </div>
-        </nav>
-    </div>
-    <footer class="footer">
-        <div class="">
-            <p class="copylight">&copy; 2015-2021 Asano Physics Club</p>
-        </div>
-    </footer>
-</main>
-<script type="text/javascript" src="/general.js"></script>
-</body>
-</html>
+<!doctype html><html><head><script async src="https://www.googletagmanager.com/gtag/js?id=UA-115439668-1"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());gtag('config','UA-115439668-1');</script><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=description content="浅野学園物理部の公式ホームページです。文化祭情報などを掲載しています。"><meta name=viewport content="width=device-width,initial-scale=1"><link rel=stylesheet href=/styles.css><link rel=stylesheet href=/highlight.css><link rel=icon href=/image/favicon.ico><script type=text/javascript src=//typesquare.com/accessor/script/typesquare.js?YME8OdI00sA%3D></script></head><link rel=stylesheet href=/blog_new.css><script src=https://kit.fontawesome.com/1e291c4f9b.js crossorigin=anonymous></script><title>高校数学で描くマンデルブロ集合｜浅野学園物理部</title><script type=text/javascript async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML"></script><body><div id=nav-drawer><input id=nav-input type=checkbox class=nav-unshown>
+<label id=nav-open for=nav-input><span class="bar bar1"></span><span class="bar bar2"></span><span class="bar bar3"></span><span class=menu>MENU</span>
+<span class=close>CLOSE</span></label>
+<label id=nav-close for=nav-input></label><div id=nav-content><a class=nav-link href=/index.html>ホーム</a>
+<a class=nav-link href=/about/index.html>物理部とは</a>
+<a class=nav-link href=/document/index.html>部誌</a>
+<a class=nav-link href=/game/index.html>ゲーム</a>
+<a class=nav-link href=/blog/index.html>ブログ</a>
+<a class=nav-link href=/electronic/index.html>電工の部屋</a><div class=nav-separator></div><a class=nav-link href=http://d.hatena.ne.jp/apc/>ブログ(外部サイト)</a></div></div><script src=/general.js></script><main><div id=main><div class=documentcontent><div id=breadcrumbs><i class="fas fa-home"></i><a href=/index.html>ホーム</a>
+<i class="fas fa-angle-right"></i><a href=../index.html>ブログ</a>
+<i class="fas fa-angle-right"></i><a href=./index.html>高校数学で描くマンデルブロ集合</a></div><header class=documenttitle><h1 id=title>高校数学で描くマンデルブロ集合</h1><p class=author><i class="fas fa-user-edit"></i>高三 N</p><a href="https://twitter.com/intent/tweet?text=%e9%ab%98%e6%a0%a1%e6%95%b0%e5%ad%a6%e3%81%a7%e6%8f%8f%e3%81%8f%e3%83%9e%e3%83%b3%e3%83%87%e3%83%ab%e3%83%96%e3%83%ad%e9%9b%86%e5%90%88&via=Uchi54_APC&related=Uchi54_APC" class=twitter-share-button data-show-count=false>ツイート</a>
+<script async src=https://platform.twitter.com/widgets.js></script></header><div class=document><style>.youtube{width:100%;aspect-ratio:16/9}.youtube iframe{width:100%;height:100%}</style><h2 id=はじめに>はじめに</h2><p>お久しぶりです。2019年に最後のブログを投稿してから3年以上が経ったようなのですが、当時中学2年だった私もいつの間にか高校三年になってしまいました。物理部がブログではなくTwitterを積極的に使うようになってからは、このウェブサイトも部誌の電子版の公開以外で使うことはほとんどなくなったのです。浅野を卒業する前にもう一度くらいはブログ記事を執筆しておきたいと思い、今回キーボードをたたいています。 前置きはさておき、今回は久しぶり(そりゃそうだろ)に技術的な記事になります。</p><h2 id=対象読者>対象読者</h2><p>日本の高校一年生相当以上の基本的な数学の知識を有している人。必要な知識を前半部分で解説し、高校一年生、あるいは中学生程度でもある程度は理解できるように書いているつもりです。</p><p>加えて、基本的なプログラミングの知識を有している人。今回はJavascriptを使用しますが、for文、変数などの一般的な文法が分かっていればおおよそ意味はつかめると思います。</p><h2 id=マンデルブロ集合とは>マンデルブロ集合とは</h2><p>マンデルブロ集合というものを知っていますか？実態はただの複素数の集合<sup>[※]</sup>なのですが、よくこのような写真の形でウェブ上に共有されることがあります。</p><blockquote><h4 id=集合とは>※集合とは</h4><p>日本では「数学A」で学習する概念。 数やその他さまざまなものの集まりのこと。集合を構成する「要素」は数だけでなく、(たぶん)確率や式であったり、数学以外の分野に集合の考え方を応用すれば「単語」や「情報」であるパターンもある(と思う)。 マンデルブロ集合は、数、そのなかでも複素数の集合である。つまり、マンデルブロ集合の中には(<span class="math inline">\(-0.2+0.5i\)</span>)や(<span class="math inline">\(0.1-0.3i\)</span>)などの様々な複素数が大量に収納されている。(複素数については後程解説します。)</p></blockquote><p><img src=1024px-Mandel_zoom_00_mandelbrot_set.webp alt=マンデルブロ集合の画像> <img src=1024px-Mandel_zoom_12_satellite_spirally_wheel_with_julia_islands.webp alt=一部を拡大したマンデルブロ集合の画像></p><p>画像出典：<a href=https://en.wikipedia.org/wiki/File:Mandel_zoom_00_mandelbrot_set.webp>Wikimedia Commons</a>(CC BY-SA 3.0)<br>下の画像は一部を拡大したもの。</p><iframe class=youtube src=https://www.youtube.com/embed/gva-evKs_8A title="YouTube video player" frameborder=0 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><p>このように、マンデルブロ集合をある規則にしたがって画像に落とし込むと、非常に美しい幾何学模様をみせるため、YouTubeをはじめインターネット上にはマンデルブロ集合を描画した映像がたくさん投稿されています。</p><p>この記事では、このようなマンデルブロ集合の写真を、高校数学の知識だけで描画することを試みます。なお、今回は<strong>上記の写真や映像のようなカラフルな色付けは行いません</strong>。</p><p>マンデルブロ集合の実態は、以下の漸化式が無限大に発散しないような複素数<span class="math inline">\(C\)</span>の集まりです。(より正確な定義を後程記載)</p><p><span class="math display">\[
+\begin {cases}
+Z_0 = 0\\
+Z_{n+1} = {Z_n}^2 + C
+\end {cases}
+\]</span></p><p>このように定義されるマンデルブロ集合を構成する各複素数を複素数平面上に黒い点としてプロットしていくと、おおよそ上記の写真のような画像が得られます。</p><p>さて、一応ここまで高校数学の用語だけを用いて解説してきましたが、まだ該当範囲を学んでいない人にとってはちんぷんかんぷんだと思いますので、ここから一つ一つ噛み砕いて理解していきましょう。</p><p>ここから下は、複素数、複素数平面、漸化式、極限についての基礎知識の解説が続きます。これらを既に理解している方は、「マンデルブロ集合の要素を調べる」の章まで読み飛ばして頂いて構いません。</p><h2 id=複素数数学ⅱで学習とは>複素数(数学Ⅱで学習)とは</h2><p>中学三年で習う平方根(ルート)を思い出してください。 <span class="math inline">\(2\times2=4\)</span>であるとき、<span class="math inline">\(4\)</span>のルートすなわち<span class="math inline">\(\sqrt4\)</span>は<span class="math inline">\(2\)</span>となります。同様に<span class="math inline">\(3\times3=9\)</span>なので、<span class="math inline">\(\sqrt9=3\)</span>です。このように、ある数に対して、2乗することでその「ある数」となるような「別のある数」を求めるのがルートの計算です。</p><p>なお、<span class="math inline">\((-2)\times(-2)=4\)</span>でもあるため、正確には<span class="math inline">\(\sqrt4=\pm2\)</span>となります。また、<span class="math inline">\(\sqrt2\)</span>などの値もコンピューターなどを使うことでおおよそ<span class="math inline">\(\pm1.41421356\)</span>という値(近似値)を求めることが出来ます。実際に電卓でこの数を2乗してみれば、約2(1.999999993…くらい)になることが確認できると思います。</p><h3 id=虚数の定義>虚数の定義</h3><p>さて、ここで負の数のルートを考えてみます。 <span class="math inline">\(\sqrt{-1}\)</span>はいくつでしょうか？</p><p><span class="math inline">\(\sqrt1\)</span>であれば答えは<span class="math inline">\(\pm1\)</span>、すなわち<span class="math inline">\(1\)</span>と<span class="math inline">\(-1\)</span>ですが、2乗して<span class="math inline">\(-1\)</span>となるような数は存在するのでしょうか？</p><p>はい、そんな数は存在しません。正確には、実数(整数、分数&少数、ルートや円周率などの無理数)の中には存在しません。そこで、先ほど2乗して<span class="math inline">\(2\)</span>になるような、少数で正確に表せない数を<span class="math inline">\(\sqrt2\)</span>という記号で表したように、2乗して<span class="math inline">\(-1\)</span>になるような数を<span class="math inline">\(i\)</span>という記号を用いて考えることになったのです。つまり、<span class="math inline">\(i^2=-1\)</span>であり、<span class="math inline">\(\pm i=\sqrt{-1}\)</span>です。このような、2乗して負の数になるような数を、「虚数」と呼びます。</p><p>この、<span class="math inline">\(\pm i =\sqrt{-1}\)</span>で定義される数<span class="math inline">\(i\)</span>には、「虚数単位」という名前がついています。<span class="math inline">\(\pm i\)</span>とあるように、この方程式の解はプラスマイナスの2つがありますが、虚数単位はそのどちらか片方のみを表します(計算の途中でプラスとマイナスをごっちゃにして考えなければどちらでも問題ない)。</p><p>虚数単位を使うことで、<span class="math inline">\(\sqrt{-1}\)</span>だけでなく負の数のルートをなんでも表すことが出来るようになります。</p><p>例えば<span class="math inline">\(\sqrt{-5}\)</span>は<span class="math inline">\(\sqrt{-5}=\sqrt{-1}\times\sqrt5\)</span>と書き換えられますから、<span class="math inline">\(\sqrt{-5}=\pm\sqrt5i\)</span>です。同様に<span class="math inline">\(\sqrt{-4}=\pm2i\)</span>、<span class="math inline">\(\sqrt{-12}=\pm2\sqrt3i\)</span>という風に表すことが可能です。</p><p>二次方程式の解の公式で、<span class="math inline">\(x^2+bx+c=0\)</span>の解<span class="math inline">\(x=\frac{-b\pm\sqrt{b^2-4ac}}{2ac}\)</span>のルートの中身<span class="math inline">\((b^2-4ac)\)</span>が負の数になると「この二次方程式は実数解をもたない」だと言ったり、正の場合は「異なる実数解を2つもつ」というフレーズが出てきたりするように、ことあるごとに実数解という面倒な言葉を使うのは、ルートの中身が負の数であった場合には虚数解(複素数解)があるということの裏返しだとも考えられますね。</p><h3 id=複素数の定義>複素数の定義</h3><p>先ほど定義した虚数単位<span class="math inline">\(i\)</span>と2つの実数<span class="math inline">\(a,b\)</span>を用いて、<span class="math display">\[Z = a+bi\]</span>と表すことの出来る数を「複素数」と呼びます。例えば<span class="math inline">\(3+4i\)</span>という風に表される数のことです。</p><p>「<span class="math inline">\(5\)</span>」のような普通の実数も、<span class="math inline">\(a=5,b=0\)</span>を代入してみれば<span class="math inline">\(Z=5+0i=5\)</span>と表せるので、複素数の一種と考えることが出来ます。逆に「<span class="math inline">\(\sqrt{-25}\)</span>」のような虚数(「純虚数」と呼びます)も、<span class="math inline">\(Z=0+5i=5i\)</span>と表せるので当然複素数の一部です。</p><p>ちなみに、このときに<span class="math inline">\(a\)</span>の項を「実部」、<span class="math inline">\(bi\)</span>の項を「虚部」と呼ぶことがあるので覚えておきましょう。</p><p>今までに出てきたいろいろな数のカテゴリー(体系)をまとめてみました。</p><figure><img src=various-numbers.webp alt=さまざまな数><figcaption aria-hidden=true>さまざまな数</figcaption></figure><p>複素数の計算は、普通の一次多項式の計算と全く同じように行うことが出来ます。 例えば<span class="math inline">\((1+2i)+(3+2i)\)</span>という計算は、そのまま<span class="math inline">\(4+4i\)</span>という風に計算できますし、<span class="math inline">\((1+2i)^2\)</span>のような場合は展開公式をそのまま使って<span class="math inline">\((1+4i+4i^2)\)</span>となります。<span class="math inline">\(i^2=-1\)</span>なので、最終的には<span class="math inline">\(-3+4i\)</span>です。</p><h2 id=複素数平面数学ⅲで学習とは>複素数平面(数学Ⅲで学習)とは</h2><p>数直線というものがありますよね。</p><figure><img src=su-chokusen.webp alt=数直線><figcaption aria-hidden=true>数直線</figcaption></figure><p>一定間隔に引いた目盛りに数を割り当てて、ある数がどの位の大きさなのかを比較しやすくしたものです。複素数を数直線上に描くことを考えてみましょう。 例えば、複素数<span class="math inline">\(1+2i\)</span>はどこにあるでしょうか？</p><p>残念ながら、先ほどの「さまざまな数」の図で示したように、実数の中に<span class="math inline">\(1+2i\)</span>のような複素数は含まれません。そのため、実数を描いている数直線上に複素数を描くことは出来ません。 ですが、<span class="math inline">\(Z=a+bi\)</span>であらわされる複素数<span class="math inline">\(Z\)</span>のうち、<span class="math inline">\(a\)</span>部分だけなら実数なので、これだけなら数直線上にも描くことが出来ます。</p><p>複素数平面は、これに加え、虚数単位<span class="math inline">\(i\)</span>の係数<span class="math inline">\(b\)</span>を、数直線と垂直な方向に新たに作った軸上に描くことで、複素数<span class="math inline">\(Z=a+bi\)</span>を<span class="math inline">\(ab\)</span>平面上に描くことが出来るようにした平面のことを言います。<span class="math inline">\(Z=X+Yi\)</span>と考えれば、<span class="math inline">\(XY\)</span>平面の点<span class="math inline">\((X,Y)\)</span>に点を描くという単純な作業になります。</p><p>ということで、複素数<span class="math inline">\(1+2i\)</span>は、複素数平面上ではこのような場所にあります。</p><figure><img src=complex-plane.webp alt=複素数平面><figcaption aria-hidden=true>複素数平面</figcaption></figure><p>この時、<span class="math inline">\(a\)</span>軸のことを実軸、<span class="math inline">\(b\)</span>軸のことを虚軸といいます。</p><p>複素数をこのような平面上に描くことは、ド・モアブルの定理などにより複素数が図形的意味を持つことになるため非常に便利なのですが、マンデルブロ集合の描画においてあまり重要ではなく、解説が非常に長くなるためここではその解説は省きます。詳しくは、数学Ⅲの教科書を読んでみてください。</p><h3 id=複素数の絶対値>複素数の絶対値</h3><p>実数で「絶対値」というものを考えたように、複素数にも「絶対値」の概念が存在します。複素数の絶対値の概念はマンデルブロ集合において重要な意味を持つので、ここで理解しておきましょう。</p><p>実数における絶対値は、「<span class="math inline">\(|-2|=2\)</span>」や「<span class="math inline">\(|3|=3\)</span>」、「<span class="math inline">\(|-\sqrt{2}|=\sqrt{2}\)</span>」というように、数をすべて正の数にするような計算だとして覚えている人も多いと思います。しかし、あえて「符号を外す」とせずに、あくまで「原点からの距離」なんだという考え方を聞いたことがある人もいるのではないのでしょうか。絶対値を「原点からの距離」とする定義は、複素数の絶対値や別単元のベクトルの絶対値を考えるうえで有用です。</p><p>複素数平面において、複素数の絶対値を「原点からの距離」だとして考えてみましょう。 複素数<span class="math inline">\(1+2i\)</span>と原点との距離<span class="math inline">\(|1+2i|\)</span>は、先ほどの図より、三平方の定理を用いて求められます。 よって、<span class="math inline">\(|1+2i|=\sqrt{1^2+2^2}=\sqrt5\)</span>となります。 より一般的に、複素数<span class="math inline">\(a+bi\)</span>の絶対値は、<span class="math inline">\(|a+bi|=\sqrt{a^2+b^2}\)</span>で求めることが出来ます。</p><h2 id=数列と漸化式数学bで学習とは>数列と漸化式(数学Bで学習)とは</h2><p><span class="math inline">\(\{1,3,5,7,9,11,...\}\)</span>というような数の並びのことを「数列」と呼びます。この数列は1から始まり、2ずつ増えていくような数列(等差数列)です。このとき、数列の各要素を「項」といい、特に一番最初の項(この場合は1)を「初項」と呼びます。 数列は、<span class="math inline">\(\{a_n\}=\{1,3,5,7,9,11,...\}\)</span>と表されることもあります。このとき、<span class="math inline">\(a_1\)</span>は初項<span class="math inline">\(1\)</span>を意味し、<span class="math inline">\(a_2\)</span>と書けば2個目の項、すなわち<span class="math inline">\(3\)</span>のことを意味します。</p><p>数列は先ほどのように各項を順番に一覧にして表すほかに、「一般項」を用いて表すことがあります。 先ほどの数列<span class="math inline">\(\{a_n\}\)</span>の一般項は<span class="math inline">\(a_n=2n-1\)</span>です。一般項は<span class="math inline">\(n\)</span>番目の項を<span class="math inline">\(n\)</span>を用いて表すことが出来るように一般化した式のことで、一般項の<span class="math inline">\(n\)</span>に任意の数を代入すれば、そのときの<span class="math inline">\(a_n\)</span>の値を求めることが出来ます。</p><p>例えば、先ほどの数列<span class="math inline">\(\{a_n\}\)</span>の初項(1番目の項)は<span class="math inline">\(1\)</span>でしたが、一般項<span class="math inline">\(a_n=2n-1\)</span>に<span class="math inline">\(n=1\)</span>を代入してみると、<span class="math inline">\(a_1=2\times1-1=2-1=1\)</span>となり、実際に1番目の項を計算で求めることが出来るようになっています。</p><p>数列のもう一つの表し方が、「漸化式」を使う方法です。先ほどの数列<span class="math inline">\(\{a_n\}\)</span>を漸化式を用いて表すと以下のようになります。 <span class="math display">\[
+\begin{cases}
+a_1=1\\
+a_{n+1}=a_n+2
+\end{cases}
+\]</span> 漸化式は、<span class="math inline">\(n\)</span>番目の項と<span class="math inline">\(n+1\)</span>番目の項との関係性を式で表すことで数列を表す方法です(nとn+2、nとn+1とn+2など特殊なパターンもある)。 数列<span class="math inline">\(\{a_n\}\)</span>は項を重ねるごとに2ずつ増えていくので、<span class="math inline">\(a_{n+1}\)</span>(<span class="math inline">\(n+1\)</span>番目の項)はひとつ前の項<span class="math inline">\(a_n\)</span>(<span class="math inline">\(n\)</span>番目の項)よりも2大きくなります。それを式であらわしたのが2番目の式<span class="math inline">\(a_{n+1}=a_n+2\)</span>です。この式だけではどの数字からスタートしてプラス2ずつ数えていくのかがわからないので、初項<span class="math inline">\(a_1=1\)</span>の情報を追加しています。</p><p>これが漸化式です。</p><p>今回扱った<span class="math inline">\(\{a_n\}\)</span>のように、一般項を求めることが出来る漸化式もある一方で、ほとんどの漸化式は漸化式のまま計算せざるを得ず、一般項を求めることは困難です。一般項が分かっていれば、例えば100個目の項を求めたいときには一般項に100を代入して計算するだけで簡単に100個目の項を求めることが出来ますが、漸化式しか分かっていない数列で100個目の項を求めようとすると、漸化式に一つ前の項を代入して新しい項を求めていく計算を99回も繰り返さなくてはなりません。</p><h2 id=無限大の極限数学ⅲで学習について軽く解説>無限大の極限(数学Ⅲで学習)について軽く解説</h2><p>極限の考え方についてかる～～く解説します。</p><p>ちなみに、無限大ではなく0に近づける極限については数学Ⅱの微分法の単元で学習します。</p><p>極限の計算というのは、以下のようなものです。</p><p><span class="math display">\[\lim_{x\to\infty}{\frac{1}{x}}=0\]</span></p><p>limというのは英語の「limit」の略です。この計算では、<span class="math inline">\(x\)</span>の値をどんどん大きくしていって、無限大まで大きくしていくと(<span class="math inline">\(x\to\infty\)</span>)、関数<span class="math inline">\(\frac{1}{x}\)</span>の値はいくつになるのか、ということを考えています。</p><p><span class="math inline">\(\frac{1}{1}\)</span>は1ですよね。分母を少し大きくして、<span class="math inline">\(\frac{1}{2}\)</span>は0.5です。さらに分母を大きくして、<span class="math inline">\(\frac{1}{10}\)</span>は0.1となります。もっともっと分母を大きくして、例えば<span class="math inline">\(\frac{1}{1000}\)</span>ではかなり小さくなって、0.001になります。同様にしてどんどん分母<span class="math inline">\(x\)</span>を大きくして、無限大まで近づけていけば、<span class="math inline">\(\frac{1}{x}\)</span>は次第にゼロになっていくだろう、というのが今回の計算の「雰囲気」です。</p><p>このようなとき、関数<span class="math inline">\(\frac{1}{x}\)</span>は<span class="math inline">\(x\to\infty\)</span>の極限で<span class="math inline">0</span>に収束する、と言います。</p><p>逆に、</p><p><span class="math display">\[\lim_{x\to\infty}{\frac{x}{10000}}=\infty\]</span></p><p>というような計算では、はじめは<span class="math inline">\(\frac{x}{10000}\)</span>の値は1よりも小さな数であるものの、次第に<span class="math inline">\({\frac{1000.....0000}{10000}}\)</span>というように分子がどんどん大きくなっていくから、結局<span class="math inline">\(x\)</span>が無限大まで大きくなってしまえば<span class="math inline">\(\frac{x}{10000}\)</span>の値も無限大になるだろう、という風に考えます。</p><p>このようなときには、関数<span class="math inline">\(\frac{x}{10000}\)</span>は<span class="math inline">\(x\to\infty\)</span>の極限で無限大に発散する、と言います。</p><p>このように、普通の計算では扱えない、無限大のような数における関数の値を考えるのが、極限の考え方です。</p><h2 id=マンデルブロ集合の要素を調べる>マンデルブロ集合の要素を調べる</h2><p>さて、マンデルブロ集合の定義をもう一度正確に確認してみます。</p><blockquote><p>マンデルブロ集合は、以下の漸化式で表される複素数列<span class="math inline">\(Z_n\)</span>の絶対値<span class="math inline">\(|Z_n|が\)</span><span class="math inline">\(n\to\infty\)</span>の極限で無限大に発散しないような複素数<span class="math inline">\(C\)</span>の集合 <span class="math display">\[\begin {cases}Z_0 = 0\\Z_{n+1} = Z_n^2 + C\end {cases}\]</span></p></blockquote><p>つまり、ある複素数<span class="math inline">\(C\)</span>がマンデルブロ集合に含まれるかどうかを調べるには、<span class="math inline">\(C\)</span>を<span class="math inline">\(Z_n\)</span>の漸化式にあてはめて、そのときに<span class="math inline">\(|Z_n|\)</span>が無限大に発散するかしないかを調べればよさそうです。</p><h3 id=実際に漸化式に値を代入して計算する>実際に漸化式に値を代入して計算する</h3><p>試しに、<span class="math inline">\(C=0+0i(=0)\)</span>という複素数がマンデルブロ集合に含まれるかを調べてみましょう。漸化式に代入すると</p><p><span class="math display">\[\begin {cases}Z_0 = 0\\Z_{n+1} = {Z_n}^2 + 0\end {cases}\]</span></p><p>実際に計算してみます。</p><p><span class="math inline">\(Z_0=0,\\Z_1={Z_0}^2+0=0^2+0=0,\\Z_2={Z_1}^2+0=0,\\Z_4=0,Z_5=0,Z_6=0,...\)</span></p><p><span class="math inline">\(C=0\)</span>のときは<span class="math inline">\(Z_n\)</span>は明らかに常に<span class="math inline">\(0\)</span>となり、これが発散することはなさそうです。ということで<span class="math inline">\(C=0\)</span>はマンデルブロ集合に含まれるということが分かります。</p><p><span class="math inline">\(C=1\)</span>のときはどうでしょうか。漸化式に代入すると</p><p><span class="math display">\[\begin {cases}Z_0 = 0\\Z_{n+1} = {Z_n}^2 + 1\end {cases}\]</span></p><p>となり、実際に計算すると(ここからは実際の計算は省略します)<span class="math inline">\(Z_n = \{0,1,2,5,26,677...\}\)</span>という風になりこれは恐らく発散します。</p><p><span class="math inline">\(C=-1\)</span>では<span class="math inline">\(Z_n=\{0,-1,0,-1,0,-1,...\}\)</span>となりこれは0と1の値を交互に取る(振動する)ので、収束することはあらねど無限大に発散することもありません。</p><p>このように、人間が見ればある程度は無限大に発散するかどうかを見分けることが可能ですが、コンピューターが大量の複素数について毎回判定するようなプログラムを書くことは困難です。また、今回は分かりやすい整数だったため発散の判定がしやすかったものの、実際のマンデルブロ集合には複素数も含まれており、さらにその実部、虚部の係数(<span class="math inline">\(Z=a+bi\)</span>の<span class="math inline">\(a\)</span>や<span class="math inline">\(b\)</span>のこと)も細かい小数である場合がほとんどです。その場合の発散判定は困難を極めるでしょう。</p><h2 id=確実に発散することを判定する方法>「確実に発散する」ことを判定する方法</h2><p>しかし、ありがたいことに、<span class="math inline">\(|Z_n|>2\)</span>となるような項が一つでも見つかった時点で、その数列<span class="math inline">\({Z_n}\)</span>の絶対値はいずれ必ず無限大に発散する、ということが分かっています。この証明は少し長くなるで、興味のある方はこちらのメニューを開いて確認してください。計算は少々複雑ですが、やっていること自体は簡単です。</p><details><summary>証明(左のボタンで展開)</summary><p><span class="math inline">\(n=k\)</span>において、初めて<span class="math inline">\(|Z_n|>2\)</span>になったとすると、三角不等式(<span class="math inline">\(|A+B| \geqq |A|-|B|\)</span>)より、</p><p><span class="math inline">\(|Z_{k+1}|=|{Z_k}^2+C|\geqq|{Z_k}^2|-|C|\)</span>となる。(漸化式より)</p><p>ここで、<span class="math inline">\(k=1\)</span>のときは<span class="math inline">\(|Z_k|=|Z_1|=|0^2+C|=|C|\)</span>、<span class="math inline">\(k>1\)</span>のときは<span class="math inline">\(|Z_k|>2>|Z_1|=|C|\)</span>となり、いずれにしても<span class="math inline">\(|Z_k|\geqq|C|\)</span>となり、先ほどの式を書き換えていくと</p><p><span class="math display">\[\begin{align}
+|Z_{k+1}|&\geqq|{Z_k}^2|-|C|\notag\\
+&\geqq|{Z_k}^2|-|Z_k|\notag\\
+&=|Z_k|(|Z_k|-1)\\
+&>|Z_k|\qquad(\because|Z_k|-1>1)\\
+&>2\notag
+\end{align}\]</span></p><p>となる。同様にして(随所省略)、 <span class="math display">\[\begin{align}
+|Z_{k+2}|&\geqq|{{Z_{k+1}}^2}|-|C|\notag\\
+&>|Z_{k+1}|(|Z_{k+1}|-1)\notag\\
+&\geqq|Z_k|(|Z_k|-1)(|Z_{k+1}|-1)\qquad(\because(1))\notag\\
+&>|Z_k|(|Z_k|-1)(|Z_k|-1)\qquad(\because(2))\notag\\
+&=|Z_k|(|Z_k|-1)^2\notag
+\end{align}\]</span> これを繰り返すと、<span class="math inline">\(|Z_{k+3}|>|Z_k|(|Z_k|-1)^3\)</span>、<span class="math inline">\(|Z_{k+4}|>|Z_k|(|Z_k|-1)^4\)</span>、…となることがわかり、自然数<span class="math inline">\(m\)</span>について</p><p><span class="math display">\[|Z_{k+m}|>|Z_k|(|Z_k|-1)^m\]</span></p><p>であることがわかる。 ここで、<span class="math inline">\(|Z_k|-1>1\)</span>なので、<span class="math inline">\(k+m\to\infty\)</span>すなわち<span class="math inline">\(m\to\infty\)</span>のとき、</p><p><span class="math display">\[|Z_k|(|Z_k|-1)^m\to\infty\]</span></p><p>である。よって、<span class="math inline">\(|Z_k|>2\)</span>となる<span class="math inline">\(k\)</span>が存在するとき、</p><p><span class="math display">\[\lim_{n\to\infty}|Z_n|=\infty\]</span></p><p>となる。(証明終わり)</p>※<a href=https://twitter.com/Azicore>Azicore</a>様のウェブサイトを参考にしています。ありがとうございます！リンク：(<a href=https://azisava.sakura.ne.jp/mandelbrot/>https://azisava.sakura.ne.jp/mandelbrot/</a>)</details><p>なお、<span class="math inline">\(|C|>2\)</span>の場合、<span class="math inline">\(Z_1=0^2+C=C>2\)</span>となり、その時点で<span class="math inline">\(Z_n\)</span>が発散することがわかります。そのため、マンデルブロ集合に含まれる複素数<span class="math inline">\(C\)</span>は全て必ず<span class="math inline">\(|C|\leqq2\)</span>となります。なので、マンデルブロ集合を調べる際には<span class="math inline">\(|C|\leqq2\)</span>の範囲でのみ計算することが一般的です。</p><p>ということで、この性質により、マンデルブロ集合に含まれる(=無限大に発散しない)ことの判定はできないものの、マンデルブロ集合に含まれない(=無限大に発散する)ことの判定はそこそこ簡単にできるようになりました。<span class="math inline">\(Z_n\)</span>を<span class="math inline">\(n\)</span>がある程度の大きさになるまで計算してみて、それが2よりも大きくなれば確実に<span class="math inline">\(Z_n\)</span>は無限大に発散するのだとわかります。</p><p>また、<span class="math inline">\(Z_n\)</span>が発散しないことを調べるのも、少々強引ではありますが<span class="math inline">\(n\)</span>をそこそこ大きな数にしても<span class="math inline">\(Z_n\)</span>が2を超えないという場合に、その時はもはやずっと発散しないものと判断してしまえば、正確ではないものの近似的に「<span class="math inline">\(Z_n\)</span>が発散しないような<span class="math inline">\(C\)</span>の集合」、すなわちマンデルブロ集合を求めることが出来ます。</p><p>このときの「そこそこ大きな数」を「しきい値」と呼ぶことにし、<span class="math inline">\(n\)</span>がしきい値になるまで<span class="math inline">\(Z_n\)</span>を繰り返し計算し、その間に<span class="math inline">\(Z_n>2\)</span>となれば発散判定、その間に<span class="math inline">\(Z_n>2\)</span>を超えることが無ければ発散しなかったと判定することにします。</p><h2 id=描画プログラムを書く>描画プログラムを書く</h2><p>さて、先ほどの章で考えたアルゴリズムに基づいて、マンデルブロ集合を描画するプログラムを書いてみましょう。</p><p>今回は、WEB上でマンデルブロ集合を表示させたかったので、Javascriptを用います。なお、筆者は今回初めてJavascriptをコーディングしたため、あまり推奨されていないような書き方をしているところがあるかもしれませんが、ご承知おきください。</p><h3 id=入力された複素数がマンデルブロ集合に含まれるかどうかを判定する関数>入力された複素数がマンデルブロ集合に含まれるかどうかを判定する関数</h3><p>今回のキモはここがほとんどです。先ほどの章で考えたように、与えられた複素数<span class="math inline">\(C\)</span>に対して数列<span class="math inline">\(Z_n\)</span>が発散するかどうかを考え、<span class="math inline">\(C\)</span>がマンデルブロ集合に含まれる(=発散しない)場合戻り値として<code>true</code>を返し、そうでない(=無限大に発散する)場合に<code>false</code>を返すような関数を作ります。</p><div class=sourceCode id=cb1><pre class="sourceCode js"><code class="sourceCode javascript"><span id=cb1-1><a href=#cb1-1 aria-hidden=true tabindex=-1></a><span class=kw>function</span> <span class=fu>calculate</span>(complex<span class=op>,</span>threshold){<span class=co>//complex=複素数, threshold=しきい値</span></span>
+<span id=cb1-2><a href=#cb1-2 aria-hidden=true tabindex=-1></a>    <span class=kw>let</span> z <span class=op>=</span> <span class=dv>0</span><span class=op>;</span></span>
+<span id=cb1-3><a href=#cb1-3 aria-hidden=true tabindex=-1></a>    <span class=cf>for</span> (<span class=kw>let</span> i <span class=op>=</span> <span class=dv>0</span><span class=op>;</span> i <span class=op>&lt;</span> threshold<span class=op>;</span> i<span class=op>++</span>) {</span>
+<span id=cb1-4><a href=#cb1-4 aria-hidden=true tabindex=-1></a>        z <span class=op>=</span> math<span class=op>.</span><span class=fu>add</span>(math<span class=op>.</span><span class=fu>pow</span>(z<span class=op>,</span><span class=dv>2</span>)<span class=op>,</span>complex)<span class=op>;</span></span>
+<span id=cb1-5><a href=#cb1-5 aria-hidden=true tabindex=-1></a>        <span class=cf>if</span> (math<span class=op>.</span><span class=fu>abs</span>(z)<span class=op>&gt;</span><span class=dv>2</span>) {</span>
+<span id=cb1-6><a href=#cb1-6 aria-hidden=true tabindex=-1></a>            <span class=cf>return</span> <span class=kw>false</span><span class=op>;</span> <span class=co>//発散する</span></span>
+<span id=cb1-7><a href=#cb1-7 aria-hidden=true tabindex=-1></a>            <span class=cf>break</span><span class=op>;</span></span>
+<span id=cb1-8><a href=#cb1-8 aria-hidden=true tabindex=-1></a>        }</span>
+<span id=cb1-9><a href=#cb1-9 aria-hidden=true tabindex=-1></a>    }</span>
+<span id=cb1-10><a href=#cb1-10 aria-hidden=true tabindex=-1></a>    <span class=cf>return</span> <span class=kw>true</span><span class=op>;</span> <span class=co>//収束する</span></span>
+<span id=cb1-11><a href=#cb1-11 aria-hidden=true tabindex=-1></a>}</span></code></pre></div><p>今回、Javascript上で複素数を扱うため、<code>math.js</code>という外部ライブラリを使用しました(記事の終わりにリンクを掲載しています)。引数の<code>complex</code>にはmath.jsの複素数オブジェクトを入力する必要があります。</p><p>有名なプログラミング言語であれば、何かしら複素数など高度な数学を扱うことのできるライブラリは存在していると思います。PytonのNumPyなんかは有名ですよね。複素数の簡単な計算には四則演算以外は使用しないので、自分で実装しても問題ないでしょう。</p><p>また、引数<code>threshold</code>は先ほど定義した「しきい値」です。</p><p>書いたプログラムを解説していきます。</p><div class=sourceCode id=cb2><pre class="sourceCode js"><code class="sourceCode javascript"><span id=cb2-1><a href=#cb2-1 aria-hidden=true tabindex=-1></a><span class=kw>let</span> z <span class=op>=</span> <span class=dv>0</span><span class=op>;</span></span></code></pre></div><p>ここでは初項<span class="math inline">\(Z_0=0\)</span>を宣言しています。</p><div class=sourceCode id=cb3><pre class="sourceCode js"><code class="sourceCode javascript"><span id=cb3-1><a href=#cb3-1 aria-hidden=true tabindex=-1></a><span class=cf>for</span> (<span class=kw>let</span> i <span class=op>=</span> <span class=dv>0</span><span class=op>;</span> i <span class=op>&lt;</span> threshold<span class=op>;</span> i<span class=op>++</span>) {</span>
+<span id=cb3-2><a href=#cb3-2 aria-hidden=true tabindex=-1></a>        z <span class=op>=</span> math<span class=op>.</span><span class=fu>add</span>(math<span class=op>.</span><span class=fu>pow</span>(z<span class=op>,</span><span class=dv>2</span>)<span class=op>,</span>complex)<span class=op>;</span></span></code></pre></div><p>forループを<code>threshold</code>回だけ回し、先ほど宣言した<code>z</code>に<span class="math inline">\(Z_{i+1}\)</span>(このiはfor分が繰り返されるたびに1ずつ加算されるただのカウンタ変数。虚数単位ではない。)を代入しています。</p><p><code>math.add(a,b)</code>は<code>a+b</code>の計算、<code>math.pow(a,b)</code>は<code>a^b</code>の計算をそれぞれ行う、math.jsの関数です。このプログラムが漸化式<span class="math inline">\(Z_{n+1}={Z_n}^2+C\)</span>を表していることが分かると思います。</p><div class=sourceCode id=cb4><pre class="sourceCode js"><code class="sourceCode javascript"><span id=cb4-1><a href=#cb4-1 aria-hidden=true tabindex=-1></a><span class=cf>if</span> (math<span class=op>.</span><span class=fu>abs</span>(z)<span class=op>&gt;</span><span class=dv>2</span>) {</span>
+<span id=cb4-2><a href=#cb4-2 aria-hidden=true tabindex=-1></a>    <span class=cf>return</span> <span class=kw>false</span><span class=op>;</span> <span class=co>//発散する</span></span>
+<span id=cb4-3><a href=#cb4-3 aria-hidden=true tabindex=-1></a>    <span class=cf>break</span><span class=op>;</span></span>
+<span id=cb4-4><a href=#cb4-4 aria-hidden=true tabindex=-1></a>}</span></code></pre></div><p><code>math.abs(a)</code>は<code>a</code>の絶対値を求めるmath.jsの関数です。<span class="math inline">\(|Z_n|>2\)</span>の場合に発散する判定を行う処理を行っています。発散する場合<code>complex</code>はマンデルブロ集合には含まれないので、戻り値として<code>false</code>を帰しています。</p><p>3行目の<code>break;</code>はforループを強制的に抜け出す処理です。発散することが明らかになった以上、さらに<span class="math inline">\(Z_n\)</span>を求めていく必要はないためここで終了しています。</p><div class=sourceCode id=cb5><pre class="sourceCode js"><code class="sourceCode javascript"><span id=cb5-1><a href=#cb5-1 aria-hidden=true tabindex=-1></a><span class=cf>return</span> <span class=kw>true</span><span class=op>;</span></span></code></pre></div><p>しきい値まで<span class="math inline">\(Z_n\)</span>を求めきった後、それでもまだ<span class="math inline">\(|Z_n|>2\)</span>とならない場合、<span class="math inline">\(|Z_n|\)</span>は発散しないと判断して戻り値<code>true</code>を返しています。</p><h3 id=描画したい範囲の全ての複素数についてマンデルブロ集合に含まれるかどうかを調べる>描画したい範囲の全ての複素数についてマンデルブロ集合に含まれるかどうかを調べる</h3><p>描画したい範囲の全ての複素数について、マンデルブロ集合に含まれるかどうかを今作った関数を用いて判定し、その結果(先ほどの関数で<code>true</code>もしくは<code>false</code>が返ってくる)を配列に保存しておくような関数を作ります。</p><div class=sourceCode id=cb6><pre class="sourceCode js"><code class="sourceCode javascript"><span id=cb6-1><a href=#cb6-1 aria-hidden=true tabindex=-1></a><span class=kw>function</span> <span class=fu>mandelbrot</span>(centerre<span class=op>,</span>centerim<span class=op>,</span>magnification<span class=op>,</span>threshold){</span>
+<span id=cb6-2><a href=#cb6-2 aria-hidden=true tabindex=-1></a></span>
+<span id=cb6-3><a href=#cb6-3 aria-hidden=true tabindex=-1></a>    <span class=co>//width,heightにはHTMLのcanvas要素の縦横ピクセル数を代入済み</span></span>
+<span id=cb6-4><a href=#cb6-4 aria-hidden=true tabindex=-1></a></span>
+<span id=cb6-5><a href=#cb6-5 aria-hidden=true tabindex=-1></a>    <span class=cf>if</span> (width<span class=op>&gt;</span>height){<span class=co>//画面の縦幅に描画する集合の範囲の縦幅を合わせる</span></span>
+<span id=cb6-6><a href=#cb6-6 aria-hidden=true tabindex=-1></a>        <span class=kw>var</span> cpp <span class=op>=</span> <span class=dv>4</span><span class=op>/</span>height<span class=op>/</span>magnification<span class=op>;</span><span class=co>// 座標 per ピクセル</span></span>
+<span id=cb6-7><a href=#cb6-7 aria-hidden=true tabindex=-1></a>        <span class=kw>var</span> initre <span class=op>=</span> centerre <span class=op>-</span> cpp<span class=op>*</span>(width<span class=op>/</span><span class=dv>2</span>)<span class=op>;</span></span>
+<span id=cb6-8><a href=#cb6-8 aria-hidden=true tabindex=-1></a>        <span class=kw>var</span> initim <span class=op>=</span> centerim <span class=op>+</span> cpp<span class=op>*</span>(height<span class=op>/</span><span class=dv>2</span>)<span class=op>;</span></span>
+<span id=cb6-9><a href=#cb6-9 aria-hidden=true tabindex=-1></a>    }<span class=cf>else</span>{<span class=co>//画面の横幅に描画する集合の範囲の横幅を合わせる</span></span>
+<span id=cb6-10><a href=#cb6-10 aria-hidden=true tabindex=-1></a>        <span class=kw>var</span> cpp <span class=op>=</span> <span class=dv>4</span><span class=op>/</span>width<span class=op>/</span>magnification<span class=op>;</span><span class=co>// 座標 per ピクセル</span></span>
+<span id=cb6-11><a href=#cb6-11 aria-hidden=true tabindex=-1></a>        <span class=kw>var</span> initre <span class=op>=</span> centerre <span class=op>-</span> cpp<span class=op>*</span>(width<span class=op>/</span><span class=dv>2</span>)<span class=op>;</span></span>
+<span id=cb6-12><a href=#cb6-12 aria-hidden=true tabindex=-1></a>        <span class=kw>var</span> initim <span class=op>=</span> centerim <span class=op>+</span> cpp<span class=op>*</span>(height<span class=op>/</span><span class=dv>2</span>)<span class=op>;</span></span>
+<span id=cb6-13><a href=#cb6-13 aria-hidden=true tabindex=-1></a>    }</span>
+<span id=cb6-14><a href=#cb6-14 aria-hidden=true tabindex=-1></a></span>
+<span id=cb6-15><a href=#cb6-15 aria-hidden=true tabindex=-1></a>    <span class=kw>var</span> pos<span class=op>;</span></span>
+<span id=cb6-16><a href=#cb6-16 aria-hidden=true tabindex=-1></a></span>
+<span id=cb6-17><a href=#cb6-17 aria-hidden=true tabindex=-1></a>    <span class=cf>for</span> (<span class=kw>let</span> i <span class=op>=</span> <span class=dv>0</span><span class=op>;</span> i <span class=op>&lt;</span> width<span class=op>;</span> i<span class=op>++</span>) {</span>
+<span id=cb6-18><a href=#cb6-18 aria-hidden=true tabindex=-1></a>        man_set<span class=op>.</span><span class=fu>push</span>([])<span class=op>;</span></span>
+<span id=cb6-19><a href=#cb6-19 aria-hidden=true tabindex=-1></a>        <span class=cf>for</span> (<span class=kw>let</span> j <span class=op>=</span> <span class=dv>0</span><span class=op>;</span> j <span class=op>&lt;</span> height<span class=op>;</span> j<span class=op>++</span>) {</span>
+<span id=cb6-20><a href=#cb6-20 aria-hidden=true tabindex=-1></a>            pos <span class=op>=</span> math<span class=op>.</span><span class=fu>complex</span>(</span>
+<span id=cb6-21><a href=#cb6-21 aria-hidden=true tabindex=-1></a>                initre<span class=op>+</span>cpp<span class=op>*</span>i<span class=op>,</span></span>
+<span id=cb6-22><a href=#cb6-22 aria-hidden=true tabindex=-1></a>                initim<span class=op>-</span>cpp<span class=op>*</span>j</span>
+<span id=cb6-23><a href=#cb6-23 aria-hidden=true tabindex=-1></a>                )<span class=op>;</span></span>
+<span id=cb6-24><a href=#cb6-24 aria-hidden=true tabindex=-1></a>            universal_set<span class=op>.</span><span class=fu>push</span>(pos)<span class=op>;</span></span>
+<span id=cb6-25><a href=#cb6-25 aria-hidden=true tabindex=-1></a>            man_set[i]<span class=op>.</span><span class=fu>push</span>(<span class=fu>calculate</span>(pos<span class=op>,</span>threshold))<span class=op>;</span></span>
+<span id=cb6-26><a href=#cb6-26 aria-hidden=true tabindex=-1></a>        }</span>
+<span id=cb6-27><a href=#cb6-27 aria-hidden=true tabindex=-1></a>    }</span>
+<span id=cb6-28><a href=#cb6-28 aria-hidden=true tabindex=-1></a>}</span></code></pre></div><p>画面の中心の複素数座標を指定することで描画範囲を指定するような仕様にしたかったため、そこから左上の座標を計算する必要ができコードがやや複雑になりました。</p><p>引数はそれぞれ<code>centerre</code>が中心部の座標の実部、<code>centerim</code>が中心部の座標の虚部、<code>magnification</code>が倍率、<code>threshold</code>が「しきい値」です。</p><p>それではこの関数も上から順に処理を説明していきます。</p><div class=sourceCode id=cb7><pre class="sourceCode js"><code class="sourceCode javascript"><span id=cb7-1><a href=#cb7-1 aria-hidden=true tabindex=-1></a><span class=co>//width,heightにはHTMLのcanvas要素の縦横ピクセル数を代入済み</span></span>
+<span id=cb7-2><a href=#cb7-2 aria-hidden=true tabindex=-1></a></span>
+<span id=cb7-3><a href=#cb7-3 aria-hidden=true tabindex=-1></a><span class=cf>if</span> (width<span class=op>&gt;</span>height){<span class=co>//画面の縦幅に描画する集合の範囲の縦幅を合わせる</span></span>
+<span id=cb7-4><a href=#cb7-4 aria-hidden=true tabindex=-1></a>    <span class=kw>var</span> cpp <span class=op>=</span> <span class=dv>4</span><span class=op>/</span>height<span class=op>/</span>magnification<span class=op>;</span><span class=co>// 座標 per ピクセル</span></span>
+<span id=cb7-5><a href=#cb7-5 aria-hidden=true tabindex=-1></a>    <span class=kw>var</span> initre <span class=op>=</span> centerre <span class=op>-</span> cpp<span class=op>*</span>(width<span class=op>/</span><span class=dv>2</span>)<span class=op>;</span></span>
+<span id=cb7-6><a href=#cb7-6 aria-hidden=true tabindex=-1></a>    <span class=kw>var</span> initim <span class=op>=</span> centerim <span class=op>+</span> cpp<span class=op>*</span>(height<span class=op>/</span><span class=dv>2</span>)<span class=op>;</span></span>
+<span id=cb7-7><a href=#cb7-7 aria-hidden=true tabindex=-1></a>}<span class=cf>else</span>{<span class=co>//画面の横幅に描画する集合の範囲の横幅を合わせる</span></span>
+<span id=cb7-8><a href=#cb7-8 aria-hidden=true tabindex=-1></a>    <span class=kw>var</span> cpp <span class=op>=</span> <span class=dv>4</span><span class=op>/</span>width<span class=op>/</span>magnification<span class=op>;</span><span class=co>// 座標 per ピクセル</span></span>
+<span id=cb7-9><a href=#cb7-9 aria-hidden=true tabindex=-1></a>    <span class=kw>var</span> initre <span class=op>=</span> centerre <span class=op>-</span> cpp<span class=op>*</span>(width<span class=op>/</span><span class=dv>2</span>)<span class=op>;</span></span>
+<span id=cb7-10><a href=#cb7-10 aria-hidden=true tabindex=-1></a>    <span class=kw>var</span> initim <span class=op>=</span> centerim <span class=op>+</span> cpp<span class=op>*</span>(height<span class=op>/</span><span class=dv>2</span>)<span class=op>;</span></span>
+<span id=cb7-11><a href=#cb7-11 aria-hidden=true tabindex=-1></a>}</span></code></pre></div><p>中心部の座標、描画先の画面(今回はHTMLのcanvas要素)の縦横の画素数、拡大倍率をもとに、描画先の画面の左上端の座標を計算しています。</p><p>マンデルブロ集合全体は(<span class="math inline">\(|Z_n|\leqq2\)</span>なので)正方形の範囲に収まるため、画面が横長の場合は、画面の縦いっぱいに拡大して表示するようにし、それ以外、すなわち画面が縦長か正方形の場合は画面の横いっぱいに拡大して表示するよう場合分けしたうえで計算しています。</p><p>ここの計算は説明が面倒なのでプログラムを読める人は自力で解釈してください(すみません)。</p><div class=sourceCode id=cb8><pre class="sourceCode js"><code class="sourceCode javascript"><span id=cb8-1><a href=#cb8-1 aria-hidden=true tabindex=-1></a><span class=kw>var</span> pos<span class=op>;</span></span>
+<span id=cb8-2><a href=#cb8-2 aria-hidden=true tabindex=-1></a></span>
+<span id=cb8-3><a href=#cb8-3 aria-hidden=true tabindex=-1></a><span class=cf>for</span> (<span class=kw>let</span> i <span class=op>=</span> <span class=dv>0</span><span class=op>;</span> i <span class=op>&lt;</span> width<span class=op>;</span> i<span class=op>++</span>) {</span>
+<span id=cb8-4><a href=#cb8-4 aria-hidden=true tabindex=-1></a>    man_set<span class=op>.</span><span class=fu>push</span>([])<span class=op>;</span></span>
+<span id=cb8-5><a href=#cb8-5 aria-hidden=true tabindex=-1></a>    <span class=cf>for</span> (<span class=kw>let</span> j <span class=op>=</span> <span class=dv>0</span><span class=op>;</span> j <span class=op>&lt;</span> height<span class=op>;</span> j<span class=op>++</span>) {</span>
+<span id=cb8-6><a href=#cb8-6 aria-hidden=true tabindex=-1></a>        pos <span class=op>=</span> math<span class=op>.</span><span class=fu>complex</span>(</span>
+<span id=cb8-7><a href=#cb8-7 aria-hidden=true tabindex=-1></a>            initre<span class=op>+</span>cpp<span class=op>*</span>i<span class=op>,</span></span>
+<span id=cb8-8><a href=#cb8-8 aria-hidden=true tabindex=-1></a>            initim<span class=op>-</span>cpp<span class=op>*</span>j</span>
+<span id=cb8-9><a href=#cb8-9 aria-hidden=true tabindex=-1></a>            )<span class=op>;</span></span>
+<span id=cb8-10><a href=#cb8-10 aria-hidden=true tabindex=-1></a>        universal_set<span class=op>.</span><span class=fu>push</span>(pos)<span class=op>;</span></span>
+<span id=cb8-11><a href=#cb8-11 aria-hidden=true tabindex=-1></a>        man_set[i]<span class=op>.</span><span class=fu>push</span>(<span class=fu>calculate</span>(pos<span class=op>,</span>threshold))<span class=op>;</span></span>
+<span id=cb8-12><a href=#cb8-12 aria-hidden=true tabindex=-1></a>    }</span>
+<span id=cb8-13><a href=#cb8-13 aria-hidden=true tabindex=-1></a>}</span></code></pre></div><p>計算する座標を一時的に保存しておくため、変数<code>pos</code>をはじめに定義しています。</p><p>配列<code>man_set</code>は二次元配列です。二次元の平面である複素数平面と対応させています。</p><p>forループを二重に回しながら、ループ毎に<code>pos</code>に新しい複素数座標を代入し、先ほど定義したcalculate関数でその複素数がマンデルブロ集合に含まれるかどうかを調べ、結果を二次元配列<code>man_set</code>に<code>true</code>もしくは<code>false</code>の形で保存しています。</p><p>posに代入しているのはmath.jsの複素数オブジェクトです。</p><p>これで、配列<code>man_set</code>には画面の縦ピクセル数×横ピクセル数個の大量の複素数についてそれぞれ「マンデルブロ集合に含まれるかどうか」が保存されるようになります。</p><p>なお、<code>man_set</code>はこの関数の外でグローバル変数として既に定義しているので、あとで他の関数の中からでも呼び出すことが出来ます。</p><p>できればC++のポインタのような機能をつかって、参照渡しのようなものを実現したかったです。おそらくなにか方法はあるのでしょう…。調べてみると「Javascriptには参照渡しも値渡しも存在しない」だの「参照の値渡しである」だのという記述があり、余計わからなくなりました。</p><h3 id=指定範囲のマンデルブロ集合を保存した配列を実際に描画する>指定範囲のマンデルブロ集合を保存した配列を実際に描画する</h3><p>ここからはもう簡単です。先ほど、配列<code>man_set</code>に描画先画面の全画素に対応する各複素数がマンデルブロ集合に含まれるかどうかを保存したので、あとはその配列全体を読んで、1ピクセルずつ色を塗っていくような関数を作るだけです。</p><div class=sourceCode id=cb9><pre class="sourceCode js"><code class="sourceCode javascript"><span id=cb9-1><a href=#cb9-1 aria-hidden=true tabindex=-1></a><span class=kw>const</span> canvas <span class=op>=</span> <span class=bu>document</span><span class=op>.</span><span class=fu>getElementById</span>(<span class=st>&quot;canvas&quot;</span>)<span class=op>;</span></span>
+<span id=cb9-2><a href=#cb9-2 aria-hidden=true tabindex=-1></a><span class=kw>const</span> ctx <span class=op>=</span> canvas<span class=op>.</span><span class=fu>getContext</span>(<span class=st>&quot;2d&quot;</span>)<span class=op>;</span></span>
+<span id=cb9-3><a href=#cb9-3 aria-hidden=true tabindex=-1></a></span>
+<span id=cb9-4><a href=#cb9-4 aria-hidden=true tabindex=-1></a><span class=kw>function</span> <span class=fu>draw_set</span>(set){</span>
+<span id=cb9-5><a href=#cb9-5 aria-hidden=true tabindex=-1></a>    <span class=cf>for</span> (<span class=kw>let</span> i <span class=op>=</span> <span class=dv>0</span><span class=op>;</span> i <span class=op>&lt;</span> width<span class=op>;</span> i<span class=op>++</span>) {</span>
+<span id=cb9-6><a href=#cb9-6 aria-hidden=true tabindex=-1></a>        <span class=cf>for</span> (<span class=kw>let</span> j <span class=op>=</span> <span class=dv>0</span><span class=op>;</span> j <span class=op>&lt;</span> height<span class=op>;</span> j<span class=op>++</span>) {</span>
+<span id=cb9-7><a href=#cb9-7 aria-hidden=true tabindex=-1></a>            <span class=cf>if</span> (set[i][j]){</span>
+<span id=cb9-8><a href=#cb9-8 aria-hidden=true tabindex=-1></a>                ctx<span class=op>.</span><span class=fu>fillRect</span>(i<span class=op>,</span>j<span class=op>,</span><span class=dv>1</span><span class=op>,</span><span class=dv>1</span>)<span class=op>;</span></span>
+<span id=cb9-9><a href=#cb9-9 aria-hidden=true tabindex=-1></a>            }</span>
+<span id=cb9-10><a href=#cb9-10 aria-hidden=true tabindex=-1></a>        }</span>
+<span id=cb9-11><a href=#cb9-11 aria-hidden=true tabindex=-1></a>    }</span>
+<span id=cb9-12><a href=#cb9-12 aria-hidden=true tabindex=-1></a>}</span></code></pre></div><p>上から説明していきます。</p><div class=sourceCode id=cb10><pre class="sourceCode js"><code class="sourceCode javascript"><span id=cb10-1><a href=#cb10-1 aria-hidden=true tabindex=-1></a><span class=kw>const</span> canvas <span class=op>=</span> <span class=bu>document</span><span class=op>.</span><span class=fu>getElementById</span>(<span class=st>&quot;canvas&quot;</span>)<span class=op>;</span></span>
+<span id=cb10-2><a href=#cb10-2 aria-hidden=true tabindex=-1></a><span class=kw>const</span> ctx <span class=op>=</span> canvas<span class=op>.</span><span class=fu>getContext</span>(<span class=st>&quot;2d&quot;</span>)<span class=op>;</span></span></code></pre></div><p>描画先のcanvas(“canvas”というIDを設定済み)を指定し、そのcanvasに対して描画をするためのコンテキストというものを取得しています。詳しくはよくわかりません…。標準で用意されているcanvasへの描画用のAPIのようなものだと思います。</p><div class=sourceCode id=cb11><pre class="sourceCode js"><code class="sourceCode javascript"><span id=cb11-1><a href=#cb11-1 aria-hidden=true tabindex=-1></a><span class=kw>function</span> <span class=fu>draw_set</span>(set){</span>
+<span id=cb11-2><a href=#cb11-2 aria-hidden=true tabindex=-1></a>    ctx<span class=op>.</span><span class=at>fillStyle</span> <span class=op>=</span> <span class=st>&quot;black&quot;</span><span class=op>;</span></span>
+<span id=cb11-3><a href=#cb11-3 aria-hidden=true tabindex=-1></a>    <span class=cf>for</span> (<span class=kw>let</span> i <span class=op>=</span> <span class=dv>0</span><span class=op>;</span> i <span class=op>&lt;</span> width<span class=op>;</span> i<span class=op>++</span>) {</span>
+<span id=cb11-4><a href=#cb11-4 aria-hidden=true tabindex=-1></a>        <span class=cf>for</span> (<span class=kw>let</span> j <span class=op>=</span> <span class=dv>0</span><span class=op>;</span> j <span class=op>&lt;</span> height<span class=op>;</span> j<span class=op>++</span>) {</span>
+<span id=cb11-5><a href=#cb11-5 aria-hidden=true tabindex=-1></a>            <span class=cf>if</span> (set[i][j]){</span>
+<span id=cb11-6><a href=#cb11-6 aria-hidden=true tabindex=-1></a>                ctx<span class=op>.</span><span class=fu>fillRect</span>(i<span class=op>,</span>j<span class=op>,</span><span class=dv>1</span><span class=op>,</span><span class=dv>1</span>)<span class=op>;</span></span>
+<span id=cb11-7><a href=#cb11-7 aria-hidden=true tabindex=-1></a>            }</span>
+<span id=cb11-8><a href=#cb11-8 aria-hidden=true tabindex=-1></a>        }</span>
+<span id=cb11-9><a href=#cb11-9 aria-hidden=true tabindex=-1></a>    }</span>
+<span id=cb11-10><a href=#cb11-10 aria-hidden=true tabindex=-1></a>}</span></code></pre></div><p>引数<code>set</code>には二次元配列<code>man_set</code>を与えます。<code>fillStyle</code>では描画色を設定しています。</p><p>あとはforループを二重に回し、<code>fillRect()</code>という関数で指定した座標にひとつづつ点を打つだけです。</p><h3 id=仕上げのプログラム>仕上げのプログラム</h3><p>ここまでに用意した三つの関数を使って、実際に画面に描画するまでの処理を行う関数を作ります。</p><div class=sourceCode id=cb12><pre class="sourceCode js"><code class="sourceCode javascript"><span id=cb12-1><a href=#cb12-1 aria-hidden=true tabindex=-1></a><span class=kw>function</span> <span class=fu>draw</span>(set){</span>
+<span id=cb12-2><a href=#cb12-2 aria-hidden=true tabindex=-1></a>    ctx<span class=op>.</span><span class=fu>clearRect</span>(<span class=dv>0</span><span class=op>,</span><span class=dv>0</span><span class=op>,</span><span class=dv>800</span><span class=op>,</span><span class=dv>800</span>)<span class=op>;</span></span>
+<span id=cb12-3><a href=#cb12-3 aria-hidden=true tabindex=-1></a>    ctx<span class=op>.</span><span class=at>strokeStyle</span> <span class=op>=</span> (<span class=st>&quot;black&quot;</span>)<span class=op>;</span></span>
+<span id=cb12-4><a href=#cb12-4 aria-hidden=true tabindex=-1></a>    ctx<span class=op>.</span><span class=at>lineWidth</span> <span class=op>=</span> <span class=dv>5</span><span class=op>;</span></span>
+<span id=cb12-5><a href=#cb12-5 aria-hidden=true tabindex=-1></a>    ctx<span class=op>.</span><span class=fu>strokeRect</span>(<span class=dv>0</span><span class=op>,</span><span class=dv>0</span><span class=op>,</span>canvas<span class=op>.</span><span class=at>width</span><span class=op>,</span>canvas<span class=op>.</span><span class=at>height</span>)<span class=op>;</span></span>
+<span id=cb12-6><a href=#cb12-6 aria-hidden=true tabindex=-1></a>    <span class=fu>draw_set</span>(set)<span class=op>;</span></span>
+<span id=cb12-7><a href=#cb12-7 aria-hidden=true tabindex=-1></a>}</span>
+<span id=cb12-8><a href=#cb12-8 aria-hidden=true tabindex=-1></a></span>
+<span id=cb12-9><a href=#cb12-9 aria-hidden=true tabindex=-1></a><span class=kw>function</span> <span class=fu>init</span>(){</span>
+<span id=cb12-10><a href=#cb12-10 aria-hidden=true tabindex=-1></a>    canvas<span class=op>.</span><span class=at>width</span> <span class=op>=</span> <span class=bu>window</span><span class=op>.</span><span class=at>innerWidth</span><span class=op>;</span></span>
+<span id=cb12-11><a href=#cb12-11 aria-hidden=true tabindex=-1></a>    canvas<span class=op>.</span><span class=at>height</span> <span class=op>=</span> <span class=bu>window</span><span class=op>.</span><span class=at>innerHeight</span><span class=op>;</span></span>
+<span id=cb12-12><a href=#cb12-12 aria-hidden=true tabindex=-1></a>    width <span class=op>=</span> canvas<span class=op>.</span><span class=at>width</span><span class=op>;</span></span>
+<span id=cb12-13><a href=#cb12-13 aria-hidden=true tabindex=-1></a>    height <span class=op>=</span> canvas<span class=op>.</span><span class=at>height</span><span class=op>;</span></span>
+<span id=cb12-14><a href=#cb12-14 aria-hidden=true tabindex=-1></a>    <span class=fu>mandelbrot</span>(<span class=dv>0</span><span class=op>,</span><span class=dv>0</span><span class=op>,</span><span class=dv>1</span><span class=op>,</span><span class=dv>30</span>)<span class=op>;</span></span>
+<span id=cb12-15><a href=#cb12-15 aria-hidden=true tabindex=-1></a>    <span class=fu>draw</span>(man_set)<span class=op>;</span></span>
+<span id=cb12-16><a href=#cb12-16 aria-hidden=true tabindex=-1></a>}</span>
+<span id=cb12-17><a href=#cb12-17 aria-hidden=true tabindex=-1></a></span>
+<span id=cb12-18><a href=#cb12-18 aria-hidden=true tabindex=-1></a><span class=bu>window</span><span class=op>.</span><span class=fu>addEventListener</span>(<span class=st>&quot;load&quot;</span><span class=op>,</span>init)<span class=op>;</span></span></code></pre></div><p>上から説明していきます。</p><div class=sourceCode id=cb13><pre class="sourceCode js"><code class="sourceCode javascript"><span id=cb13-1><a href=#cb13-1 aria-hidden=true tabindex=-1></a><span class=kw>function</span> <span class=fu>draw</span>(set){</span>
+<span id=cb13-2><a href=#cb13-2 aria-hidden=true tabindex=-1></a>    ctx<span class=op>.</span><span class=fu>clearRect</span>(<span class=dv>0</span><span class=op>,</span><span class=dv>0</span><span class=op>,</span><span class=dv>800</span><span class=op>,</span><span class=dv>800</span>)<span class=op>;</span></span>
+<span id=cb13-3><a href=#cb13-3 aria-hidden=true tabindex=-1></a>    ctx<span class=op>.</span><span class=at>strokeStyle</span> <span class=op>=</span> (<span class=st>&quot;black&quot;</span>)<span class=op>;</span></span>
+<span id=cb13-4><a href=#cb13-4 aria-hidden=true tabindex=-1></a>    ctx<span class=op>.</span><span class=at>lineWidth</span> <span class=op>=</span> <span class=dv>5</span><span class=op>;</span></span>
+<span id=cb13-5><a href=#cb13-5 aria-hidden=true tabindex=-1></a>    ctx<span class=op>.</span><span class=fu>strokeRect</span>(<span class=dv>0</span><span class=op>,</span><span class=dv>0</span><span class=op>,</span>canvas<span class=op>.</span><span class=at>width</span><span class=op>,</span>canvas<span class=op>.</span><span class=at>height</span>)<span class=op>;</span></span>
+<span id=cb13-6><a href=#cb13-6 aria-hidden=true tabindex=-1></a>    <span class=fu>draw_set</span>(man_set)<span class=op>;</span></span>
+<span id=cb13-7><a href=#cb13-7 aria-hidden=true tabindex=-1></a>}</span></code></pre></div><p>必要ないかもしれませんが、マンデルブロ集合を描画する作業や枠線を描く作業などを一括で行う関数を作っておきました。座標軸を描き加えたりする場合には、ここにそのような処理を書き足すようにしようと思っています。</p><p>引数<code>set</code>には、マンデルブロ集合を保存した配列、<code>man_set</code>を渡して使用します。</p><div class=sourceCode id=cb14><pre class="sourceCode js"><code class="sourceCode javascript"><span id=cb14-1><a href=#cb14-1 aria-hidden=true tabindex=-1></a><span class=kw>function</span> <span class=fu>init</span>(){</span>
+<span id=cb14-2><a href=#cb14-2 aria-hidden=true tabindex=-1></a>    canvas<span class=op>.</span><span class=at>width</span> <span class=op>=</span> <span class=bu>window</span><span class=op>.</span><span class=at>innerWidth</span><span class=op>;</span></span>
+<span id=cb14-3><a href=#cb14-3 aria-hidden=true tabindex=-1></a>    canvas<span class=op>.</span><span class=at>height</span> <span class=op>=</span> <span class=bu>window</span><span class=op>.</span><span class=at>innerHeight</span><span class=op>;</span></span>
+<span id=cb14-4><a href=#cb14-4 aria-hidden=true tabindex=-1></a>    width <span class=op>=</span> canvas<span class=op>.</span><span class=at>width</span><span class=op>;</span></span>
+<span id=cb14-5><a href=#cb14-5 aria-hidden=true tabindex=-1></a>    height <span class=op>=</span> canvas<span class=op>.</span><span class=at>height</span><span class=op>;</span></span>
+<span id=cb14-6><a href=#cb14-6 aria-hidden=true tabindex=-1></a>    <span class=fu>mandelbrot</span>(<span class=dv>0</span><span class=op>,</span><span class=dv>0</span><span class=op>,</span><span class=dv>1</span><span class=op>,</span><span class=dv>30</span>)<span class=op>;</span></span>
+<span id=cb14-7><a href=#cb14-7 aria-hidden=true tabindex=-1></a>    <span class=fu>draw</span>(man_set)<span class=op>;</span></span>
+<span id=cb14-8><a href=#cb14-8 aria-hidden=true tabindex=-1></a>}</span>
+<span id=cb14-9><a href=#cb14-9 aria-hidden=true tabindex=-1></a><span class=bu>window</span><span class=op>.</span><span class=fu>addEventListener</span>(<span class=st>&quot;load&quot;</span><span class=op>,</span>init)<span class=op>;</span></span></code></pre></div><p><code>init()</code>関数は、WEBページが読み込まれたとき、一番最初に一度だけ実行される関数です。<code>window.addEventListener("load",init)</code>というところで、そのことを指定しています。</p><p>init関数の中で<code>canvas.width</code>及び<code>canvas.height</code>にWEBページの画面サイズを代入し、画面いっぱいにcanvasの要素を広げて表示するようにしています。変数<code>width</code>及び<code>height</code>にも、画面のサイズを代入し直しています。</p><p>そして、先ほど定義した<code>mandelbrot()</code>関数で、マンデルブロ集合を保存した配列を作成します。今回は、引数に、中心の座標(0,0)、倍率(1倍)、発散判定を行うときの「しきい値」(30回)を指定して計算しています。</p><p>最後に、前項で定義したばかりの<code>draw()</code>関数に、マンデルブロ集合を保存した配列<code>man_set</code>を渡し、マンデルブロ集合を描画して完了となります。</p><h3 id=実際に動かしてみる>実際に動かしてみる</h3><p>ここまでに書いたJavascriptのコードを<code>script.js</code>などの名前で保存し、以下のようなHTMLファイルを新たに作成します。</p><div class=sourceCode id=cb15><pre class="sourceCode html"><code class="sourceCode html"><span id=cb15-1><a href=#cb15-1 aria-hidden=true tabindex=-1></a><span class=dt>&lt;!DOCTYPE </span>html<span class=dt>&gt;</span></span>
+<span id=cb15-2><a href=#cb15-2 aria-hidden=true tabindex=-1></a><span class=kw>&lt;html&gt;</span></span>
+<span id=cb15-3><a href=#cb15-3 aria-hidden=true tabindex=-1></a>    <span class=kw>&lt;head&gt;</span></span>
+<span id=cb15-4><a href=#cb15-4 aria-hidden=true tabindex=-1></a>    <span class=kw>&lt;/head&gt;</span></span>
+<span id=cb15-5><a href=#cb15-5 aria-hidden=true tabindex=-1></a>    <span class=kw>&lt;body&gt;</span></span>
+<span id=cb15-6><a href=#cb15-6 aria-hidden=true tabindex=-1></a>        <span class=kw>&lt;canvas</span> <span class=er>id</span><span class=ot>=</span><span class=st>&quot;canvas&quot;</span> <span class=er>width</span><span class=ot>=</span><span class=st>&quot;100%&quot;</span> <span class=er>height</span><span class=ot>=</span><span class=st>&quot;100%&quot;</span><span class=kw>&gt;&lt;/canvas&gt;</span></span>
+<span id=cb15-7><a href=#cb15-7 aria-hidden=true tabindex=-1></a>        <span class=kw>&lt;script</span><span class=ot>  type=</span><span class=st>&quot;text/javascript&quot;</span> <span class=er>src</span><span class=ot>=</span><span class=st>&quot;math.js&quot;</span><span class=kw>&gt;&lt;/script&gt;</span></span>
+<span id=cb15-8><a href=#cb15-8 aria-hidden=true tabindex=-1></a>        <span class=kw>&lt;script</span><span class=ot>  type=</span><span class=st>&quot;text/javascript&quot;</span> <span class=er>src</span><span class=ot>=</span><span class=st>&quot;script.js&quot;</span><span class=kw>&gt;&lt;/script&gt;</span></span>
+<span id=cb15-9><a href=#cb15-9 aria-hidden=true tabindex=-1></a>    <span class=kw>&lt;/body&gt;</span></span>
+<span id=cb15-10><a href=#cb15-10 aria-hidden=true tabindex=-1></a><span class=kw>&lt;/html&gt;</span></span></code></pre></div><p>実際は<code>&lt;link></code>要素でCSSを適用したりしていますが、最低限これだけのHTMLが書かれていれば、先ほどのJavascriptコードでマンデルブロ集合を描画することが出来ます。</p><p>以下の画面で実際に描画プログラムを動かしているのでご確認ください。なお、ここではブログに埋め込むため一部を書き換えています。</p><canvas width=100px height=200px id=canvas></canvas>
+<script type=text/javascript src=https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.5.3/math.js></script><script type=text/javascript src=./script.js></script><h2 id=おわりに次回予告>おわりに・次回予告</h2><p>最後まで読んでいただきありがとうございました！</p><p>次回は、マンデルブロ集合描画の高速化と、画像の着色をやってみようと思っています。実現するかはわかりませんが、お楽しみに。</p><h2 id=参考文献>参考文献</h2><ul><li><a href=https://ja.wikipedia.org/wiki/%E3%83%9E%E3%83%B3%E3%83%87%E3%83%AB%E3%83%96%E3%83%AD%E9%9B%86%E5%90%88>Wikipedia日本語版「マンデルブロ集合」</a></li><li><a href=https://azisava.sakura.ne.jp/mandelbrot/>「マンデルブロ集合の不思議な世界」(Azicoreさんのブログ)</a></li></ul><h2 id=その他のリンク>その他のリンク</h2><ul><li><a href=https://mathjs.org/>Math.js(今回使用したJavascriptのライブラリ)</a></li></ul></div><nav class=nextPrev><div class=next>次へ<a href=https://asanobuturi.github.io/blog/20220619/>物理部の歴史を探る ></a></div><div class=prev>前へ<a href=https://asanobuturi.github.io/blog/20190306/>AviUtlについて、導入など ></a></div></nav></div><nav id=sidebar><div id=sidemenu><div class=side-back><a href=../index.html>記事の一覧へもどる<i class="fas fa-sign-out-alt"></i></a></div><div class=side-next><a href=https://asanobuturi.github.io/blog/20220619/><i class="fas fa-angle-left"></i>物理部の歴史を探る</a></div><div class=side-prev><a href=https://asanobuturi.github.io/blog/20190306/>AviUtlについて、導入など<i class="fas fa-angle-right"></i></a></div></div><div id=indexblock><div class=indextitle>目次</div><ol class=indexcontents></li><li><a href=#%e3%81%af%e3%81%98%e3%82%81%e3%81%ab>はじめに</a></li><li><a href=#%e5%af%be%e8%b1%a1%e8%aa%ad%e8%80%85>対象読者</a></li><li><a href=#%e3%83%9e%e3%83%b3%e3%83%87%e3%83%ab%e3%83%96%e3%83%ad%e9%9b%86%e5%90%88%e3%81%a8%e3%81%af>マンデルブロ集合とは</a></li><li><a href=#%e8%a4%87%e7%b4%a0%e6%95%b0%e6%95%b0%e5%ad%a6%e2%85%b1%e3%81%a7%e5%ad%a6%e7%bf%92%e3%81%a8%e3%81%af>複素数(数学Ⅱで学習)とは</a></li><li><a href=#%e8%a4%87%e7%b4%a0%e6%95%b0%e5%b9%b3%e9%9d%a2%e6%95%b0%e5%ad%a6%e2%85%b2%e3%81%a7%e5%ad%a6%e7%bf%92%e3%81%a8%e3%81%af>複素数平面(数学Ⅲで学習)とは</a></li><li><a href=#%e6%95%b0%e5%88%97%e3%81%a8%e6%bc%b8%e5%8c%96%e5%bc%8f%e6%95%b0%e5%ad%a6b%e3%81%a7%e5%ad%a6%e7%bf%92%e3%81%a8%e3%81%af>数列と漸化式(数学Bで学習)とは</a></li><li><a href=#%e7%84%a1%e9%99%90%e5%a4%a7%e3%81%ae%e6%a5%b5%e9%99%90%e6%95%b0%e5%ad%a6%e2%85%b2%e3%81%a7%e5%ad%a6%e7%bf%92%e3%81%ab%e3%81%a4%e3%81%84%e3%81%a6%e8%bb%bd%e3%81%8f%e8%a7%a3%e8%aa%ac>無限大の極限(数学Ⅲで学習)について軽く解説</a></li><li><a href=#%e3%83%9e%e3%83%b3%e3%83%87%e3%83%ab%e3%83%96%e3%83%ad%e9%9b%86%e5%90%88%e3%81%ae%e8%a6%81%e7%b4%a0%e3%82%92%e8%aa%bf%e3%81%b9%e3%82%8b>マンデルブロ集合の要素を調べる</a></li><li><a href=#%e7%a2%ba%e5%ae%9f%e3%81%ab%e7%99%ba%e6%95%a3%e3%81%99%e3%82%8b%e3%81%93%e3%81%a8%e3%82%92%e5%88%a4%e5%ae%9a%e3%81%99%e3%82%8b%e6%96%b9%e6%b3%95>「確実に発散する」ことを判定する方法</a></li><li><a href=#%e6%8f%8f%e7%94%bb%e3%83%97%e3%83%ad%e3%82%b0%e3%83%a9%e3%83%a0%e3%82%92%e6%9b%b8%e3%81%8f>描画プログラムを書く</a></li><li><a href=#%e3%81%8a%e3%82%8f%e3%82%8a%e3%81%ab%e6%ac%a1%e5%9b%9e%e4%ba%88%e5%91%8a>おわりに・次回予告</a></li><li><a href=#%e5%8f%82%e8%80%83%e6%96%87%e7%8c%ae>参考文献</a></li><li><a href=#%e3%81%9d%e3%81%ae%e4%bb%96%e3%81%ae%e3%83%aa%e3%83%b3%e3%82%af>その他のリンク</a></ol></div></nav></div><footer class=footer><p class=copyright>Copyright &copy; 2015 - 2022 Asano Physics Club, All Rights Reversed.</p></footer></main></body></html>

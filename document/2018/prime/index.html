@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115439668-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+            gtag('config', 'UA-115439668-1');
+        </script>
+
+        <meta property="og:url" content="https://asanobuturi.github.io/document/2018/prime/index.html"/>
+        <meta property="og:title" content="素数の探し方|浅野学園物理部"/>
+        <meta property="og:description" content="部員が素数の探索方法や素数の記録などについて語っていきます。"/>
+        <meta property="og:type" content="website"/>
+        <meta property="og:image" content="https://asanobuturi.github.io/document/2018/prime/thumbnail.jpg"/><!--ここまでOGP設定-->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@Uchi54_APC" /> <!--ここまでTwitterカード設定-->
+
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML' async></script><!--MathJax適用(LaTeX数式表示用)-->
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <meta name="description" content="部員が素数の探索方法や素数の記録などについて語っていきます。" />
+
+        <title>素数の探し方|浅野学園物理部</title>
+
+        <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+        <link rel="stylesheet" href="https://asanobuturi.github.io/styles.css">
+        <link rel="stylesheet" href="https://asanobuturi.github.io/blog_new.css">
+        <link rel="stylesheet" href="https://asanobuturi.github.io/highlight.css"><!--シンタックスハイライト-->
+        <link rel="shortcut icon" href="https://asanobuturi.github.io/image/favicon.ico">
+
+        <script type="text/javascript" src="//typesquare.com/accessor/script/typesquare.js?YME8OdI00sA%3D" charset="utf-8"></script>
+        <script src="https://kit.fontawesome.com/1e291c4f9b.js" crossorigin="anonymous"></script>
+
+        <script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML"> //数式用
+        </script>
+    </head>
+    <body>
+        <div id="nav-drawer">
+        </div>
+        <main>
+            <div id="main">
+                <div class="documentcontent"><article>
+                    <div id="breadcrumbs">
+                    </div>
+                    <header class="documenttitle">
+                        <h1 id="title"></h1>
+                        <p class="author"><i class="fas fa-user-edit"></i></p>
+                        <a href="" class="twitter-share-button" data-show-count="false">Tweet</a>
+                        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script><!--Twitterのシェアボタンの中身(URL・記事タイトル)も記述すること-->
+                    </header>
+                    <div class="document">
+                            <h2 id="はじめに">はじめに</h2>
+                            <p>素数と聞いて、「2,3,5,7,11…のことだよね」と分かった人も多いと思いますが、では、現在までに見つかっている最も大きな素数はご存知ですか？じつは、その素数は2千万桁以上にもなります。どうやってその数が素数であることがわかったのか、考えてみるとふしぎではありませんか？2千万桁の数を2からひとつずつ割っていくわけにもいかないし。ということで、ここでは素数の判定方法などをまとめてみました。なお、この文章での「現在」とは2018年7月14日のことです。</p>
+                            <h2 id="素数とは">素数とは</h2>
+                            <p><span
+                            class="math inline">\(2,3,5,7,11,13,17,19,23,29,31\cdots\)</span>というような数のことです。
+                            素数の定義は色々ありますが、簡単に言うと「その個数のおはじきを長方形に並べることができない数。ただし1列に並べるのは除く」と言えると思います。</p>
+                            <h2 id="素数の記録">素数の記録</h2>
+                            <p>2017年12月26日、現在までに見つかっている素数の中で一番大きな素数の<span
+                            class="math inline">\(2^{77232917}-1\)</span>が発見されました。これは23249425桁の素数で、１ページびっしりに印刷しても719ページの本になります。（実際にAmazonで売られていたり…）
+                            このような素数の記録は「The Prime
+                            Pages」(http://primes.utm.edu/)で管理されています。</p>
+                            <h2 id="素数の種類">素数の種類</h2>
+                            <p>素数と言っても、ただのランダムな素数や、きれいな数式で表される素数、ある数列の中に出てくる素数など様々な種類があります。といっても整数の種類はたくさんあるのでここで紹介するのはほんの一部です。
+                            <h3> メルセンヌ素数 (Mersenne Prime) <span
+                            class="math inline">\(2^n-1\)</span> </h3>先ほどの<span
+                            class="math inline">\(2^{77232917}-1\)</span>がその例です。現在50個のメルセンヌ素数が発見されています。また、現在発見されている素数の大きい方から10個のうち、9個がメルセンヌ素数です。n=2,3,5,7,13,17,19,31,61,89の時などがメルセンヌ素数です。
+                            <h3> フェルマー素数 (Fermat Prime) <span
+                            class="math inline">\(2^{2^n}+1\)</span></h3>
+                            nが少し大きくなるだけで<span
+                            class="math inline">\(2^{2^n}+1\)</span>
+                            は大きくなってしまうので、探すのが大変な素数の一つです。
+                            nが32のとき（1292913986桁）までは素数かどうかが分かっていて、そのうちnが0,1,2,3,4のときのみが素数です。nが4よりも大きいとき素数になるかどうかはわかっていないのですが、初めの5個だけ素数で、そのあとには素数がまだ見つかっていないっていうのはちょっと不思議な感じがします。
+                            <h3> プロス素数 (Proth Prime) <span
+                            class="math inline">\(k\cdot2^n+1(2^n&gt;k)\)</span></h3>
+                            メルセンヌ素数のところで、現在発見されている素数の大きい方から10個のうち9個がメルセンヌ素数だと書きましたが、その残りの1個がこのプロス素数の
+                            <span class="math inline">\(10223\cdot
+                            2^{31172165}+1\)</span>です。
+                            <h3> 双子素数 (Twin Primes)</h3>
+                            隣り合っている2つの奇数（pとp+2）の両方が素数である数です。
+                            現在見つかっている中で最大の双子素数は、2016年9月に発見された
+                            <span class="math inline">\(2996863034895\cdot 21290000
+                            \pm 1\)</span>（388342桁）です。
+                            <h3> 階乗素数 (Factorial
+                            Primes) <span class="math inline">\(n!+1,n!-1\)</span></h3>
+                            一瞬、この数はnまでは割れないので、全てが素数なように見えますが実は少なく、
+                            <span class="math inline">\(n!-1\)</span> は27個、 <span
+                            class="math inline">\(n!+1\)</span>
+                            は22個しか見つかっていません。現在見つかっている最大の階乗素数は、2016年7月に発見された<span
+                            class="math inline">\(208003!-1\)</span>（1015843桁）です。
+                            2018/7/14現在 <span
+                            class="math inline">\(n=250823\)</span>
+                            まで探索が終了しています。
+                            (http://prpnet.primegrid.com:12002/server_stats.html)
+                            <h3>素数階乗素数 (Primorial Primes) <span
+                            class="math inline">\(n\#+1,n\#-1\)</span></h3>
+                            2から順にnまでの素数をすべてかけた数を <span
+                            class="math inline">\(n\#\)</span> と表します。
+                            この数も、見た目よりはるかに素数になりにくく、 <span
+                            class="math inline">\(n\#-1\)</span> は20個、 <span
+                            class="math inline">\(n!+1\)</span>
+                            は22個しか見つかっていません。現在見つかっている最大の素数階乗素数は、2012年3月に発見された
+                            <span class="math inline">\(1098133\#-1\)</span>
+                            （476311桁）です。 2018/7/14現在 <span
+                            class="math inline">\(n=2550167\)</span>
+                            まで探索が終了しています。
+                            (http://prpnet.primegrid.com:12008/server_stats.html)
+                            <h3>レピュニット素数 (Repunit Prime) <span
+                            class="math inline">\((10^n-1)/9=11111111....11\)</span></h3>
+                            1だけでできた数、<strong>Rep</strong>eated
+                            <strong>unit</strong>（反復単位数）を縮めてレピュニット(Repunit)と呼び、この数が素数の時、レピュニット素数といいます。
+                            現在見つかっている最大の素数（確率的素数）は、2007年7月に発見された
+                            <span class="math inline">\((10^{270343}-1)/9\)</span>
+                            です。 現在、<span
+                            class="math inline">\(n=2500000\)</span>までの素数の探索が完了しています。
+                            (http://www.elektrosoft.it/matematica/repunit/status.htm)
+                            <h3> ニアレピュニット素数 (Near Repunit Prime)</h3>
+                            レピュニット数の数字をひとつだけ別の数に置き換えた数です。
+                            現在見つかっている（たぶん）最大のニアレプディジット素数（確率的素数）は2014年12月に発見された
+                            <span class="math inline">\((64 \cdot
+                            10^{762811}-1)/9=711111...111\)</span> です。
+                            <h3>ニアレプディジット素数 (Near Repdigit Prime)</h3>
+                            すべての位が同じ数のことをレプディジット数とよびます。そのレプディジット数の数字をひとつだけ別の数に置き換えた素数です。現在見つかっている最大のニアレプディジット素数は、2013年9月に発見された<span
+                            class="math inline">\(2\cdot
+                            10^{1059002}-1=199999...99\)</span>です。
+                            <h3> 回文素数 (Palindrome Prime)</h3>
+                            上から読んでも下から読んでも同じ素数です。
+                            現在の最大は2014年11月に発見された<span
+                            class="math inline">\(10^{474500}+999\cdot
+                            10^{237249}+1=100000\cdots 00000999000\cdots00001\)</span>
+                            です。
+                            <h3> フィボナッチ素数 (Fibonacchi Prime)</h3>
+                            フィボナッチ数列とは、<span
+                            class="math inline">\(1,1,2,3,5,8,13,21,34,55,89,144\cdots\)</span>のことで、このうち素数のフィボナッチ数のことです。現在51個の確率的素数が見つかっていて、その最大は3340367番目の698096桁の数です。また、この51個のうち34個は素数であることが証明されています。
+                            <h3> Smarandache素数 (Smarandache Prime)</h3>
+                            1234567891011121314151617…というふうに１から順に自然数を並べた素数です。（1,112,123,1234,12345,123456,1234567,12345678,123456789,12345678910,1234567891011…）この形の素数はすぐに見つかりそうですが、現在、少なくとも344869まで探索され、まだ一つも見つかっていません。
+                            ちなみに、<span
+                            class="math inline">\(12345678901234567890123456789012\cdots\)</span>が素数なのは、<span
+                            class="math inline">\(n=171,277,367,561,567,18881\)</span>です。（これ以降は380000まで探索しましたが、まだ見つけていません）
+                            <h3> Wall-Sun-Sun素数（Fibonacci-Wieferich素数）</h3>
+                            同じ素数に2つも名前がついていますが、現在まだ見つかっていません。
+                            <h3> Wilson素数 (Wilson Prime)</h3>pを素数として、<span
+                            class="math inline">\(p^2\)</span>が<span
+                            class="math inline">\((p-1)!+1\)</span>を割り切るとき、その素数pをWilson素数といいます。
+                            現在、20,000,000,000,000までの素数675,895,909,271個が調べられましたが、<span
+                            class="math inline">\(p=5,13,563\)</span>
+                            しか見つかっていません。 (https://arxiv.org/abs/1209.3436)
+                            <h3> Wieferich素数 (Wieferich Prime)</h3> pを素数として、<span
+                            class="math inline">\(p^2\)</span>が<span
+                            class="math inline">\(2^{p-1}-1\)</span>
+                            を割り切るとき、その素数pをWieferich素数といます。現在、607,131,900,000,000,000までの素数15,208,298,813,191,373個を調べられましたが、p=1093,3511しか見
+                            つかっていません。
+                            (http://u-g-f.de/PRPNet/wrange_stats.php?proj=WFS)</p>
+                            <h2 id="素数探索の歴史">素数探索の歴史</h2>
+                            <p>1588年、イタリアの数学者Pietro Cataldiが <span
+                            class="math inline">\(2^{17}-1=131071\)</span>と <span
+                            class="math inline">\(2^{19}-1=524287\)</span>を発見しました。なんと手計算で、しかもローマ数字で743までの素数表をつくり、それで１つ１つ割って発見しました。
+                            1772年、１８世紀を代表する数学者のオイラーが、<span
+                            class="math inline">\(2^{31}-1=2147483647\)</span>を発見しました。<span
+                            class="math inline">\(2^{31}-1\)</span>の約数は <span
+                            class="math inline">\(248\cdot n+1\)</span> か<span
+                            class="math inline">\(248 \cdot n+63\)</span>
+                            の形でなければならないことを見つけ、実際に割ってみて発見したといわれています。
+                            1867年、Landryが
+                            (259-1)/179951が素数であることを見つけました。この素数はメルセンヌ数以外の素数として、長く記録に残りました。
+                            1876年、リュカ(Lucas)が<span
+                            class="math inline">\(2^{127}-1=170141183460469231731687303715884105727\)</span>
+                            を発見しました。リュカ数列を使って15歳のときから手計算で素数判定を始め、19年後ついに素数であることを確かめました。これが、手計算で見つけられた最大の素数です。
+                            1951年、Ferrierが <span
+                            class="math inline">\((2^{148}+1)/17=20988936657440586486151264256610222593863921\)</span>
+                            を、機械式電卓を使って発見しました。これでコンピューター以前の時代は終了し、その年のうちにMillerとWheelerがイギリスのコンピューターEDSACで79桁の素数<span
+                            class="math inline">\(180\cdot
+                            (2^{127}-1)^2+1=5210644015679228794060694325390955853335898483908056458352183851018372555735221\)</span>
+                            を見つけました。 その翌年の1952年には、Raphael
+                            RobinsonがアメリカのコンピューターSWACを使って <span
+                            class="math inline">\(2^{521}-1,2^{607}-1,2^{1279}-1,2^{2203}-1,2^{2281}-1\)</span>
+                            を見つけました。このうち最初の２つの素数はプログラムを走らせ始めたその日のうちに見つかりました。
+                            その後、1957年には <span
+                            class="math inline">\(2^{3217}-1\)</span>、1961年には
+                            <span
+                            class="math inline">\(2^{4423}-1,2^{4253}-1\)</span>、1963年には
+                            <span
+                            class="math inline">\(2^{9689}-1,2^{9941}-1,2^{11213}-1\)</span>
+                            というように順調に記録を伸ばし続けています。 上の <span
+                            class="math inline">\(2^{4423}-1,2^{4253}-1\)</span>
+                            の2つの素数について、面白いエピソードが残っています。この素数を発見したHurwitzは、2つのうち大きい方の素数
+                            <span class="math inline">\(2^{4423}-1\)</span> を <span
+                            class="math inline">\(2^{4253}-1\)</span>
+                            より数秒前に知りました。出力用紙が重なっていたからです。素数が「発見された」と言うためには人間がその結果を見る必要があるのか、それともコンピューターが知っていればいいのか微妙なところですが、出力結果を人間が見たときに発見したと言うとすると
+                            <span class="math inline">\(2^{4253}-1\)</span>
+                            が最大の既知素数になることはありませんでした。</p>
+                            <h2 id="素数判定法">素数判定法</h2>
+                            <p>素数の判定方法は、大きく分けて決定的素数判定法と確率的素数判定法の2つがあります。
+                            決定的素数判定法とは絶対に素数であると証明できる判定方法で、確率的素数判定法は素数である確率が非常に高いと言えるが、100%素数であるとは言えない判定方法のことです。
+                            他にも、特殊な数に対して判定できる方法などがあります。</p>
+                            <h3
+                            id="試し割り決定的素数判定法">試し割り（決定的素数判定法）</h3>
+                            <p><span class="math inline">\(\sqrt N\)</span>
+                            までのすべての素数で割ってみて、そのどれでも割り切れなかったら<span
+                            class="math inline">\(N\)</span>が素数ではないと示すことができます。
+                            この方法は最も手軽にできる方法ですが、<span
+                            class="math inline">\(N\)</span>が20桁を超えるくらいになると、2から10000000000くらいの素数の全てで割らなければならず、現実的な時間で終わらないので、試し割りができるのはせいぜい15桁くらいまでだと思います。</p>
+                            <h3
+                            id="フェルマーテスト確率的素数判定法">フェルマーテスト（確率的素数判定法）</h3>
+                            <p>大きな数の素数判定をするのに最も一般的に使われる方法が、フェルマーの小定理を使ったフェルマーテストです。
+                            フェルマーの小定理とは、 <span
+                            class="math inline">\(p\)</span>を素数、<span
+                            class="math inline">\(a\)</span>を<span
+                            class="math inline">\(p\)</span>の倍数でない任意の整数とすると、<span
+                            class="math inline">\(a^{p-1}\equiv 1\ (mod\ p)\)</span>
+                            が成り立つ。 という定理です。 この定理を逆に使って、<span
+                            class="math inline">\(n\)</span>が素数かどうか判定することができます。<span
+                            class="math inline">\(a\)</span>を適当に選んで<span
+                            class="math inline">\(a^{n-1}\ mod\ n\)</span>
+                            を計算してみて、<span
+                            class="math inline">\(1\)</span>ではなかったら絶対に素数ではなく、<span
+                            class="math inline">\(1\)</span>だったらおそらく素数だろうと言えます。その<span
+                            class="math inline">\(1\)</span>のときの<span
+                            class="math inline">\(n\)</span>を、<span
+                            class="math inline">\(a\)</span>を底とする概素数(probable
+                            prime)と呼び、a-PRPと書きます。
+                            例えば、77が素数かどうか調べてみます。 <span
+                            class="math inline">\(2^{77-1}=2^{76}=75557863725914323419136=77×981270957479406797651+9\)</span>
+                            余りは9なので、77が素数ではないことが分かりました。
+                            しかし、この方法は100%素数とは言えません。例えば、341は2-PRP
+                            （つまり<span class="math inline">\(2^{341-1}\ mod\
+                            341=1\)</span>）ですが、341=11×31は素数ではありません。ほかにも、1,000,000,000,000以下に2-PRPだけれども素数ではない数は101,629個あります。それでも、1,000,000,000,000以下の素数は37,607,912,018個あるので、それと比べると成功率は非常に高いのが分かります。また、複数の底<span
+                            class="math inline">\(a\)</span>に対してテストをすればもっと正確に判定できます。
+                            ただし、<span
+                            class="math inline">\(n\)</span>の約数以外の底に対してはすべてフェルマーテストを通ってしまう、Carmichael数と呼ばれる数があります。このような数は1,000,000,000,000までに8241個と少ししかありませんが、無限個存在することが示されています。</p>
+                            <h3
+                            id="ミラーラビン判定法確率的素数判定法">ミラー・ラビン判定法（確率的素数判定法）</h3>
+                            <p>Gary
+                            Miller氏が発表したMillerテストをベースにして、1976年にMichael
+                            Rabin氏が発明した素数判定法です。
+                            細かい説明は省略しますが、<span
+                            class="math inline">\(n\)</span>がミラー・ラビン判定法を通った時、<span
+                            class="math inline">\(n\)</span>は<span
+                            class="math inline">\(a\)</span>を底とする強概素数(strong
+                            probable prime)と呼び、a-SPRPと書きます。
+                            この方法でもおそらく素数だと間違えて判定してしまう可能性はありますが、1,000,000,000,000以下の合成数（素数ではない数のこと）のうち2-SPRPは22407個（2-PRPは101629個）、1,000,000,000,000以下の合成数のうち2,
+                            3, 5, 7, 11-SPRPは0個（2, 3, 5, 7,
+                            11-PRPは5718個）というように、フェルマーテストよりも優れています。さらに、フェルマーテストの時のCarmichael数のような数が無いことがわかっています。</p>
+                            <h3
+                            id="リュカ擬素数テスト確率的素数判定法">リュカ擬素数テスト（確率的素数判定法）</h3>
+                            <p>リュカ擬素数テスト、Lucas-Lehmer
+                            法、Lucas擬素数判定法、Lucas pseudoprime
+                            test、Lucas-Selfridgeとも呼ばれています。
+                            ここで、擬素数(Pseudoprime)とは素数ではないのにおそらく素数だと判定されてしまった数のことを言います。
+                            リュカ擬素数テストの中でも、複数の判定法があります。大きく分けてⅠとⅡの2段階があり、３以上の合成数<span
+                            class="math inline">\(n\)</span>に対してⅠを満たす<span
+                            class="math inline">\(n\)</span>をリュカ擬素数(Lucas
+                            Pseudoprime)、Ⅱを満たす<span
+                            class="math inline">\(n\)</span>を 強リュカ擬素数(Strong
+                            Lucas Pseudoprime)といいます。さらに、<span
+                            class="math inline">\(Q=-1\)</span>のときⅢが成立する合成数<span
+                            class="math inline">\(n\)</span>を超強リュカ擬素数(Extra
+                            Strong Lucas Pseudoprime) といいます。このとき、<span
+                            class="math inline">\(U_t\)</span>を無視すると、ほとんど超強リュカ擬素数(Almost
+                            Extra Strong Lucas Pseudoprime)といいます。
+                            それぞれの1,000,000,000,000以下の合成数のうちの擬素数の個数は、リュカ擬素数は116928個、強リュカ擬素数は25542個、ほとんど超強リュカ擬素数は17245個、超強リュカ擬素数は16231個です。
+                            また、Bruckman-Lucas擬素数は43039個、フィボナッチ擬素数は77188個、ペル擬素数は89714個あります。</p>
+                            <h3
+                            id="baillie-psw法確率的素数判定法">Baillie-PSW法（確率的素数判定法）</h3>
+                            <p>BPSW法とも呼ばれています。この方法は、上２つのミラー・ラビン判定法と強リュカ擬素数テストを組み合わせた判定法です。ミラー・ラビン擬素数で、かつ強リュカ擬素数であるような合成数しか失敗しませんが、このような数はまだ見つかっていません。</p>
+                            <h3
+                            id="ペラン擬素数判定法確率的素数判定法">ペラン擬素数判定法（確率的素数判定法）</h3>
+                            <p>ペラン数列（Perrin Sequence）の性質の一つの、<span
+                            class="math inline">\(q\)</span>が素数のとき<span
+                            class="math inline">\(p_q\)</span>が<span
+                            class="math inline">\(q\)</span>の倍数になることを逆に使い、<span
+                            class="math inline">\(p_q\)</span>が<span
+                            class="math inline">\(q\)</span>の倍数のとき<span
+                            class="math inline">\(q\)</span>はペラン概素数(Perrin
+                            Probable
+                            Prime)といい、特に合成数のペラン概素数をペラン擬素数(Perrin
+                            pseudoprime)といいます。これは非常に少なく、1,000,000,000,000以下の合成数のうちペラン擬素数は285個しかありません。</p>
+                            <h3
+                            id="frobeniusテスト確率的素数判定法">Frobeniusテスト（確率的素数判定法）</h3>
+                            <p>Grantham’s Frobenius test、Quadratic Frobenius
+                            test、Frobenius-Grantham 法などとも呼ばれています。
+                            この判定法の中でも複数あり、1,000,000,000,000以下の合成数のうち、(1,-1)のFrobenius擬素数は37527個、(3,-5)のFrobenius擬素数は1532個、(P,
+                            2)のFrobenius擬素数は０個、Frobenius-Underwood擬素数は0個で、この中で(P,
+                            2)のFrobenius擬素数とFrobenius-Underwood擬素数はまだ発見されていません。</p>
+                            <h3
+                            id="kraitchik-lehmer法決定的素数判定法">Kraitchik-Lehmer法（決定的素数判定法）</h3>
+                            <p>ここからは100%素数だと言える決定的素数判定法を紹介していきます。
+                            Kraitchik-Lehmer法は、Lucasの判定法、Lucas primality
+                            test、ｎ-1判定法とも呼ばれています。素数判定をしたい数<span
+                            class="math inline">\(n\)</span>に対して、<span
+                            class="math inline">\(n-1\)</span>の素因数分解ができていれば、確定的に素数かどうか判定できる、つまり素数であることの証明ができるという判定法です。しかし、これは<span
+                            class="math inline">\(n-1\)</span>の素因数分解が完全にできていることが条件です。<span
+                            class="math inline">\(150209!+1\)</span>のようにもともと素因数分解されている数に１を足した数についてはこの方法が使えますが、そうではなくてランダムに選んだ大きな数は素因数分解するのが大変なので、そのような数に使うのは厳しいです。</p>
+                            <h3
+                            id="ポクリントンの判定法決定的素数判定法">ポクリントンの判定法（決定的素数判定法）</h3>
+                            <p>ポクリントンの判定法は、一般Pocklington法、Pocklingtonの判定法、ｎ-1判定法、Pocklington-Lehmer
+                            testとも呼ばれている方法です。 これは、<span
+                            class="math inline">\(n-1\)</span>の素因数分解が５０％以上できている、つまり<span
+                            class="math inline">\(n-1=a\times b\times c \times\
+                            \cdots\ \times R\)</span>（<span
+                            class="math inline">\(a,b,c,\cdots\)</span>は素数、<span
+                            class="math inline">\(R\)</span>は合成数）というふうに素因数分解できているとき、<span
+                            class="math inline">\(R\)</span>が<span
+                            class="math inline">\(\sqrt
+                            {n-1}\)</span>以下のときに使える方法です。その他にも33.3%以上素因数分解できている、つまり<span
+                            class="math inline">\(R\)</span>が<span
+                            class="math inline">\(\sqrt{R/F}\)</span>以下の素因数を持たないときに使える方法もあります。</p>
+                            <h3
+                            id="モリソンの判定法決定的素数判定法">モリソンの判定法（決定的素数判定法）</h3>
+                            <p>Morrison’s
+                            testとも呼ばれています。これは、ポクリントンの判定法とは逆に<span
+                            class="math inline">\(n+1\)</span>の素因数分解が33.3%以上出来ているときに使える方法です。</p>
+                            <h3
+                            id="ppls法決定的素数判定法">PPLS法（決定的素数判定法）</h3>
+                            <p>PPLS法は、Proth-Pocklington-Lehmer-Selfridge法、n-1/n+1法、複合判定法、combined
+                            method、combined <span
+                            class="math inline">\(n^2-1\)</span>
+                            testとも呼ばれている判定法です。
+                            これは、ポクリントンの判定法とモリソンの判定法を組み合わせたような判定法で、<span
+                            class="math inline">\(n-1\)</span>と<span
+                            class="math inline">\(n+1\)</span>の素因数分解されている部分の積が<span
+                            class="math inline">\(n\)</span>の立方根より大きい場合に使える方法です。</p>
+                            <h3
+                            id="ecpp法決定的素数判定法">ECPP法（決定的素数判定法）</h3>
+                            <p>これは楕円曲線素数判定法、Elliptic Curve Primality
+                            Proving法、ECPP法とも呼ばれています。この方法は、<span
+                            class="math inline">\(n-1\)</span>と<span
+                            class="math inline">\(n+1\)</span>の素因数分解が十分にできていない数<span
+                            class="math inline">\(n\)</span>が素数である証明をするときに最も一般的に使われている判定法で、Goldwasser-Kilian
+                            の素数判定法、Atkin-Morain
+                            の素数判定法、高速楕円曲線素数判定法などがあります。</p>
+                            <h3
+                            id="aks素数判定法決定的素数判定法">AKS素数判定法（決定的素数判定法）</h3>
+                            <p>AKS素数判定法（Agrawal-Kayal-Saxena素数判定法）は、Manindra
+                            Agrawal、Neeraj Kayal、Nitin
+                            Saxenaの三人が2002年に発表した判定法で、与えられた自然数が素数かどうかを決定性多項式時間でできるという衝撃的な方法でした。ただし発表された当初は、この方法では６桁の素数判定に10秒くらいかかるようなとてつもなく遅い方法でした。現在ではそれが改良されて100桁の素数判定に１秒くらいでできるようになりましたが、まだ楕円曲線素数判定法に比べると遅いです。</p>
+                            <h3
+                            id="ヤコビ和法決定的素数判定法">ヤコビ和法（決定的素数判定法）</h3>
+                            <p>ヤコビ和法は、Cohen-Lenstra法、Jacobi sums
+                            test、APR判定法とも呼ばれています。Leonard Adleman、Carl
+                            Pomerance、Robert
+                            Rumelyが発表した決定的素数判定法で、後にHenri
+                            CohenとHendrik Willem
+                            Lenstraが改良したものはAPR-CL判定法と呼ばれています。
+                            それをもとに円分判定法（円分環素数判定法、cyclotomic
+                            primality testsとも呼ばれている）も作られました。</p>
+                            <h3
+                            id="lucas-lehmer判定法特殊な数に対する判定法">Lucas-Lehmer判定法（特殊な数に対する判定法）</h3>
+                            <p>ここからは、特殊な数に対する判定法を紹介していきます。
+                            Lucas-Lehmer判定法は、L-L法、リュカ・レーマーテスト、Lucas-Lehmer
+                            testとも呼ばれている、メルセンヌ素数に対する判定法です。1930年に、D.
+                            H.
+                            Lehmerがエドゥアール・リュカの判定法を改良して作ったため、こう呼ばれています。<span
+                            class="math inline">\(2^{521}-1\)</span>以降のメルセンヌ素数はすべてこの方法で見つけられました。最初の<span
+                            class="math inline">\(2^{77232917}-1\)</span>もこの方法で素数だとわかりました。この判定法はコンピューターで計算しやすいため、巨大なメルセンヌ素数がいくつも発見されています。</p>
+                            <h3
+                            id="pepinの判定法特殊な数に対する判定法">Pepinの判定法（特殊な数に対する判定法）</h3>
+                            <p>フェルマー数<span
+                            class="math inline">\(F_n=2^{2^n}+1\)</span>に対する判定法です。しかし、フェルマー数は<span
+                            class="math inline">\(n\)</span>が少し大きくなるだけでとてつもない大きさになるので、この判定法に当てはめて計算することは難しいです。例えば、まだ素数かどうかわかっていない<span
+                            class="math inline">\(F_{33}\)</span>は2,585,827,973桁の数です。これは今見つかっている中で一番大きな素数<span
+                            class="math inline">\(2^{77232917}-1\)</span>の23,249,425桁の100倍以上の桁数です。</p>
+                            <h3
+                            id="prothの判定法特殊な数に対する判定法">Prothの判定法（特殊な数に対する判定法）</h3>
+                            <p>プロス数 <span class="math inline">\(h×2^k+1\)</span>
+                            （ただし <span class="math inline">\(2^k&gt;h\)</span>）
+                            に対する判定法です。プロス数という名前は、フランスの独学の数学者で農家のFrancois
+                            Prothに由来します。</p>
+                            <h3
+                            id="llrテスト特殊な数に対する判定法">LLRテスト（特殊な数に対する判定法）</h3>
+                            <p>Lucas-Lehmer-Rieselテストは、<span
+                            class="math inline">\(h×2^k-1\)</span>（ただし <span
+                            class="math inline">\(2^k&gt;h\)</span>）に対する判定法です。メルセンヌ素数の判定法のLucas-LehmerテストをベースにしてHans
+                            Rieselが発展させました。</p>
+                            <h2 id="素数判定法の速度比較">素数判定法の速度比較</h2>
+                            <p>実際に複数の素数判定法の速度を調べてみました。最近のCPUでシングルスレッドでの実行時間です。</p>
+                            <h3 id="桁から100桁">10桁から100桁</h3>
+                            <p>全てmpirというライブラリを使用。試し割りは素数に対する判定。
+                            L-LとはLucas-Lehmer判定法のことです。</p>
+                            <table>
+                            <thead>
+                            <tr class="header">
+                            <th>桁</th>
+                            <th>試し割り(秒)</th>
+                            <th>2-PRP(秒)</th>
+                            <th>2-SPRP(秒)</th>
+                            <th>ECPP(秒)</th>
+                            <th>L-L(秒)</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="odd">
+                            <td>10</td>
+                            <td>0.0003162</td>
+                            <td>0.00000207</td>
+                            <td>0.00002015</td>
+                            <td>0.00156</td>
+                            <td>0.0000423</td>
+                            </tr>
+                            <tr class="even">
+                            <td>15</td>
+                            <td>0.1001246</td>
+                            <td>0.00000241</td>
+                            <td>0.00001970</td>
+                            <td>0.01515</td>
+                            <td>0.0000423</td>
+                            </tr>
+                            <tr class="odd">
+                            <td>20</td>
+                            <td>202.321935</td>
+                            <td>0.00000345</td>
+                            <td>0.00002327</td>
+                            <td>0.03909</td>
+                            <td>0.0000457</td>
+                            </tr>
+                            <tr class="even">
+                            <td>30</td>
+                            <td></td>
+                            <td>0.00000531</td>
+                            <td>0.00002534</td>
+                            <td>0.26259</td>
+                            <td>0.0000395</td>
+                            </tr>
+                            <tr class="odd">
+                            <td>40</td>
+                            <td></td>
+                            <td>0.00000914</td>
+                            <td>0.00003315</td>
+                            <td>0.78847</td>
+                            <td>0.0000323</td>
+                            </tr>
+                            <tr class="even">
+                            <td>50</td>
+                            <td></td>
+                            <td>0.00001044</td>
+                            <td>0.00003722</td>
+                            <td>1.47968</td>
+                            <td>0.0000504</td>
+                            </tr>
+                            <tr class="odd">
+                            <td>60</td>
+                            <td></td>
+                            <td>0.00001672</td>
+                            <td>0.00005238</td>
+                            <td>3.37809</td>
+                            <td>0.0000575</td>
+                            </tr>
+                            <tr class="even">
+                            <td>70</td>
+                            <td></td>
+                            <td>0.00001966</td>
+                            <td>0.00007992</td>
+                            <td>7.95976</td>
+                            <td>0.0000236</td>
+                            </tr>
+                            <tr class="odd">
+                            <td>80</td>
+                            <td></td>
+                            <td>0.00002969</td>
+                            <td>0.00008309</td>
+                            <td>7.75192</td>
+                            <td>0.0000308</td>
+                            </tr>
+                            <tr class="even">
+                            <td>90</td>
+                            <td></td>
+                            <td>0.00003428</td>
+                            <td>0.00008861</td>
+                            <td>9.15327</td>
+                            <td>0.0000659</td>
+                            </tr>
+                            <tr class="odd">
+                            <td>100</td>
+                            <td></td>
+                            <td>0.00004711</td>
+                            <td>0.00012416</td>
+                            <td>17.60249</td>
+                            <td>0.0000806</td>
+                            </tr>
+                            </tbody>
+                            </table>
+                            <h3 id="桁から1000桁">100桁から1000桁</h3>
+                            <p>ECPPの300桁以降はPRIMOを使用した結果を利用。</p>
+                            <table>
+                            <thead>
+                            <tr class="header">
+                            <th>桁</th>
+                            <th>2-PRP(秒)</th>
+                            <th>2-SPRP(秒)</th>
+                            <th>ECPP(秒)</th>
+                            <th>L-L(秒)</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="odd">
+                            <td>100</td>
+                            <td>0.0000471</td>
+                            <td>0.0001242</td>
+                            <td>17.6</td>
+                            <td>0.0000806</td>
+                            </tr>
+                            <tr class="even">
+                            <td>200</td>
+                            <td>0.0003169</td>
+                            <td>0.0003149</td>
+                            <td>111.3</td>
+                            <td>0.0001596</td>
+                            </tr>
+                            <tr class="odd">
+                            <td>300</td>
+                            <td>0.0008869</td>
+                            <td>0.0008142</td>
+                            <td>8.5</td>
+                            <td>0.0003368</td>
+                            </tr>
+                            <tr class="even">
+                            <td>400</td>
+                            <td>0.0018953</td>
+                            <td>0.0017754</td>
+                            <td>10.2</td>
+                            <td>0.0005779</td>
+                            </tr>
+                            <tr class="odd">
+                            <td>500</td>
+                            <td>0.0036472</td>
+                            <td>0.0041140</td>
+                            <td>20.7</td>
+                            <td>0.0000323</td>
+                            </tr>
+                            <tr class="even">
+                            <td>600</td>
+                            <td>0.0061181</td>
+                            <td>0.0072429</td>
+                            <td>52.8</td>
+                            <td>0.0000248</td>
+                            </tr>
+                            <tr class="odd">
+                            <td>700</td>
+                            <td>0.0093117</td>
+                            <td>0.0108036</td>
+                            <td>107.1</td>
+                            <td>0.0000286</td>
+                            </tr>
+                            <tr class="even">
+                            <td>800</td>
+                            <td>0.0131810</td>
+                            <td>0.0163689</td>
+                            <td>139.1</td>
+                            <td>0.0000246</td>
+                            </tr>
+                            <tr class="odd">
+                            <td>900</td>
+                            <td>0.0181532</td>
+                            <td>0.0232536</td>
+                            <td>293.4</td>
+                            <td>0.0000358</td>
+                            </tr>
+                            <tr class="even">
+                            <td>1000</td>
+                            <td>0.0244537</td>
+                            <td>0.0286438</td>
+                            <td>388.8</td>
+                            <td>0.0000429</td>
+                            </tr>
+                            </tbody>
+                            </table>
+                            <h3 id="桁から10000桁">1000桁から10000桁</h3>
+                            <p>2-PRPはPFGWを使用して計測、ECPPはPRIMOを使用した結果を利用。</p>
+                            <table>
+                            <thead>
+                            <tr class="header">
+                            <th></th>
+                            <th>2-PRP</th>
+                            <th>ECPP</th>
+                            <th>L-L</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="odd">
+                            <td>1000桁</td>
+                            <td>0.0130秒</td>
+                            <td>6.5分</td>
+                            <td>0.007秒</td>
+                            </tr>
+                            <tr class="even">
+                            <td>2000桁</td>
+                            <td>0.0432秒</td>
+                            <td>74.3分</td>
+                            <td>0.042秒</td>
+                            </tr>
+                            <tr class="odd">
+                            <td>3000桁</td>
+                            <td>0.1031秒</td>
+                            <td>499.7分</td>
+                            <td>0.108秒</td>
+                            </tr>
+                            <tr class="even">
+                            <td>4000桁</td>
+                            <td>0.1585秒</td>
+                            <td>27.5時間</td>
+                            <td>0.238秒</td>
+                            </tr>
+                            <tr class="odd">
+                            <td>5000桁</td>
+                            <td>0.2715秒</td>
+                            <td>89.5時間</td>
+                            <td>0.430秒</td>
+                            </tr>
+                            <tr class="even">
+                            <td>6000桁</td>
+                            <td>0.3864秒</td>
+                            <td>183時間</td>
+                            <td>0.656秒</td>
+                            </tr>
+                            <tr class="odd">
+                            <td>7000桁</td>
+                            <td>0.5845秒</td>
+                            <td>13.6日</td>
+                            <td>1.021秒</td>
+                            </tr>
+                            <tr class="even">
+                            <td>8000桁</td>
+                            <td>0.6637秒</td>
+                            <td>21.0日</td>
+                            <td>1.487秒</td>
+                            </tr>
+                            <tr class="odd">
+                            <td>9000桁</td>
+                            <td>0.9299秒</td>
+                            <td>60.1日</td>
+                            <td>1.731秒</td>
+                            </tr>
+                            <tr class="even">
+                            <td>10000桁</td>
+                            <td>1.2008秒</td>
+                            <td>31.6日</td>
+                            <td>2.175秒</td>
+                            </tr>
+                            </tbody>
+                            </table>
+                            <h3 id="桁から100000桁">10000桁から100000桁</h3>
+                            <p>2-PRPはPFGWを使用して計測、ECPPはPRIMOを使用した結果を利用。
+                            ECPPの30000桁の結果は、30950桁の数の素数証明をした結果。</p>
+                            <table>
+                            <thead>
+                            <tr class="header">
+                            <th></th>
+                            <th>2-PRP</th>
+                            <th>ECPP</th>
+                            <th>L-L</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="odd">
+                            <td>10000桁</td>
+                            <td>1.20秒</td>
+                            <td>31.6日</td>
+                            <td>2.182秒</td>
+                            </tr>
+                            <tr class="even">
+                            <td>20000桁</td>
+                            <td>6.48秒</td>
+                            <td>242.4日</td>
+                            <td>11.321秒</td>
+                            </tr>
+                            <tr class="odd">
+                            <td>30000桁</td>
+                            <td>12.71秒</td>
+                            <td>1409.4日</td>
+                            <td>31.687秒</td>
+                            </tr>
+                            <tr class="even">
+                            <td>40000桁</td>
+                            <td>26.77秒</td>
+                            <td></td>
+                            <td>67.202秒</td>
+                            </tr>
+                            <tr class="odd">
+                            <td>50000桁</td>
+                            <td>35.46秒</td>
+                            <td></td>
+                            <td>126.009秒</td>
+                            </tr>
+                            <tr class="even">
+                            <td>60000桁</td>
+                            <td>53.08秒</td>
+                            <td></td>
+                            <td>216.691秒</td>
+                            </tr>
+                            <tr class="odd">
+                            <td>70000桁</td>
+                            <td>76.20秒</td>
+                            <td></td>
+                            <td>285.263秒</td>
+                            </tr>
+                            <tr class="even">
+                            <td>80000桁</td>
+                            <td>99.18秒</td>
+                            <td></td>
+                            <td>420.646秒</td>
+                            </tr>
+                            <tr class="odd">
+                            <td>90000桁</td>
+                            <td>129.23秒</td>
+                            <td></td>
+                            <td>447.456秒</td>
+                            </tr>
+                            <tr class="even">
+                            <td>100000桁</td>
+                            <td>155.39秒</td>
+                            <td></td>
+                            <td>573.296秒</td>
+                            </tr>
+                            </tbody>
+                            </table>
+                            <h3 id="桁から1000000桁">100000桁から1000000桁</h3>
+                            <p>2-PRPはPFGWを使用して計測、L-LはPrime95を使用した時の推定値。</p>
+                            <table>
+                            <thead>
+                            <tr class="header">
+                            <th></th>
+                            <th>2-PRP</th>
+                            <th>L-L</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="odd">
+                            <td>100000桁</td>
+                            <td>2.59分</td>
+                            <td>0.4分</td>
+                            </tr>
+                            <tr class="even">
+                            <td>200000桁</td>
+                            <td>12.57分</td>
+                            <td>1.3分</td>
+                            </tr>
+                            <tr class="odd">
+                            <td>300000桁</td>
+                            <td>32.90分</td>
+                            <td>3.2分</td>
+                            </tr>
+                            <tr class="even">
+                            <td>400000桁</td>
+                            <td>65.45分</td>
+                            <td>7.3分</td>
+                            </tr>
+                            <tr class="odd">
+                            <td>500000桁</td>
+                            <td>122.65分</td>
+                            <td>11.2分</td>
+                            </tr>
+                            <tr class="even">
+                            <td>600000桁</td>
+                            <td>187.86分</td>
+                            <td>18.9分</td>
+                            </tr>
+                            <tr class="odd">
+                            <td>700000桁</td>
+                            <td>281.54分</td>
+                            <td>22.6分</td>
+                            </tr>
+                            <tr class="even">
+                            <td>800000桁</td>
+                            <td>384.21分</td>
+                            <td>29.5分</td>
+                            </tr>
+                            <tr class="odd">
+                            <td>900000桁</td>
+                            <td>498.08分</td>
+                            <td>36.6分</td>
+                            </tr>
+                            <tr class="even">
+                            <td>1000000桁</td>
+                            <td>688.06分</td>
+                            <td>50.3分</td>
+                            </tr>
+                            </tbody>
+                            </table>
+                            <h3 id="桁から10000000桁">1000000桁から10000000桁</h3>
+                            <p>2-PRPはPFGWを使用して計測、L-LはPrime95を使用した時の推定値。</p>
+                            <table>
+                            <thead>
+                            <tr class="header">
+                            <th></th>
+                            <th>2-PRP</th>
+                            <th>L-L</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="odd">
+                            <td>1000000桁</td>
+                            <td>11.5時間</td>
+                            <td>0.8時間</td>
+                            </tr>
+                            <tr class="even">
+                            <td>2000000桁</td>
+                            <td></td>
+                            <td>3.0時間</td>
+                            </tr>
+                            <tr class="odd">
+                            <td>3000000桁</td>
+                            <td></td>
+                            <td>7.0時間</td>
+                            </tr>
+                            <tr class="even">
+                            <td>4000000桁</td>
+                            <td></td>
+                            <td>14.1時間</td>
+                            </tr>
+                            <tr class="odd">
+                            <td>5000000桁</td>
+                            <td></td>
+                            <td>21.8時間</td>
+                            </tr>
+                            <tr class="even">
+                            <td>6000000桁</td>
+                            <td></td>
+                            <td>31.0時間</td>
+                            </tr>
+                            <tr class="odd">
+                            <td>7000000桁</td>
+                            <td></td>
+                            <td>42.4時間</td>
+                            </tr>
+                            <tr class="even">
+                            <td>8000000桁</td>
+                            <td></td>
+                            <td>59.0時間</td>
+                            </tr>
+                            <tr class="odd">
+                            <td>9000000桁</td>
+                            <td></td>
+                            <td>74.7時間</td>
+                            </tr>
+                            <tr class="even">
+                            <td>10000000桁</td>
+                            <td></td>
+                            <td>90.6時間</td>
+                            </tr>
+                            </tbody>
+                            </table>
+                            <h2 id="素数判定法の比較">素数判定法の比較</h2>
+                            <h3 id="試し割り">試し割り</h3>
+                            <p>素数判定をするのには向いていませんが、大きな数の素数判定をする時、はじめに小さめの素数で割ってみて割り切れないかどうか確認するのにつかえます。</p>
+                            <h3 id="フェルマーテスト">フェルマーテスト</h3>
+                            <p>100%素数だとは言えませんが、間違って素数だと判定してしまう擬素数は意外に少なく、大きな数ほど擬素数は少なくなるので、±1をしても素因数分解できない大きな数についてはこの方法を使うのが一般的です。ミラーラビンテストは比較的小さい数には有効ですが、大きな数についてはフェルマーテストで十分だと思います。</p>
+                            <h3 id="ecpp">ECPP</h3>
+                            <p>±1をしても素因数分解ができない大きな数の素数の証明をするならこの方法です。しかし、特別な理由がない限り2万桁以上の素数をこの方法で証明するのは現実的とは言えず、これまでに3万桁以上の素数は4個しかこの方法で証明されていません。</p>
+                            <h3 id="lucas-lehmerテスト">Lucas-Lehmerテスト</h3>
+                            <p>とりあえず大きな素数を見つけたいならこの方法です。確率的素数判定法のフェルマーテストよりもけた違いに早い上に素数だと証明ができる判定法ですが、メルセンヌ数に対してのみにしか判定できません。</p>
+                            <h3 id="n1法n-1法">n+1法、n-1法</h3>
+                            <p>素数であることの証明が、フェルマーテストの１倍から数十倍くらいの計算時間でできますが、±1が素因数分解できないとこの方法は使えません。</p>
+                            <h3
+                            id="どの素数判定法を使えばいいのか">どの素数判定法を使えばいいのか</h3>
+                            <p>素数であることの証明をしなくてもいいときは、15桁以下くらいなら試し割りをして、それ以上でもある程度まで試し割りをし、その後フェルマーテストを何回かするのがいいと思います。
+                            素数であることの証明が必要なときも、まずは上の方法を試して素数である可能性が高いことを確認してから、±1をすると素因数分解できる数は
+                            n±1法で、できないなら最終手段としてECPPをするのがいいと思います。</p>
+                            <h2
+                            id="おすすめのフリーソフト">おすすめのフリーソフト</h2>
+                            <h3 id="openpfgwprime-formgw">OpenPFGW（Prime
+                            Form/GW）</h3>
+                            <p>どんな形の数でも高速にフェルマーテストやn+1法、n-1法ができます。
+                            <h3> LLR </h3><span
+                            class="math inline">\(K×b^n±1\)</span>の形の素数判定が高速にできます。
+                            <h3> NewPGen</h3>
+                            何種類かの形の素数について、一度にたくさんの数を高速に篩（試し割り）ができます。
+                            <h3> Prime95</h3>
+                            Lucas-Lehmerテストが高速にできます。1997年以降に見つかっているメルセンヌ素数はすべてこのソフトによって発見されました。
+                            <h3>Yafu</h3> 素因数分解などができます。</p>
+                            <h2 id="さいごに">さいごに</h2>
+                            <p>実生活で直接は関係しないように思われるこのような素数判定法は、実はインターネットで通信する時の暗号化でも使われていたり、意外と身の回りで使われています。
+                            今回、これをまとめるにあたって色々とネット上を調べましたが、日本語の情報がすごく少なく、さらに英語の情報も少ししかないことがよくあったり、ひとつの判定法にいろいろな名前がつけられていたりしました。できるだけ正しい情報をまとめたつもりですが、間違っていることもあるかもしれません。その内容も、大学レベルの数学ばかりで正直ぜんぜん理解できていなかったので、細かい説明や証明を書かずに大雑把にまとめてしまいました。わかりにくいところも多々あったと思いますが、この文章を読んでいただいてありがとうございました。</p>
+                            <h2 id="参考サイト文献など">参考サイト・文献など</h2>
+                            <ul>
+                            <li><a href="http://primes.utm.edu/prove/merged.html">http://primes.utm.edu/prove/merged.html</a></li>
+                            <li><a href="https://www.ipa.go.jp/security/fy14/crypto/prime_num/invest.pdf">https://www.ipa.go.jp/security/fy14/crypto/prime_num/invest.pdf</a></li>
+                            <li><a href="http://factordb.com/">http://factordb.com/</a></li>
+                            <li><a href="http://oeis.org/">http://oeis.org/</a></li>
+                            <li><a href="http://stdkmd.com/nrr/">http://stdkmd.com/nrr/</a></li>
+                            <li><a href="http://mathworld.wolfram.com/">http://mathworld.wolfram.com/</a></li>
+                            <li><a href="http://www.primenumbers.net/prptop/prptop.php">http://www.primenumbers.net/prptop/prptop.php</a></li>
+                            <li><a href="https://books.google.co.jp/books?id=8KZ4RQufxhYC">https://books.google.co.jp/books?id=8KZ4RQufxhYC</a></li>
+                            <li><a href="http://stdkmd.com/blog/2003/04/0301.html">http://stdkmd.com/blog/2003/04/0301.html</a></li>
+                            <li><a href="https://www16.atwiki.jp/projectpn/pages/42.html">https://www16.atwiki.jp/projectpn/pages/42.html</a></li>
+                            <li>その他多数。</li>
+                            </ul>
+                    </div>
+                    <nav class="nextPrev">
+                    </nav>
+                </article></div>
+                <nav id="sidebar">
+                    <div id="sidemenu"></div>
+                    <div id="indexblock">
+                        <div class="indextitle">目次</div>
+                        <ol class="indexcontents">
+                            <ul>
+                            <li><a href="#はじめに"
+                            id="toc-はじめに">はじめに</a></li>
+                            <li><a href="#素数とは"
+                            id="toc-素数とは">素数とは</a></li>
+                            <li><a href="#素数の記録"
+                            id="toc-素数の記録">素数の記録</a></li>
+                            <li><a href="#素数の種類"
+                            id="toc-素数の種類">素数の種類</a></li>
+                            <li><a href="#素数探索の歴史"
+                            id="toc-素数探索の歴史">素数探索の歴史</a></li>
+                            <li><a href="#素数判定法"
+                            id="toc-素数判定法">素数判定法</a></li>
+                            <li><a href="#素数判定法の速度比較"
+                            id="toc-素数判定法の速度比較">素数判定法の速度比較</a></li>
+                            <li><a href="#素数判定法の比較"
+                            id="toc-素数判定法の比較">素数判定法の比較</a></li>
+                            <li><a href="#おすすめのフリーソフト"
+                            id="toc-おすすめのフリーソフト">おすすめのフリーソフト</a></li>
+                            <li><a href="#さいごに"
+                            id="toc-さいごに">さいごに</a></li>
+                            <li><a href="#参考サイト文献など"
+                            id="toc-参考サイト文献など">参考サイト・文献など</a></li>
+                            </ul>
+                        </ol>
+                    </div>
+                </nav>
+            </div>
+            <footer class="footer">
+                <div class="">
+                    <p class="copyright">&copy; 2015-2022 Asano Physics Club</p>
+                </div>
+            </footer>
+        </main>
+    <script type="text/javascript" src="/general.js"></script>
+    <script type="text/javascript" src="/document/document.js"></script>
+    </body>
+</html>

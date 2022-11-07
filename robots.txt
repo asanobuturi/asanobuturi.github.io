@@ -1,4 +1,0 @@
-User-agent: *
-Disallow: /blog/20170000/
-Disallow: /document/2018.pdf
-Sitemap: https://asanobuturi.github.io/sitemap.xml

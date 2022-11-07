@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115439668-1"></script>
+  <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+          dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'UA-115439668-1');
+  </script>
+
+  <meta property="og:url" content="https://asanobuturi.github.io/document/2016/danmaku/index.html"/>
+  <meta property="og:title" content="弾幕の作り方|浅野学園物理部"/>
+  <meta property="og:description" content="弾幕シューティングゲームをつくろう！"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:image" content="https://asanobuturi.github.io/document/2016/danmaku/thumbnail.jpg"/><!--ここまでOGP設定-->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@Uchi54_APC" /> <!--ここまでTwitterカード設定-->
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML' async></script><!--MathJax適用(LaTeX数式表示用)-->
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="description" content="弾幕シューティングゲームをつくろう！" />
+
+  <title>弾幕の作り方|浅野学園物理部</title>
+
+  <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/blog_new.css">
+  <link rel="stylesheet" href="/highlight.css"><!--シンタックスハイライト-->
+  <link rel="shortcut icon" href="/image/favicon.ico">
+
+  <script type="text/javascript" src="//typesquare.com/accessor/script/typesquare.js?YME8OdI00sA%3D" charset="utf-8"></script>
+  <script src="https://kit.fontawesome.com/1e291c4f9b.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+  <div id="nav-drawer">
+  </div>
+  <main>
+    <div id="main">
+        <div class="documentcontent"><article>
+            <div id="breadcrumbs">
+                <i class="fas fa-home"></i><a href="/index.html">ホーム</a><i class="fas fa-angle-right"></i><a href="/document.html">部誌</a><i class="fas fa-angle-right"></i><a href="../index.html">2016年度部誌</a><i class="fas fa-angle-right"></i>弾幕の作り方
+            </div>
+            <header class="documenttitle">
+                <h1>弾幕の作り方</h1>
+                <p class="author"><i class="fas fa-user-edit"></i>スパゲッティソース</p>
+                <a href="https://twitter.com/intent/tweet?url=https://asanobuturi.github.io/document/2016/danmaku/index.html&text=弾幕の作り方|浅野学園物理部&via=Uchi54_APC&related=Uchi54_APC" class="twitter-share-button" data-show-count="false">Tweet</a>
+                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script><!--Twitterのシェアボタンの中身(URL・記事タイトル)も記述すること-->
+            </header>
+            <div class="document">
+              <p>皆さんこんにちは。作者名のスパゲッティソースというのは“スパゲッティみたいにこんがらかっていて読みにくいソースコード”という意味である。そんなソースコードを書く人がこんな部誌を書いていることを気にしたら負けである。</p>
+              <p>本題に入るが、弾幕とは簡単に言えば弾の複数形である。つまりゲームで敵が撃ってくる弾をどうやって作るのかを解説する。またこの部誌は<b>C言語</b>および<b>C++</b>を基調としている。それ以外の言語では違うところが多々あると思うので、注意してほしい。</p>
+              <p>まずはグラフィックの調達だ。一般の企業が出しているようなクオリティの高いものでなければペイントで十分である。事実私も多用している。また透明化するソフトも必要だがそれは無料ソフト“手軽に透明”を私は使っている。透明化しかできないが十分である。どうしてもそれらができない場合は簡単な図形であれば描画する機能がC言語についているのでそれを使えば問題ない。ただし、少し処理が重くなることは考慮する必要がある。</p>
+              <p>次にソースコードを書いていく。まず、配列と呼ばれるものを用いてたくさんの変数を作る。といってもわからないであろうから、順に説明していく。まず、変数というのは箱みたいなものである。そこには数値をひとつ入れることができる。言い換えるとひとつしか入らない。であるがゆえにたくさん作る必要があるのだが、そのことはひとまず置いておいて、変数についてもう少し詳しく説明していく。ひとつしか数値が入らない変数に二つ目の数字を入れるとどうなるか、一つ目の数字が消えるのである。そこも使いやすい点であるのだが、それを知らないと混乱してしまうであろう。さらに、すべての数を入れられるわけではないということである。よく使われる変数の型であるINT型は-2147483468~2147483467までの<b>整数</b>しか入らない。小数を扱うならFLOAT型で約±3.4×10の38乗までで有効桁は7桁となっている。FLOAT型の方が多くの数を入れられるため便利に見えるが、その分多くのメモリを使う上に、“3で割った余りを求める”という時にも使えないので適材適所で使う必要がある。他にもたくさんの型があるが、私はこれ以外にほとんど使ったことがないのでこれだけあれば十分である。興味があれば調べてみても構わないが。</p>
+              <p>変数についてわかったところで、配列の説明に入る。難しく聞こえるかもしれないがなんてことはない。変数の複数形だと思えば良い。それを<code>floatbulletx[1024];</code>などとすればよい。これは弾のX座標の配列の例である。つまり最低でももう一つ<code>floatbullety[1024];</code>が必要である。それ以外にも弾が様々な方向に飛ぶとすれば、その向きと速度の配列（もしくは移動方向のXとYの長さ）が必要である。ちなみに私は括弧内の方を使っているのだが、意味がわからない人は図１を見てほしい。また、1024というのは表示できる弾幕数の最大値となる。</p>
+              <p><img src="1.png" /></p>
+              <p>それでは数値を代入していこう。例えば「にゃにゃめにゃにゃじゅうにゃにゃどのにゃらびでにゃにゃつのたまを（にゃにゃ,にゃにゃ）からはにゃつ」（斜め77度の並びで7つの弾を（7,7）から放つ）為にはどうすればよいか。ちゃんと説明しようと思うと三角関数（sin,cos,tan）や弧度法（ラジアン）が必要だが、まだ習っていない人のために簡単に言うとコンピューターに77度の三角形の縦、横、斜めの長さを計算させるだけである。それらがわかっている人にとっては本当にそれだけでいいの？と思うかもしれないが、コンピューターは計算がだーいすきなので、がっつりお仕事してもらおう。当然それらを相似拡大する必要があるが、ここまで読んだ人ならわかるであろう。ちなみに（7,7）から77度の角度で弾を放つとすぐに画面外に出て消えてしまうので、-77度で弾速7で7フレームおきに放ってもらおう。</p>
+              <div class="sourceCode" id="cb1"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">/*初期化処理など*/</span></span>
+              <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> a<span class="op">=-</span><span class="dv">1</span><span class="op">;</span></span>
+              <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> x<span class="op">;</span> <span class="co">//一時的に弾の x 座標を保存するための変数</span></span>
+              <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> y<span class="op">;</span> <span class="co">//一時的に弾の y 座標を保存するための変数</span></span>
+              <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> i<span class="op">;</span></span>
+              <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> gametime<span class="op">=-</span><span class="dv">1</span><span class="op">;</span> <span class="co">//ゲームが始まってからの時間</span></span>
+              <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="dt">float</span> pi<span class="op">=</span><span class="fl">3.141592</span><span class="op">;</span> <span class="co">//円周率。ラジアンに変換する時に使う float bulletx[8];//今回は 8 個もあれば十分ですね。（以下同様） float bullety[8];</span></span>
+              <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="dt">float</span> bulletx2<span class="op">[</span><span class="dv">8</span><span class="op">];</span></span>
+              <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="dt">float</span> bullety2<span class="op">[</span><span class="dv">8</span><span class="op">];</span></span>
+              <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">/*初期化処理など 2*/</span></span>
+              <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> white<span class="op">=</span>GetColor<span class="op">(</span><span class="dv">255</span><span class="op">,</span><span class="dv">255</span><span class="op">,</span><span class="dv">255</span><span class="op">);</span><span class="co">//白い色</span></span>
+              <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span><span class="op">(</span>ProcessMessage<span class="op">()!=-</span><span class="dv">1</span><span class="op">){</span><span class="co">//エラーがない限りループする gametime++; //gametime に１を足す</span></span>
+              <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span><span class="op">(</span>gametime<span class="op">%</span><span class="dv">7</span><span class="op">==</span><span class="dv">0</span><span class="op">){</span><span class="co">//もし gametime を 7 で割った余りが 0 だったら a++;</span></span>
+              <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>bulletx<span class="op">[</span>a<span class="op">]=</span><span class="dv">7</span><span class="op">;</span> <span class="co">//bulletx[a]に 7 を代入</span></span>
+              <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>bullety<span class="op">[</span>a<span class="op">]=</span><span class="dv">7</span><span class="op">;</span></span>
+              <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>bulletx2<span class="op">[</span>a<span class="op">]=</span><span class="dv">7</span><span class="op">*</span>sin<span class="op">(-</span><span class="dv">77</span><span class="op">*</span>pi<span class="op">/</span><span class="dv">180</span><span class="op">);</span> <span class="co">//斜辺が 7、角度が-77 度の横の長さ bullety2[a]=7*cos(-77*pi/180);</span></span>
+              <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a> <span class="op">}</span></span>
+              <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a> <span class="cf">for</span><span class="op">(</span>i<span class="op">=</span><span class="dv">0</span><span class="op">;</span>i<span class="op">&lt;</span><span class="dv">8</span><span class="op">;</span>i<span class="op">++){</span> <span class="co">//8 回ループ</span></span>
+              <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a> bulletx<span class="op">[</span>i<span class="op">]+=</span> bulletx2<span class="op">[</span>i<span class="op">];</span></span>
+              <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>bullety<span class="op">[</span>i<span class="op">]+=</span> bullety2<span class="op">[</span>i<span class="op">];</span></span>
+              <span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>x<span class="op">=</span>bulletx<span class="op">[</span>i<span class="op">];</span> <span class="co">//小数点以下を切り捨てて整数値に</span></span>
+              <span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>y<span class="op">=</span>bullety<span class="op">[</span>i<span class="op">];</span></span>
+              <span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>DrawCircle<span class="op">(</span>bulletx<span class="op">[</span>i<span class="op">],</span>bullety<span class="op">[</span>i<span class="op">],</span><span class="dv">7</span><span class="op">,</span>white<span class="op">,</span>TRUE<span class="op">);</span> <span class="co">//半径7の円を描画</span></span>
+              <span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a> <span class="op">}</span></span>
+              <span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a> If<span class="op">(</span>gametime<span class="op">&gt;=</span><span class="dv">42</span><span class="op">){</span><span class="cf">break</span><span class="op">;}</span><span class="co">//弾を 7 つ放ち終わる時間になったら終了</span></span></code></pre></div>
+              <p>概ねこんなかんじである。かなりはしょって書いたのでほとんどの人はわからないだろうが、興味を持ってくれたら幸いである。一応全然わかってない人のために言っておくが、「初期化処理など」のところを書いていないためこれをコンパイルしても動かない。加えてこれだと7つ目の弾を放った瞬間に終わるので、その弾は見えて一瞬である。さらに実行し始めてから0.7秒ほどで終わってしまう。配列の数を増やしてbreakを外せばしばらくの間はちゃんと動いてくれるだろう。存在しない箱を指定するとバグが発生するのでbreakだけ外してそれを楽しむのもまた一興であろう。私はこれよりも作るのが難しい弾幕に自機との当たり判定をつけ、さらに被弾時処理、ショット、ボムその他もろもろをたった一人で書き上げたのだ。しかしそれでも企業が出すようなゲームには到底及ばない。私が参考にしたゲームは私と同様一人で作成しているが、プログラミングだけでなくグラフィック、音楽までもちゃんと作り、エフェクトなども私のものよりはるかに上である。私たちの身近にあるゲーム。塾や親、学校の先生などは「勉強の敵」などと言うかもしれないが、作る視点に立ってみると、非常に難しく、多くのことを学べる分野である。それをただ否定するのはどうかと思う。（おっ、俺いいこと言った）</p>
+            </div>
+            <nav class="nextPrev">
+                <div class="prev">前へ<a href="../computer/index.html">「スマホ世代の為のパソコン活用の心得」
+                        &gt;</a></div>
+                <div class="next">次へ<a href="../drop/index.html">「落下る」
+                        &gt;</a></div>
+            </nav>
+        </article></div>
+        <nav id="sidebar">
+            <div id="sidemenu">
+                <div class="side-back"><a href="../index.html">記事の一覧へもどる<i class="fas fa-sign-out-alt"></i></a></div>
+                <div class="side-prev"><i class="fas fa-angle-left"></i><a href="../computer/index.html">「スマホ世代の為のパソコン活用の心得」</a></div>
+                <div class="side-next"><a href="../drop/index.html">「落下る」</a><i class="fas fa-angle-right"></i></div>
+            </div>
+            <div id="indexblock">
+                <div class="indextitle">目次</div>
+                <ol class="indexcontents">
+                    
+                </ol>
+            </div>
+        </nav>
+    </div>
+    <footer class="footer">
+        <div class="">
+            <p class="copyright">&copy; 2015-2016 Asano Physics Club</p>
+        </div>
+    </footer>
+</main>
+<script type="text/javascript" src="/general.js"></script>
+</body>
+</html>

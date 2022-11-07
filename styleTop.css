@@ -61,7 +61,7 @@ body::before {
     z-index: -1;
     width: 100%;
     height: 100vh;
-    background: url(image/buturi2.jpg) center/cover no-repeat;
+    background: url(/image/buturi.webp) center/cover no-repeat;
     -webkit-background-size: cover;
 }
 
@@ -171,15 +171,18 @@ body::before {
     padding-bottom: 3px;
     text-align: left;
     padding: 0em 0.5em;
+    bottom:0;
 }
 
     .headline .news .news-article {
         padding: 1.2em 0.7em 1.2em;
         font-size: 14px;
+        height:21px;
     }
 
     .headline .news.news-article_wrap {
         width: 100%;
+        position: relative;
     }
 
     .headline .news .news-article + .news-article {
@@ -205,18 +208,48 @@ body::before {
         transform: rotate(45deg);
         position: absolute;
         right: -10px;
-        top: 0;
-        bottom: 0;
         margin: auto;
+        bottom:-15px;
     }
 
     .headline .news .news-article .news-date {
-        padding-right: 1.5em;
         font-weight: 700;
+        position: absolute;
     }
 
     .headline .news .news-article .news-text {
+        position: absolute;
+        left:100px;
     }
+
+.headline-group {
+    display: flex;
+    margin:40px auto;
+    width:80%;
+    max-width: 800px;
+    padding:0px;
+}
+
+@media (min-width: 1000px) {
+    .headline-group .headline-child-left {
+        margin-right:10px;
+    }
+
+    .headline-group .headline-child-right {
+        margin-left:10px;
+        width:250px;
+        min-width:250px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .headline-group .headline-child-left {
+        display:none;
+    }
+    .headline-group .headline-child-right {
+        width:100%;
+    }
+}
 
 .contact {
     letter-spacing: -4px;
