@@ -1,33 +1,10 @@
-.documenttitle{
-    padding: 1em;
-    margin: 1em auto;
-    background-color: white;
-    max-width: 70%;
-    text-align: left;
-}
-.documenttitle .documenticon{
-    float: left;
-    width: 7em;
-    margin-right: 1em;
-}
-.documenttitle h1{
-    margin-top: 0;
-    color: orange;
-    border-bottom: solid 1px #ccc;
-    font-size:32px;
-}
-.documenttitle p{
-    text-decoration: none;
-    font-weight: normal;
-    font-size: 16px;
-    margin: 0;
-}
+/* 部誌の一覧、個別共通CSS */
 
-ol{
+ol {
     padding-left: 0px;
 }
 
-.author::before{
+.author::before {
     content: "✎";
 }
 
@@ -66,297 +43,334 @@ blockquote {
         font-size: 0.9em;
     }
 
-h2:not(.document-list-content > h2){
+h2:not(.document-list-content > h2) {
     padding: 0.75em 0.5em;
     border-left: solid rgb(138, 138, 138) 5px;
 }
 
-h3{
+h3 {
     padding: 0.25em 0;
     margin: 1em 0;
     border-bottom: solid rgb(138, 138, 138) 2px;
 }
 
-h4{
+h4 {
     padding: 0.25em 0;
     margin: 1em 0;
     border-bottom: solid rgb(138, 138, 138) 2px;
 }
 
-li.indexcontents{
+li.indexcontents {
     margin-left:1em;
     padding-left:1em;
     text-indent: -1em;
 }
 
-li p{
+li p {
     text-indent: 0;
 }
-li.asterisk-1{
+li.asterisk-1 {
     list-style: disc outside;
 }
 
-p.kome::before{
+p.kome::before {
     content: "※";
 }
 
-p.kome{
+p.kome {
     padding-left:1em;
     text-indent: -1em;
     color: #555;
 }
 
-li.check{
+li.check {
     list-style: "✓" outside;
 }
 
-li.asterisk-2{
+li.asterisk-2 {
     list-style: "\27A3" outside;
 }
 
-li.asterisk-decimal{
+li.asterisk-decimal {
     list-style: decimal outside;
 }
 
-.next{
+.next {
     margin-bottom: 1em;
 }
 
-.prev{
+.prev {
     margin-bottom: 1em;
 }
 
-.document{
+.document {
     padding: 1em;
     margin: 1em auto;
     background-color: #fff;
     max-width: 70%;
     text-align: left;
 }
-.document .documentcontent{
-    padding: 1em 0;
-    margin: 0 1em;
-}
-.document .documentcontent a{
-    font-size: 24px;
-    font-weight: bold;
-}
-.document .documentcontent h2{
-    font-size: 16px;
-    font-weight: normal;
-}
-.document .documentcontent p{
-    font-size: 16px;
-    font-weight: normal;
-    color: #555;
-}
-.document .documentcontent .link-2{
-    font-size: 16px;
-    font-weight: normal;
-    margin-bottom: 0;
-    text-align: right;
-}
-.documentcontent + .documentcontent{
-    border-top: solid 1px #ccc;
-}
 
-.documentdetail{
-    border-left: none;
-    padding: 0;
-}
-
-.documenticon{
-    height: 8em;
-}
-
-li h1{
+li h1 {
     font-size: 18px;
     font-weight: normal;
 }
 
-.image-float-right{
+.image-float-right {
     max-width: 45% !important;
     max-height: 10em;
     float: right;
 }
 
-.image-float-left{
+.image-float-left {
     max-width: 45% !important;
     max-height: 10em;
     float: left;
-}       
+}
 
-.float-clear{
+.float-clear {
     clear: both;
 }
 
-.images-side{
+.images-side {
     display: flex;
     justify-content: space-between;
 }
 
-.image-side{
+.image-side {
     display: inline-block;
     max-width: 45% !important;
 }
 
-#main .documentcontent .document img{
+#main .documentcontent .document img {
     max-width: 90%;
     margin: 1em;
 }
 
-h2 sub{
+h2 sub {
     font-weight: normal;
     font-size:60%;
 }
 
-.text-center{
+.text-center {
     text-align: center;
 }
 
-table{
+table {
     width: 95%;
     border: solid 1px black;
     margin: 1em auto;
 }
 
-table td{
+table td {
     border: solid 1px black;
 }
 
-.text-bold{
+.text-bold {
     font-weight: bold;
 }
 
-.caption{
+.caption {
     margin: 1em 0 0 0 !important;
 }
 
-.mathjax-center{
+.mathjax-center {
     text-align: center !important;
 }
 
-blockquote h1{
+blockquote h1 {
     font-size: 20px;
 }
 
-#proof-qed{
+#proof-qed {
     text-align: right;
     margin-right: 1em;
+}
+/* 部誌の年度別ページ用CSS */
+
+/* 全機器共通CSS (文字色など) */
+
+.documenttitle h1 {
+    margin-top: 0;
+    color: orange;
+    border-bottom: solid 1px #ccc;
+    font-size:32px;
+}
+
+.documenttitle {
+    padding: 1em;
+    margin: 1em auto;
+    background-color: white;
+    max-width: 70%;
+    text-align: left;
+    height:12em;
+}
+
+.documenttitle p {
+    text-decoration: none;
+    font-weight: normal;
+    font-size: 16px;
+    margin: 0;
+}
+
+.document .documentcontent {
+    padding: 1em 0;
+    margin: 0 1em;
+}
+.document .documentcontent a {
+    font-size: 24px;
+    font-weight: bold;
+}
+.document .documentcontent h2 {
+    font-size: 16px;
+    font-weight: normal;
+}
+.document .documentcontent p {
+    font-size: 16px;
+    font-weight: normal;
+    color: #555;
+}
+.document .documentcontent .link-2 {
+    font-size: 16px;
+    font-weight: normal;
+    margin-bottom: 0;
+    text-align: right;
+}
+.documentcontent + .documentcontent {
+    border-top: solid 1px #ccc;
+}
+
+.documentdetail {
+    border-left: none;
+    padding: 0;
+}
+
+@media (min-width: 700px) { /* 部誌の表紙を表示するCSS。下限は部誌の紹介文が欄からはみ出さないぐらい。 */
+    .documenttitle .documenticon {
+        float: left;
+        height: 12em;
+        margin-right: 1em;
+    }
+}
+@media (max-width: 700px) { /* 部誌の表示を表示しないCSS。 */
+    .documenttitle .documenticon {
+        display: none;
+    }
 }
 
 /* 部誌の一覧ページ用のcss */
 
+/* 全機器共通CSS (文字色など) */
+.document-list-item {
+    background-color: white;
+}
 .document-list {
-    margin: auto;
-    text-align: center;
     padding: 0em 0.5em 2em;
 }
 
-.document-list-published-date {
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
-}
-
-.document-list-item {
-    position: relative;
-}
-
-.document-list .document-list-item .document-list-thumb {
-    max-width: 30%;
-    display: inline-block;
-    margin: auto;
-    margin-right: 1em;
-    vertical-align: top;
-}
-
-.document-list .document-list-item .document-list-thumb a {
-    width: 100%;
-    display: block;
-}
-
-.document-list .document-list-item .document-list-thumb a img {
-    width: 100%;
-    display: block;
-}
-
-.document-list .document-list-item .document-list-content {
-    display: inline-block;
-    width: 60%;
-    font-size: 20px;
-}
-
-.document-list .document-list-item .document-list-content h2 {
+.document-list>.document-list-item>.document-list-content>h2 {
     font-family: "ヒラギノUD丸ゴ W6 JIS2004","Hiragino UD Sans Rd W6 JIS2004", Arial, "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic ProN", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "Meiryo UI", sans-serif, "游ゴシック", "Yu Gothic", "游ゴシック体", "YuGothic";
-    margin: 0;
-    padding: 0;
+    margin-top: 10px;
     font-size: 26px;
     font-weight: bold;
 }
 
-.document-list .document-list-item .document-list-content h2 a {
+.document-list>.document-list-item>.document-list-content>h2>a {
     text-decoration: none;
     font-weight: bold;
     color: orange;
     border-bottom: dotted 2px blue;
 }
 
-@media (max-width: 500px) {
-    .document-list.document-list-item .document-list-content {
-        font-size: 12px;
-    }
-}
-@media (max-width: 400px) {
-    .document-list .document-list-item .document-list-thumb {
-        max-width: 100%;
-        display: block;
-        margin: 0;
+/* 個別CSS */
+@media (min-width: 1140px) { /* 部誌を二列表示するCSS。 下限は部誌が二列表示のときに"20xx年度 部誌"が折り返さないぐらいの幅 */
+    .document-list {
+        display: flex;
+        flex-wrap: wrap;
+        text-align: center;
+        justify-content: center;
     }
 
-    .document-list .document-list-item .document-list-thumb img {
-        width: 100%;
+    .document-list>.document-list-item {
+        width: 35%;
+        margin: 1px;
+        padding: 10px;
+        background: white;
+        display: flex;
+        position: relative;
+        text-align: left;
+        height:300px;
     }
 
-    .document-list .document-list-item .document-list-content {
-        display: block;
-        width: 100%;
+    .document-list-item>.document-list-published-date {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
     }
 
-    .document-list .document-list-item .document-list-content h2 {
-        font-family: "ヒラギノUD丸ゴ W6 JIS2004","Hiragino UD Sans Rd W6 JIS2004", Arial, "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic ProN", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "Meiryo UI", sans-serif, "游ゴシック", "Yu Gothic", "游ゴシック体", "YuGothic";
-        margin: 0;
-        padding: 0;
-        font-size: 26px;
-        font-weight: bold;
-    }
-
-    .document-list .document-list-item .document-list-content h2 a {
-        text-decoration: none;
-        font-weight: bold;
+    .document-list-thumb {
+        margin-left: auto;
     }
 
     .document-thumb {
-        display: none !important;
+        height:300px;
     }
 }
 
-@media (max-width: 900px) {
-    .document-list .document-list-item {
+@media (max-width: 1140px) and (min-width: 740px){ /* 部誌を一列表示するときのCSS (従来の表示に近い) 下限は部誌の紹介文をストレス無く読めるぐらいの幅 */
+    .document-list>.document-list-item {
+        width: 70%;
         margin: 1em auto;
+        padding: 10px;
+        background: white;
+        display: flex;
+        position: relative;
         text-align: left;
-        padding: 2em 0.5em;
-        background-color: #fff;
-        max-width: 100%;
+        height:300px;
+    }
+
+    .document-list-item>.document-list-published-date {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+    }
+
+    .document-list-thumb {
+        margin-left: auto;
+    }
+
+    .document-thumb {
+        height:300px;
     }
 }
 
-@media screen and (min-width:900px){/*パソコン用*/
-    .document-list .document-list-item {
+@media (max-width: 740px){ /* 部誌を一列に、かつ画像なども一列に表示するCSS。紹介文は排除。 */
+    .document-list>.document-list-item {
+        width: 250px;
         margin: 1em auto;
-        text-align: left;
-        padding: 2em 0.5em;
-        background-color: #fff;
-        max-width: 70%;
+        padding: 10px;
+        background: white;
+        position: relative;
+        text-align: center;
+        height:auto;
+    }
+
+    .document-list-item>.document-list-published-date {
+        position: absolute;
+        bottom: 4px;
+        right: 10px;
+    }
+
+    .document-list-item>.document-list-content>p {
+        display:none;
+    }
+
+    .document-list-thumb {
+        margin-left: auto;
+        padding-bottom:12px;
+    }
+
+    .document-thumb {
+        height:300px;
     }
 }

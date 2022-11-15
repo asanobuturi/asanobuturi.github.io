@@ -462,10 +462,6 @@ section.section--center {
         text-decoration: none;
         font-weight: bold;
     }
-
-    .document-thumb {
-        display: none !important;
-    }
 }
 
 @media (max-width: 900px) {
@@ -475,10 +471,6 @@ section.section--center {
 
     .mobile {
         display: block !important;
-    }
-
-    .main-title {
-        font-size: 40px;
     }
 
     .sub-title {
@@ -508,12 +500,6 @@ section.section--center {
     }
 }
 
-@media (min-width: 691px) {
-    .document-thumb {
-        height: 200px;
-        width: 141.64px;
-    }
-}
 
 code {
     white-space: pre-wrap;
