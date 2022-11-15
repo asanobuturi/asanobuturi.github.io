@@ -225,6 +225,13 @@ z-index: 1000;
     background:rgb(90,170,230);
 }
 
+#nav-logo {
+    width:200px;
+    position:absolute;
+    top:15px;
+    left:75px;
+}
+
 /*
 .header {
     overflow: visible;
