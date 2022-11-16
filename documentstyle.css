@@ -43,7 +43,7 @@ blockquote {
         font-size: 0.9em;
     }
 
-h2:not(.document-list-content > h2) {
+h2:not(.document-list-content > h2)h2:not(.documenttitle > h2) {
     padding: 0.75em 0.5em;
     border-left: solid rgb(138, 138, 138) 5px;
 }
@@ -196,6 +196,15 @@ blockquote h1 {
     border-bottom: solid 1px #ccc;
     font-size:32px;
 }
+
+.documenttitle>h2 {
+    padding:0;
+    color: orange;
+    border-bottom: solid 1px #ccc;
+    border-left:none !important;
+    font-size:22px;
+}
+
 
 .documenttitle {
     padding: 1em;
