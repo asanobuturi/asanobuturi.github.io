@@ -14,7 +14,7 @@ div.sourceCode pre{
     white-space: pre-wrap;
 }
 
-code:not([class|="language"])code:not(.language-cpp) {
+code:not([class|="language"]) {
     background-color: #e7e7e7;
     border: 0.5px solid #d3d3d3;
     color: #353535;
@@ -22,6 +22,13 @@ code:not([class|="language"])code:not(.language-cpp) {
     font-family: "Cascadia Code";
     border-radius: 0.2em;
     padding: 0.1em;
+}
+
+.highlight {
+    background-color: #272822;
+    border-radius: 0.3em !important;
+    padding: 1em;
+    font-size:14px;
 }
 
 div.sourceCode pre code{

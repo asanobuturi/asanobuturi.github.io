@@ -1,19 +1,10 @@
 .welcome-slogan {
-    font-family: "ヒラギノUD丸ゴ W6 JIS2004","Hiragino UD Sans Rd W6 JIS2004", Arial, "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic ProN", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "Meiryo UI", sans-serif, "游ゴシック", "Yu Gothic", "游ゴシック体", "YuGothic";
+    font-family: "Kosugi Maru", Arial, "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic ProN", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "Meiryo UI", sans-serif, "游ゴシック", "Yu Gothic", "游ゴシック体", "YuGothic";
     color: white;
     font-size: 80px;
-    font-weight: 500;
     padding-top: 70px;
     line-height: 111.31777%; /*(≒(i^i)%)*/
-}
-
-.welcome-slogan-small {
-    font-family: "ヒラギノUD丸ゴ W6 JIS2004","Hiragino UD Sans Rd W6 JIS2004", Arial, "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic ProN", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "Meiryo UI", sans-serif, "游ゴシック", "Yu Gothic", "游ゴシック体", "YuGothic";
-    color: white;
-    font-size: 30px;
     font-weight: 500;
-    padding-top: 60px;
-    line-height: 111.31777%; /*(≒(i^i)%)*/
 }
 
 @media (max-width: 700px) {
@@ -25,32 +16,7 @@
         font-size: 20px;
     }
 }
-/*
-.topPageContent {
-    background: url(image/buturi2.jpg) no-repeat center;
-    background-size: cover;
-    background-attachment: fixed;
-    /*overflow: hidden;
-    /*position: relative;
-    z-index: 0;
-    overflow: hidden;
-}*/
-/*
-    .topPageContent:before {
-        content: '';
-        background: inherit;
-        -webkit-filter: blur(8px);
-        -moz-filter: blur(8px);
-        -o-filter: blur(8px);
-        -ms-filter: blur(8px);
-        filter: blur(8px);
-        position: absolute;
-        top: -5px;
-        left: -5px;
-        right: -5px;
-        bottom: -5px;
-        z-index: -1;
-    }*/
+
 body::before {
     content: "";
     display: block;

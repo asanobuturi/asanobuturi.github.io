@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Zen+Old+Mincho&display=swap');
 
+:root {
+    --headline-font: Arial, "M PLUS Rounded 1c"
+}
+
 .document blockquote{
     font-family: 'Zen Old Mincho', serif;
 }
@@ -159,6 +163,8 @@ body{
     padding: 0.5em 2em 0.5em 0.5em;
     font-size:28px;
     background-color: #eee;
+    font-family: Arial, "Kosugi Maru";
+    font-weight: 700;
 }
 .documenttitle p{
     text-decoration: none;
@@ -205,18 +211,24 @@ blockquote {
 h2{
     padding: 0.75em 0.5em;
     border-left: solid #e74c3c 5px;
+    font-family: var(--headline-font);
+    font-weight: 700;
 }
 
 h3{
     padding: 0.25em 0;
     margin: 1em 0;
     border-bottom: solid rgb(138, 138, 138) 2px;
+    font-family: var(--headline-font);
+    font-weight: 700;
 }
 
 h4{
     padding: 0.25em 0;
     margin: 1em 0;
     border-bottom: solid rgb(138, 138, 138) 2px;
+    font-family: var(--headline-font);
+    font-weight: 500;
 }
 
 li{
