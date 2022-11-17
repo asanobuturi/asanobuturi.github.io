@@ -411,4 +411,5 @@ code {
 @font-face {
     font-family: "Kosugi Maru";
     src: url("/font/KosugiMaru-Regular.ttf");
+    font-display: swap;
 }
