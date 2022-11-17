@@ -1,4 +1,4 @@
-﻿
+
 .welcome-slogan {
     font-family: "ヒラギノUD丸ゴ W6 JIS2004","Hiragino UD Sans Rd W6 JIS2004", Arial, "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic ProN", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "Meiryo UI", sans-serif, "游ゴシック", "Yu Gothic", "游ゴシック体", "YuGothic";
     color: white;
@@ -177,7 +177,7 @@ body::before {
     .headline .news .news-article {
         padding: 1.2em 0.7em 1.2em;
         font-size: 14px;
-        height:21px;
+        height: auto;
     }
 
     .headline .news.news-article_wrap {
@@ -193,7 +193,6 @@ body::before {
         display: block;
         text-decoration: none;
         width: 100%;
-        position: relative;
     }
 
     .headline .news .news-article .arrow {
@@ -214,12 +213,8 @@ body::before {
 
     .headline .news .news-article .news-date {
         font-weight: 700;
-        position: absolute;
-    }
-
-    .headline .news .news-article .news-text {
-        position: absolute;
-        left:100px;
+        width: 5.5em;
+        display: inline-block;
     }
 
 .headline-group {
