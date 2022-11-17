@@ -1,4 +1,3 @@
-
 .welcome-slogan {
     font-family: "ヒラギノUD丸ゴ W6 JIS2004","Hiragino UD Sans Rd W6 JIS2004", Arial, "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic ProN", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "Meiryo UI", sans-serif, "游ゴシック", "Yu Gothic", "游ゴシック体", "YuGothic";
     color: white;
@@ -193,6 +192,7 @@ body::before {
         display: block;
         text-decoration: none;
         width: 100%;
+        position: relative;
     }
 
     .headline .news .news-article .arrow {
@@ -208,7 +208,7 @@ body::before {
         position: absolute;
         right: -10px;
         margin: auto;
-        bottom:-15px;
+        bottom: calc(50% - 8px / 2); /* 真ん中(50%)から矢印の高さの半分だけ下に下げることで矢印を中心に */
     }
 
     .headline .news .news-article .news-date {
