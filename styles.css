@@ -414,7 +414,19 @@ code {
     font-display: swap;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Zen+Old+Mincho&display=swap');
+@font-face {
+    font-family: "M PLUS Rounded 1c";
+    src: url("/font/MPLUSRounded1c-Medium-ForkedByAPC.ttf");
+    font-display: swap;
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: "M PLUS Rounded 1c";
+    src: url("/font/MPLUSRounded1c-Regular-ForkedByAPC.ttf");
+    font-display: swap;
+    font-weight: 400;
+}
 
 :root {
     --headline-font: Arial, "M PLUS Rounded 1c";
