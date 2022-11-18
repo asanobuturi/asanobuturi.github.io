@@ -1,129 +1,14 @@
-<!DOCTYPE html>
-<html lang="ja">
-    <head>
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115439668-1"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag() {
-                dataLayer.push(arguments);
-            }
-            gtag('js', new Date());
-            gtag('config', 'UA-115439668-1');
-        </script>
-
-        <meta property="og:url" content="https://asanobuturi.github.io/document/2018/electronics/index.html"/>
-        <meta property="og:title" content="電気学の発展|浅野学園物理部"/>
-        <meta property="og:description" content="突然ですが皆さん、勉強などの、作業の間の息抜き、きちんとできていますか？他の人が真面目に述べているので、この記事はその息抜き的な記事にしようと思って書いています。"/>
-        <meta property="og:type" content="website"/>
-        <meta property="og:image" content="https://asanobuturi.github.io/document/2018/electronics/thumbnail.jpg"/><!--ここまでOGP設定-->
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@Uchi54_APC" /> <!--ここまでTwitterカード設定-->
-
-        <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML' async></script><!--MathJax適用(LaTeX数式表示用)-->
-
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-        <meta name="description" content="突然ですが皆さん、勉強などの、作業の間の息抜き、きちんとできていますか？他の人が真面目に述べているので、この記事はその息抜き的な記事にしようと思って書いています。" />
-
-        <title>電気学の発展|浅野学園物理部</title>
-
-        <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
-
-        <link rel="stylesheet" href="https://asanobuturi.github.io/styles.css">
-        <link rel="stylesheet" href="https://asanobuturi.github.io/blog_new.css">
-        <link rel="stylesheet" href="https://asanobuturi.github.io/highlight.css"><!--シンタックスハイライト-->
-        <link rel="shortcut icon" href="https://asanobuturi.github.io/image/favicon.ico">
-
-        <script type="text/javascript" src="//typesquare.com/accessor/script/typesquare.js?YME8OdI00sA%3D" charset="utf-8"></script>
-        <script src="https://kit.fontawesome.com/1e291c4f9b.js" crossorigin="anonymous"></script>
-
-        <script type="text/javascript" async
-        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML"> //数式用
-        </script>
-    </head>
-    <body>
-        <div id="nav-drawer">
-        </div>
-        <main>
-            <div id="main">
-                <div class="documentcontent"><article>
-                    <div id="breadcrumbs">
-                    </div>
-                    <header class="documenttitle">
-                        <h1 id="title"></h1>
-                        <p class="author"><i class="fas fa-user-edit"></i></p>
-                        <a href="" class="twitter-share-button" data-show-count="false">Tweet</a>
-                        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script><!--Twitterのシェアボタンの中身(URL・記事タイトル)も記述すること-->
-                    </header>
-                    <div class="document">
-                        <p>突然ですが皆さん、勉強などの、作業の間の息抜き、きちんとできていますか?この部誌では他の人が物理のことについて真面目に述べているので、この記事はその息抜き的な記事にしようと思って書いています。ということで僕たち、電子工作班員達の活動の基礎の基礎となっている、電気学の発展の概観を見ていきたいと思う。</p>
-                    <h2 id="ライデン瓶">〜静電気蓄電池 ライデン瓶～</h2>
-                        <div style="display:flex;">
-                            <p>1746年、オランダのピーテルがライデン大学で静電気を貯める「ライデン瓶」を発明した。ライデン瓶はガラス瓶(絶縁の要素)の内側と外側を金属(主に鉛)でコーティングし、内側のコーティングは金属製の鎖を通して終端が金属球となっているロッドに接続されているつくりになっており、瓶の上の球に電圧加えることによってガラスによって絶縁された導体の表面に電気が溜められるのである。溜まった電気は静電気であるが、このライデン瓶の発明によって、人々が静電気を蓄えられるようになったのである。</p>
-                            <img src="./images/img1.jpg">
-                        </div>
-                    <h2 id="ガルバーニとボルタ">〜電池の発明 ガルバーニとボルタ〜</h2>
-                        <p>1799年にイタリアの物理学者、ボルタが電池を発明した。そして、そのきっかけは1791年のガルバーニが発表した動物電気の研究に遡る。ガルバーニは解剖されたカエルを使って実験物の両端がカエルに当たったところカエルが痙攣を起こしたかのように動き足したのである。これを発見したガルバーニはこれを動物から生み出された「動物電気」と言って論文にし、発表した。しかし実はこの動物電気、動物から生み出された電気ではなかったのである。二種類の金属が湿った物に触れた際に生じた電圧の差が原因であったのだ。そしてカエルの痙攣はただの検電の動きにしか過ぎなかったのである。</p>
-                        <div style="display:flex;">
-                            <img src="./images/img2.jpg" width="243px" height="192px">
-                            <p>そこで、ボルタは銅と亜鉛を用いて電池を発明した。この発明は強い電流を安定して長時間供給することができるようにし、今まで未開拓な領域に留まっていた電気の研究を急速に発展させていくことになる。</p>
-                        </div>
-                    <h2 id="マイケル・ファラデー">〜センスの塊 マイケル・ファラデー〜</h2>
-                        <p>ここで、電磁気学の礎を築いた人たちの内の一人である、イギリスの科学者、マイケル・ファラデーである。少しファラデーの生い立ちと、前半生を見てみよう。ファラデーが生まれた家庭は、あまり裕福な家庭ではなく、高等な教育を受けておらず、数学の知識を身に着けていなかった14歳の時から、製本業に就いていた。ファラデーが製本業に就いたのはとても偶然なことであったが、この偶然がファラデーの人生と、科学の歴史を大きく変えることになるのである。</p>
-                        <p>ファラデーは仕事の合間を縫って製本を依頼された本を読んだのである。特に電気と化学の分野に興味を持った。そして、このこともまた、一つの偶然であった。なぜなら、電気と化学の分野はそのころまだ発展途上であって、力学のように、理論で完全に一般化された分野とは違い、未開拓の分野であり、高等教育を受けていなく数学がまったくと言ってもいいほどできないが、実験のセンスに優れているファラデーが活躍できる余地が少なくなかったのだ。ファラデーの勉強の意欲に火がつき、なんとかして実験ができる環境に身を置きたいと考え、1812年に20歳になったファラデーは、電気分解を駆使して多くの元素を発見したデービーの講演を熱心に聴講し、デービーの行った実験をスケッチをまじえてノートに書き留め、デービー宛ての手紙と製本職人が製本したデービーの講義のノートを同封して、デービーに送ったのである。これが功を奏し、1813年3月からデービーのもとで働けるようになり、自由に実験を行えるようになり、数々の功績を残していくことになる。</p>
-                        <p>その後、ファラデーは様々なことを発見していったが、中でも有名なのは、1831年の磁力線の着想と、同年の電磁誘導の法則の発見だろう(厳密に言うと、少し先にジョセフ・ヘンリーが発見している)。電磁誘導というのは、磁界が変化している環境にある導体に電圧が生じる現象(簡単に言うと”発電”)であり、この現象は発電機や、変圧器などの多くの電気機器の動作原理となっている。もちろん、この電磁誘導の法則も高等な数学は一切使われていなかった。</p>
-                    <h3 id="マクスウェル">〜理論家 マクスウェル〜</h3>
-                        <p>その年6月、後にファラデーの行った実験を理論にする、マクスウェルが生まれた。マクスウェルは大地主跡取りに生まれ、ケンブリッジ大学を卒業した、典型的なエリートだった。彼は数学に長けていてそれを駆使して理論を築き上げるのである。貧困層に生まれ、あまり学歴のないファラデーとは実に対照的な人物である。</p>
-                        <p>マクスウェルは若いころから才能を発揮している。1856年、マクスウェルは25歳で「土星の環の構造と安定性」について取り組み論文を提出し、翌年にアダムズ賞を受賞している。また、マクスウェルは1855年から1856年にかけて、「ファラデーの力線について」と題した研究をし、論文にまとめると、真っ先にそれを力線の提唱者ファラデーに送った。これを機に、後にファラデーとの交流が生まれていく。</p>
-                        <p>さらに、マクスウェルは理論的に電磁波の存在を予想し、そして、マクスウェルは1864年に、ファラデーの電磁誘導の法則、アンペール=マクスウェルの法則、電場に関するガウスの法則、磁場に関するガウスの法則の4つの法則を結合し、今日、”マクスウェル方程式”と呼ばれる電磁気学の基礎方程式が確立したのである。この方程式は、アインシュタインが、特殊相対性理論の基本原理となった、光速度不変の原理を提唱する際にも役立っており、電磁気学の非常に重要なものとなっている。</p>
-                        <p>ちなみに、それからマクスウェルはエーテルという、光が伝播する際に媒質となる、仮想媒質があるのを前提として波動方程式を求めたわけなのだが、このエーテル、今ではエーテルは存在しないと証明されたのである。しかし、この方程式そのものは正しいものである、という面白い展開になっている。このようなことも歴史を学ぶ上での面白さである。</p>
-                        <p>このように、興味のある分野の歴史、あるいはそれに関わったたくさんの偉人達の生涯(特に、幼い頃は自部が後世に名を残すことなんて思ってもいなかった人がほとんどであるため、素の人間が見えて、より面白い)や考え方を知ることは、僕たちにいろんなことを考えさせてくれる、また、考える時の参考にもなるのである。そして何より、学校の歴史の勉強とは一味違う面白さで、調べていて楽しい!皆さんも、息抜き程度に調べてみるのはいかがですか?最後まで読んで下さりありがとうございました。</p>
-                    <h2 id="参考文献">参考文献</h2>
-                        <ul>
-                            <li>『光と電磁気 ファラデーとマクスウェルが考えたこと 電場とは何か? 磁場とは何か?』小山慶太 著 発行所 株式会社講談社</li>
-                            <li><a href="https://ja.wikipedia.org/wiki/電磁波">電磁波- Wikipedia</a></li>
-                            <li><a href="https://ja.wikipedia.org/wiki/マクスウェルの方程式">マクスウェルの方程式 - Wikipedia</a></li>
-                            <li><a href="http://web.archive.org/web/20140422032255/http://www.xjzyz.com:80/old/electromagnetic_wave.html">電磁気現象とマクスウェル方程式｜通信の発展 - WebArchive</a></li>
-                            <li><a href="https://ja.wikipedia.org/wiki/相対性理論">相対性理論 - Wikipedia</a></li>
-                            <li><a href="https://ja.wikipedia.org/wiki/エーテル_(物理)">エーテル_(物理) - Wikipedia</a></li>
-                            <li><a href="https://ja.wikipedia.org/wiki/ジェームズ・クラーク・マクスウェル">ジェームズ・クラーク・マクスウェル - Wikipedia</a></li>
-                            <li><a href="https://ja.wikipedia.org/wiki/ハンフリー・デービー">ハンフリー・デービー - Wikipedia</a></li>
-                            <li><a href="https://ja.wikipedia.org/wiki/電気分解">電気分解 - Wikipedia</a></li>
-                            <li><a href="https://ja.wikipedia.org/wiki/マイケル・ファラデー">マイケル・ファラデー - Wikipedia</a></li>
-                            <li><a href="https://ja.wikipedia.org/wiki/ライデン瓶">ライデン瓶 - Wikipedia</a></li>
-                            <li><a href="https://ja.wikipedia.org/wiki/ボルタ電池">ボルタ電池 - Wikipedia</a></li>
-                        </ul>
-                    </div>
-                    <nav class="nextPrev">
-                    </nav>
-                </article></div>
-                <nav id="sidebar">
-                    <div id="sidemenu"></div>
-                    <div id="indexblock">
-                        <div class="indextitle">目次</div>
-                        <ol class="indexcontents">
-                            <li><a href="#ライデン瓶">静電気蓄電池 ライデン瓶</a></li>
-                            <li><a href="#ガルバーニとボルタ">電池の発明 ガルバーニとボルタ</a></li>
-                            <li><a href="#マイケル・ファラデー">センスの塊 マイケル・ファラデー</a>
-                                <ol>
-                                    <li><a href="#マクスウェル">理論家 マクスウェル</a></li>
-                                </ol>
-                            </li>
-                            <li><a href="#参考文献">参考文献</a></li>
-                        </ol>
-                    </div>
-                </nav>
-            </div>
-            <footer class="footer">
-                <div class="">
-                    <p class="copyright">&copy; 2015-2022 Asano Physics Club</p>
-                </div>
-            </footer>
-        </main>
-    <script type="text/javascript" src="/general.js"></script>
-    <script type="text/javascript" src="/document/document.js"></script>
-    </body>
-</html>
+<!doctype html><html lang=ja><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=description content="突然ですが皆さん、勉強などの、作業の間の息抜き、きちんとできていますか？"><meta name=viewport content="width=device-width,initial-scale=1"><link rel=stylesheet href=/styles.css><link rel=subresource class=lazy-css href=/highlight.css><link rel=icon href=/image/favicon.svg type=image/svg+xml><link rel="icon alternate" href=/images/favicon.ico><meta property="og:site_name" content="浅野学園物理部"><meta property="og:url" content="https://asanobuturi.github.io/document/2018/electronics/index.html"><meta property="og:title" content="電気学の発展｜浅野学園物理部"><meta property="og:description" content="突然ですが皆さん、勉強などの、作業の間の息抜き、きちんとできていますか？"><meta property="og:type" content="website"><meta property="og:image" content="https://asanobuturi.github.io/thumbnails/document/2018/electronics/thumbnail.jpg"><meta name=twitter:card content="summary_large_image"><meta name=twitter:site content="@Uchi54_APC"><link rel=preconnect href=https://fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;700&display=swap" rel=subresource class=lazy-css><script src=/general.js></script></head><link rel=stylesheet href=/blog_new.css><link rel=stylesheet href=/highlight.css><script src=https://kit.fontawesome.com/1e291c4f9b.js crossorigin=anonymous></script><title>電気学の発展｜浅野学園物理部</title><script type=text/javascript async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML"></script><body><div id=nav-drawer><input id=nav-input type=checkbox class=nav-unshown>
+<label id=nav-open for=nav-input><span class="bar bar1"></span><span class="bar bar2"></span><span class="bar bar3"></span><span class=menu>MENU</span>
+<span class=close>CLOSE</span></label>
+<label id=nav-close for=nav-input></label><div id=nav-content><a href=/index.html><img loading=lazy src=/image/MenuBarLogo.webp id=nav-logo alt=浅野学園物理部></a>
+<a class=nav-link href=/index.html>ホーム</a>
+<a class=nav-link href=/about/index.html>物理部とは</a>
+<a class="nav-link isActive" href=/document/index.html>部誌</a>
+<a class=nav-link href=/game/index.html>ゲーム</a>
+<a class=nav-link href=/blog/index.html>ブログ</a>
+<a class=nav-link href=/electronic/index.html>電工の部屋</a><div class=nav-separator></div><a class=nav-link href=http://d.hatena.ne.jp/apc/>ブログ(外部サイト)</a></div></div><main><div id=main><div class=documentcontent><div id=breadcrumbs><i class="fas fa-home"></i><a href=/index.html>ホーム</a>
+<i class="fas fa-angle-right"></i><a href=../../index.html>部誌</a>
+<i class="fas fa-angle-right"></i><a href=../index.html>2018年度部誌</a>
+<i class="fas fa-angle-right"></i><a href=./index.html>電気学の発展</a></div><header class=documenttitle><h1 id=title>電気学の発展</h1><p class=author><i class="fas fa-user-edit"></i>藤山</p><a href="https://twitter.com/intent/tweet?text=%e9%9b%bb%e6%b0%97%e5%ad%a6%e3%81%ae%e7%99%ba%e5%b1%95&via=Uchi54_APC&related=Uchi54_APC" class=twitter-share-button data-show-count=false>ツイート</a>
+<script async src=https://platform.twitter.com/widgets.js></script></header><div class=document><p>突然ですが皆さん、勉強などの、作業の間の息抜き、きちんとできていますか?この部誌では他の人が物理のことについて真面目に述べているので、この記事はその息抜き的な記事にしようと思って書いています。ということで僕たち、電子工作班員達の活動の基礎の基礎となっている、電気学の発展の概観を見ていきたいと思う。</p><h2 id=静電気蓄電池-ライデン瓶>〜静電気蓄電池 ライデン瓶～</h2><div style=display:flex><p>1746年、オランダのピーテルがライデン大学で静電気を貯める「ライデン瓶」を発明した。ライデン瓶はガラス瓶(絶縁の要素)の内側と外側を金属(主に鉛)でコーティングし、内側のコーティングは金属製の鎖を通して終端が金属球となっているロッドに接続されているつくりになっており、瓶の上の球に電圧加えることによってガラスによって絶縁された導体の表面に電気が溜められるのである。溜まった電気は静電気であるが、このライデン瓶の発明によって、人々が静電気を蓄えられるようになったのである。</p><img src=./images/img1.jpg></div><h2 id=電池の発明-ガルバーニとボルタ>〜電池の発明 ガルバーニとボルタ〜</h2><p>1799年にイタリアの物理学者、ボルタが電池を発明した。そして、そのきっかけは1791年のガルバーニが発表した動物電気の研究に遡る。ガルバーニは解剖されたカエルを使って実験物の両端がカエルに当たったところカエルが痙攣を起こしたかのように動き足したのである。これを発見したガルバーニはこれを動物から生み出された「動物電気」と言って論文にし、発表した。しかし実はこの動物電気、動物から生み出された電気ではなかったのである。二種類の金属が湿った物に触れた際に生じた電圧の差が原因であったのだ。そしてカエルの痙攣はただの検電の動きにしか過ぎなかったのである。</p><div style=display:flex><img src=./images/img2.jpg width=243px height=192px><p>そこで、ボルタは銅と亜鉛を用いて電池を発明した。この発明は強い電流を安定して長時間供給することができるようにし、今まで未開拓な領域に留まっていた電気の研究を急速に発展させていくことになる。</p></div><h2 id=センスの塊-マイケルファラデー>〜センスの塊 マイケル・ファラデー〜</h2><p>ここで、電磁気学の礎を築いた人たちの内の一人である、イギリスの科学者、マイケル・ファラデーである。少しファラデーの生い立ちと、前半生を見てみよう。ファラデーが生まれた家庭は、あまり裕福な家庭ではなく、高等な教育を受けておらず、数学の知識を身に着けていなかった14歳の時から、製本業に就いていた。ファラデーが製本業に就いたのはとても偶然なことであったが、この偶然がファラデーの人生と、科学の歴史を大きく変えることになるのである。</p><p>ファラデーは仕事の合間を縫って製本を依頼された本を読んだのである。特に電気と化学の分野に興味を持った。そして、このこともまた、一つの偶然であった。なぜなら、電気と化学の分野はそのころまだ発展途上であって、力学のように、理論で完全に一般化された分野とは違い、未開拓の分野であり、高等教育を受けていなく数学がまったくと言ってもいいほどできないが、実験のセンスに優れているファラデーが活躍できる余地が少なくなかったのだ。ファラデーの勉強の意欲に火がつき、なんとかして実験ができる環境に身を置きたいと考え、1812年に20歳になったファラデーは、電気分解を駆使して多くの元素を発見したデービーの講演を熱心に聴講し、デービーの行った実験をスケッチをまじえてノートに書き留め、デービー宛ての手紙と製本職人が製本したデービーの講義のノートを同封して、デービーに送ったのである。これが功を奏し、1813年3月からデービーのもとで働けるようになり、自由に実験を行えるようになり、数々の功績を残していくことになる。</p><p>その後、ファラデーは様々なことを発見していったが、中でも有名なのは、1831年の磁力線の着想と、同年の電磁誘導の法則の発見だろう(厳密に言うと、少し先にジョセフ・ヘンリーが発見している)。電磁誘導というのは、磁界が変化している環境にある導体に電圧が生じる現象(簡単に言うと”発電”)であり、この現象は発電機や、変圧器などの多くの電気機器の動作原理となっている。もちろん、この電磁誘導の法則も高等な数学は一切使われていなかった。</p><h3 id=理論家-マクスウェル>〜理論家 マクスウェル〜</h3><p>その年6月、後にファラデーの行った実験を理論にする、マクスウェルが生まれた。マクスウェルは大地主跡取りに生まれ、ケンブリッジ大学を卒業した、典型的なエリートだった。彼は数学に長けていてそれを駆使して理論を築き上げるのである。貧困層に生まれ、あまり学歴のないファラデーとは実に対照的な人物である。</p><p>マクスウェルは若いころから才能を発揮している。1856年、マクスウェルは25歳で「土星の環の構造と安定性」について取り組み論文を提出し、翌年にアダムズ賞を受賞している。また、マクスウェルは1855年から1856年にかけて、「ファラデーの力線について」と題した研究をし、論文にまとめると、真っ先にそれを力線の提唱者ファラデーに送った。これを機に、後にファラデーとの交流が生まれていく。</p><p>さらに、マクスウェルは理論的に電磁波の存在を予想し、そして、マクスウェルは1864年に、ファラデーの電磁誘導の法則、アンペール=マクスウェルの法則、電場に関するガウスの法則、磁場に関するガウスの法則の4つの法則を結合し、今日、”マクスウェル方程式”と呼ばれる電磁気学の基礎方程式が確立したのである。この方程式は、アインシュタインが、特殊相対性理論の基本原理となった、光速度不変の原理を提唱する際にも役立っており、電磁気学の非常に重要なものとなっている。</p><p>ちなみに、それからマクスウェルはエーテルという、光が伝播する際に媒質となる、仮想媒質があるのを前提として波動方程式を求めたわけなのだが、このエーテル、今ではエーテルは存在しないと証明されたのである。しかし、この方程式そのものは正しいものである、という面白い展開になっている。このようなことも歴史を学ぶ上での面白さである。</p><p>このように、興味のある分野の歴史、あるいはそれに関わったたくさんの偉人達の生涯(特に、幼い頃は自部が後世に名を残すことなんて思ってもいなかった人がほとんどであるため、素の人間が見えて、より面白い)や考え方を知ることは、僕たちにいろんなことを考えさせてくれる、また、考える時の参考にもなるのである。そして何より、学校の歴史の勉強とは一味違う面白さで、調べていて楽しい!皆さんも、息抜き程度に調べてみるのはいかがですか?最後まで読んで下さりありがとうございました。</p><h2 id=参考文献>参考文献</h2><ul><li>『光と電磁気 ファラデーとマクスウェルが考えたこと 電場とは何か? 磁場とは何か?』小山慶太 著 発行所 株式会社講談社</li><li><a href=https://ja.wikipedia.org/wiki/電磁波>電磁波- Wikipedia</a></li><li><a href=https://ja.wikipedia.org/wiki/マクスウェルの方程式>マクスウェルの方程式 - Wikipedia</a></li><li><a href=http://web.archive.org/web/20140422032255/http://www.xjzyz.com:80/old/electromagnetic_wave.html>電磁気現象とマクスウェル方程式｜通信の発展 - WebArchive</a></li><li><a href=https://ja.wikipedia.org/wiki/相対性理論>相対性理論 - Wikipedia</a></li><li><a href=https://ja.wikipedia.org/wiki/エーテル_(物理)>エーテル_(物理) - Wikipedia</a></li><li><a href=https://ja.wikipedia.org/wiki/ジェームズ・クラーク・マクスウェル>ジェームズ・クラーク・マクスウェル - Wikipedia</a></li><li><a href=https://ja.wikipedia.org/wiki/ハンフリー・デービー>ハンフリー・デービー - Wikipedia</a></li><li><a href=https://ja.wikipedia.org/wiki/電気分解>電気分解 - Wikipedia</a></li><li><a href=https://ja.wikipedia.org/wiki/マイケル・ファラデー>マイケル・ファラデー - Wikipedia</a></li><li><a href=https://ja.wikipedia.org/wiki/ライデン瓶>ライデン瓶 - Wikipedia</a></li><li><a href=https://ja.wikipedia.org/wiki/ボルタ電池>ボルタ電池 - Wikipedia</a></li></ul></div><nav class=nextPrev><div class=next>次へ<a href=https://asanobuturi.github.io/document/2018/coilgun/>「コイルの用法！コイルガンの逆襲」 ></a></div><div class=prev>前へ<a href=https://asanobuturi.github.io/document/2018/life_game/>ライフゲームをC++で実装してみた話 ></a></div></nav></div><nav id=sidebar><div id=sidemenu><div class=side-back><a href=../index.html>記事の一覧へもどる<i class="fas fa-sign-out-alt"></i></a></div><div class=side-next><a href=https://asanobuturi.github.io/document/2018/coilgun/>「コイルの用法！コイルガンの逆襲」<i class="fas fa-angle-right"></i></a></div><div class=side-prev><a href=https://asanobuturi.github.io/document/2018/life_game/><i class="fas fa-angle-left"></i>ライフゲームをC++で実装してみた話</a></div></div><div id=indexblock><div class=indextitle>目次</div><ol class=indexcontents><nav id=TableOfContents><ul><li><a href=#静電気蓄電池-ライデン瓶>〜静電気蓄電池 ライデン瓶～</a></li><li><a href=#電池の発明-ガルバーニとボルタ>〜電池の発明 ガルバーニとボルタ〜</a></li><li><a href=#センスの塊-マイケルファラデー>〜センスの塊 マイケル・ファラデー〜</a><ul><li><a href=#理論家-マクスウェル>〜理論家 マクスウェル〜</a></li></ul></li></ul></nav></ol></div></nav></div><footer class=footer><p class=copyright>Copyright &copy; 2015 - 2022 Asano Physics Club, All Rights Reversed.</p></footer></main></body></html>

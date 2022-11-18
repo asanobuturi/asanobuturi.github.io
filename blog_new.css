@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Zen+Old+Mincho&display=swap');
 
 :root {
-    --headline-font: Arial, "M PLUS Rounded 1c"
+    --headline-font: Arial, "M PLUS Rounded 1c";
 }
 
 .document blockquote{
@@ -42,7 +42,7 @@ body{
         color:rgba(50,90,180);
         text-decoration-color: rgb(50, 89, 180);
         transition: all 0.4s;
-    }        
+    }
 }
 
 @media screen and (max-width:900px){/*スマホ用*/
@@ -50,7 +50,7 @@ body{
         display: block;
         margin: 5em auto 1em;/*ハンバーガーボタンがパンくずリストに重ならないようにする雑な応急処置。上になんかメニューとかおいたほうがいいと思う*/
     }
-    
+
     #sidebar{
         display: none;
     }
@@ -344,7 +344,7 @@ li h1{
     max-width: 45% !important;
     max-height: 10em;
     float: left;
-}       
+}
 
 .float-clear{
     clear: both;
