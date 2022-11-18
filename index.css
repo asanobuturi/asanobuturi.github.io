@@ -1,7 +1,8 @@
 .welcome-slogan {
-    font-family: "Kosugi Maru", Arial, "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic ProN", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "Meiryo UI", sans-serif, "游ゴシック", "Yu Gothic", "游ゴシック体", "YuGothic";
+    font-family: "Kosugi Maru";
     color: white;
     font-size: 80px;
+    font-weight: 500;
     padding-top: 70px;
     line-height: 111.31777%; /*(≒(i^i)%)*/
     font-weight: 500;

@@ -413,3 +413,750 @@ code {
     src: url("/font/KosugiMaru-Regular.ttf");
     font-display: swap;
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Zen+Old+Mincho&display=swap');
+
+:root {
+    --headline-font: Arial, "M PLUS Rounded 1c";
+}
+
+.document blockquote{
+    font-family: 'Zen Old Mincho', serif;
+}
+
+body{
+    scroll-behavior: smooth;
+}
+
+@media screen and (min-width: 900px){ /*パソコン用*/
+    #main{
+        display: flex;
+        width: 900px;
+        margin: 1em auto;
+        gap: 1em;
+    }
+    #main .documentcontent{
+        flex: 1;
+        width: calc(100% - 250px - 1em)
+    }
+    #sidebar{
+        padding: 0;
+        flex-basis:250px;
+        display:block;
+    }
+
+    #sidemenu{
+        background-color: #fff;
+        margin-bottom:1em;
+        padding:1em;
+    }
+    #sidemenu a{
+        color:#444;
+        text-decoration-color: #0000;
+    }
+    #sidemenu a:hover{
+        color:rgba(50,90,180);
+        text-decoration-color: rgb(50, 89, 180);
+        transition: all 0.4s;
+    }
+}
+
+@media screen and (max-width:900px){/*スマホ用*/
+    #main{
+        display: block;
+        margin: 5em auto 1em;/*ハンバーガーボタンがパンくずリストに重ならないようにする雑な応急処置。上になんかメニューとかおいたほうがいいと思う*/
+    }
+
+    #sidebar{
+        display: none;
+    }
+}
+/* パンくずリスト */
+.documentcontent>#breadcrumbs{
+    text-align: left;
+    color:#444;
+    font-weight: bold;
+    margin-bottom:0.4em;
+}
+.documentcontent>#breadcrumbs a{
+    color: #444;
+    margin:auto 0.4em;
+    text-decoration-color: #0000;
+}
+.documentcontent>#breadcrumbs a:hover{
+    text-decoration-color: #000;
+}
+
+/* 目次 */
+
+#indexblock {
+    background-color: #fff;
+    position: sticky;
+    top: 1em;
+    padding-bottom: 10px;
+}
+
+#indexblock>.indextitle {
+    font-size: 24px;
+    font-weight: 900;
+    padding: 0.2em;
+    padding-top:0.4em;
+    margin: auto 2em;
+    border-bottom: #888888 solid 2px;
+}
+
+#indexblock li{
+    display:block;
+    list-style: decimal;
+    text-align: start;
+    margin:0.2em auto;
+}
+#indexblock ol {
+    counter-reset: section;
+    padding-left: 0;
+}
+.indexcontents{
+    margin:1em;
+    margin-left:2em;
+    padding-bottom: 1em;
+}
+#indexblock ol li {
+    list-style: none;
+    margin:0.5em 0;
+    padding-left: 0;
+}
+#indexblock ol>li>ol {
+    margin:0;
+}
+
+#indexblock ol>li:before {
+    content : counters(section, '-') '. ';
+    counter-increment : section;
+}
+
+
+#indexblock li>ul {
+    counter-reset: section;
+    padding-left: 0;
+}
+#indexblock li> ul li {
+    list-style: none;
+    margin:0.5em 0;
+    padding-left: 0;
+}
+#indexblock ul>li>ul {
+    margin:0;
+}
+
+#indexblock ul>li:before {
+    content : counters(section, '-') '. ';
+    counter-increment : section;
+}
+
+#indexblock a{
+    display: inline;
+    color:black;
+    text-decoration:#e74c3c00;
+    text-decoration-thickness: 0.2em;
+}
+#indexblock a:hover{
+    text-decoration: underline #e74c3cff;
+    transition: text-decoration .5s;
+    text-decoration-thickness: 0.2em;
+}
+
+/* タイトルなどを表示する場所 */
+
+.documentcontent>.documenttitle {
+    margin-bottom:1em;
+    padding: 1em;
+    background-color: #fff;
+    text-align: left;
+}
+.documentcontent>.documenttitle>.documenticon {
+    width: 7em;
+    margin-right: 1em;
+}
+.documentcontent>.documenttitle h1 {
+    margin-top: 0;
+    color: #000;
+    border-left: solid 6px #e74c3c;
+    padding: 0.5em 2em 0.5em 0.5em;
+    font-size:28px;
+    background-color: #eee;
+    font-family: Arial, "Kosugi Maru";
+    font-weight: 700;
+}
+.documentcontent>.documenttitle p{
+    text-decoration: none;
+    font-weight: normal;
+    font-size: 16px;
+    margin: 0;
+}
+
+.document blockquote {
+    position: relative;
+    padding: 30px 15px 8px 15px;
+    margin: 10px;
+    box-sizing: border-box;
+    background: #f8f8f8;
+}
+
+.document blockquote:before {
+    display: inline-block;
+    position: absolute;
+    top: 5px;
+    left: 3px;
+    vertical-align: middle;
+    font-style: italic;
+    content: "\"";
+    font-family: sans-serif;
+    color: #cfcfcf;
+    font-size: 90px;
+    line-height: 1;
+}
+
+.document blockquote p {
+    padding: 0;
+    margin: 15px 0;
+    line-height: 1.7;
+}
+
+.document blockquote cite {
+    display: block;
+    text-align: right;
+    color: #888888;
+    font-size: 0.9em;
+}
+
+.document h2 {
+    padding: 0.15em 0.5em;
+    border-left: solid #e74c3c 5px;
+    font-family: var(--headline-font);
+    font-weight: 700;
+    font-size:1.8em;
+}
+
+.document h3 {
+    padding: 0.25em 0;
+    margin: 0.7em 0;
+    border-bottom: solid rgb(138, 138, 138) 2px;
+    font-family: var(--headline-font);
+    font-weight: 500;
+    font-size:1.4em;
+}
+
+.document h4 {
+    padding: 0.25em 0;
+    margin: 1em 0;
+    border-bottom: solid rgb(138, 138, 138) 2px;
+    font-family: var(--headline-font);
+    font-weight: 500;
+}
+
+.document li {
+    margin-left:1em;
+    padding-left:1em;
+    text-indent: -1em;
+}
+
+.document li p {
+    text-indent: 0;
+}
+.document li.asterisk-1 {
+    list-style: disc outside;
+}
+
+.document p.kome::before {
+    content: "※";
+}
+
+.document p.kome {
+    padding-left:1em;
+    text-indent: -1em;
+    color: #555;
+}
+
+.document li.check {
+    list-style: "✓" outside;
+}
+
+.document li.asterisk-2 {
+    list-style: "\27A3" outside;
+}
+
+.document li.asterisk-decimal {
+    list-style: decimal outside;
+}
+
+.document ul li.li-normal {
+    list-style: disc;
+}
+
+.document .documentul.li-normal {
+    list-style: disc;
+}
+
+.document ul.li-normal>a {
+    display:block;
+}
+
+.nextPrev .next {
+    margin-bottom: 1em;
+}
+
+.nextPrev .prev {
+    margin-bottom: 1em;
+}
+
+.document {
+    margin-top: 1em;
+    padding: 1em;
+    background-color: #fff;
+    text-align: left;
+}
+
+.document .documentcontent {
+    padding: 1em 0;
+    margin: 0 1em;
+}
+.document .documentcontent a {
+    font-size: 24px;
+    font-weight: bold;
+}
+.document .documentcontent h2 {
+    font-size: 16px;
+    font-weight: normal;
+}
+.document .documentcontent p {
+    font-size: 16px;
+    font-weight: normal;
+    color: #555;
+}
+.document .documentcontent .link-2 {
+    font-size: 16px;
+    font-weight: normal;
+    margin-bottom: 0;
+    text-align: right;
+}
+.documentcontent + .documentcontent {
+    border-top: solid 1px #ccc;
+}
+
+.document li h1 {
+    font-size: 18px;
+    font-weight: normal;
+}
+/* 文書中のCSSなど */
+.document .image-float-right {
+    max-width: 45% !important;
+    max-height: 10em;
+    float: right;
+}
+
+.document .image-float-left {
+    max-width: 45% !important;
+    max-height: 10em;
+    float: left;
+}
+
+.document .float-clear {
+    clear: both;
+}
+
+.document .images-side {
+    display: flex;
+    justify-content: space-between;
+}
+
+.document .image-side {
+    display: inline-block;
+    max-width: 45% !important;
+}
+
+.document img {
+    max-width: 90%;
+    margin: 1em;
+}
+
+.document .document h2 sub{
+    font-weight: normal;
+    font-size:60%;
+}
+
+.document .text-center{
+    text-align: center;
+}
+
+.document .text-bold{
+    font-weight: bold;
+}
+
+.document .caption{
+    margin: 1em 0 0 0 !important;
+}
+
+.document .mathjax-center{
+    text-align: center !important;
+}
+
+.document blockquote h1{
+    font-size: 20px;
+}
+
+#proof-qed{
+    text-align: right;
+    margin-right: 1em;
+}
+
+::selection{
+    background-color: #e74c3c;
+    color: #fff;
+}
+
+#math-div{
+    padding:0.2em auto;
+}
+
+
+.document table {
+    display: table;
+    max-width: 100%;
+    margin: 1.5rem auto;
+    border-collapse: collapse;
+    border: #444 1px;
+}
+.document table th,
+.document table td {
+    padding: 0.25rem 1rem 0.25rem 0;
+    background-color: transparent;
+    border: #444 1px;
+}
+.document table th:first-child,
+.document table td:first-child {
+    padding: 0.5rem 2rem;
+}
+.document table th {
+    background-color: #34495e;
+    color: #f1f1f1;
+    font-weight: normal;
+}
+
+.document table tr:last-child {
+    border-bottom: 0;
+}
+
+.document code.code-simple{
+    background-color: #ecf0f1;
+    color:#34495e
+}
+
+.document details {
+    border-radius: 4px;
+    padding: .5em .5em 0;
+}
+
+.document summary {
+    font-weight: bold;
+    border-radius: 4px;
+    margin: -.5em -.5em 0;
+    padding: .5em;
+    background-color: rgb(192, 192, 192);
+}
+
+.document details[open] {
+    padding: .5em;
+    background-color: #f8f8f8;
+}
+
+.document details[open] summary {
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    margin-bottom: .5em;
+}
+
+.document li{
+    list-style-type: disc;
+}
+
+.document li>a{
+    margin-left: 1em;
+}
+/* 部誌の年度別ページ用CSS */
+
+/* 全機器共通CSS (文字色など) */
+
+main>.documenttitle h1 {
+    margin-top: 0;
+    color: orange;
+    border-bottom: solid 1px #ccc;
+    font-size:32px;
+}
+
+main>.documenttitle>h2 {
+    padding:0;
+    color: orange;
+    border-bottom: solid 1px #ccc;
+    border-left:none !important;
+    font-size:22px;
+}
+
+
+main>.documenttitle {
+    padding: 1em;
+    margin: 1em auto;
+    background-color: white;
+    max-width: 70%;
+    text-align: left;
+    height:12em;
+}
+
+main>.documenttitle p {
+    text-decoration: none;
+    font-weight: normal;
+    font-size: 16px;
+    margin: 0;
+}
+
+.document-page-list .documentcontent {
+    padding: 1em 0;
+    margin: 0 1em;
+}
+.document-page-list .documentcontent a {
+    font-size: 24px;
+    font-weight: bold;
+}
+.document-page-list .documentcontent h2 {
+    font-size: 16px;
+    font-weight: normal;
+}
+.document-page-list .documentcontent p {
+    font-size: 16px;
+    font-weight: normal;
+    color: #555;
+}
+.document-page-list .documentcontent .link-2 {
+    font-size: 16px;
+    font-weight: normal;
+    margin-bottom: 0;
+    text-align: right;
+}
+.documentcontent + .documentcontent {
+    border-top: solid 1px #ccc;
+}
+
+.documentdetail {
+    border-left: none;
+    padding: 0;
+}
+
+@media (min-width: 700px) { /* 部誌の表紙を表示するCSS。下限は部誌の紹介文が欄からはみ出さないぐらい。 */
+    main>.documenttitle .documenticon {
+        float: left;
+        height: 12em;
+        margin-right: 1em;
+    }
+}
+@media (max-width: 700px) { /* 部誌の表示を表示しないCSS。 */
+    main>.documenttitle .documenticon {
+        display: none;
+    }
+}
+
+/* 部誌の一覧ページ用のcss */
+
+/* 全機器共通CSS (文字色など) */
+.document-list-item {
+    background-color: white;
+}
+.document-list {
+    padding: 0em 0.5em 2em;
+}
+
+.document-list>.document-list-item>.document-list-content>h2 {
+    font-family: "ヒラギノUD丸ゴ W6 JIS2004","Hiragino UD Sans Rd W6 JIS2004", Arial, "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic ProN", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "Meiryo UI", sans-serif, "游ゴシック", "Yu Gothic", "游ゴシック体", "YuGothic";
+    margin-top: 10px;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.document-list>.document-list-item>.document-list-content>h2>a {
+    text-decoration: none;
+    font-weight: bold;
+    color: orange;
+    border-bottom: dotted 2px blue;
+}
+
+/* 個別CSS */
+@media (min-width: 1140px) { /* 部誌を二列表示するCSS。 下限は部誌が二列表示のときに"20xx年度 部誌"が折り返さないぐらいの幅 */
+    .document-list {
+        display: flex;
+        flex-wrap: wrap;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .document-list>.document-list-item {
+        width: 35%;
+        margin: 1px;
+        padding: 10px;
+        background: white;
+        display: flex;
+        position: relative;
+        text-align: left;
+        height:300px;
+    }
+
+    .document-list-item>.document-list-published-date {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+    }
+
+    .document-list-thumb {
+        margin-left: auto;
+    }
+
+    .document-thumb {
+        height:300px;
+    }
+}
+
+@media (max-width: 1140px) and (min-width: 740px){ /* 部誌を一列表示するときのCSS (従来の表示に近い) 下限は部誌の紹介文をストレス無く読めるぐらいの幅 */
+    .document-list>.document-list-item {
+        width: 70%;
+        margin: 1em auto;
+        padding: 10px;
+        background: white;
+        display: flex;
+        position: relative;
+        text-align: left;
+        height:300px;
+    }
+
+    .document-list-item>.document-list-published-date {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+    }
+
+    .document-list-thumb {
+        margin-left: auto;
+    }
+
+    .document-thumb {
+        height:300px;
+    }
+}
+
+@media (max-width: 740px){ /* 部誌を一列に、かつ画像なども一列に表示するCSS。紹介文は排除。 */
+    .document-list>.document-list-item {
+        width: 250px;
+        margin: 1em auto;
+        padding: 10px;
+        background: white;
+        position: relative;
+        text-align: center;
+        height:auto;
+    }
+
+    .document-list-item>.document-list-published-date {
+        position: absolute;
+        bottom: 4px;
+        right: 10px;
+    }
+
+    .document-list-item>.document-list-content>p {
+        display:none;
+    }
+
+    .document-list-thumb {
+        margin-left: auto;
+        padding-bottom:12px;
+    }
+
+    .document-thumb {
+        height:300px;
+    }
+}
+
+/* 部誌の年度別ページ用CSS */
+.document-page-list {
+    padding: 1em;
+    margin: 1em auto;
+    background-color: #fff;
+    max-width: 70%;
+    text-align: left;
+}
+
+/* ブログの一覧ページ用CSS */
+
+.news-block {
+    margin-top: 100px;
+}
+
+.news-block h1 {
+    margin: 20px 0;
+}
+
+.articleBlock {
+    font-size: 16px;
+    line-height: 1.7em;
+    background-color: #fff;
+    padding: 0px;
+    margin-bottom: 3em;
+}
+@media (max-width: 500px) {
+    .articleBlock {
+        font-size: 12px;
+    }
+}
+
+.articleBlock h1 {
+    padding: 1.25em 0;
+    box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.1);
+}
+
+#blogBlock {
+    padding: 0 5%;
+}
+
+.blogPosts {
+    text-align: center;
+    padding: 0em 0em 1em;
+}
+
+    .blogPosts + .blogPosts {
+        border-top: dotted 1px rgba(0, 0, 0, 0.6);
+        padding: 1em 0em 1em;
+    }
+
+.author{
+    font-size:20px;
+    font-weight: normal;
+}
+
+.articleUnit {
+    padding: 0;
+    display: inline-block;
+    text-align: left;
+    width: 100%;
+}
+
+.articleUnit p {
+    margin: 0.5em 0;
+}
+
+.articleUnit .title a {
+    font-family: Arial, "M PLUS Rounded 1c", Arial, "Helvetica Neue", Helvetica, "メイリオ", Meiryo, "Meiryo UI", sans-serif, "游ゴシック", "Yu Gothic", "游ゴシック体", "YuGothic";
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 1.3em;
+}
+
+@media (max-width: 500px) {
+    .articleUnit .title a {
+        font-size: 20px;
+        font-weight: 500;
+    }
+}
