@@ -416,14 +416,14 @@ code {
 
 @font-face {
     font-family: "M PLUS Rounded 1c";
-    src: url("/font/MPLUSRounded1c-Medium-ForkedByAPC.ttf");
+    src: url("/font/MPLUSRounded1c-Medium-ForkedByAPC.woff2");
     font-display: swap;
     font-weight: 500;
 }
 
 @font-face {
     font-family: "M PLUS Rounded 1c";
-    src: url("/font/MPLUSRounded1c-Regular-ForkedByAPC.ttf");
+    src: url("/font/MPLUSRounded1c-Regular-ForkedByAPC.woff2");
     font-display: swap;
     font-weight: 400;
 }

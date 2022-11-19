@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>2019年度・部誌 on 浅野学園物理部</title><link>https://asanobuturi.github.io/document/2019/</link><description>Recent content in 2019年度・部誌 on 浅野学園物理部</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Thu, 01 Jan 1970 00:33:39 +0000</lastBuildDate><atom:link href="https://asanobuturi.github.io/document/2019/index.xml" rel="self" type="application/rss+xml"/><item><title>編集後記</title><link>https://asanobuturi.github.io/document/2019/edit/</link><pubDate>Thu, 01 Jan 1970 00:00:12 +0000</pubDate><guid>https://asanobuturi.github.io/document/2019/edit/</guid><description>今年の部誌の編集を担当した中3の永田です。電子版の部誌では、紙の部誌とは別の内容で編集後記を書いてみます。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>2019年度・部誌 on 浅野学園物理部</title><link>https://asanobuturi.github.io/document/2019/</link><description>Recent content in 2019年度・部誌 on 浅野学園物理部</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Thu, 01 Jan 1970 00:33:39 +0000</lastBuildDate><atom:link href="https://asanobuturi.github.io/document/2019/index.xml" rel="self" type="application/rss+xml"/><item><title>編集後記</title><link>https://asanobuturi.github.io/document/2019/12/</link><pubDate>Thu, 01 Jan 1970 00:00:12 +0000</pubDate><guid>https://asanobuturi.github.io/document/2019/12/</guid><description>今年の部誌の編集を担当した中3の永田です。電子版の部誌では、紙の部誌とは別の内容で編集後記を書いてみます。
 まずは、9月頭の文化祭から、電子版の公開までに一ヶ月以上のブランクが空いてしまったことについて、この場を借りてお詫び申し上げます。本当にすいませんでした。この文章を書いている今は中間テスト期間なので、テスト終了後に部員にシメられる予定でございます。
 電子版をpdf直張りではなく、それぞれの文書をHTMLに移植して再編集したことで、いろいろと分かったことがありました。
 ひとつは、意外と移植が面倒だったということです。docxとHTMLでは仕様が異なりますから、Wordのプレビューを見ながら手作業でコピペしつつHTMLに起こすしかありません。一応、WordにもHTML形式にエクスポートする機能はあるのでしょうが、細かい部分が色々と崩壊しそうなので使っていません。後からの融通も効かなそうですし。
@@ -6,7 +6,7 @@
 私自身、HTML/CSSをほとんど触ったことがないので、今回移植をしながら手習いでどうにか覚えて使っています。おかげでだいぶ書けるようになりました。このサイトの骨格部分を全て一人で作り上げた3つ上の先輩には頭が上がりません。そういえば部員の中で一人、HTML形式で部誌を提出してきた人がいました。謎。
 数式の記述には、MathJaxというオープンソースのスクリプトを使用しています。HTML内にLaTeX形式で記述した数式を、自動でキレイな形にまとめてくれるのでとても便利です。感動しました。もともとはMathJaxにHTML標準要素のMathMLをあわせて使っていたのですが、LaTeXの方が書きやすかったため、途中から移行しました。MathJaxを使うと、「\(\LaTeX\)」なんかも簡単に記述できます。
 来年の編集も引き続き私が務める予定ですので、後一年、もっと精進して帰ってきます。
-そういえば、なんとなくTwitterの共有ボタンをつけてみましたが、使ってくれた方は居るのでしょうか?</description></item><item><title>φの累乗とフィボナッチ数列</title><link>https://asanobuturi.github.io/document/2019/math/</link><pubDate>Thu, 01 Jan 1970 00:00:11 +0000</pubDate><guid>https://asanobuturi.github.io/document/2019/math/</guid><description>筆者の独特の文体が原因で怪文書となっております。お読みの際は十分お気を付けください。
+そういえば、なんとなくTwitterの共有ボタンをつけてみましたが、使ってくれた方は居るのでしょうか?</description></item><item><title>φの累乗とフィボナッチ数列</title><link>https://asanobuturi.github.io/document/2019/11/</link><pubDate>Thu, 01 Jan 1970 00:00:11 +0000</pubDate><guid>https://asanobuturi.github.io/document/2019/11/</guid><description>筆者の独特の文体が原因で怪文書となっております。お読みの際は十分お気を付けください。
 問題
 フィボナッチ数列の各項を\(F_n\)とし、\(F_1=F_2=1\)とする。\(\phi\)が\(\phi^2=\phi+1\)を満たす\(1\)より大きい実数であるとき、\(\lim_{n \to \infty}\frac{F_n+1}{F_n}=\phi\)となることを証明せよ。ただし、\(F_n\)の一般項を求め、利用してはいけない。
 答えはこれを読み進めた最後に書いておいた。なんなら途中をすっ飛ばしても構わないが、その途中がまさに私がこれに気づいたきっかけなので、ヒントが欲しければ途中を読むのをお勧めする。
@@ -51,7 +51,7 @@
 が得られる。諸君なら左辺に見覚えがあるだろう。そう、\(\phi^2\)である。もちろんこれを\(\phi^2\)で割るしかない。
 \(1=0.0111111\ldots_{(\phi)}\)
 ここで、\(2=(\phi)+(-\phi+2)=\phi+\phi^{-2}_=10.01_{(\phi)}\)を思い出す。
-ここまでと同様の変換で\(2=1.</description></item><item><title>基礎からはじめるトランジスタ</title><link>https://asanobuturi.github.io/document/2019/transistor/</link><pubDate>Thu, 01 Jan 1970 00:00:10 +0000</pubDate><guid>https://asanobuturi.github.io/document/2019/transistor/</guid><description>はじめに
+ここまでと同様の変換で\(2=1.</description></item><item><title>基礎からはじめるトランジスタ</title><link>https://asanobuturi.github.io/document/2019/10/</link><pubDate>Thu, 01 Jan 1970 00:00:10 +0000</pubDate><guid>https://asanobuturi.github.io/document/2019/10/</guid><description>はじめに
 お久しぶりです。中3になった鈴木です。今回は作品の製作記や解説ではなく、バイポーラトランジスタに焦点を当て、バイポーラトランジスタの使い方だけを解説していくことにしました。果たして、需要はあるのでしょうか。
 というのも、トランジスタの使い方だけをただ集めた本は中々なく、トランジスタが何者なのかは分かったが、どう使えばいいのか分からない状態、それが長く続いたのです。僕と同じ状態にある人の助けになるかもしれない、また、後輩たちにもこれを見せれば何か分かってくれるかもしれない。そういう思いで執筆しています。
 オームの法則やコンデンサ、インダクタなど基礎中の基礎の部分は割愛します。尺の都合というのと、そこの解説はどの入門書にも載っていると思うので。ここに書いてあることについて何が何だか分からない人は、トランジスタの足配置が分かったぐらいの段階でもう一回このページを開いてみてください。もしかしたら何かが分かるかもしれません。
@@ -103,7 +103,7 @@ TO-3
 回路の入力電圧、出力電圧の基準はVccの半分(後述の両電源アンプの場合はGND)になるべく近づける。信号の振幅をできる限り大きく取れるようにするため。
 回路記号のみを書いてある回路図に既に決まっている定数を書き加えながら設計していくと設計が楽になる。
 細かいことは気にしない。
-以上のことを覚えられたら、次に進んでみましょう。もし不安になったら適宜戻って確認してみてください。</description></item><item><title>自作クレーンゲームの考察</title><link>https://asanobuturi.github.io/document/2019/ufo/</link><pubDate>Thu, 01 Jan 1970 00:00:09 +0000</pubDate><guid>https://asanobuturi.github.io/document/2019/ufo/</guid><description>はじめに
+以上のことを覚えられたら、次に進んでみましょう。もし不安になったら適宜戻って確認してみてください。</description></item><item><title>自作クレーンゲームの考察</title><link>https://asanobuturi.github.io/document/2019/9/</link><pubDate>Thu, 01 Jan 1970 00:00:09 +0000</pubDate><guid>https://asanobuturi.github.io/document/2019/9/</guid><description>はじめに
 謝罪からスタートの部誌というのもレアだと思いますが、まず、謝らなければならないことがあります。これから書く部誌は、昨年度に2日目の最後の2時間のみ、がばがばな状態で動作した作品についての考察になります。昨年度来ていただいた方には、1年越しになりますが、パンフレット等で宣伝しておきながら申し訳ありませんでした。
 というわけで。どうも、高校2年生の部長です。4年目の部誌は、昨年度のクレーンゲームについての考察になります。主な内容は考察なので、電子工作について多く語るというわけではありませんが、読んでくださるならば、嬉しい限りでございます。
 作ることになった経緯
@@ -142,7 +142,7 @@ ACアダプタ(6V、1.8Aに近い値の物。大きすぎるのもよくない�
 銅線
 その他、クオリティをあげたければ、装飾するためにペンキを追加したり、クレーンゲームの機構を、チェーンを使ってやる場合には、DCモーターの代わりに使ったり、クレーンゲームの外枠に大きなアクリル板をつけて本物に近くすることもできます。ただ、今回使った材料はこんなもんです。サイズ、個数等は、自分の作るものに合わせてください。そのために個数表記、サイズ表記していないものもあります。
 外枠(筐体)
-外枠は上記4要素よりは比較的楽に製作できました。苦労したところはというと、運搬の問題です。エレベーターに入るように大きさを調整する必要がありましたので、大きさをy軸方向に少し小さくしたかなぁ、という感じです。わかりやすく言うと、幅がおそらく普通のものより若干薄いです。</description></item><item><title>アクションゲームのブロックの当たり判定</title><link>https://asanobuturi.github.io/document/2019/action/</link><pubDate>Thu, 01 Jan 1970 00:00:08 +0000</pubDate><guid>https://asanobuturi.github.io/document/2019/action/</guid><description>注意！この私の部誌は日本語がおかしいところが多々ありますのでご注意ください。
+外枠は上記4要素よりは比較的楽に製作できました。苦労したところはというと、運搬の問題です。エレベーターに入るように大きさを調整する必要がありましたので、大きさをy軸方向に少し小さくしたかなぁ、という感じです。わかりやすく言うと、幅がおそらく普通のものより若干薄いです。</description></item><item><title>アクションゲームのブロックの当たり判定</title><link>https://asanobuturi.github.io/document/2019/8/</link><pubDate>Thu, 01 Jan 1970 00:00:08 +0000</pubDate><guid>https://asanobuturi.github.io/document/2019/8/</guid><description>注意！この私の部誌は日本語がおかしいところが多々ありますのでご注意ください。
 ゲームはフレームごとに処理されている
 この部誌を読んでいるみなさん、こんにちは！突然ですが皆さんは「ゲームはフレームごとに処理されている」ということを知っていますか?
 「フレームってなんぞや?」と思うかもしれませんが、実はビデオゲームというのはパラパラ漫画のように素早く画面が切り替わって、1画面ずつゲームの処理が行われているのです。この一画面をフレームと言い、一秒間にフレームがいくつ切り替わるかの値をFPSという単位で表します。ディスプレイの性能の関係で、大抵のゲームは60FPSか30FPSで動作するように設計しますが、処理が追いつかなくなるとまれに遅れることもあります。
@@ -170,7 +170,7 @@ ACアダプタ(6V、1.8Aに近い値の物。大きすぎるのもよくない�
 と、言う仕組みです。
 皆さん、ここまでお読みいただきありがとうございます。よければ僕の作ったアクションゲーム*を遊んでみてください。このゲームもこの当たり判定が使われていますよ!
 それではまた!
-編集部注:文化祭のみでの展示です。</description></item><item><title>「競争」</title><link>https://asanobuturi.github.io/document/2019/competition/</link><pubDate>Thu, 01 Jan 1970 00:00:07 +0000</pubDate><guid>https://asanobuturi.github.io/document/2019/competition/</guid><description>はじめに読もうね！
+編集部注:文化祭のみでの展示です。</description></item><item><title>「競争」</title><link>https://asanobuturi.github.io/document/2019/7/</link><pubDate>Thu, 01 Jan 1970 00:00:07 +0000</pubDate><guid>https://asanobuturi.github.io/document/2019/7/</guid><description>はじめに読もうね！
 浅野学園物理部の展示に来てくださり、そして、この記事を読んでくださりありがとうございま す。
 部誌っていうのは例年、その一年間部活動において何をしたか、どんなことをしたか、っていうの を書く場という雰囲気がありますが、特に規則があるわけではないし、普段物理部がやっていること は他の方々が十分というほど、紹介してくれているので扱うのは少しにします。
 正直、部誌に中途半端に専門的なことを描くことを好みません。
@@ -204,7 +204,7 @@ ACアダプタ(6V、1.8Aに近い値の物。大きすぎるのもよくない�
 何をどれだけ作って、いくらで売るか会社が自由に決められること(自由主義経済)
 商品の売買に国家が介入することなく、市場*2に依存すること。
 財産の私有が認められていること。
-の三つがあります。このうち一つ目と二つ目が必然的に伴う「あること」によって経済が発展を遂 げることになるのです。</description></item><item><title>いろんなソート</title><link>https://asanobuturi.github.io/document/2019/sort/</link><pubDate>Thu, 01 Jan 1970 00:00:06 +0000</pubDate><guid>https://asanobuturi.github.io/document/2019/sort/</guid><description>ソートとは
+の三つがあります。このうち一つ目と二つ目が必然的に伴う「あること」によって経済が発展を遂 げることになるのです。</description></item><item><title>いろんなソート</title><link>https://asanobuturi.github.io/document/2019/6/</link><pubDate>Thu, 01 Jan 1970 00:00:06 +0000</pubDate><guid>https://asanobuturi.github.io/document/2019/6/</guid><description>ソートとは
 タイトルにある「ソート」を聞いたことがあるでしょうか？Excelを触ったことのある人ならご存知かもしれません。
 英語の動詞であるソート(sort)は「分類する」「区分する」という意味を持ち、「並び替える」という意味で使われることが多いです。ここではプログラム上でこのソートを実行する方法について述べていきます。
 用語確認など
@@ -225,7 +225,7 @@ ACアダプタ(6V、1.8Aに近い値の物。大きすぎるのもよくない�
 \) は「\( 2 \)の何乗が\( N \)になるのか」を表し、 \( \log_{2} 8 = 3 \)
 (ログ2の8)、 \( \log_{3} 243 = 5
 \)(ログ2の243)となります。ざっくりと言うのであれば、桁数だと考えればよいです。 \( \log_{10}
-100 = 2 \)、\( \log_{10} 152 = 2.</description></item><item><title>自作PCについていろいろ</title><link>https://asanobuturi.github.io/document/2019/ownmade_pc/</link><pubDate>Thu, 01 Jan 1970 00:00:05 +0000</pubDate><guid>https://asanobuturi.github.io/document/2019/ownmade_pc/</guid><description>そもそも自作PCとは
+100 = 2 \)、\( \log_{10} 152 = 2.</description></item><item><title>自作PCについていろいろ</title><link>https://asanobuturi.github.io/document/2019/5/</link><pubDate>Thu, 01 Jan 1970 00:00:05 +0000</pubDate><guid>https://asanobuturi.github.io/document/2019/5/</guid><description>そもそも自作PCとは
 自作PCとは文字通り、自分で作る (組み立てる)PCのことです。よく勘違いしている方がいるのですが、はんだ付けなどの難しい電子工作は一切ありません。自作PCの利点はメーカー製PCにない構成が組めることです。具体的にはRyzen系CPUを搭載したPCはメーカー製ではまだ少ないです。またゲームや画像編集に必須なグラフィクカードを搭載したPCもメーカー製には少ないです。対して欠点は故障した場合PC全体としての保証がないため原因を特定してパーツ単位の保証を受ける必要があることです。この作業はPCに対しての知識が求められ初心者には向いていないと言われる要因の一つです。
 パーツを選ぼう
 PCを組むときはまずパーツ選びから始めます。この作業が組み立ての何十倍も重要です。
@@ -262,7 +262,7 @@ Zen2以前は低かった
 マザーボードに色々なパーツを取り付けることで、各パーツが連携してPC全体が動作します。ここがPCの土台となる場所です。
 自作市場のマザーボードは、基本的に台湾メーカーが独占しています。ここでは有名なメーカーをいくつか解説していこうと思います。
 ASUS
-マザーボード界の重鎮で、BIOSやドライバー系で使いやすいことが有名でシェア率が世界一です。</description></item><item><title>顔認識の仕組み</title><link>https://asanobuturi.github.io/document/2019/face/</link><pubDate>Thu, 01 Jan 1970 00:00:04 +0000</pubDate><guid>https://asanobuturi.github.io/document/2019/face/</guid><description>
+マザーボード界の重鎮で、BIOSやドライバー系で使いやすいことが有名でシェア率が世界一です。</description></item><item><title>顔認識の仕組み</title><link>https://asanobuturi.github.io/document/2019/4/</link><pubDate>Thu, 01 Jan 1970 00:00:04 +0000</pubDate><guid>https://asanobuturi.github.io/document/2019/4/</guid><description>
 そもそも顔認識とは
 こんにちは、中学2年の永井康太です。最近「顔認識」という言葉をIT化が進むにつれてよく聞くようになってきています。そもそも顔認識とはどういう技術なのかというと、例えばこのようなものです。
 今回は左の人の顔を顔認識を使って右のように顔の部分を自動で黒い枠で囲ませてみました。
@@ -283,7 +283,7 @@ ASUS
 参考にさせていただいたサイト：
 https://qiita.com/FukuharaYohei/items/ec6dce7cc5ea21a51a82
 https://kotobank.jp/word/%E9%A1%94%E8%AA%8D%E8%AD%98-190393
-https://code-graffiti.com/opencv-face-detection-with-haar-cascades-in-python/#toc4</description></item><item><title>素晴らしいアルゴリズムの世界</title><link>https://asanobuturi.github.io/document/2019/algorithm/</link><pubDate>Thu, 01 Jan 1970 00:00:03 +0000</pubDate><guid>https://asanobuturi.github.io/document/2019/algorithm/</guid><description>どうも、中3の副部長の中野です。最近、僕の周りで競技プログラミングが流行っているので、少しアルゴリズムについて書こうかなと思います。
+https://code-graffiti.com/opencv-face-detection-with-haar-cascades-in-python/#toc4</description></item><item><title>素晴らしいアルゴリズムの世界</title><link>https://asanobuturi.github.io/document/2019/3/</link><pubDate>Thu, 01 Jan 1970 00:00:03 +0000</pubDate><guid>https://asanobuturi.github.io/document/2019/3/</guid><description>どうも、中3の副部長の中野です。最近、僕の周りで競技プログラミングが流行っているので、少しアルゴリズムについて書こうかなと思います。
 対象読者
 C++などのプログラミング言語の基礎をある程度抑えている人。
 競技プログラミングとは
@@ -323,7 +323,7 @@ N
 の範囲が今回の成約のように膨大になってしまった場合、到底制限時間内に間に合いません(計算量が
 O
 N
-のためTLE=時間制限超えになってしまいます。)。</description></item><item><title>中学生が考える人工知能</title><link>https://asanobuturi.github.io/document/2019/ai/</link><pubDate>Thu, 01 Jan 1970 00:00:02 +0000</pubDate><guid>https://asanobuturi.github.io/document/2019/ai/</guid><description>はじめに
+のためTLE=時間制限超えになってしまいます。)。</description></item><item><title>中学生が考える人工知能</title><link>https://asanobuturi.github.io/document/2019/2/</link><pubDate>Thu, 01 Jan 1970 00:00:02 +0000</pubDate><guid>https://asanobuturi.github.io/document/2019/2/</guid><description>はじめに
 最近、いたるところで「人工知能」や「AI」という言葉を聞きます。しかし実際にはほとんどの人が人工知能とは何かについて詳しくは知らないと思います。そこで今回は少し人工知能について研究してみました。
 定義の確認
 まずは、人工知能とは何か、というところから始めます。
@@ -364,7 +364,7 @@ Wikipediaより(2019年9月28日参照)
 ボールの座標は固定してから学習するので入力には含みません。
 また、人工知能にはキーボードの入力と同じようなデータを確率で出力してもらい、それに基づき操作してもらいます。
 学習の方法
-ボールの座標決定後、以下のような流れで学習をします。</description></item><item><title>部長挨拶</title><link>https://asanobuturi.github.io/document/2019/intro/</link><pubDate>Thu, 01 Jan 1970 00:00:01 +0000</pubDate><guid>https://asanobuturi.github.io/document/2019/intro/</guid><description>ついにこの文章を書く年になってしまいました。自分にとって最後の文化祭ということです。後半の3年間は物理部の文化祭に多く関わっていたというのもあり、あまり作業ができなかったりしました。
+ボールの座標決定後、以下のような流れで学習をします。</description></item><item><title>部長挨拶</title><link>https://asanobuturi.github.io/document/2019/1/</link><pubDate>Thu, 01 Jan 1970 00:00:01 +0000</pubDate><guid>https://asanobuturi.github.io/document/2019/1/</guid><description>ついにこの文章を書く年になってしまいました。自分にとって最後の文化祭ということです。後半の3年間は物理部の文化祭に多く関わっていたというのもあり、あまり作業ができなかったりしました。
 さて、今年の文化祭ですが、100周年の文化祭ということで、例年通りではないところが細かいですがいくつかございます。パンフレットを見てもらってお分かりいただけたでしょうが、今年の文化祭は数学同好会とコラボしております。また、壁新聞なども本格的な導入はこの部活では今年が初めてだったりしております。作品メインだったこの部活の展示の雰囲気を少し変えてみました。その他にも少しだけいつもと異なっているところがありますが、探してみてください。
 ところで、2年前の部長は部長挨拶にて、「マイナスからゼロに戻しただけ」という言葉を使っていましたが、文化祭における土台を作ったのは彼でした。なので、今年の文化祭でプラスにできたでしょうか。正直言って、部活の雰囲気についてはこの1年間でよくしたという自負がございます。2年前は「PC班を捨て」たので、かりそめの姿での「ゼロに戻した」のですが、今年は根本的なところから「ゼロに戻し」、多少プラスのものになったと信じたいと思います。
 今年以降、自分は文化祭の運営をすることはありませんが、文化祭の運営だけでなく、たくさんいる後輩の教育も過去にはないくらい自分はやってきましたと断言します。なので、来年度以降は今年度よりもより良い文化祭ができるであろうと期待しております。今年は、メインで動ける高校生がほとんどいなかったのに対して、中学生はよく頑張ってくれたと思っています。改めてこの場で感謝を申し上げます。

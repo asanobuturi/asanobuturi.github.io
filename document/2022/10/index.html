@@ -1,0 +1,76 @@
+<!doctype html><html lang=ja><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=description content="文化祭で展示していたやつの簡単な解説です"><meta name=viewport content="width=device-width,initial-scale=1"><link rel=stylesheet href=/styles.css><link rel=subresource class=lazy-css href=/highlight.css><link rel=icon href=/image/favicon.svg type=image/svg+xml><link rel="icon alternate" href=/images/favicon.ico><meta property="og:site_name" content="浅野学園物理部"><meta property="og:url" content="https://asanobuturi.github.io/document/2022/10/index.html"><meta property="og:title" content="自作OSで文字列をPC98に表示する｜浅野学園物理部"><meta property="og:description" content="文化祭で展示していたやつの簡単な解説です"><meta property="og:type" content="website"><meta property="og:image" content="https://asanobuturi.github.io/thumbnails/document/2022/10/thumbnail.jpg"><meta name=twitter:card content="summary_large_image"><meta name=twitter:site content="@Uchi54_APC"><script src=/general.js></script></head><link rel=stylesheet href=/blog_new.css><link rel=stylesheet href=/highlight.css><script src=https://kit.fontawesome.com/1e291c4f9b.js crossorigin=anonymous></script><title>自作OSで文字列をPC98に表示する｜浅野学園物理部</title><script type=text/javascript async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML"></script><body><div id=nav-drawer><input id=nav-input type=checkbox class=nav-unshown>
+<label id=nav-open for=nav-input><span class="bar bar1"></span><span class="bar bar2"></span><span class="bar bar3"></span><span class=menu>MENU</span>
+<span class=close>CLOSE</span></label>
+<label id=nav-close for=nav-input></label><div id=nav-content><a href=/index.html><img loading=lazy src=/image/favicon.svg id=nav-logo alt=浅野学園物理部></a>
+<a class=nav-link href=/index.html>ホーム</a>
+<a class=nav-link href=/about/index.html>物理部とは</a>
+<a class="nav-link isActive" href=/document/index.html>部誌</a>
+<a class=nav-link href=/game/index.html>ゲーム</a>
+<a class=nav-link href=/blog/index.html>ブログ</a>
+<a class=nav-link href=/electronic/index.html>電工の部屋</a><div class=nav-separator></div><a class=nav-link href=http://d.hatena.ne.jp/apc/>ブログ(外部サイト)</a></div></div><main><div id=main><div class=documentcontent><div id=breadcrumbs><i class="fas fa-home"></i><a href=/index.html>ホーム</a>
+<i class="fas fa-angle-right"></i><a href=../../index.html>部誌</a>
+<i class="fas fa-angle-right"></i><a href=../index.html>2022年度部誌</a>
+<i class="fas fa-angle-right"></i><a href=./index.html>自作OSで文字列をPC98に表示する</a></div><header class=documenttitle><h1 id=title>自作OSで文字列をPC98に表示する</h1><p class=author><i class="fas fa-user-edit"></i>高二 N.K.</p><a href="https://twitter.com/intent/tweet?text=%e8%87%aa%e4%bd%9cOS%e3%81%a7%e6%96%87%e5%ad%97%e5%88%97%e3%82%92PC98%e3%81%ab%e8%a1%a8%e7%a4%ba%e3%81%99%e3%82%8b&via=Uchi54_APC&related=Uchi54_APC" class=twitter-share-button data-show-count=false>ツイート</a>
+<script async src=https://platform.twitter.com/widgets.js></script></header><div class=document><h2 id=はじめに>はじめに</h2><p>二度目の登場の高2のN.Kです。展示用に作ったものの簡単な解説をしようと思います。</p><h2 id=実際の展示>実際の展示</h2><p>まず文化祭で展示する物を紹介しようと思います。<br>画像の通りPC98で<code>THANK YOU FOR COMING TO APC</code>と表示させています。</p><p><img src=./eALzXyI.webp alt=展示></p><h2 id=基本的なプログラムの仕組み>基本的なプログラムの仕組み</h2><p>ざっくり言うとメモリーの中のテキストVRAMに割り当てられている領域にASCII文字コードを書き込んで文字を表示しています。<br>一定の周期でコンピュータがテキストVRAMの内容を読み込んでモニターへ送るようになっているので、テキストVRAMに文字を書き込むと書き込んだ番地に応じた画面上の位置に文字が表示されます。</p><h2 id=実際のコード>実際のコード</h2><p>今回はアセンブリ言語というプログラミング言語を使用します。<br><a href=https://github.com/asanobuturi/PC98APCOS>https://github.com/asanobuturi/PC98APCOS</a>
+で全体のコードを公開しています。<br>はじめはフロッピーディスクの情報を指定します。<br>1行目の<code>JMP entry</code>で文字を書くプログラムの場所を示しています<code>JMP</code>命令はC言語でいうところのgoto文と同じです。<br>2行目はNOP命令でCPUに何もしないで一命令分の実行時間を消費するものだそうです。なぜこれが必要なのかはよくわかりませんがこれが一般的だそうです。<br>3行目はブートセクタの名前を8byteで指定しています。ブートセクタとは起動に必要なプログラムや情報を記録したものです。<br>4行目は1セクタの大きさを指定しています。セクタとは円盤型の記憶媒体の最小の記録単位でフロッピーの場合は512byteなので512を指定します。<br>5行目はクラスタあたりのセクタ数を指定しています。<br>クラスタとはOSが記録媒体を管理する際の最小単位で2の累乗である必要があり、今回は1クラスタあたり1セクタとしています。<br>6行目は予約領域のセクタ数を指定しています。<br>予約領域とはPCの起動に必要なプログラムのことですなわちこのプログラム自身です。ディスクのはじめにこれがあるので1を指定しています。<br>7行目はFATの個数で2を指定するのが一般的だそうです。<br>8行目はルートディレクトリでのファイルの情報が格納されているディレクトリエントリの数をいれています。<br>9行目はディスクのセクタ数です。フロッピーディスクは2880セクタです。<br>10行目はハードディスクだと<code>0xf8</code>、リムーバブルメディア(電源が入っている状態でも取り付けや取り外しができるるもの ex:USBメモリ,フロッピー)だと<code>0xf0</code>を指定します。<br>11行目は一個のFAT(ファイルやディレクトリについての情報を記録する特殊なシステム領域)あたりのセクタ数を指定しています。<br>12行目はトラックという単位が何セクタで構成されているかを指定しています。普通のフロッピーでは18セクタです。<br>13行目は磁気ヘッドの数を指定します。<br>表と裏があるので2です。<br>14行目はこのボリュームの手前に存在するセクタ数で、パーティションを使っていないので0を指定しています。<br>15行目はドライブの総セクタ数が<code>0x10000</code>を超えるときにドライブの総セクタ数を指定します。<br>今回は超えていないので0を指定しています。<br>16行目はBIOSで使われるドライブ番号でフロッピーだと<code>0x00</code>を指定します。<br>17行目はWINDOWSで使う領域で当然WINDOWSを使わないので0です。<br>18行目は以下三行の設定が存在している場合<code>0x29</code>を指定します。<br>19行目はボリュームを識別するための番号で8桁の十六進数で指定します。<br>20行目はディスクの名前を11byteの文字列で指定します。<br>21行目はフォーマットのタイプを8byteの文字列で指定します。今回はFAT12です。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-nasm data-lang=nasm>    <span style=color:#a6e22e>JMP</span>     entry
+    <span style=color:#66d9ef>DB</span>      <span style=color:#ae81ff>0x90</span>
+    <span style=color:#66d9ef>DB</span>      <span style=color:#e6db74>&#34;HELLOAPC&#34;</span>      <span style=color:#75715e>; ブートセクタの名前</span>
+    <span style=color:#66d9ef>DW</span>      <span style=color:#ae81ff>512</span>             <span style=color:#75715e>; 1セクタの大きさ</span>
+    <span style=color:#66d9ef>DB</span>      <span style=color:#ae81ff>1</span>               <span style=color:#75715e>; クラスタの大きさ</span>
+    <span style=color:#66d9ef>DW</span>      <span style=color:#ae81ff>1</span>               <span style=color:#75715e>; FATがどこから始まるか</span>
+    <span style=color:#66d9ef>DB</span>      <span style=color:#ae81ff>2</span>               <span style=color:#75715e>; FATの個数</span>
+    <span style=color:#66d9ef>DW</span>      <span style=color:#ae81ff>224</span>             <span style=color:#75715e>; ルートディレクトリ領域の大きさ</span>
+    <span style=color:#66d9ef>DW</span>      <span style=color:#ae81ff>2880</span>            <span style=color:#75715e>; このドライブの大きさ</span>
+    <span style=color:#66d9ef>DB</span>      <span style=color:#ae81ff>0xf0</span>            <span style=color:#75715e>; メディアのタイプ</span>
+    <span style=color:#66d9ef>DW</span>      <span style=color:#ae81ff>9</span>               <span style=color:#75715e>; FAT領域の長さ</span>
+    <span style=color:#66d9ef>DW</span>      <span style=color:#ae81ff>18</span>              <span style=color:#75715e>; 1トラックにいくつのセクタがあるか</span>
+    <span style=color:#66d9ef>DW</span>      <span style=color:#ae81ff>2</span>               <span style=color:#75715e>; ヘッドの数</span>
+    <span style=color:#66d9ef>DD</span>      <span style=color:#ae81ff>0</span>               <span style=color:#75715e>; パーティションを使ってないため0</span>
+    <span style=color:#66d9ef>DD</span>      <span style=color:#ae81ff>0</span>               <span style=color:#75715e>; 総セクタ数&lt;0x10000より0</span>
+    <span style=color:#66d9ef>DB</span>      <span style=color:#ae81ff>0x00</span>            <span style=color:#75715e>; フロッピーディスクでは0x00</span>
+    <span style=color:#66d9ef>DB</span>      <span style=color:#ae81ff>0</span>               <span style=color:#75715e>; WindowsNT予約領域</span>
+    <span style=color:#66d9ef>DB</span>      <span style=color:#ae81ff>0x29</span>            <span style=color:#75715e>; 下の3つの設定が存在することを示す。</span>
+    <span style=color:#66d9ef>DD</span>      <span style=color:#ae81ff>0xffffffff</span>      <span style=color:#75715e>; ボリュームシリアル番号</span>
+    <span style=color:#66d9ef>DB</span>      <span style=color:#e6db74>&#34;APC        &#34;</span>   <span style=color:#75715e>; ディスクの名前（11バイト）</span>
+    <span style=color:#66d9ef>DB</span>      <span style=color:#e6db74>&#34;FAT12   &#34;</span>      <span style=color:#75715e>; フォーマットの名前（8バイト）		</span>
+</code></pre></div><p>何行目に何をしているかはわかったけど<code>DB</code>やら<code>DD</code>やら<code>DW</code>は何だと思われたかと思います。<code>DB</code>はファイルに1byte書き込むという命令です。<code>DW</code>は2byte、<code>DD</code>は4byteです。<br>それじゃあ<code>DB "HELLOAPC"</code>などのDBのあとに文字列が来るものは何だ、明らかに1byteではないじゃないかと感じると思いますが<code>DB "文字列"</code>とすると文字列を構成するそれぞれの文字の文字コードをしらべて1byteずつ書き込んでくれるようになっています。<br>また0xで始まる数字はそれが16進数であることを示しています。0x12は10進数で18です。</p><p>ここから先がプログラムとなっていてここではレジスタに0を代入して初期化しています。<br>レジスタとはCPUの中にある高速な記憶装置のことです。<br><code>MOV A,B</code>はAにBを代入するという命令です。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-nasm data-lang=nasm>entry:
+		<span style=color:#a6e22e>MOV</span>		AX,<span style=color:#ae81ff>0</span>	
+		<span style=color:#a6e22e>MOV</span>		DS,AX
+		<span style=color:#a6e22e>MOV</span>		ES,AX
+		<span style=color:#a6e22e>MOV</span>		SS,AX
+</code></pre></div><p>次に1行目であとに書いてある表示するメッセージの最初のメモリの番地をSIレジスタに代入しています。<br>msgがフロッピーの中のどこの番地に当たるのかを計算してその番地がSIに代入されます。<br>そこから先はAXとBSレジスタにテキストVRAMの領域の最初の番地を代入して、後々使うのでBXレジスタに0x0000を代入しています。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-nasm data-lang=nasm>print:
+		<span style=color:#a6e22e>MOV</span>		SI,msg		
+		<span style=color:#a6e22e>MOV</span>		AX,<span style=color:#ae81ff>0xa000</span>
+		<span style=color:#a6e22e>MOV</span>		ES,AX
+		<span style=color:#a6e22e>MOV</span>		BX,<span style=color:#ae81ff>0x0000</span>
+</code></pre></div><p>ここではまず1行目でALレジスタに次に書き込む文字のメモリ番地の中身(=文字コード)を代入しています。[]で囲むとメモリの番地を意味します。その中に<code>CS:SI</code>とありますが、これはCS*16+SIのメモリ番地を指定するという意味です。CS*16がこのプログラムが格納されているメモリーの番地を指すのでそこに文字データのFD内での番地を足すことで次に書き込まれる文字の番地を指定しています。
+2,3行目はもしすべての文字をテキストVRAMに書き終わっているのなら<code>fin:</code>に飛ぶという命令です。
+2行目でALと0を比較するという命令をして、3行目でもし<code>AL=0</code>であったら<code>fin:</code>に飛ぶという命令をしています。
+なぜこれで書き終わっていることを検知できるかといえば、後述する文字データが書かれている部分を見るとすべての文字列のあとに<code>0x0</code>を書き込んであります。一文字ずつ書き込んでいった後<code>0x0</code>が現れたことを確認して文字の書き込みが終わったことを検知しています。
+4行目で実際にテキストVRAMに文字を書き込んでいます。<code>[ES:BX]</code>で書き込むべきメモリ番地を指定して(ESにはテキストVRAMの最初の番地が入っていてBXにはテキストVRAMの中で何バイト目に書き込む必要があるかが入っています)、さきほどALに文字コードを代入したのでそれを書き込んでいます。
+5行目でSIに1を加えることで次の文字のFD内での番地がSIに入ります
+6行目ではテキストVRAMの中での番地を1文字あたり2byte使うため2進めています。
+7行目で<code>putloop:</code>に戻ってループしています。これによってまた次の文字の書き込みが始まります。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-nasm data-lang=nasm>putloop:
+		<span style=color:#a6e22e>MOV</span>		AL,[CS:SI]						
+		<span style=color:#a6e22e>CMP</span>		AL,<span style=color:#ae81ff>0</span>
+		<span style=color:#a6e22e>JZ</span>		fin
+		<span style=color:#a6e22e>MOV</span>		[ES:BX],AL	
+		<span style=color:#a6e22e>INC</span>		SI			
+		<span style=color:#a6e22e>ADD</span>		BX,<span style=color:#ae81ff>2</span>		
+		<span style=color:#a6e22e>JMP</span>		putloop
+</code></pre></div><p>前述した通り文字をテキストVRAMに書き終わったら<code>fin:</code>に飛んでくるのでCPUを待機状態にします。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-nasm data-lang=nasm>fin:
+		<span style=color:#a6e22e>HLT</span>				
+		<span style=color:#a6e22e>JMP</span>		fin		
+</code></pre></div><p>ここに実際に表示する文字列が書き込まれています。前述した通り文字列の後に書き込まれている<code>0x0</code>によってテキストVRAMへの書き込みが終わったことを検知しています。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-nasm data-lang=nasm>msg:
+		<span style=color:#66d9ef>DB</span> <span style=color:#e6db74>&#34;THANK YOU FOR COMING TO APC&#34;</span>
+		<span style=color:#66d9ef>DB</span> <span style=color:#e6db74>&#34;  -Asano Physics Club 2022-&#34;</span>
+		<span style=color:#66d9ef>DB</span> <span style=color:#ae81ff>0x0</span>
+</code></pre></div><p>最後に0x400までを0x00で埋める命令を実行しています。
+$はこの行が先頭から何バイト目であるかを教えてくれる変数です。
+0x400からそれを引くことによって何バイトを0x00で埋めればいいかを調べています。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-nasm data-lang=nasm><span style=color:#66d9ef>RESB</span>	<span style=color:#ae81ff>0x400</span><span style=color:#f92672>-</span><span style=color:#66d9ef>$</span>		
+</code></pre></div><h2 id=実際に動かす>実際に動かす</h2><p><a href=https://github.com/asanobuturi/PC98APCOS>https://github.com/asanobuturi/PC98APCOS</a>に実行方法が書いてあります。</p><h2 id=参考文献>参考文献</h2><p>川合秀美.30日でできるOS自作入門.マイナビ出版,2006<br><a href=https://qiita.com/TakedaHiromasa/items/371503c48ac33237a859>https://qiita.com/TakedaHiromasa/items/371503c48ac33237a859</a><br><a href=https://github.com/TakedaHiromasa/HelloWorld-PC98>https://github.com/TakedaHiromasa/HelloWorld-PC98</a><br><a href=http://elm-chan.org/docs/fat.html>http://elm-chan.org/docs/fat.html</a></p><h2 id=おわりに>おわりに</h2><p>展示用に作ったものの解説をしてみました。正直説明がわかりにくかったり、意味をあいまいにしている部分もあったと思います。すみません。ここまで読んでくださりありがとうございました。</p><h2 id=ライセンス>ライセンス</h2><p><a href=https://github.com/TakedaHiromasa/HelloWorld-PC98>https://github.com/TakedaHiromasa/HelloWorld-PC98</a>のソースコードを改造して作らせていただきました。以下にライセンス表記があります。</p><p>MIT License</p><p>Copyright (c) 2018</p><p>Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the &ldquo;Software&rdquo;), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:</p></div><nav class=nextPrev><div class=next>次へ<a href=https://asanobuturi.github.io/document/2022/11/>部内で鯖を飼育する ></a></div><div class=prev>前へ<a href=https://asanobuturi.github.io/document/2022/9/>PC98という古いPCで曲をビープ音で演奏してみた ></a></div></nav></div><nav id=sidebar><div id=sidemenu><div class=side-back><a href=../index.html>記事の一覧へもどる<i class="fas fa-sign-out-alt"></i></a></div><div class=side-next><a href=https://asanobuturi.github.io/document/2022/11/>部内で鯖を飼育する<i class="fas fa-angle-right"></i></a></div><div class=side-prev><a href=https://asanobuturi.github.io/document/2022/9/><i class="fas fa-angle-left"></i>PC98という古いPCで曲をビープ音で演奏してみた</a></div></div><div id=indexblock><div class=indextitle>目次</div><ol class=indexcontents><nav id=TableOfContents><ul><li><a href=#はじめに>はじめに</a></li><li><a href=#実際の展示>実際の展示</a></li><li><a href=#基本的なプログラムの仕組み>基本的なプログラムの仕組み</a></li><li><a href=#実際のコード>実際のコード</a></li><li><a href=#実際に動かす>実際に動かす</a></li><li><a href=#参考文献>参考文献</a></li><li><a href=#おわりに>おわりに</a></li><li><a href=#ライセンス>ライセンス</a></li></ul></nav></ol></div></nav></div><footer class=footer><p class=copyright>Copyright &copy; 2015 - 2022 Asano Physics Club, All Rights Reversed.</p></footer></main></body></html>
