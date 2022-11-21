@@ -8,7 +8,7 @@ window.addEventListener("load", (event) => {
         //console.log(document_data);
 
         if (location.pathname == `/document/${document_data.year}/` || location.pathname == `/document/${document_data.year}/index.html`) { //部誌のインデックスなら
-            const block = document.getElementsByClassName("document")[0];
+            const block = document.getElementsByClassName("document-page-list")[0];
             for (let i = 0;i<document_data["pages"].length;i++) {
                 console.log(document_data["pages"][i]["name"]);
                 console.log(document_data["pages"][i]["folder_name"]);

@@ -1,0 +1,286 @@
+<!doctype html><html lang=ja><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=description content="高2の部員が、なんとC++のコンパイラを自力で実装。ポインタや関数などを含む基本的な機能を完成させ、記事内では比較演算子の実装までを解説しています。"><meta name=viewport content="width=device-width,initial-scale=1"><link rel=stylesheet href=/styles.css><link rel=subresource class=lazy-css href=/highlight.css><link rel=icon href=/image/favicon.svg type=image/svg+xml><link rel="icon alternate" href=/images/favicon.ico><meta property="og:site_name" content="浅野学園物理部"><meta property="og:url" content="https://asanobuturi.github.io/document/2021/10/index.html"><meta property="og:title" content="自作コンパイラを実装してみた｜浅野学園物理部"><meta property="og:description" content="高2の部員が、なんとC++のコンパイラを自力で実装。ポインタや関数などを含む基本的な機能を完成させ、記事内では比較演算子の実装までを解説しています。"><meta property="og:type" content="website"><meta property="og:image" content="https://asanobuturi.github.io/thumbnails/document/2021/10/thumbnail.jpg"><meta name=twitter:card content="summary_large_image"><meta name=twitter:site content="@Uchi54_APC"><script src=/general.js></script></head><link rel=stylesheet href=/blog_new.css><link rel=stylesheet href=/highlight.css><script src=https://kit.fontawesome.com/1e291c4f9b.js crossorigin=anonymous></script><title>自作コンパイラを実装してみた｜浅野学園物理部</title><script type=text/javascript async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML"></script><link href=https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-okaidia.min.css rel=stylesheet><script src=https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-core.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/plugins/autoloader/prism-autoloader.min.js></script><body><div id=nav-drawer><input id=nav-input type=checkbox class=nav-unshown>
+<label id=nav-open for=nav-input><span class="bar bar1"></span><span class="bar bar2"></span><span class="bar bar3"></span><span class=menu>MENU</span>
+<span class=close>CLOSE</span></label>
+<label id=nav-close for=nav-input></label><div id=nav-content><a href=/index.html><img loading=lazy src=/image/favicon.svg id=nav-logo alt=浅野学園物理部></a>
+<a class=nav-link href=/index.html>ホーム</a>
+<a class=nav-link href=/about/index.html>物理部とは</a>
+<a class="nav-link isActive" href=/document/index.html>部誌</a>
+<a class=nav-link href=/game/index.html>ゲーム</a>
+<a class=nav-link href=/blog/index.html>ブログ</a>
+<a class=nav-link href=/electronic/index.html>電工の部屋</a><div class=nav-separator></div><a class=nav-link href=http://d.hatena.ne.jp/apc/>ブログ(外部サイト)</a></div></div><main><div id=main><div class=documentcontent><div id=breadcrumbs><i class="fas fa-home"></i><a href=/index.html>ホーム</a>
+<i class="fas fa-angle-right"></i><a href=../../index.html>部誌</a>
+<i class="fas fa-angle-right"></i><a href=../index.html>2021年度部誌</a>
+<i class="fas fa-angle-right"></i><a href=./index.html>自作コンパイラを実装してみた</a></div><header class=documenttitle><h1 id=title>自作コンパイラを実装してみた</h1><p class=author><i class="fas fa-user-edit"></i>中野(高2)</p><a href="https://twitter.com/intent/tweet?text=%e8%87%aa%e4%bd%9c%e3%82%b3%e3%83%b3%e3%83%91%e3%82%a4%e3%83%a9%e3%82%92%e5%ae%9f%e8%a3%85%e3%81%97%e3%81%a6%e3%81%bf%e3%81%9f&via=Uchi54_APC&related=Uchi54_APC" class=twitter-share-button data-show-count=false>ツイート</a>
+<script async src=https://platform.twitter.com/widgets.js></script></header><div class=document><h2 id=はじめに>1.はじめに</h2><p>こんにちは、高二の中野です。今回の部誌では、コンパイラについて紹介してみたいと思います！自分自身昔からコンパイラに対して「難しそう」みたいな偏見を抱えていて全く触れてこなかったのですが、ふとしたきっかけで自作Cコンパイラについて体系的にまとめているサイト(参考文献に載せておきます)を見かけて覗いたところ、「意外といけそう」と思ったので軽く始めてみたらハマってしまったという次第です。ところどころ至らない点があると思うので、もし不明な点や疑問があればこのメールアドレス( <code class=code-simple>s2017197@asano.ed.jp</code> )に連絡してください。</p><h2 id=対象読者>2.対象読者</h2><p>C++, Pythonなどのメジャー言語で基礎的なコードが書ける人。ある程度人のコードが読める人。今回の部誌は扱う内容がかなり学問的というか高度なので、細かいプログラミング言語の文法などは説明しないのでご了承ください。同様に小学生がこれを読むのもあまりおすすめしません。受験勉強してください。逆にこの条件から外れた方々にとっては割と楽しめる内容かと思います。わからない用語・関数などが出てきたら適宜自分で調べてみてください。コーディングにおいて自分のほしい情報を限られた時間でインターネット等で見つけるのは大事な能力です。ちなみに私はC++のリファレンスを参照する際には cpprefjp(<a href=https://cpprefjp.github.io class=uri>https://cpprefjp.github.io</a>)を主に使っています。</p><h2 id=コンパイラとはなんぞや>3.コンパイラとはなんぞや</h2><p>ではここから実際にコンパイラとは何かを説明しましょう。<br>Wikipediaにはこのように書いてあります。</p><blockquote><p>コンパイラ（英: compiler）は、コンピュータ・プログラミング言語の処理系（言語処理系）の一種で、高水準言語によるソースコードから、機械語あるいは元のプログラムよりも低い水準のコードに変換（コンパイル）するプログラムである。</p></blockquote><p>有名な話かもしれませんが、コンピュータは0と1の羅列(2進数)をデータとして扱い、それをもとに計算などを実行しています。要は、コンピュータは<code class=code-simple>0010100110011001010101000</code>などのような我々人間にとって一見摩訶不思議に見える数字の羅列を用いています。一方、我々は普段日本語や英語などの自然言語を用いています。この人間とコンピュータの通訳係となってくれるのがコンパイラです。大半のプログラミング言語は人間にとってある程度の可読性が担保されています。もちろん、我々はコンピュータを利用するためにさっきの0と1の羅列を自分でキーボードで打つわけにはいけませんよね？その、<strong>割と人間寄りいわば自然言語寄りのプログラミング言語をコンピュータが理解できるように0と1の羅列に変換するのがまさにコンパイラの仕事なのです。</strong> コンパイラの仕組みを理解することできっとあなたはコンピュータと、より親しくなれるでしょう！</p><h2 id=コンパイルの手順>4.コンパイルの手順</h2><p>前章ではコンパイラの概要について説明しました。ここから詳しい話に移りたいと思います。まず簡潔に言うと、コンパイラは以下の4つのフェーズを踏んで実行されます。</p><p>1.<strong>字句解析</strong><br>　　　↓<br>2.<strong>構文解析</strong><br>　　　↓<br>3.<strong>アセンブリコードの生成</strong><br>　　　↓<br>4.<strong>生成したアセンブリコードをバイナリに変換する</strong><br></p><p>これだけだと分かりづらいと思うので具体例を出して説明します。今 <code class=code-simple>int main(){return 0;}</code> というC言語のソースコードをコンパイルしたいとします。当然コンパイラへの入力形式は <strong>文字列</strong> です(C++で扱うとしたら <code class=code-simple>const char*</code>や<code class=code-simple>std::string</code>のような型を用いるでしょう)。しかしコンパイラからしてみると、文字列の状態だと大変扱いづらいのです。プログラムによっては<code class=code-simple>int main () { return 0; /*hogehoge*/}</code> のような本来コンパイルする際には不要な空白やコメントがついている場合もあります。それを除去してよりソースコードの本質を抽出するような処理が1番目の字句解析です。このプログラムの場合、ソースファイルは [<code class=code-simple>int</code>,<code class=code-simple>main</code>, <code class=code-simple>(</code>, <code class=code-simple>)</code>, <code class=code-simple>{</code>, <code class=code-simple>return</code>, <code class=code-simple>0</code>, <code class=code-simple>;</code>, <code class=code-simple>}</code>] という一つずつが意味を持った <strong>字句(トークン)</strong> の配列に変換され、コメントや空白なども全て無視されます。こうすることで、2番目以降の処理が格段にやりやすくなるのです。次にこのトークン配列を <strong>構文解析木(AST)</strong> という <strong>木構造</strong> に変換します(なぜこのようにする必要があるのかは後ほど説明します)。この工程を文字通り　<strong>構文解析</strong>と呼びます。そして、その構文解析木を元にアセンブリコードを生成して、そのコードを機械語(バイナリ)に変換(アセンブルといいます)すればコンパイラの仕事は終わりです。字句解析の過程は比較的に簡単なので、ページ数的に <strong>ここでは省略したいと思います</strong>。では次章からさっそく構文解析から実装していきましょう！ちなみに今回はすべてC++で実装しています。</p><h2 id=開発環境>5.開発環境</h2><p>今回私はVisual Studioでコーディング&ビルドし、生成したアセンブリコードは <code class=code-simple>WSL(Windows Subsystem Linux)</code> というWindowsマシン上でLinux(Ubuntu)が動く的な仮想環境上で実行ファイルにアセンブルしました。ちなみにビルドする際は <code class=code-simple>x86</code> ではなく <code class=code-simple>x64</code> でビルドしてください。 <code class=code-simple>x86</code> だとなぜか <code class=code-simple>WSL</code> の呼び出しに失敗します。</p><h2 id=構文解析>6.構文解析</h2><p><code class=code-simple>gcc</code> などの我々が普段書くようなコードをコンパイルしてくれるコンパイラの全てをここで実装するのは到底不可能なので、 <strong>まず最初に、四則演算をしてくれるコンパイラを作成したいと思います</strong>。例を上げると、 <code class=code-simple>1 + 2 * (3 + 4)</code> という文字列を入力すると <code class=code-simple>15</code> を返してくれるアセンブリコードを出力するプログラムを作ります。そして、今章では前章で扱ったフローのうち、構文解析について説明します。ちなみにmain関数にコンパイラのすべての要素を実装するのは可読性的にあまりよろしくないので、構文解析は <code class=code-simple>Parse</code> という専用の関数に実装し、それをmain関数で呼ぶ形式を取りたいと思います。また構文解析の段階では字句解析は終了している(<code class=code-simple>Tokenize</code>関数で実装している)ので、以下に示す <code class=code-simple>Token</code> クラスのベクターである <code class=code-simple>std::vector&lt;Token> tokens;</code> が既に存在しているという前提で話を進めます。ちなみにこれからはソースコードは全体ではなく変更部分だけを載せたいと思います。</p><pre class=cpp:ソース1><code class=language-cpp>//予め必要なファイルはここでインクルードする
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;vector&gt;
+#include &lt;memory&gt;
+#include &lt;functional&gt;
+#include &lt;fstream&gt;
+#include &lt;algorithm&gt;
+#include &lt;cassert&gt;
+
+//トークンの種類を表す列挙型
+enum class TOKENTYPE {
+ NUMBER, //数字リテラルトークンを表す
+ CHARACTER, //文字リテラルトークンを表す
+ STRING, //文字列リテラルトークンを表す
+ SYMBOL, //(, ), {, }などの記号トークンを表す
+ KEYWORD, //intやreturnなどの予約語トークンを表す
+ IDENTIFIER, //変数名などの識別子トークンを表す
+ NONE //トークンが初期化されてない状態を表す
+};
+
+//トークンクラス
+class Token {
+public:
+ TOKENTYPE type;
+ std::string string;
+};
+
+std::vector&lt;Token&gt; tokens;
+
+int Tokenize(){ ... } //ここで字句解析を行う。字句解析の結果はtokensに保存される。本誌では扱わない。
+
+int Parse(){ ... } //ここで構文解析を行う。本章はこの関数に焦点を当てる。
+
+int GenerateAssembly(){ ... }//ここでアセンブリコードを生成する。8章ではこの関数に焦点を当てる
+
+int main(){
+    Tokenize();
+    Parse();
+    GenerateAssembly();
+}</code></pre><figcaption>ソース1</figcaption><p>さて、本格的にコーディングを始める準備が整いました。ここで先程提示した <code class=code-simple>1 + 2 * (3 + 4)</code> という数式に考えてみましょう。もし、この世の数式が数字と <code class=code-simple>+</code> と <code class=code-simple>-</code> のみで表されていたらその値を計算するのはとても簡単です。前から数字を読んでいって <code class=code-simple>+</code> で繋がれていたら前の結果にその値を足す、 <code class=code-simple>-</code> であればその値を引く、というふうにすることで楽に実装できます。問題を複雑にしているのは <code class=code-simple>+</code> や <code class=code-simple>-</code> ではなく <code class=code-simple>*</code> や <code class=code-simple>/</code> であるということになります。そして、ここで大事なのは数式には文法があるということです(コンパイル実装においてさらに広義的に考えると、プログラムのソースコードにも文法があるということになります)。ルールがなかったら数式をどの人が見ても普遍的に認識することができません。ロシア語圏では数式はこのように理解されて、フランス語圏ではまた別にこのように理解されて～～ということはありえないのです(自然言語にはそういうのは多々ありますが)。また、もちろんルールが存在するということはそのルールを記述する専用のフォーマットが存在するということです。有名どころでいうとBNF記法(バッカス・ナウア記法)などがあります。Wikipediaの記事(<a href=https://ja.wikipedia.org/wiki/バッカス・ナウア記法>https://ja.wikipedia.org/wiki/バッカス・ナウア記法</a>)を見ると、アメリカでの住所表記のルールがBNF記法で記述されていて面白かったです。このように、BNF記法は広範に及んで適用可能な記法なので昔からずっと使われているのだと思われます。そして、数式というのもまたBNF記法の適用範囲内なのです。今回はBNF記法を拡張したEBNF記法で数式の文法のルールを書いてみます。それが <code class=code-simple>ソース2</code> です。</p><pre class=ebnf:ソース2><code class=language-ebnf>Expr = Mul (&quot;+&quot; Mul | &quot;-&quot; Mul)*
+Mul = Primary (&quot;*&quot; Primary | &quot;/&quot; Primary)*
+Primary = Num | &quot;(&quot; Expr &quot;)&quot;
+Num = &quot;0&quot; | &quot;1&quot; | &quot;2&quot; | &quot;3&quot; | &quot;4&quot; | &quot;5&quot; | &quot;6&quot; | &quot;7&quot; | &quot;8&quot; | &quot;9&quot;</code></pre><figcaption>ソース1</figcaption><p>このEBNF記法ではnumが数字リテラル(0~9)を表しており、どの数式もこのような入れ子構造(木構造)で表現することができ、我々が小学校で習った四則演算の順序としっかり一致しています。以下に示す木構造は、式<code class=code-simple>1 + 4(2 + 3) - 5</code> を <code class=code-simple>ソース2</code> のEBNF記法に基づいて分解したものになります。BNFなどの生成規則に基づいて生成された木構造を <strong>構文解析木</strong> といいます。</p><figure><img src=./構文解析木1.png alt=構文解析木1><figcaption aria-hidden=true>構文解析木1</figcaption></figure><p>一見なんだか難しそうな気がしますが、この木構造もちゃんと上の規則に従っています。そして、プログラミング言語もこれらの規則が複雑になっているだけでちゃんとコーディング時の文法ルールもBNFで記述することができ、ソースコード自体も構文解析木に落とし込むことができます。4章で私はトークン列は構文解析木に変換する必要があると言いました。木構造の特徴として再帰的処理(深さ優先探索など)が行いやすいというのがあります。このことこそがトークン列を構文解析木に変換する意義の一つです。何千行もある膨大なソースファイルを正確にアセンブリに変換するには再帰的処理を行うことで明快に実装することができるのです。<br>ただしExpr, Mulなどのノードは実際のコンパイラ実装には不必要なのでそれらのノードを削った木構造のことを <strong>抽象構文木</strong> といいます。以下に示す木構造は上の構文解析木を抽象構文木に加工したものです。</p><figure><img src=./抽象構文木1.png alt=抽象構文木1><figcaption aria-hidden=true>抽象構文木1</figcaption></figure><p>では、これからいよいよ実際に抽象構文木を実装していきます。木構造のノードを表すのには基本ポインタ型を用いますが、実装言語がC++なのでその特徴を生かしてメモリ解放などをいちいち気にしなくて済むスマートポインタである <code class=code-simple>std::shared_ptr</code> を使いたいと思います。いちいちこの長い型名をタイプするのは面倒なので、グローバル空間で最初にエイリアス宣言をします。</p><figcaption>ソース3</figcaption><pre class=cpp:ソース3><code class=language-cpp>template<class t>
+using Ptr = std::shared_ptr<t>;
+                    </code></pre><p>すると、それぞれのノードの型は次のように表すことができます。</p><pre class="sourceCode cpp"><code class=language-cpp>//ノードの種類を表す列挙型
+enum class NODETYPE{
+    ADD, // +ノードを表す
+    SUB, // -ノードを表す
+    MUL, // *ノードを表す
+    DIV, // /ノードを表す
+    NUMBER,// 数字リテラルの末端ノードを表す
+    NONE //無効なトークンを表す
+};
+
+class Node{
+public:
+    Ptr<node> lhs, rhs;
+    NODETYPE type;
+    int num; //数字ノードの時に使う
+    Node(){
+        type = NODETYPE::NONE;
+        num = -1;
+    }
+};</code></pre><p>四則演算の場合抽象構文木は完全二分木なので、<code class=code-simple>lhs</code> と <code class=code-simple>rhs</code> で自分のノードの子ノードを表します。次にノードの追加などのユーティリティ関数を実装しようと思います。また、グローバル空間が汚染されないために構文解析で用いる関数群は全てラムダ式として <code class=code-simple>Parse</code> 関数のスコープ内で宣言します。またラムダ式の場合、宣言と初期化を分けられないので前方宣言の必要がある場合は <code class=code-simple>std::function</code> を使います。細かい仕様は各自リファレンスで調べてください。ユーティリティ関数を実装したのが <code class=code-simple>ソース4</code> です。一応述べておくと、以下のコードは全て <code class=code-simple>Parse</code> 関数のスコープ内に記述されます。</p><figcaption>ソース4</figcaption><pre class=cpp:ソース4><code class=language-cpp>size_t token_pos = 0; //今見ているトークンの番号
+
+//もし今見ているトークンが引数の文字列と一致するならtoken_posをインクリメントしてtrueを返す
+auto ConsumeByString = [&amp;](std::string str)-&gt;bool {
+ if (token_pos &gt;= tokens.size())return false;
+ if (tokens[token_pos].string == str) {
+  ++token_pos;
+  return true;
+ }
+ return false;
+};
+
+//lhsとrhsを子ノードに持つノードを返す
+auto MakeBinaryNode = [](NODETYPE type, Ptr&lt;Node&gt; lhs, Ptr&lt;Node&gt; rhs)-&gt;Ptr&lt;Node&gt; {
+ Ptr&lt;Node&gt; node = std::make_shared&lt;Node&gt;();
+ node-&gt;type = type;
+ node-&gt;lhs = lhs;
+ node-&gt;rhs = rhs;
+ return node;
+};
+
+//末端ノード(数字リテラルのノード)を返す関数
+auto MakeNum = [](int num)-&gt;Ptr&lt;Node&gt; {
+ Ptr&lt;Node&gt; node = std::make_shared&lt;Node&gt;();
+ node-&gt;num = num;
+ node-&gt;type = NODETYPE::NUMBER;
+ return node;
+};</code></pre><p><code class=code-simple>ソース4</code> はやることをただ実装しているだけなのでコードを読み解くのはそこまで難しくないと思います。では、いよいよ構文木の真髄を実装します。まず、与えられたトークン列全体は <code class=code-simple>ソース2</code> における<code class=code-simple>Expr</code> に分類可能です。逆に与えられたトークン列が式(Expr)として解釈できなかったらおかしいですよね？だって、今は式がコンパイラの入力として与えられているのですから。また、<code class=code-simple>Expr</code> は式全体を評価する以外にも <code class=code-simple>Primary = Num | "(" Expr ")"</code> という生成規則がある以上、別のところで例えば、より木が深くなった部分でも評価する必要があります。最も有名かつ手軽な手法が <code class=code-simple>Expr</code>, <code class=code-simple>Mul</code>, <code class=code-simple>Primary</code>, <code class=code-simple>Num</code> などのそれぞれのEBNFの要素を関数として実装する手法です。こうすることで再帰的な処理ができ、比較的楽に実装することができます。こうすることでそれぞれの生成規則の要素の相互関係を関数呼び出しで対応することができます。この手法を <strong>再帰下降構文解析</strong> といいます。式全体を <code class=code-simple>Expr</code> と決めつけてそのあとによりミクロな視座で部分を評価して木を伸ばすという性質を考えればこの名前の由来も合点がいきます。次の <code class=code-simple>ソース4</code> がそれぞれのEBNFの要素を関数として実装したコードになります。ひと目見ただけじゃ本当にそれが機能するかどうかわからないと思いますが、この後に実際の例を用いて説明するので安心してください。また、これらの関数の実装の本質は <code class=code-simple>ソース2</code> の生成規則なので適宜 <code class=code-simple>ソース2</code> を参照してください。</p><figcaption>ソース5</figcaption><pre class=cpp:ソース5><code class=language-cpp>std::function&lt;Ptr&lt;Node&gt;(void)&gt; Expr, Mul, Primary; //これらはお互いに他の関数を呼び出し合うこともあるので前方宣言をしておきます
+
+Expr = [&amp;]()-&gt;Ptr&lt;Node&gt;{
+    //Exprは1個以上のMulが+もしくは-で結合されている
+
+    Ptr&lt;Node&gt; node = Mul(); //この段階で1つのMulを読み込んだので後は+もしくは-が存在すればそのトークンを消費してMulを読み込む(5-1)
+    for(;;){
+        if(ConsumeByString(&quot;+&quot;))node = MakeBinaryNode(NODETYPE::ADD, node, Mul());//(5-3)
+        else if(ConsumeByString(&quot;-&quot;))node = MakeBinaryNode(NODETYPE::SUB, node, Mul());
+        else break;
+    }
+    return node;
+};
+
+Mul = [&amp;]()-&gt;Ptr&lt;Node&gt;{
+    //Mulは1個以上のPrimaryが*もしくは/で結合されている
+    Ptr&lt;Node&gt; node = Primary();//(5-2)
+    for(;;){
+        if(ConsumeByString(&quot;*&quot;))node = MakeBinaryNode(NODETYPE::MUL, node, Primary());
+        else if(ConsumeByString(&quot;/&quot;))node = MakeBinaryNode(NODETYPE::DIV, node, Primary());
+        else break;
+    }
+    return node;
+};
+
+Primary = [&amp;]()-&gt;Ptr&lt;Node&gt;{
+    //Primaryは()でくくられたExprか、数字リテラルである
+    Ptr&lt;Node&gt; node;
+    if(ConsumeByString(&quot;(&quot;)){
+        //もし(があったらそれはExprであるということ
+        node = Expr();
+        ConsumeByString(&quot;)&quot;);
+    }else{
+        //もし違ったら数字リテラルである
+        assert(tokens[token_pos].type == TOKENTYPE::NUMBER); //(注)このようなアサーションを入れといたほうがデバッグなどがしやすいです
+        node = MakeNum(std::stoi(tokens[token_pos].string));
+        ++token_pos;
+    }
+    return node;
+};</code></pre><p>これらがそれぞれのEBNFの要素を関数として実装した結果です。また式全体すなわち与えられたトークン列は <code class=code-simple>Expr</code> としてみなすことができるので、最初に <code class=code-simple>Expr</code> 関数を呼び出します。それが <code class=code-simple>ソース6</code> です。</p><figcaption>ソース6</figcaption><pre class=cpp:ソース6><code class=language-cpp>Ptr&lt;Node&gt; program = Expr(); //全体の抽象構文木はprogramに格納される</code></pre><figure><img src=./戻り値の関係.png class=img-right width=130 alt=戻り値の関係(ソース7)><figcaption aria-hidden=true>戻り値の関係(ソース7)</figcaption></figure><p>これを提示されただけではよくわからないと思うので具体例を出して一緒に考えてみましょう。今回は <code class=code-simple>4 * 2 + 3 * 7</code> という式について考えてみます。 まず <code class=code-simple>ソース6</code> より <code class=code-simple>Expr()</code> が呼び出されます。そして今度は <code class=code-simple>Expr()</code> 内で <code class=code-simple>Mul()</code> が呼ばれます(<code class=code-simple>ソース5</code>の<code class=code-simple>5-1</code>のところ)。次に <code class=code-simple>Mul()</code> 内で <code class=code-simple>Primary()</code> が呼ばれます(<code class=code-simple>ソース5</code>の<code class=code-simple>5-2</code>のところ)。これらの呼び出し関係を図で表すと <code class=code-simple>ソース7</code> のようになります。</p><p>画像内の矢印は戻り値を表しています。それぞれの関数は戻り値が <code class=code-simple>Ptr&lt;Node></code> のポインタ型なので木もしくはノード単体を表していることになります。(1)では <code class=code-simple>Primary</code> の実装を見ると数字リテラルのノードが帰ることになります。それをビジュアル化すると <code class=code-simple>ソース8</code> になります。</p><figure><img src=./(1).png alt=ソース8><figcaption aria-hidden=true>ソース8</figcaption></figure><p>また式を見ると <code class=code-simple>4</code> と <code class=code-simple>2</code> が <code class=code-simple>*</code> で結合されているので(2)では以下のような木構造が返されることになります。</p><figure><img src=./(2).png alt=ソース9><figcaption aria-hidden=true>ソース9</figcaption></figure><p>この段階でようやく最初に呼ばれていた <code class=code-simple>Expr</code> 関数に戻りました。この時点で式全体 <code class=code-simple>4 * 2 + 3 * 7</code> のうちの <code class=code-simple>4 * 2</code> までが処理されたことになります。またその後には <code class=code-simple>+</code> が続いているので、<code class=code-simple>ソース5</code>の<code class=code-simple>5-3</code>よりもう一度 <code class=code-simple>Mul()</code> が呼ばれることになります。またそこで以下のような木構造が返されます。</p><figure><img src=./(3).png alt=ソース10><figcaption aria-hidden=true>ソース10</figcaption></figure><p>そして、<code class=code-simple>Expr</code> 関数内の <code class=code-simple>node = MakeBinary(NODETYPE::ADD, node, Mul());</code> という処理によりこれらの２つの木が <code class=code-simple>+</code> 演算子のノードで結合されることになります。その結果が以下になります。</p><figure><img src=./(4).png width=500 alt=ソース11><figcaption aria-hidden=true>ソース11</figcaption></figure><p>これで式全体 <code class=code-simple>4 * 2 + 3 * 7</code> の読み込みが完了しました。これ以降はもう <code class=code-simple>+</code> も <code class=code-simple>-</code> も存在しないのでここで <code class=code-simple>Expr</code> の処理は打ち切られ上の木構造がそのまま <code class=code-simple>program</code> 変数に格納されることになります。これによってちゃんと式全体がEBNFの文法規則に従って抽象構文木に変換されたことになります。これが構文解析の全てです。後はEBNFの文法規則が複雑になるだけで、「それぞれの要素を関数として実装して再帰的な処理をする」という今までやってきた大まかな流れは変わりません。現に私が今実装しているコンパイラもこの流れを変えていません。みなさん、ここまでお疲れ様でした。次章ではこの章で作られた抽象構文木をもとに実際にアセンブリコードを出力してみましょう！</p><h2 id=アセンブリで四則演算>7.アセンブリで四則演算</h2><p>本章では前章で構築した構文解析木をもとにアセンブリコードの出力を目標に実装していきます。<br>まずはスタックという概念について説明します。おそらくプログラマーの大半はスタックやキューといった言葉は一度くらい聞いたことがあると思います。Wikipediaにはスタックについてこのように書かれています。 >スタックは、コンピュータで用いられる基本的なデータ構造の1つで、データを後入れ先出し（LIFO: Last In First Out; FILO: First In Last Out）の構造で保持するものである。抽象データ型としてのそれを指すこともあれば、その具象を指すこともある。</p><p>スタックとは誤解を恐れずに言うと、値を追加(Push)したり、コンテナ上の要素を削除(Pop)することができるデータ構造です。ここで重要なのは、要素が削除される場所が一意に定まるということです。以下のような{2, 3, 5, 7}と表されるスタックを考えてみてください。(ソース12)</p><p>スタックでは、値を追加するときは図の(1)方向でしか追加することができず、値を削除するときも基本的に(1)側にある要素しか削除しかできません。またキューの場合には値を削除するときは(2)側の要素しか削除できません。そしてコンテナの途中に値を割り込んで追加することもできません。これを不便に思うかもしれませんが、このことこそがスタックそしてキューの最大の特徴なのです。<br>次になぜコンパイラ作成の過程でスタックの概念が登場するのかを説明します。まず、前提としてどんなに複雑な式でも2項の計算の組み合わせとして計算することができます。前章で扱った <code class=code-simple>4 * 2 + 3 * 7</code> という式で考えてみましょう。 まず最初に <code class=code-simple>4 * 2</code> を計算して <code class=code-simple>8</code> という結果を得ます。次に <code class=code-simple>3 * 7</code> を計算して <code class=code-simple>21</code> という結果を得ます。そして最後に計算結果である <code class=code-simple>8 + 21</code> を計算して <code class=code-simple>29</code> という式全体の値を計算することができました。これが私が先程言った「どんなに複雑な式でも2項の計算の組み合わせとして計算」の意味です。<br>今、前章で扱った抽象構文木を思い出してみてください。あれらも、もし自分のノードが演算子のノードだったら必ず2つのノードを子として保持していますよね？必ずしもその子ノードが数字リテラルであるとは限りませんが。このような背景から式全体を計算するには、「数字リテラルすなわち末端ノードが現れるまで走査し、２つの子ノードを親ノードの演算子ノードに従って計算しそれを上に伝播すればよい」という方針が立ちます。ここでこの伝播を表現するのにスタックを用いるのです。では先程と同様に <code class=code-simple>4 * 2 + 3 * 7</code> の例で考えてみましょう。まず、構文木の頂点を起点として深さ優先探索(Depth-First Search)をします(深さ優先探索を知らない人は適当に各自で調べてください)。そして、子ノードがもし数字リテラルであればスタックにプッシュします。そうすることで <code class=code-simple>*</code> ノードを探索した後、スタックは次のようになります。</p><figure><img src=./(5).png class=img-left width=100 alt=ソース12><figcaption aria-hidden=true>ソース12</figcaption></figure><figure><img src=./(6).png alt=ソース13><figcaption aria-hidden=true>ソース13</figcaption></figure><p>そしてこの時、自分自身のノードは <code class=code-simple>*</code> であるので、スタックから2つの値をポップしてそれらに <code class=code-simple>*</code> 演算を施した結果を再度スタックにプッシュします。そして次は<code class=code-simple>ソース14</code>で赤で囲った部分木にも同様の処理を施してあげるとスタックは <code class=code-simple>ソース15</code> のようになります。</p><figure><img src=./(7).png style=width:60% alt=ソース14><figcaption aria-hidden=true>ソース14</figcaption></figure><figure><img src=./(8).png class=img-left alt=ソース15><figcaption aria-hidden=true>ソース15</figcaption></figure><p>そして、赤で囲った部分木の親は <code class=code-simple>*</code> なのでスタックから2つの値を同様にポップして計算した結果をスタックにプッシュするとスタックは以下になります。</p><figure><img src=./(9).png alt=ソース16><figcaption aria-hidden=true>ソース16</figcaption></figure><p>最後に、抽象木全体の頂点は <code class=code-simple>+</code> ノードなのでスタックに残っている <code class=code-simple>8</code> と <code class=code-simple>21</code> に <code class=code-simple>+</code> 演算を施した結果をスタックにプッシュして次のような結果を得られます。</p><figure><img src=./(10).png alt=ソース17><figcaption aria-hidden=true>ソース17</figcaption></figure><p>これが式全体の演算結果を抽象構文木に基づいて計算するアルゴリズムです。そしてこのアルゴリズムをアセンブリで表現する必要、すなわちその演算をするアセンブリコードを生成する必要があるのですが、それを実装するには多少のアセンブリの知識が必要なのでそれについてまず説明します。</p><p>そもそもx86-64のCPUにはスタック上で直接値の計算ができません。基本x86-64のCPUはレジスタと呼ばれるメモリよりも高速にアクセスが可能である記憶領域においての演算しか行いません。このコンピュータのことを <strong>レジスタマシン</strong>　と言います。 なので、私達は先程紹介したスタックの概念とレジスタの演算を結びつける必要があります。また、レジスタにはそれぞれ名前がついており、それぞれの役割が暗黙的に割り当てられています。以下に示す表が今回使うレジスタたちです。</p><table><thead><tr class=header><th style=text-align:left>レジスタ</th><th style=text-align:left>役割</th></tr></thead><tbody><tr class=odd><td style=text-align:left><code class=code-simple>rax</code></td><td style=text-align:left>汎用レジスタ</td></tr><tr class=even><td style=text-align:left><code class=code-simple>rdi</code></td><td style=text-align:left>汎用レジスタ</td></tr><tr class=odd><td style=text-align:left><code class=code-simple>rsp</code></td><td style=text-align:left>スタックトップのアドレスを保持しているレジスタ</td></tr></tbody></table><p>汎用レジスタとは、用途が特に定まっておらずユーザーが様々な演算する際に値を記憶しておけるレジスタのことです。</p><p>では次にレジスタに対して演算を施すCPUの命令を紹介します。アセンブリのコードはこれらの命令の連続であると考えることができます。</p><table><thead><tr class=header><th style=text-align:left>命令</th><th style=text-align:left>命令の意味</th></tr></thead><tbody><tr class=odd><td style=text-align:left><code class=code-simple>pop r1</code></td><td style=text-align:left>スタックから要素を一つポップしてその値をレジスタr1に保存する</td></tr><tr class=even><td style=text-align:left><code class=code-simple>push r1</code></td><td style=text-align:left>レジスタr1に格納されている値をスタックにプッシュする(レジスタではなく <code class=code-simple>1</code> や <code class=code-simple>15</code> などの即値でもよい)</td></tr><tr class=odd><td style=text-align:left><code class=code-simple>add r1, r2</code></td><td style=text-align:left>r1とr2にそれぞれ格納されている値を足してその結果をr1に保存する</td></tr><tr class=even><td style=text-align:left><code class=code-simple>sub r1, r2</code></td><td style=text-align:left>r1に格納されている値からr2に格納されている値を引いてその結果をr1に保存する</td></tr><tr class=odd><td style=text-align:left><code class=code-simple>imul r1, r2</code></td><td style=text-align:left>r1とr2にそれぞれ格納されている値を掛け合わせてその結果をr1に保存する</td></tr><tr class=even><td style=text-align:left><code class=code-simple>ret</code></td><td style=text-align:left>raxレジスタに保存されている値を自分の関数の戻り値としてリターンする</td></tr></tbody></table><p>割り算の命令だけは書かなかったのですが、これはなぜかというと除算命令は他の四則演算と仕様が違うので同列に書けなかったからです。除算命令を実装したいときは代わりに以下のコードを使ってください。</p><pre class=plaintext><code class=language-text>cqo
+idiv rdi</code></pre><p>これの詳細を知りたい人はググってください。</p><p>これで準備が整いました。実際に <code class=code-simple>4 * 2 + 3 * 7</code> を計算するアセンブリコードを書いてみましょう。以下に示すのはあくまでアセンブリのコードであり、今まで紹介してきたC++のコードとは全く別物なので勘違いしないでください。</p><figcaption>ソース18</figcaption><pre class=asm:ソース18><code class=language-text>.intel_syntax noprefix
+.global main
+main:
+    #アセンブリの場合エントリポイントはmainなのでその中で処理を書く
+    push 4
+    push 2
+
+    pop rdi
+    pop rax
+    #この段階でrdiには2, raxには4が格納されている
+
+    imul rax, rdi #ここで4 * 2の演算を実行して8がraxに新たに保存される
+    push rax #そして8をスタックにプッシュ
+
+    push 3
+    push 7
+    #この段階でスタックは{ 8, 3, 7 }という並びになっている
+
+    pop rdi
+    pop rax
+    #この段階でrdiには7, raxには3が格納されています
+
+    imul rax, rdi #ここで3 * 7の演算を実行して21がraxに新たに保存される
+    push rax #21をスタックにプッシュ
+    #この時点でスタックは{8, 21}という並びになっている
+
+    pop rdi
+    pop rax
+    add rax, rdi #ここで8 + 21 = 29が計算され、結果がraxに保存される
+    ret</code></pre><p>はい、ここまでで計算結果がraxレジスタに保存されるという状態を実現できました。そしてこのコードでは <code class=code-simple>ret</code> 命令を追加してmain関数の戻り値として計算結果を返すようにしました。では実際にWSLのターミナルで本当に計算結果が帰ってくるのか確認してみましょう。 では、上記のコードを <code class=code-simple>test.s</code> として保存してください。そしてこのアセンブリコードを <code class=code-simple>cc -o test test.s</code> というコマンドでアセンブルして、 <code class=code-simple>test</code> という実行ファイルを生成します。その後、 <code class=code-simple>./test</code> でアセンブルした実行ファイルを実行します。 最後に <code class=code-simple>echo $?</code> を実行します。このコマンドは直前に実行したプログラムの戻り値を表示するコマンドです。<br>これらをWSL上で実行すると、なんと、実際に29が表示されました！<br>自分のプログラムしたものがこうやって形として現れると嬉しいですよね。</p><figure><img src=./result.png style=width:100% alt=ソース19><figcaption aria-hidden=true>ソース19</figcaption></figure><h2 id=アセンブリコードの自動生成>8.アセンブリコードの自動生成</h2><p>いよいよ、この章では6章と7章で学んだことを総動員してコンパイラ最後の砦、アセンブリコードの生成を実装していきます。これを実装すれば4章で説明したコンパイルのフローがすべて実装されたことになりました。後は構文などのプログラミング言語の要素を追加していくたびにこれらのフローのそれぞれの要素に追加で実装すればいいので、今章で大まかな全体としてのプログラムは完成することになります。まあこの後も様々困難が待ち構えているのですが。。。<br>ここではC++で前章で取り扱ったようなアセンブリコードを自動生成できるように実装をするのですが、大まかな方針は既に前章で紹介しています。「数字リテラルすなわち末端ノードが現れるまで走査し、２つの子ノードを親ノードの演算子ノードに従って計算しそれを上に伝播すればよい」ということです。これだけ言われてもやはりピンとこないと思うので丁寧に説明していきます。まず抽象構文木の特徴でもあるのですが、末端ノード以外、すなわち数字リテラル以外のノードは以下の構造をとっています。</p><figure><img src=./(11).png alt=ソース20><figcaption aria-hidden=true>ソース20</figcaption></figure><p>この場合、「自分」は子ノードを2つ持っているので必ず演算子ノードです。また「子1」、「子2」は数字ノードであるとは限りません。しかし、抽象構文木の頂点から深さ優先探索をして末端に行けば必ず「子1」と「子2」が数字ノードである部分木が1つ以上は存在します。なぜならどんなに複雑な式であっても必ず△ + △ のような2項からなる式の組み合わせにすぎないからです。これらのことから、もし子ノードが数字だったらその値をプッシュ、でなければ走査を続けるといったようなコードを実装すれば良いことになります。C++でこれを実装すると以下のようになります。</p><figcaption>ソース21</figcaption><pre class=cpp:ソース21><code class=language-cpp>int GenerateAssembly(){
+
+    //生成するアセンブリコードはここに格納する
+    std::string res = &quot;.intel_syntax noprefix\n.global main\nmain:\n&quot;;
+
+    //構文木を再帰的に走査する関数。再帰呼び出しをするのでこの命名をしたけどあんまり気に入ってない
+    std::function&lt;void(Ptr&lt;Node&gt;)&gt; Recursive;
+
+    Recursive = [&amp;](Ptr&lt;Node&gt; node){
+
+        //もし今走査しているノードが数字ノードだったらその値をプッシュ
+        if(node-&gt;type == NODETYPE::NUMBER){
+            res += (&quot;\tpush &quot; + std::to_string(node-&gt;num) + &quot;\n&quot;);
+            return;
+        }
+
+        //子ノードについても同様の走査をする
+        Recursive(node-&gt;data[0]);
+        Recursive(node-&gt;data[1]);
+
+        //この段階で2つの値がスタックトップに存在しているはず。
+        res += &quot;\tpop rdi\n&quot;;
+        res += &quot;\tpop rax\n&quot;;
+
+        switch(node-&gt;type){
+        case NODETYPE::ADD:
+            res += &quot;\tadd rax, rdi\n&quot;;
+            break;
+        case NODETYPE::SUB:
+            res += &quot;\tsub rax, rdi\n&quot;;
+            break;
+        case NODETYPE::MUL:
+            res += &quot;\timul rax, rdi\n&quot;;
+            break;
+        case NODETYPE::DIV:
+            res += &quot;\tcqo\n&quot;;
+            res += &quot;\tidiv rdi\n&quot;;
+            break;
+        }
+
+        //最後に計算結果をプッシュ
+        res += &quot;push rax\n&quot;;
+
+    };
+
+    //構文木の頂点から走査を始める
+    Recursive(program);
+
+    //計算結果をraxにポップする
+    res += &quot;\tpop rax\n&quot;;
+
+    //最後に計算結果をプログラムの戻り値として返す
+    res += &quot;\tret\n&quot;;
+
+    return 0;
+
+}</code></pre><p>これで実際にプログラムに <code class=code-simple>4 * 2 + 1</code> という式を入力として与えて <code class=code-simple>std::cout &lt;&lt; res;</code> で生成されたアセンブリコードを実際に出力させると以下が得られます。</p><figure><img src=./(12).png width=200 alt=ソース22><figcaption aria-hidden=true>ソース22</figcaption></figure><p>これでようやくコンパイラの体裁をなして来ました。後は得られたアセンブリコードをコンパイラ内部でアセンブルして実行ファイルを生成するところまでやっていきましょう。以下のような関数を実装してください。</p><figcaption>ソース23</figcaption><pre class=cpp:ソース23><code class=language-cpp>
+                    int Assemble() {
+                     //出力されたアセンブリコードをresult.sに保存する
+                     std::ofstream assembly_file{ &quot;result.s&quot; };
+                     assembly_file &lt;&lt; assembly_code;
+                     assembly_file.close();
+
+                     //result.sをバイナリファイルに変換する
+                     int res = system(&quot;wsl cc -o result result.s&quot;);
+
+                     //もしccコマンドが正常終了しなかったらエラーログを出す
+                     if (res != 0)std::cout &lt;&lt; &quot;Assembling didn&#39;t go well.\n&quot;;
+
+                     return 0;
+
+                    }
+
+                    int Run() {
+                     //resに式の演算結果が保存されるのでそれを出力
+                     int res = system(&quot;wsl ./result&quot;);
+                     std::cout &lt;&lt; res &lt;&lt; &quot;\n&quot;;
+                     return 0;
+                    }
+                    </code></pre><p>このコードはコンパイラ実装の本流とは関係ないので説明は省略します。<br>よって、 <code class=code-simple>main</code> 関数内の関数呼び出しの順番は</p><pre class=plaintext><code class=language-text>Tokenize
+↓
+Parse
+↓
+GenerateAssembly
+↓
+Assemble
+↓
+Run</code></pre><p>となります。<br>ここまで、コンパイラ作成のおおまかな流れを解説しましたが、いかがでしたでしょうか？</p><h2 id=比較演算子>9.比較演算子</h2><p>ここでは比較演算子を説明して　<code class=code-simple>12 > 2</code> などの真の条件式が与えられたら1を、<code class=code-simple>1 == 2</code>などの偽の条件式が与えられたら0を返せるようにします。構文解析木の実装方法は前章で丁寧に扱ったのでそこの部分はEBNFの変更点だけを説明します。まず、最上の階層で <code class=code-simple>expr</code> を使いたいので既存のEBNFを以下のように書き換えます。</p><figcaption>ソース24</figcaption><pre class=ebnf:ソース24><code class=language-ebnf>add = mul ( &quot;+&quot; mul | &quot;-&quot; mul )*
+mul = primary ( &quot;*&quot; primary | &quot;/&quot; primary )*
+primary</code></pre><p>また、 <code class=code-simple>==</code> よりも <code class=code-simple>></code> などの不等号のほうが先に結合します(例: <code class=code-simple>1 == 4 > 1</code> の場合、<code class=code-simple>4 > 1</code> が先に1と評価され、その次に <code class=code-simple>1 == 1</code> が評価されます)。MSVCなどのコンパイラで実際に <code class=code-simple>ソース25</code> のようなコードをコンパイルすると <code class=code-simple>false</code> が帰るのでやはり <code class=code-simple>==</code> より <code class=code-simple>></code> が先に結合されることがわかります(もし<code class=code-simple>2 == 2</code> が先に評価されるのであれば、 <code class=code-simple>true</code> が帰るはずです)。</p><figure><img src=./(13).png style=width:100% alt=ソース25><figcaption aria-hidden=true>ソース25</figcaption></figure><p>このことを考慮すると以下のようなEBNFを新たに追加すればいいとわかります。</p><figcaption>ソース26</figcaption><pre class=ebnf:ソース26><code class=language-ebnf>expr = equality
+equality = relational ( &quot;==&quot; relational | &quot;!=&quot; relational )*
+relational = add ( &quot;&lt;&quot; add | &quot;&lt;=&quot; add | &quot;&gt;&quot; add | &quot;&gt;=&quot; add )*</code></pre><p>このようなEBNFを設計することで <code class=code-simple>12</code> などの数字単体からなる式や、 <code class=code-simple>1 + 1 > 0</code> などの不等式や、 <code class=code-simple>2(3 + 4) > 10 == 1</code> などのような不等号と等号を混ぜた式まで構文解析できるようになります。ここまでの段階で比較演算子に対応した <code class=code-simple>Parse()</code> を実装することができます。<br>次に比較演算子に対応した <code class=code-simple>GenerateAssembly()</code> すなわちアセンブリコードの生成の実装を説明します。 基本は四則演算のアセンブリ生成と同じ流れです。木全体を走査して、 <code class=code-simple>+</code> ノードであれば <code class=code-simple>add</code> 命令を生成するのと同様に <code class=code-simple>></code> や <code class=code-simple>==</code> ノードであればそれに対応したアセンブリの命令を生成すればよいです。以下にその命令を示します。</p><table><thead><tr class=header><th style=text-align:left>命令</th><th style=text-align:left>命令の意味</th></tr></thead><tbody><tr class=odd><td style=text-align:left><code class=code-simple>cmp r1, r2</code></td><td style=text-align:left>整数レジスタr1とr2の値を比較して比較結果をフラグレジスタに格納する</td></tr><tr class=even><td style=text-align:left><code class=code-simple>sete al</code></td><td style=text-align:left>フラグレジスタを読み取って、<code class=code-simple>cmp</code>命令の比較結果が <code class=code-simple>r1 == r2</code> となったら <code class=code-simple>al</code> レジスタに<code class=code-simple>1</code>を格納する</td></tr><tr class=odd><td style=text-align:left><code class=code-simple>setne al</code></td><td style=text-align:left>フラグレジスタを読み取って、<code class=code-simple>cmp</code>命令の比較結果が <code class=code-simple>r1 != r2</code> となったら <code class=code-simple>al</code> レジスタに<code class=code-simple>1</code>を格納する</td></tr><tr class=even><td style=text-align:left><code class=code-simple>setl al</code></td><td style=text-align:left>フラグレジスタを読み取って、<code class=code-simple>cmp</code>命令の比較結果が <code class=code-simple>r1 &lt; r2</code> となったら <code class=code-simple>al</code> レジスタに<code class=code-simple>1</code>を格納する</td></tr><tr class=odd><td style=text-align:left><code class=code-simple>setle al</code></td><td style=text-align:left>フラグレジスタを読み取って、<code class=code-simple>cmp</code>命令の比較結果が <code class=code-simple>r1 &lt;= r2</code> となったら <code class=code-simple>al</code> レジスタに<code class=code-simple>1</code>を格納する</td></tr></tbody></table><p>ただしここで一つ注意があります。上の表で <code class=code-simple>al</code> というレジスタを用いましたが、実はこれは頻繁に使う整数レジスタ <code class=code-simple>rax</code> の下位8bitに割り当てられた別名レジスタに過ぎないのです。従って比較結果を<code class=code-simple>rax</code>に格納したい場合は残りの56bitを0で埋める必要があります。それを行ってくれるのが <code class=code-simple>movzb</code> 命令です。なお、ここでは <code class=code-simple>></code> と <code class=code-simple>>=</code> に対応する命令を紹介していませんが、単に構文解析時に右辺と左辺を入れ替えれば <code class=code-simple>></code> や <code class=code-simple>>=</code> は <code class=code-simple>&lt;</code> や <code class=code-simple>&lt;=</code> に置換可能です。<code class=code-simple>A > B</code> は<code class=code-simple>B &lt; A</code> と同値であるからです。</p><table><thead><tr class=header><th style=text-align:left>命令</th><th style=text-align:left>命令の意味</th></tr></thead><tbody><tr class=odd><td style=text-align:left><code class=code-simple>movzb rax al</code></td><td style=text-align:left><code class=code-simple>rax</code> レジスタの <code class=code-simple>al</code> 部分はそのままで残りの56bitをゼロクリアする</td></tr></tbody></table><p>以上を踏まえて実装すると以下のようになります(掲載しているのは <code class=code-simple>GenerateAssembly</code> 関数の<code class=code-simple>switch</code> 文の新規ラベルです)。ちなみに構文解析木では、<code class=code-simple>==</code>, <code class=code-simple>!=</code>, <code class=code-simple>&lt;</code>, <code class=code-simple>&lt;=</code> がそれぞれ <code class=code-simple>NODETYPE::EQUAL</code>, <code class=code-simple>NODETYPE::NOT_EQUAL</code>, <code class=code-simple>NODETYPE::LESS</code>, <code class=code-simple>NODETYPE::LESS_OR_EQUAL</code> に対応しています。</p><figcaption>ソース27</figcaption><pre class=cpp:ソース27><code class=language-cpp>case NODETYPE::EQUAL:
+    //ここが処理されている段階で `A == B` のAがraxレジスタに、Bがrdiレジスタに格納されている
+    res += &quot;\tcmp rax, rdi\n&quot;;
+    res += &quot;\tsete al\n&quot;;
+    res += &quot;\tmovzb rax, al\n&quot;;
+    break;
+case NODETYPE::NOT_EQUAL:
+    //以下同様に実装していく
+    res += &quot;\tcmp rax, rdi\n&quot;;
+    res += &quot;\tsetne al\n&quot;;
+    res += &quot;\tmovzb rax, al\n&quot;;
+    break;
+case NODETYPE::LESS:
+    res += &quot;\tcmp rax, rdi\n&quot;;
+    res += &quot;\tsetl al\n&quot;;
+    res += &quot;\tmovzb rax, al\n&quot;;
+    break;
+case NODETYPE::LESS_OR_EQUAL:
+    res += &quot;\tcmp rax, rdi\n&quot;;
+    res += &quot;\tsetle al\n&quot;;
+    res += &quot;\tmovzb rax, al\n&quot;;
+    break;</code></pre><p>今まで長々と説明してきましたがいざ実装すると意外とあっけなかったですね。ここまで以下のようなコードがコンパイルできるようになります。</p><figcaption>ソース28</figcaption><pre class=plaintext:ソース28><code class=language-text>1 == 1 &lt;= 0</code></pre><h2 id=おわりに>10.おわりに</h2><p>さあ、ここまで比較演算子の実装まで終わりました。私はC言語の主要な機能(ローカル変数、関数、ポインタなど)を実装したのですが、私が今これを執筆しているのが2021年9月25日で、時間がキツキツになっているのでここで終わりとしたいと思います。今回の部誌でコンパイラについて興味を持ってくれる人がいたら幸いです。もし、私のコードの全体が見たい人がいたら1章に載せたメールアドレスに連絡してください。読んでいただきありがとうございました！！</p></div><nav class=nextPrev><div class=next>次へ<a href=https://asanobuturi.github.io/document/2021/11/>編集後記 ></a></div><div class=prev>前へ<a href=https://asanobuturi.github.io/document/2021/7/>芸術の重要性について ></a></div></nav></div><nav id=sidebar><div id=sidemenu><div class=side-back><a href=../index.html>記事の一覧へもどる<i class="fas fa-sign-out-alt"></i></a></div><div class=side-next><a href=https://asanobuturi.github.io/document/2021/11/>編集後記<i class="fas fa-angle-right"></i></a></div><div class=side-prev><a href=https://asanobuturi.github.io/document/2021/7/><i class="fas fa-angle-left"></i>芸術の重要性について</a></div></div><div id=indexblock><div class=indextitle>目次</div><ol class=indexcontents></li><li><a href=#%e3%81%9f%e3%81%a0%e3%81%ae%e3%82%b3%e3%82%a4%e3%83%ab%e3%82%ac%e3%83%b3>ただのコイルガン？</a><ol><li><a href=#%e9%9b%bb%e6%ba%90>電源</a></li><li><a href=#%e6%98%87%e5%9c%a7%e3%83%81%e3%83%a7%e3%83%83%e3%83%91>昇圧チョッパ</a></li></ol></li><li><a href=#%e5%8d%98%e6%ae%b5-or-not-%e5%8d%98%e6%ae%b5>単段 or not 単段</a></li><li><a href=#%e5%b0%84%e6%92%83%e5%88%b6%e5%be%a1>射撃制御</a></li><li><a href=#%e5%9b%9e%e7%94%9f%e3%81%a8%e3%81%84%e3%81%86%e3%82%88%e3%82%8a>回生…というより</a></li><li><a href=#%e5%ae%89%e5%85%a8%e8%a3%85%e7%bd%ae>安全装置</a></li><li><a href=#%e3%82%b3%e3%82%a4%e3%83%ab%e3%81%a8%e5%bc%be%e4%b8%b8>コイルと弾丸</a></li><li><a href=#%e3%82%a2%e3%82%af%e3%83%aa%e3%83%ab%e3%81%8b%e3%82%a2%e3%83%ab%e3%83%9f%e3%81%8b>アクリルかアルミか</a></li><li><a href=#%e6%8e%a5%e7%9d%80%e5%89%a4>接着剤</a></li><li><a href=#%e7%ad%90%e4%bd%93>筐体</a></li><li><a href=#%e7%b7%8f%e8%a9%95>総評</a></ol></div></nav></div><footer class=footer><p class=copyright>Copyright &copy; 2015 - 2022 Asano Physics Club, All Rights Reversed.</p></footer></main></body></html>

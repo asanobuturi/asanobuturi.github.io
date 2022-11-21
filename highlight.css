@@ -28,6 +28,7 @@ code:not([class|="language"]) {
     background-color: #272822;
     border-radius: 0.3em !important;
     padding: 1em;
+    font-family: "Cascadia Code";
     font-size:14px;
 }
 

@@ -1,19 +1,14 @@
-function loadTwitterJS() {
-    let ad = document.createElement("script");
-    ad.type = "text/javascript";
-    ad.async = false;
-    ad.src = "https://platform.twitter.com/widgets.js";
-    let sc = document.getElementsByTagName("script")[0];
-    sc.parentNode.insertBefore(ad, sc);
-}
-
 function setTimelineHeight() {
-    let timeline = document.getElementsByClassName("twitter-timeline")[0];
+    let timeline = document.getElementById("twittertimeline");
+    let TwitterArticle = document.getElementsByClassName("twitter-article")[0];
     let height = document.getElementById("blog-list").offsetHeight;
-    timeline.setAttribute("data-height", height);
+    if (height == 0) { // ブログの更新欄が表示されていない、つまり横幅が小さい画面のとき
+        height = 500;
+    }
+    timeline.setAttribute("style", `border:none;width: 100%; height:${height}px;`);
+    TwitterArticle.setAttribute("style", `height:${height}px;`);
 }
 
 window.addEventListener("load", function() {
-    loadTwitterJS();
     setTimelineHeight();
 });
