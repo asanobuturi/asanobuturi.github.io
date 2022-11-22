@@ -19,7 +19,6 @@ ol, ul {
 
 a {
     color: rgb(50,90,180);
-    display: inline-table;
 }
 
 a:visited {
@@ -483,6 +482,11 @@ body{
         display: none;
     }
 }
+
+.document {
+    word-wrap: break-word
+}
+
 /* パンくずリスト */
 .documentcontent>#breadcrumbs{
     text-align: left;
