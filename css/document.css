@@ -1,0 +1,116 @@
+/* 部誌の一覧ページ用のcss */
+
+/* 全機器共通CSS (文字色など) */
+.document-list-item {
+    background-color: white;
+}
+.document-list {
+    padding: 0em 0.5em 2em;
+}
+
+.document-list>.document-list-item>.document-list-content>h2 {
+    font-family: "ヒラギノUD丸ゴ W6 JIS2004","Hiragino UD Sans Rd W6 JIS2004", Arial, "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic ProN", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "Meiryo UI", sans-serif, "游ゴシック", "Yu Gothic", "游ゴシック体", "YuGothic";
+    margin-top: 10px;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.document-list>.document-list-item>.document-list-content>h2>a {
+    text-decoration: none;
+    font-weight: bold;
+    color: orange;
+    border-bottom: dotted 2px blue;
+}
+
+/* 機器別CSS */
+@media (min-width: 1140px) { /* 部誌を二列表示するCSS。 下限は部誌が二列表示のときに"20xx年度 部誌"が折り返さないぐらいの幅 */
+    .document-list {
+        display: flex;
+        flex-wrap: wrap;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .document-list>.document-list-item {
+        width: 35%;
+        margin: 1px;
+        padding: 10px;
+        background: white;
+        display: flex;
+        position: relative;
+        text-align: left;
+        height:300px;
+    }
+
+    .document-list-item>.document-list-published-date {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+    }
+
+    .document-list-thumb {
+        margin-left: auto;
+    }
+
+    .document-thumb {
+        height:300px;
+    }
+}
+
+@media (max-width: 1140px) and (min-width: 740px){ /* 部誌を一列表示するときのCSS (従来の表示に近い) 下限は部誌の紹介文をストレス無く読めるぐらいの幅 */
+    .document-list>.document-list-item {
+        width: 70%;
+        margin: 1em auto;
+        padding: 10px;
+        background: white;
+        display: flex;
+        position: relative;
+        text-align: left;
+        height:300px;
+    }
+
+    .document-list-item>.document-list-published-date {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+    }
+
+    .document-list-thumb {
+        margin-left: auto;
+    }
+
+    .document-thumb {
+        height:300px;
+    }
+}
+
+@media (max-width: 740px){ /* 部誌を一列に、かつ画像なども一列に表示するCSS。紹介文は排除。 */
+    .document-list>.document-list-item {
+        width: 250px;
+        margin: 1em auto;
+        padding: 10px;
+        background: white;
+        position: relative;
+        text-align: center;
+        height:auto;
+    }
+
+    .document-list-item>.document-list-published-date {
+        position: absolute;
+        bottom: 4px;
+        right: 10px;
+    }
+
+    .document-list-item>.document-list-content>p {
+        display:none;
+    }
+
+    .document-list-thumb {
+        margin-left: auto;
+        padding-bottom:12px;
+    }
+
+    .document-thumb {
+        height:300px;
+    }
+}

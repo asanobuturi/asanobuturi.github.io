@@ -1,0 +1,477 @@
+:root {
+    --headline-font: Arial, "M PLUS Rounded 1c";
+}
+
+.document blockquote{
+    font-family: 'Zen Old Mincho', serif;
+}
+
+body{
+    scroll-behavior: smooth;
+}
+
+@media screen and (min-width: 900px){ /*パソコン用*/
+    #main{
+        display: flex;
+        width: 900px;
+        margin: 1em auto;
+        gap: 1em;
+    }
+    #main .documentcontent{
+        flex: 1;
+        width: calc(100% - 250px - 1em)
+    }
+    #sidebar{
+        padding: 0;
+        flex-basis:250px;
+        display:block;
+    }
+
+    #sidemenu{
+        background-color: #fff;
+        margin-bottom:1em;
+        padding:1em;
+    }
+    #sidemenu a{
+        color:#444;
+        text-decoration-color: #0000;
+    }
+    #sidemenu a:hover{
+        color:rgba(50,90,180);
+        text-decoration-color: rgb(50, 89, 180);
+        transition: all 0.4s;
+    }
+}
+
+@media screen and (max-width:900px){/*スマホ用*/
+    #main{
+        display: block;
+        margin: 5em auto 1em;/*ハンバーガーボタンがパンくずリストに重ならないようにする雑な応急処置。上になんかメニューとかおいたほうがいいと思う*/
+    }
+
+    #sidebar{
+        display: none;
+    }
+}
+
+.document {
+    word-wrap: break-word
+}
+
+/* パンくずリスト */
+.documentcontent>#breadcrumbs{
+    text-align: left;
+    color:#444;
+    font-weight: bold;
+    margin-bottom:0.4em;
+}
+.documentcontent>#breadcrumbs a{
+    color: #444;
+    margin:auto 0.4em;
+    text-decoration-color: #0000;
+}
+.documentcontent>#breadcrumbs a:hover{
+    text-decoration-color: #000;
+}
+
+/* 目次 */
+
+#indexblock {
+    background-color: #fff;
+    position: sticky;
+    top: 1em;
+    padding-bottom: 10px;
+}
+
+#indexblock>.indextitle {
+    font-size: 24px;
+    font-weight: 900;
+    padding: 0.2em;
+    padding-top:0.4em;
+    margin: auto 2em;
+    border-bottom: #888888 solid 2px;
+}
+
+#indexblock li{
+    display:block;
+    list-style: decimal;
+    text-align: start;
+    margin:0.2em auto;
+}
+#indexblock ol {
+    counter-reset: section;
+    padding-left: 0;
+}
+.indexcontents{
+    margin:1em;
+    margin-left:2em;
+    padding-bottom: 1em;
+}
+#indexblock ol li {
+    list-style: none;
+    margin:0.5em 0;
+    padding-left: 0;
+}
+#indexblock ol>li>ol {
+    margin:0;
+}
+
+#indexblock ol>li:before {
+    content : counters(section, '-') '. ';
+    counter-increment : section;
+}
+
+
+#indexblock li>ul {
+    counter-reset: section;
+    padding-left: 0;
+}
+#indexblock li> ul li {
+    list-style: none;
+    margin:0.5em 0;
+    padding-left: 0;
+}
+#indexblock ul>li>ul {
+    margin:0;
+}
+
+#indexblock ul>li:before {
+    content : counters(section, '-') '. ';
+    counter-increment : section;
+}
+
+#indexblock a{
+    display: inline;
+    color:black;
+    text-decoration:#e74c3c00;
+    text-decoration-thickness: 0.2em;
+}
+#indexblock a:hover{
+    text-decoration: underline #e74c3cff;
+    transition: text-decoration .5s;
+    text-decoration-thickness: 0.2em;
+}
+
+/* タイトルなどを表示する場所 */
+
+.documentcontent>.documenttitle {
+    margin-bottom:1em;
+    padding: 1em;
+    background-color: #fff;
+    text-align: left;
+}
+.documentcontent>.documenttitle>.documenticon {
+    width: 7em;
+    margin-right: 1em;
+}
+.documentcontent>.documenttitle h1 {
+    margin-top: 0;
+    color: #000;
+    border-left: solid 6px #e74c3c;
+    padding: 0.5em 2em 0.5em 0.5em;
+    font-size:28px;
+    background-color: #eee;
+    font-family: Arial, "Kosugi Maru";
+    font-weight: 700;
+}
+.documentcontent>.documenttitle p{
+    text-decoration: none;
+    font-weight: normal;
+    font-size: 16px;
+    margin: 0;
+}
+
+.document blockquote {
+    position: relative;
+    padding: 30px 15px 8px 15px;
+    margin: 10px;
+    box-sizing: border-box;
+    background: #f8f8f8;
+}
+
+.document blockquote:before {
+    display: inline-block;
+    position: absolute;
+    top: 5px;
+    left: 3px;
+    vertical-align: middle;
+    font-style: italic;
+    content: "\"";
+    font-family: sans-serif;
+    color: #cfcfcf;
+    font-size: 90px;
+    line-height: 1;
+}
+
+.document blockquote p {
+    padding: 0;
+    margin: 15px 0;
+    line-height: 1.7;
+}
+
+.document blockquote cite {
+    display: block;
+    text-align: right;
+    color: #888888;
+    font-size: 0.9em;
+}
+
+.document h2 {
+    padding: 0.15em 0.5em;
+    border-left: solid #e74c3c 5px;
+    font-family: var(--headline-font);
+    font-weight: 700;
+    font-size:1.8em;
+}
+
+.document h3 {
+    padding: 0.25em 0;
+    margin: 0.7em 0;
+    border-bottom: solid rgb(138, 138, 138) 2px;
+    font-family: var(--headline-font);
+    font-weight: 500;
+    font-size:1.4em;
+}
+
+.document h4 {
+    padding: 0.25em 0;
+    margin: 1em 0;
+    border-bottom: solid rgb(138, 138, 138) 2px;
+    font-family: var(--headline-font);
+    font-weight: 500;
+}
+
+.document li {
+    margin-left:1em;
+    padding-left:1em;
+    text-indent: -1em;
+}
+
+.document li p {
+    text-indent: 0;
+}
+.document li.asterisk-1 {
+    list-style: disc outside;
+}
+
+.document p.kome::before {
+    content: "※";
+}
+
+.document p.kome {
+    padding-left:1em;
+    text-indent: -1em;
+    color: #555;
+}
+
+.document li.check {
+    list-style: "✓" outside;
+}
+
+.document li.asterisk-2 {
+    list-style: "\27A3" outside;
+}
+
+.document li.asterisk-decimal {
+    list-style: decimal outside;
+}
+
+.document ul li.li-normal {
+    list-style: disc;
+}
+
+.document .documentul.li-normal {
+    list-style: disc;
+}
+
+.document ul.li-normal>a {
+    display:block;
+}
+
+.nextPrev .next {
+    margin-bottom: 1em;
+}
+
+.nextPrev .prev {
+    margin-bottom: 1em;
+}
+
+.document {
+    margin-top: 1em;
+    padding: 1em;
+    background-color: #fff;
+    text-align: left;
+}
+
+.document .documentcontent {
+    padding: 1em 0;
+    margin: 0 1em;
+}
+.document .documentcontent a {
+    font-size: 24px;
+    font-weight: bold;
+}
+.document .documentcontent h2 {
+    font-size: 16px;
+    font-weight: normal;
+}
+.document .documentcontent p {
+    font-size: 16px;
+    font-weight: normal;
+    color: #555;
+}
+.document .documentcontent .link-2 {
+    font-size: 16px;
+    font-weight: normal;
+    margin-bottom: 0;
+    text-align: right;
+}
+.documentcontent + .documentcontent {
+    border-top: solid 1px #ccc;
+}
+
+.document li h1 {
+    font-size: 18px;
+    font-weight: normal;
+}
+/* 文書中のCSSなど */
+.document .image-float-right {
+    max-width: 45% !important;
+    max-height: 10em;
+    float: right;
+}
+
+.document .image-float-left {
+    max-width: 45% !important;
+    max-height: 10em;
+    float: left;
+}
+
+.document .float-clear {
+    clear: both;
+}
+
+.document .images-side {
+    display: flex;
+    justify-content: space-between;
+}
+
+.document .image-side {
+    display: inline-block;
+    max-width: 45% !important;
+}
+
+.document img {
+    max-width: 90%;
+    margin: 1em;
+}
+
+.document .document h2 sub{
+    font-weight: normal;
+    font-size:60%;
+}
+
+.document .text-center{
+    text-align: center;
+}
+
+.document .text-bold{
+    font-weight: bold;
+}
+
+.document .caption{
+    margin: 1em 0 0 0 !important;
+}
+
+.document .mathjax-center{
+    text-align: center !important;
+}
+
+.document blockquote h1{
+    font-size: 20px;
+}
+
+#proof-qed{
+    text-align: right;
+    margin-right: 1em;
+}
+
+::selection{
+    background-color: #e74c3c;
+    color: #fff;
+}
+
+#math-div{
+    padding:0.2em auto;
+}
+
+
+.document table {
+    display: table;
+    max-width: 100%;
+    margin: 1.5rem auto;
+    border-collapse: collapse;
+    border: #444 1px;
+}
+.document table th,
+.document table td {
+    padding: 0.25rem 1rem 0.25rem 0;
+    background-color: transparent;
+    border: #444 1px;
+}
+.document table th:first-child,
+.document table td:first-child {
+    padding: 0.5rem 2rem;
+}
+.document table th {
+    background-color: #34495e;
+    color: #f1f1f1;
+    font-weight: normal;
+}
+
+.document table tr:last-child {
+    border-bottom: 0;
+}
+
+.document code.code-simple{
+    background-color: #ecf0f1;
+    color:#34495e
+}
+
+.document details {
+    border-radius: 4px;
+    padding: .5em .5em 0;
+}
+
+.document summary {
+    font-weight: bold;
+    border-radius: 4px;
+    margin: -.5em -.5em 0;
+    padding: .5em;
+    background-color: rgb(192, 192, 192);
+}
+
+.document details[open] {
+    padding: .5em;
+    background-color: #f8f8f8;
+}
+
+.document details[open] summary {
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    margin-bottom: .5em;
+}
+
+.document li{
+    list-style-type: disc;
+}
+
+.document li>a{
+    margin-left: 1em;
+}
+
+@media (max-width: 500px) {
+    .document {
+        font-size: 14px;
+    }
+}

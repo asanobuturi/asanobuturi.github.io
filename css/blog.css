@@ -1,0 +1,71 @@
+/* ブログの一覧ページ用CSS */
+
+.news-block {
+    margin-top: 100px;
+}
+
+.news-block h1 {
+    margin: 20px 0;
+}
+
+.articleBlock {
+    font-size: 16px;
+    line-height: 1.7em;
+    background-color: #fff;
+    padding: 0px;
+    margin-bottom: 3em;
+}
+@media (max-width: 500px) {
+    .articleBlock {
+        font-size: 12px;
+    }
+}
+
+.articleBlock h1 {
+    padding: 1.25em 0;
+    box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.1);
+}
+
+#blogBlock {
+    padding: 0 5%;
+}
+
+.blogPosts {
+    text-align: center;
+    padding: 0em 0em 1em;
+}
+
+    .blogPosts + .blogPosts {
+        border-top: dotted 1px rgba(0, 0, 0, 0.6);
+        padding: 1em 0em 1em;
+    }
+
+.author{
+    font-size:20px;
+    font-weight: normal;
+}
+
+.articleUnit {
+    padding: 0;
+    display: inline-block;
+    text-align: left;
+    width: 100%;
+}
+
+.articleUnit p {
+    margin: 0.5em 0;
+}
+
+.articleUnit .title a {
+    font-family: Arial, "M PLUS Rounded 1c", Arial, "Helvetica Neue", Helvetica, "メイリオ", Meiryo, "Meiryo UI", sans-serif, "游ゴシック", "Yu Gothic", "游ゴシック体", "YuGothic";
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 1.3em;
+}
+
+@media (max-width: 500px) {
+    .articleUnit .title a {
+        font-size: 20px;
+        font-weight: 500;
+    }
+}

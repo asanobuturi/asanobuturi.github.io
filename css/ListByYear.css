@@ -1,0 +1,55 @@
+/* 部誌の年度別ページ用CSS */
+
+/* 全機器共通CSS (文字色など) */
+
+.document-page-list .documentcontent {
+    padding: 1em 0;
+    margin: 0 1em;
+}
+.document-page-list .documentcontent a {
+    font-size: 24px;
+    font-weight: bold;
+}
+.document-page-list .documentcontent h2 {
+    font-size: 16px;
+    font-weight: normal;
+}
+.document-page-list .documentcontent p {
+    font-size: 16px;
+    font-weight: normal;
+    color: #555;
+}
+.document-page-list .documentcontent .link-2 {
+    font-size: 16px;
+    font-weight: normal;
+    margin-bottom: 0;
+    text-align: right;
+}
+.documentcontent + .documentcontent {
+    border-top: solid 1px #ccc;
+}
+
+.documentdetail {
+    border-left: none;
+    padding: 0;
+}
+.document-page-list {
+    padding: 1em;
+    margin: 1em auto;
+    background-color: #fff;
+    max-width: 70%;
+    text-align: left;
+}
+
+@media (min-width: 700px) { /* 部誌の表紙を表示するCSS。下限は部誌の紹介文が欄からはみ出さないぐらい。 */
+    main>.documenttitle .documenticon {
+        float: left;
+        height: 12em;
+        margin-right: 1em;
+    }
+}
+@media (max-width: 700px) { /* 部誌の表示を表示しないCSS。 */
+    main>.documenttitle .documenticon {
+        display: none;
+    }
+}
