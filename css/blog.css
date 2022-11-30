@@ -81,10 +81,10 @@
 
 /* サイドバーを表示するためのCSS。 */
 
-@media screen and (min-width: 900px){ /*パソコン用*/
+@media screen and (min-width: 1000px){ /*パソコン用*/
     #main{
         display: flex;
-        width: 900px;
+        width: 1000px;
         margin: 1em auto;
         gap: 1em;
     }
@@ -94,9 +94,30 @@
     }
 }
 
-@media screen and (max-width:900px){/*スマホ用*/
+@media screen and (max-width:1000px){/*スマホ用*/
     #main{
         display: block;
         margin: 5em auto 1em;/*ハンバーガーボタンがパンくずリストに重ならないようにする雑な応急処置。上になんかメニューとかおいたほうがいいと思う*/
     }
+    #sidemenu {
+        display: none;
+    }
+    #newArrivals h1 {
+        padding-top: 0.7em;
+    }
+}
+
+
+
+
+.indextitle {
+    margin: auto 1em !important;
+}
+
+#indexblock {
+    min-width: 220px;
+}
+
+#newArrivals{
+    width: 100%;
 }
