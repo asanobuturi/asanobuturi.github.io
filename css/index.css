@@ -6,15 +6,12 @@
     padding-top: 70px;
     line-height: 111.31777%; /*(≒(i^i)%)*/
     font-weight: 500;
+    letter-spacing: -0.04em;
 }
 
 @media (max-width: 700px) {
     .welcome-slogan {
         font-size: 30px;
-    }
-
-    .welcome-slogan-small {
-        font-size: 20px;
     }
 }
 
@@ -56,19 +53,21 @@ body::before {
 }
 
     .headline .headline-ja {
-        font-weight: bold;
+        font-weight: 500;
         font-size: 30px;
         margin-bottom: 15px;
         padding-bottom: 5px;
+        font-family: "M Plus Rounded 1c";
+        letter-spacing: -0.04em;
     }
 
     .headline .headline-en {
         font-weight: 700;
         letter-spacing: .14em;
-        text-indent: .14em;
         color: #ec407a;
         padding-bottom: 20px;
-        font-size: 12px;
+        font-size: 10px;
+        font-family: monospace;
     }
 
 @media (max-width: 600px) {

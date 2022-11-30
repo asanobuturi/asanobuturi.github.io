@@ -49,3 +49,12 @@ main>.documenttitle p {
 .main-title + .sub-title {
     margin-top: 0;
 }
+
+@media (max-width: 500px) {
+    .main-title {
+        font-size: 48px;
+    }
+    .sub-title {
+        font-size: 24px;
+    }
+}

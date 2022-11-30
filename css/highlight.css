@@ -27,9 +27,15 @@ code:not([class|="language"]) {
 .highlight {
     background-color: #272822;
     border-radius: 0.3em !important;
-    padding: 1em;
+    padding: 0.1em 1em;
     font-family: "Cascadia Code";
     font-size:14px;
+}
+
+@media (max-width: 500px) {
+    .highlight {
+        font-size:12px;
+    }
 }
 
 div.sourceCode pre code{
