@@ -251,7 +251,7 @@ code {
 
 @font-face {
     font-family: "Kosugi Maru";
-    src: url("/font/KosugiMaru-Regular.ttf");
+    src: url("/font/KosugiMaru-Regular-ForkedByAPC.woff");
     font-display: swap;
 }
 
