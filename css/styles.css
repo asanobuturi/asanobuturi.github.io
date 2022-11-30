@@ -268,3 +268,9 @@ code {
     font-display: swap;
     font-weight: 400;
 }
+
+
+.inline-image {
+    height: 1.15em;
+    vertical-align: middle;
+}

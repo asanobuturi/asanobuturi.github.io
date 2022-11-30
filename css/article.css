@@ -21,26 +21,6 @@ body{
         flex: 1;
         width: calc(100% - 250px - 1em)
     }
-    #sidebar{
-        padding: 0;
-        flex-basis:250px;
-        display:block;
-    }
-
-    #sidemenu{
-        background-color: #fff;
-        margin-bottom:1em;
-        padding:1em;
-    }
-    #sidemenu a{
-        color:#444;
-        text-decoration-color: #0000;
-    }
-    #sidemenu a:hover{
-        color:rgba(50,90,180);
-        text-decoration-color: rgb(50, 89, 180);
-        transition: all 0.4s;
-    }
 }
 
 @media screen and (max-width:900px){/*スマホ用*/
@@ -48,14 +28,10 @@ body{
         display: block;
         margin: 5em auto 1em;/*ハンバーガーボタンがパンくずリストに重ならないようにする雑な応急処置。上になんかメニューとかおいたほうがいいと思う*/
     }
-
-    #sidebar{
-        display: none;
-    }
 }
 
 .document {
-    word-wrap: break-word
+    word-wrap: break-word;
 }
 
 /* パンくずリスト */
@@ -74,84 +50,6 @@ body{
     text-decoration-color: #000;
 }
 
-/* 目次 */
-
-#indexblock {
-    background-color: #fff;
-    position: sticky;
-    top: 1em;
-    padding-bottom: 10px;
-}
-
-#indexblock>.indextitle {
-    font-size: 24px;
-    font-weight: 900;
-    padding: 0.2em;
-    padding-top:0.4em;
-    margin: auto 2em;
-    border-bottom: #888888 solid 2px;
-}
-
-#indexblock li{
-    display:block;
-    list-style: decimal;
-    text-align: start;
-    margin:0.2em auto;
-}
-#indexblock ol {
-    counter-reset: section;
-    padding-left: 0;
-}
-.indexcontents{
-    margin:1em;
-    margin-left:2em;
-    padding-bottom: 1em;
-}
-#indexblock ol li {
-    list-style: none;
-    margin:0.5em 0;
-    padding-left: 0;
-}
-#indexblock ol>li>ol {
-    margin:0;
-}
-
-#indexblock ol>li:before {
-    content : counters(section, '-') '. ';
-    counter-increment : section;
-}
-
-
-#indexblock li>ul {
-    counter-reset: section;
-    padding-left: 0;
-}
-#indexblock li> ul li {
-    list-style: none;
-    margin:0.5em 0;
-    padding-left: 0;
-}
-#indexblock ul>li>ul {
-    margin:0;
-}
-
-#indexblock ul>li:before {
-    content : counters(section, '-') '. ';
-    counter-increment : section;
-}
-
-#indexblock a{
-    display: inline;
-    color:black;
-    text-decoration:#e74c3c00;
-    text-decoration-thickness: 0.2em;
-}
-#indexblock a:hover{
-    text-decoration: underline #e74c3cff;
-    transition: text-decoration .5s;
-    text-decoration-thickness: 0.2em;
-}
-
 /* タイトルなどを表示する場所 */
 
 .documentcontent>.documenttitle {
@@ -159,6 +57,7 @@ body{
     padding: 1em;
     background-color: #fff;
     text-align: left;
+    position: relative;
 }
 .documentcontent>.documenttitle>.documenticon {
     width: 7em;
@@ -179,6 +78,31 @@ body{
     font-weight: normal;
     font-size: 16px;
     margin: 0;
+}
+
+.documentcontent>.documenttitle .tags {
+    position: absolute;
+    right: 10px;
+    bottom: 1em;
+}
+
+.documentcontent>.documenttitle .tags a {
+    background-color: #e74c3cee;
+    border: 0.5px solid #e74c3cee; /* 横幅に違和感を持たせないため。 */
+    color: #ffffff;
+    font-size: 14px;
+    font-family: "Cascadia Code"; /* 別フォントに変えても良い。 */
+    border-radius: 0.2em;
+    padding: 0.1em;
+    margin:auto 0.3em;
+    text-decoration: none; /* 下線を消す */
+    transition: 0.1s all;
+    display: inline-block; /* inline-blockを指定しないとtransformが使用できない。 */
+    line-height: 1.1em; /* inline-blockを指定すると縦幅が大きくなるため、その調整。 */
+}
+
+.documentcontent>.documenttitle .tags a:hover {
+    transform: scale(1.1,1.1);
 }
 
 .document blockquote {
