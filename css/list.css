@@ -4,6 +4,7 @@ main>.documenttitle h1 {
     color: orange;
     border-bottom: solid 1px #ccc;
     font-size:32px;
+    font-family: "M Plus Rounded 1c";
 }
 
 main>.documenttitle>h2 {
@@ -12,6 +13,7 @@ main>.documenttitle>h2 {
     border-bottom: solid 1px #ccc;
     border-left:none !important;
     font-size:22px;
+    font-family: "M Plus Rounded 1c";
 }
 
 

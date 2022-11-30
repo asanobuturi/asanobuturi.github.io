@@ -9,15 +9,15 @@
 }
 
 .document-list>.document-list-item>.document-list-content>h2 {
-    font-family: "ヒラギノUD丸ゴ W6 JIS2004","Hiragino UD Sans Rd W6 JIS2004", Arial, "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic ProN", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "Meiryo UI", sans-serif, "游ゴシック", "Yu Gothic", "游ゴシック体", "YuGothic";
+    font-family: "M Plus Rounded 1c";
     margin-top: 10px;
     font-size: 26px;
-    font-weight: bold;
+    font-weight: 700;
 }
 
 .document-list>.document-list-item>.document-list-content>h2>a {
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 700;
     color: orange;
     border-bottom: dotted 2px blue;
 }
