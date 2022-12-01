@@ -5,7 +5,7 @@ const width = canvas.clientWidth;
 const height = canvas.clientHeight;
 
 const logo = new Image();
-logo.src = "../../image/Logo.png";//Tips:このファイルを外部ドメインに設定すると、ダウンロード時にCORSなんとかのエラーが出る。よくわからん
+logo.src = "/image/Logo.png";//Tips:このファイルを外部ドメインに設定すると、ダウンロード時にCORSなんとかのエラーが出る。よくわからん
 
 let text_1 = new Array("ここにテキストを入力");
 let text_2 = "";

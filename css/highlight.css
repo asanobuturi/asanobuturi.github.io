@@ -1,7 +1,25 @@
 /*
-PandocでMarkdownからHTMLに変換されたドキュメントの中のコードにシンタックスハイライトを与えるCSS。
+PandocでMarkdownからHTMLに変換された、若しくはHugoでmdから変換されたドキュメントの中のコードにシンタックスハイライトを与えるCSS。
 適宜CSSを追加してください。
 */
+
+/* Hugo用CSS */
+
+.highlight {
+    background-color: #272822;
+    border-radius: 0.3em;
+    padding: 0.1em 1em;
+    font-family: "Cascadia Code";
+    font-size:14px;
+}
+
+@media (max-width: 500px) {
+    .highlight {
+        font-size:12px;
+    }
+}
+
+/* Pandoc用CSS */
 
 div.sourceCode{
     background-color: #282c34;
@@ -12,30 +30,6 @@ div.sourceCode{
 div.sourceCode pre{
     margin: 0;
     white-space: pre-wrap;
-}
-
-code:not([class|="language"]) {
-    background-color: #e7e7e7;
-    border: 0.5px solid #d3d3d3;
-    color: #353535;
-    font-size: 14px;
-    font-family: "Cascadia Code";
-    border-radius: 0.2em;
-    padding: 0.1em;
-}
-
-.highlight {
-    background-color: #272822;
-    border-radius: 0.3em !important;
-    padding: 0.1em 1em;
-    font-family: "Cascadia Code";
-    font-size:14px;
-}
-
-@media (max-width: 500px) {
-    .highlight {
-        font-size:12px;
-    }
 }
 
 div.sourceCode pre code{
@@ -107,7 +101,10 @@ div.sourceCode pre code .im{
     color: #7cc370;
 }
 
+/* フォント定義 */
+
 @font-face {
     font-family: "Cascadia Code";
-    src: url("/font/CascadiaCode.ttf");
+    src: url("/font/CascadiaCode/CascadiaCode.ttf");
+    display: swap;
 }

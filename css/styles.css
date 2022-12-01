@@ -251,20 +251,27 @@ code {
 
 @font-face {
     font-family: "Kosugi Maru";
-    src: url("/font/KosugiMaru-Regular-ForkedByAPC.woff");
+    src: url("/font/KosugiMaru-Regular-ForkedByAPC.woff2");
     font-display: swap;
 }
 
 @font-face {
     font-family: "M PLUS Rounded 1c";
-    src: url("/font/MPLUSRounded1c-Medium-ForkedByAPC.woff2");
+    src: url("/font/MPlusRounded1c/MPLUSRounded1c-Bold-ForkedByAPC.woff2");
+    font-display: swap;
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: "M PLUS Rounded 1c";
+    src: url("/font/MPlusRounded1c/MPLUSRounded1c-Medium-ForkedByAPC.woff2");
     font-display: swap;
     font-weight: 500;
 }
 
 @font-face {
     font-family: "M PLUS Rounded 1c";
-    src: url("/font/MPLUSRounded1c-Regular-ForkedByAPC.woff2");
+    src: url("/font/MPlusRounded1c/MPLUSRounded1c-Regular-ForkedByAPC.woff2");
     font-display: swap;
     font-weight: 400;
 }
