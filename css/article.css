@@ -80,13 +80,7 @@ body{
     margin: 0;
 }
 
-.documentcontent>.documenttitle .tags {
-    position: absolute;
-    right: 10px;
-    bottom: 1em;
-}
-
-.documentcontent>.documenttitle .tags a {
+.documentcontent>.documenttitle .tag {
     background-color: #e74c3cee;
     border: 0.5px solid #e74c3cee; /* 横幅に違和感を持たせないため。 */
     color: #ffffff;
@@ -99,6 +93,12 @@ body{
     transition: 0.1s all;
     display: inline-block; /* inline-blockを指定しないとtransformが使用できない。 */
     line-height: 1.1em; /* inline-blockを指定すると縦幅が大きくなるため、その調整。 */
+}
+
+.documentcontent>.documenttitle .share {
+    position:absolute;
+    right: 1em;
+    bottom: 1em;
 }
 
 .documentcontent>.documenttitle .tags a:hover {
