@@ -268,6 +268,22 @@ body::before {
     }
 }
 
+/* TwitterのタイムラインのCSS */
+
+#twittertimeline {
+    overflow: scroll;
+}
+
+#twittertimeline::-webkit-scrollbar {
+    width: 5px;
+    height: 0px; /* 横のスクロールバーを表示しない */
+}
+
+#twittertimeline::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background: rgba(0,0,0,0.3);
+}
+
 .footer {
     background-color: transparent;
 }
