@@ -277,7 +277,20 @@ code {
 }
 
 
-.inline-image {
+.inline-image { /* インラインアイコン用CSS */
+    height: 1em;
+    vertical-align:text-bottom;
+}
+
+#breadcrumbs .inline-image { /* パンくずリストのインラインアイコン用CSS */
+    vertical-align:text-bottom;
+}
+
+.side-back .inline-image { /* サイドメニューの記事の一覧に戻るインラインアイコン用CSS */
+    vertical-align:text-top;
+}
+
+.inline-image.tag-icon { /* タグのインラインアイコン用CSS */
     height: 1.15em;
     vertical-align: middle;
 }
