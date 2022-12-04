@@ -3,7 +3,7 @@ PandocでMarkdownからHTMLに変換された、若しくはHugoでmdから変�
 適宜CSSを追加してください。
 */
 
-code:not([class|="language"]) {
+p>code:not([class]),div>code:not([class])  {
     background-color: #e7e7e7;
     border: 0.5px solid #d3d3d3;
     color: #353535;
@@ -19,14 +19,24 @@ code:not([class|="language"]) {
     background-color: #272822;
     border-radius: 0.3em;
     padding: 0.1em 1em;
-    font-family: "Cascadia Code";
     font-size:14px;
+    overflow:scroll;
 }
 
 @media (max-width: 500px) {
     .highlight {
         font-size:12px;
     }
+}
+
+.highlight code[class^="language"] {
+    font-family: "Cascadia Code";
+    line-height: 20px;
+    white-space: pre;
+}
+
+.highlight code:not([class])>span {
+    font-family: "Cascadia Code";
 }
 
 /* Pandoc用CSS */

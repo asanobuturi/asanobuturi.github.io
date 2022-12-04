@@ -218,4 +218,4 @@ POSITRON#2017に関するご意見、ご感想、ご質問、文句等は物理�
 TLP627-4は安全装置です。Arduinoは繊細な部品なので、それを守ります。Arduino Mega2560は処理装置です。PCから出力された音楽の信号を電気信号に変えます。エアーコンプレッサーは空気送り機です。メロディオンに空気を供給します。メロディオンは楽器です。愛情は説明不要でしょう。愛なくしては原因不明のエラーに耐えられません。
 How to 動作 パソコンで楽譜データを数字に変換(俗に言うMIDI)し、その数字をArduinoに送り、Arduinoでこの数字のときはドの音、この数字のときはレの音&amp;hellip;&amp;hellip;と先に教えておいて、その数字が来たら、その音を出す鍵盤を押すソレノイドに信号を出します。
 実際はArduinoとソレノイドの間には安全装置と増幅装置を挟んでいます。後、和音のときや極端に低い音の時などはバルブにも命令を出し、流れる空気の量を増やすようにしています。
-回路図 Anduino に書き込んだプログラム #include &amp;lt;MIDI.I&amp;gt;#include &amp;lt;Servo.h&amp;gt; Servo servol; int Pin[54]={}; unsigrred long DownTime[54]={}; int Channel; MIDI_CREATE_DEFAULT_INSTANCE(); void setup(){ servolattach(7); for(int i=22;i&amp;lt;=53;i++){ pinVode(i, OUTPUT); } MIDI.</description></item></channel></rss>
+回路図 Anduino に書き込んだプログラム 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 #include &amp;lt;MIDI.</description></item></channel></rss>

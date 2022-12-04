@@ -18,7 +18,31 @@ PC98とはNECが1982年から2003年まで製造・販売を行っていたパ�
 基本操作はWindowsのコマンドプロンプトと変わらないのでそこまで難しくないです。
 物理部のPC98にはFILMTNというフリーのファイルマネージャが入っているので案外コマンドを入力しなくても何とかなります。</p><p><img src=./FnvF9Jb.webp alt></p><h2 id=日本語入力>日本語入力</h2><p>日本語入力にはATOKというIMEを使います。入力中にXFER+CTRLを押すことで日本語入力になります。F7でカタカナなど後の操作は基本的に今と変わりません。</p><p><img src=./C7pAi43.webp alt></p><h2 id=実際にコードを書く>実際にコードを書く</h2><p>IDEを起動してコードを書いていきます。ここから先はソースコードの一部を公開して、解説していこうと思います。
 ビープ音の高さは周波数で指定するので周波数と音階を対応させています。
-長さはミリ秒で指定するので同様にミリ秒と音符の長さを対応させています。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=color:#75715e>//音階
+長さはミリ秒で指定するので同様にミリ秒と音符の長さを対応させています。</p><div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">18
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">19
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">20
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">21
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">22
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">23
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">24
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=color:#75715e>//音階
 </span><span style=color:#75715e></span><span style=color:#66d9ef>const</span> <span style=color:#66d9ef>int</span> A <span style=color:#f92672>=</span> <span style=color:#ae81ff>440</span>;
 <span style=color:#66d9ef>const</span> <span style=color:#66d9ef>int</span> AF <span style=color:#f92672>=</span> <span style=color:#ae81ff>415</span>;
 <span style=color:#66d9ef>const</span> <span style=color:#66d9ef>int</span> AS <span style=color:#f92672>=</span> BF;
@@ -42,7 +66,16 @@ PC98とはNECが1982年から2003年まで製造・販売を行っていたパ�
 <span style=color:#66d9ef>const</span> <span style=color:#66d9ef>int</span> one <span style=color:#f92672>=</span> two<span style=color:#f92672>*</span><span style=color:#ae81ff>2</span>;
 <span style=color:#66d9ef>const</span> <span style=color:#66d9ef>int</span> sixteen <span style=color:#f92672>=</span> <span style=color:#ae81ff>125</span>;
 <span style=color:#66d9ef>const</span> <span style=color:#66d9ef>int</span> two <span style=color:#f92672>=</span> four<span style=color:#f92672>*</span><span style=color:#ae81ff>2</span>;
-</code></pre></div><p>その次は音声再生用の関数を作ります。<code>playmsg(音符,歌詞,音階,音程)</code>で歌詞つきで音符を再生します。<code>play()</code>はそれの歌詞なし版です。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=color:#66d9ef>void</span> <span style=color:#a6e22e>playmsg</span>(<span style=color:#66d9ef>int</span> ms, <span style=color:#66d9ef>const</span> <span style=color:#66d9ef>char</span> <span style=color:#f92672>*</span>msg, <span style=color:#66d9ef>int</span> code, <span style=color:#66d9ef>int</span> ontei <span style=color:#f92672>=</span> <span style=color:#ae81ff>2</span>) {
+</code></pre></td></tr></table></div></div><p>その次は音声再生用の関数を作ります。<code>playmsg(音符,歌詞,音階,音程)</code>で歌詞つきで音符を再生します。<code>play()</code>はそれの歌詞なし版です。</p><div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">3
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">4
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">5
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">6
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">7
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">8
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">9
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=color:#66d9ef>void</span> <span style=color:#a6e22e>playmsg</span>(<span style=color:#66d9ef>int</span> ms, <span style=color:#66d9ef>const</span> <span style=color:#66d9ef>char</span> <span style=color:#f92672>*</span>msg, <span style=color:#66d9ef>int</span> code, <span style=color:#66d9ef>int</span> ontei <span style=color:#f92672>=</span> <span style=color:#ae81ff>2</span>) {
   cout <span style=color:#f92672>&lt;&lt;</span> msg;
   sound(code <span style=color:#f92672>*</span> ontei);
   delay(ms);
@@ -51,9 +84,28 @@ PC98とはNECが1982年から2003年まで製造・販売を行っていたパ�
 <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>play</span>(<span style=color:#66d9ef>int</span> ms, <span style=color:#66d9ef>int</span> code, <span style=color:#66d9ef>int</span> ontei <span style=color:#f92672>=</span> <span style=color:#ae81ff>2</span>) {
   playmsg(ms, <span style=color:#e6db74>&#34;&#34;</span>, code, ontei);
 }
-</code></pre></div><p>あとはひたすらこれを使って音を鳴らしていくだけです。
+</code></pre></td></tr></table></div></div><p>あとはひたすらこれを使って音を鳴らしていくだけです。
 <code>!(kbhit()&&getch() == 'q')</code>の部分でもしQが押されたら終了するようにしています。
-<code>kbhit()</code>は何かキーが押されたら0以外の数値を返しバッファにキー情報が入ります。それを<code>getch()</code>で受け取ってそのキーがqであったらループを抜けるようにしています。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=color:#66d9ef>int</span> <span style=color:#a6e22e>main</span>() {
+<code>kbhit()</code>は何かキーが押されたら0以外の数値を返しバッファにキー情報が入ります。それを<code>getch()</code>で受け取ってそのキーがqであったらループを抜けるようにしています。</p><div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">18
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">19
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=color:#66d9ef>int</span> <span style=color:#a6e22e>main</span>() {
   <span style=color:#66d9ef>while</span>(<span style=color:#f92672>!</span>(kbhit()<span style=color:#f92672>&amp;&amp;</span>getch() <span style=color:#f92672>==</span> <span style=color:#e6db74>&#39;q&#39;</span>)){
   system(<span style=color:#e6db74>&#34;cls&#34;</span>);
   cout <span style=color:#f92672>&lt;&lt;</span> endl <span style=color:#f92672>&lt;&lt;</span>
@@ -72,4 +124,4 @@ PC98とはNECが1982年から2003年まで製造・販売を行っていたパ�
   playmsg(eight,<span style=color:#e6db74>&#34;れ&#34;</span>,DF,<span style=color:#ae81ff>4</span>);
   delay(eight);
   playmsg(four,<span style=color:#e6db74>&#34;た&#34;</span>,AF,<span style=color:#ae81ff>2</span>);
-</code></pre></div><h2 id=おわりに>おわりに</h2><p>文化祭で展示した作品を軽く解説してみました。もう一つPC98の部誌を書いているのでそちらも見ていただけるとありがたいです。今後PC98を後輩が引き継いでくれるのかどうかわかりませんが引き継いでくれたらうれしいですね。ここまで読んでくださりありがとうございました。</p></div><nav class=nextPrev><div class=next>次へ<a href=https://asanobuturi.github.io/document/2022/10/>自作OSで文字列をPC98に表示する＞</a></div><div class=next>前へ<a href=https://asanobuturi.github.io/document/2022/8/>n進法のおはなし＞</a></div></nav></div><nav id=sidebar><div id=sidemenu><div class=side-back><a href=../index.html>記事の一覧へもどる<img src=/image/icons/sign-out-alt-solid.svg class=inline-image></a></div><div class=side-prev><a href=https://asanobuturi.github.io/document/2022/8/><img src=/image/icons/angle-left-solid.svg class=inline-image>n進法のおはなし</a></div><div class=side-next><a href=https://asanobuturi.github.io/document/2022/10/>自作OSで文字列をPC98に表示する<img src=/image/icons/angle-right-solid.svg class=inline-image></a></div></div><div id=indexblock><div class=indextitle>目次</div><ol class=indexcontents><nav id=TableOfContents><ul><li><a href=#はじめに>はじめに</a></li><li><a href=#pc98とは>PC98とは</a></li><li><a href=#pc98でのプログラミング>PC98でのプログラミング</a></li><li><a href=#pc98での操作>PC98での操作</a></li><li><a href=#日本語入力>日本語入力</a></li><li><a href=#実際にコードを書く>実際にコードを書く</a></li><li><a href=#おわりに>おわりに</a></li></ul></nav></ol></div></nav></div><footer class=footer><p class=copyright>Copyright &copy; 2015 - 2022 Asano Physics Club, All Rights Reversed.</p></footer></main></body></html>
+</code></pre></td></tr></table></div></div><h2 id=おわりに>おわりに</h2><p>文化祭で展示した作品を軽く解説してみました。もう一つPC98の部誌を書いているのでそちらも見ていただけるとありがたいです。今後PC98を後輩が引き継いでくれるのかどうかわかりませんが引き継いでくれたらうれしいですね。ここまで読んでくださりありがとうございました。</p></div><nav class=nextPrev><div class=next>次へ<a href=https://asanobuturi.github.io/document/2022/10/>自作OSで文字列をPC98に表示する＞</a></div><div class=next>前へ<a href=https://asanobuturi.github.io/document/2022/8/>n進法のおはなし＞</a></div></nav></div><nav id=sidebar><div id=sidemenu><div class=side-back><a href=../index.html>記事の一覧へもどる<img src=/image/icons/sign-out-alt-solid.svg class=inline-image></a></div><div class=side-prev><a href=https://asanobuturi.github.io/document/2022/8/><img src=/image/icons/angle-left-solid.svg class=inline-image>n進法のおはなし</a></div><div class=side-next><a href=https://asanobuturi.github.io/document/2022/10/>自作OSで文字列をPC98に表示する<img src=/image/icons/angle-right-solid.svg class=inline-image></a></div></div><div id=indexblock><div class=indextitle>目次</div><ol class=indexcontents><nav id=TableOfContents><ul><li><a href=#はじめに>はじめに</a></li><li><a href=#pc98とは>PC98とは</a></li><li><a href=#pc98でのプログラミング>PC98でのプログラミング</a></li><li><a href=#pc98での操作>PC98での操作</a></li><li><a href=#日本語入力>日本語入力</a></li><li><a href=#実際にコードを書く>実際にコードを書く</a></li><li><a href=#おわりに>おわりに</a></li></ul></nav></ol></div></nav></div><footer class=footer><p class=copyright>Copyright &copy; 2015 - 2022 Asano Physics Club, All Rights Reversed.</p></footer></main></body></html>
