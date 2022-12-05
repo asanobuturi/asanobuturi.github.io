@@ -238,7 +238,7 @@ body::before {
 .contact .description {
     display: inline-table;
     vertical-align: middle;
-    font-weight: 800;
+    font-weight: 700;
 }
 
 .contact .contactIcon {
@@ -247,6 +247,15 @@ body::before {
     fill: #9e9e9e;
     height: 48px;
     width: 48px;
+}
+
+.contactIcon.twitterIcon {
+    background-color: #1ca1f1;
+    fill: #ffffff;
+    border-radius: .5em;
+    height: 32px;
+    width: 32px;
+    padding: 8px;
 }
 
 .contact .mailaddressImage {
