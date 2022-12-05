@@ -31,7 +31,6 @@ p>code:not([class]),div>code:not([class])  {
 
 .highlight code[class^="language"] {
     font-family: "Cascadia Code";
-    line-height: 20px;
     white-space: pre;
 }
 
