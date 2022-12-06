@@ -20,7 +20,7 @@ p>code:not([class]),div>code:not([class])  {
     border-radius: 0.3em;
     padding: 0.1em 1em;
     font-size:14px;
-    overflow:scroll;
+    overflow:auto;
 }
 
 @media (max-width: 500px) {
@@ -32,6 +32,10 @@ p>code:not([class]),div>code:not([class])  {
 .highlight code[class^="language"] {
     font-family: "Cascadia Code";
     white-space: pre;
+}
+
+.highlight code[class^="language"]>span {
+    height: 16px;
 }
 
 .highlight code:not([class])>span {

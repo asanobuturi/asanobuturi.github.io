@@ -1,6 +1,6 @@
 window.addEventListener("load", function() {
     (function(window,document){
-        var lazyCss=document.querySelectorAll(".lazy-css");
+        var lazyCss=document.querySelectorAll('link[rel="subresource"]');
         for(var i=0,l=lazyCss.length;i<l;i++){
             lazyCss[i].rel="stylesheet";
         }
