@@ -36,6 +36,16 @@ p>code:not([class]),div>code:not([class])  {
 
 .highlight code[class^="language"]>span {
     height: 16px;
+    margin-bottom: 3.7px;
+    line-height: 1em;
+}
+
+.highlight code[class^="language"]>span:first-child {
+    margin-top: 17.5px;
+}
+
+.highlight>code[class^="language"]>span:first-child.highlight>code[class^="language"]>span:last-child {
+    margin-top: 0px;
 }
 
 .highlight code:not([class])>span {
