@@ -156,7 +156,7 @@ body::before {
     width: 100%;
 }
 
-.headline .news .news-article:last-child>.news-link {
+.headline #blog-list>.news .news-article:last-child>.news-link {
     margin:auto;
     text-align: center;
     width:100%;
