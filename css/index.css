@@ -144,7 +144,6 @@ body::before {
 
 .headline .news.news-article_wrap {
     width: 100%;
-    position: relative;
 }
 
 .headline .news .news-article + .news-article {
@@ -155,7 +154,13 @@ body::before {
     display: block;
     text-decoration: none;
     width: 100%;
-    position: relative;
+}
+
+.headline .news .news-article:last-child>.news-link {
+    margin:auto;
+    text-align: center;
+    width:100%;
+    color:#337;
 }
 
 .headline .news .news-article .arrow {

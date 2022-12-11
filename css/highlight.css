@@ -35,8 +35,7 @@ p>code:not([class]),div>code:not([class])  {
 }
 
 .highlight code[class^="language"]>span {
-    height: 16px;
-    margin-bottom: 3.7px;
+    height: 20px;
     line-height: 1em;
 }
 
@@ -138,6 +137,6 @@ div.sourceCode pre code .im{
 
 @font-face {
     font-family: "Cascadia Code";
-    src: url("/font/CascadiaCode/CascadiaCode.ttf");
+    src: url("/font/CascadiaCode/CascadiaMono.ttf");
     display: swap;
 }
