@@ -140,6 +140,7 @@ body::before {
     padding: 1.2em 0.7em 1.2em;
     font-size: 14px;
     height: auto;
+    position: relative;
 }
 
 .headline .news.news-article_wrap {
@@ -174,7 +175,7 @@ body::before {
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
     position: absolute;
-    right: -10px;
+    right: 0px;
     margin: auto;
     bottom: calc(50% - 8px / 2); /* 真ん中(50%)から矢印の高さの半分だけ下に下げることで矢印を中心に */
 }

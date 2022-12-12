@@ -57,6 +57,7 @@ main {
     z-index: 1000;
     width: 300px;
     padding: 100px 0px;
+    overflow: auto;
 }
 
 #nav-open {
@@ -173,9 +174,11 @@ z-index: 1000;
 #nav-content .nav-link {
     color: #808080;
     font-weight: 700;
-    font-size: 16px;
+    font-size: 18px;
     background-color: transparent !important;
     border-right: 8px false;
+    text-decoration: none;
+    font-family: "M Plus Rounded 1c";
 }
 
 #nav-content .nav-link:hover {
@@ -218,7 +221,7 @@ z-index: 1000;
 #nav-logo {
     width:150px;
     position:absolute;
-    top:15px;
+    top:5px;
     left:75px;
 }
 
