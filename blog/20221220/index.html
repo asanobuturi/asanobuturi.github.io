@@ -1,0 +1,34 @@
+<!doctype html><html lang=ja><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=description content="明日から使える受験テクニック？"><meta name=viewport content="width=device-width,initial-scale=1"><link rel=stylesheet href=/css/styles.min.css><link rel=icon href=/image/favicon.svg type=image/svg+xml><link rel="icon alternate" href=/image/favicon.ico><meta property="og:site_name" content="浅野学園物理部"><meta property="og:url" content="https://asanobuturi.github.io/blog/20221220/index.html"><meta property="og:title" content="「ただし同じ記号を二度用いてはならない」とは｜浅野学園物理部"><meta property="og:description" content="明日から使える受験テクニック？"><meta property="og:type" content="website"><meta property="og:image" content="https://asanobuturi.github.io/blog/20221220/thumbnail.jpg"><meta name=twitter:card content="summary_large_image"><meta name=twitter:site content="@Uchi54_APC"><title>「ただし同じ記号を二度用いてはならない」とは｜浅野学園物理部</title><script type=text/javascript async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML"></script><link rel=stylesheet href=/css/highlight.min.css><link rel=stylesheet href=/css/article.min.css><link rel=stylesheet href=/css/tableOfContents.min.css></head><body><nav id=nav-drawer><input id=nav-input type=checkbox class=nav-unshown>
+<label id=nav-open for=nav-input><span class="bar bar1"></span><span class="bar bar2"></span><span class="bar bar3"></span><span class=menu>MENU</span>
+<span class=close>CLOSE</span></label>
+<label id=nav-close for=nav-input></label><div id=nav-content><a href=/index.html><img loading=lazy src=/image/favicon.svg id=nav-logo alt=浅野学園物理部></a>
+<a class=nav-link href=/index.html>ホーム</a>
+<a class=nav-link href=/about/index.html>物理部とは</a>
+<a class=nav-link href=/document/index.html>部誌</a>
+<a class=nav-link href=/game/index.html>ゲーム</a>
+<a class="nav-link isActive" href=/blog/index.html>ブログ</a>
+<a class=nav-link href=/electronic/index.html>電工の部屋</a><div class=nav-separator></div><a class=nav-link href=/credit/index.html>クレジット(ライセンス)</a></div></nav><main><div id=text><a name=top></a><div id=breadcrumbs><a href=/index.html><img src=/image/icons/home-solid.svg class=inline-image>ホーム</a>
+<img src=/image/icons/angle-right-solid.svg class=inline-image>
+<a href=/blog/>ブログ</a>
+<img src=/image/icons/angle-right-solid.svg class=inline-image>
+<a href=/blog/20221220/>「ただし同じ記号を二度用いてはならない」とは</a></div><header id=overview><h1 id=title>「ただし同じ記号を二度用いてはならない」とは</h1><p><span class=author><img src=/image/icons/user-edit-solid.svg class="inline-image author-icon"></span>
+<span class=tags><img src=/image/icons/tags-solid.svg class="inline-image tag-icon">
+<a class=tag href=/blog/tags/%E6%95%B0%E5%AD%A6>数学</a><a class=tag href=/blog/tags/%E9%9B%91%E5%AD%A6>雑学</a></span></p><p class=date><img src=/image/icons/pen-to-square-solid.svg class=inline-image><time datetime=2022-12-20>2022年12月20日</time>
+<img src=/image/icons/arrow-rotate-right-solid.svg class=inline-image><time datetime=2022-12-20>2022年12月20日</time></p><div class=share><a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class=twitter-share-button data-related=Uchi54_apc data-lang=ja data-show-count=false>Tweet</a>
+<script async src=https://platform.twitter.com/widgets.js></script></div></header><article><h2 id=ただし同じ記号を二度用いてはならない>ただし同じ記号を二度用いてはならない</h2><blockquote><p>問題
+それぞれの空欄に最も適当なものを次の群から選びなさい。</p></blockquote><p>入試などではこんな問題をよく見かけると思います。そしてこのような問題のうち、空欄の数以上に選択肢が用意されている問題では、</p><blockquote><p><strong>ただし同じ記号を二度用いてはならない。</strong></p></blockquote><p>という制約がされていることがあります。これはいったい何のためなのでしょうか。ひねくれずに考えるなら、「答えやすくするため」なのでしょう。確かにこのような制約は時にヒントとなりえます。
+しかしわざわざ禁止しているのだから、「あてずっぽうでは点数を稼ぎにくくするため」なのではないかという気がしてくるものです。もしそうならばその効果はどれほどなのでしょうか。実際に調べてみましょう。
+以下では空欄をa個、選択肢をb個、それぞれの空欄を1点の問題（満点がa点）とします。</p><h2 id=空欄と選択肢が同じだけある場合>空欄と選択肢が同じだけある場合</h2><p>問題を解けずとも点数を取るための最も単純な戦略の一つは、「すべての空欄に同じ記号をいれて1点を確保する」でしょう。当然この場合、期待値は1です。しかしこの場合、それができなくなっています。なので先ほどの予想が正しければ、あてずっぽうの場合の期待値は1未満であると考えられます。
+実際に制約を守って回答した場合の期待値を計算してみましょう。例として1つ目の空欄に関して考えてみると、
+$$すべての回答：a!通り\1つ目が正解である回答：(a-1)!通り$$
+なので、これをa個の空欄に対して考えると期待値は
+$$\frac{(a-1)!}{a!}\times a=\frac{a!}{a!}=1$$
+！？
+予想外に期待値は「すべての空欄に同じ記号をいれて0点を回避」の場合と等しいようです。期待値が同じでもこの場合ではすべて外れれば0点、まぐれですべて当たればa点なので、より運が試されるようになったということでしょうか。</p><h2 id=空欄より選択肢が多い場合>空欄より選択肢が多い場合</h2><p>空欄より選択肢が多い場合はもう少し複雑なので、より点が取りづらくなるような気がします。この場合では先ほどの「1点確保」ができません。この手法の期待値は、その選択肢がいずれかの空欄に含まれる確率に等しいので
+$$\frac{{}<em>{b-1} C</em>{a-1}}{{}<em>b C</em>{a}}=\frac{(b-1)!}{(a-1)!(b-a)!} \frac{a!(b-a)!}{b!}=\frac{a}{b}$$
+です。
+次に、制約の中での期待値を求めるために、先ほどと同じように計算してみましょう。
+$$すべての回答：{}<em>b P_a通り\1つ目が正解である回答：{}</em>{b-1} P_{a-1}通り$$
+おや&mldr;？このことからa個の空欄での総得点の期待値は
+$$\frac{{}_{b-1} P_{a-1}}{{}_b P_a}\times a=\frac{(b-1)!}{(b-a)!}\frac{(b-a)!}{b!}\times a=\frac{a}{b}$$
+結局同じでしたね&mldr;</p><h2 id=結論>結論</h2><p>今回の検証で、この制約は紛れもなくヒントなのであるとわかりました。今後はこの制約に感謝しながら問題を解きたいと思います。</p><nav class=nextPrev><div class=prev>前へ<a href=https://asanobuturi.github.io/blog/20221106/>話題のアニメ声合成AI「MoeGoe」を使ってみよう ></a></div></nav></article></div><aside id=sidebar><div id=sidemenu><div class=side-back><a href=../index.html>記事の一覧へもどる<img src=/image/icons/sign-out-alt-solid.svg class=inline-image></a></div><div class=side-prev><a href=https://asanobuturi.github.io/blog/20221106/>話題のアニメ声合成AI「MoeGoe」を使ってみよう<img src=/image/icons/angle-right-solid.svg class=inline-image></a></div></div><div id=indexblock><div class=indextitle>目次</div><ol class=indexcontents><nav id=TableOfContents><ul><li><a href=#ただし同じ記号を二度用いてはならない>ただし同じ記号を二度用いてはならない</a></li><li><a href=#空欄と選択肢が同じだけある場合>空欄と選択肢が同じだけある場合</a></li><li><a href=#空欄より選択肢が多い場合>空欄より選択肢が多い場合</a></li><li><a href=#結論>結論</a></li></ul></nav></ol></div></aside></main><footer id=footer><p class=copyright>Copyright &copy; 2015 - 2022 Asano Physics Club, All Rights Reversed.</p><p class=note></p></footer></body></html>
