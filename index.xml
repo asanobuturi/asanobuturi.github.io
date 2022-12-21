@@ -1,4 +1,17 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>トップページ on 浅野学園物理部</title><link>https://asanobuturi.github.io/</link><description>Recent content in トップページ on 浅野学園物理部</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Tue, 20 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://asanobuturi.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>「ただし同じ記号を二度用いてはならない」とは</title><link>https://asanobuturi.github.io/blog/20221220/</link><pubDate>Tue, 20 Dec 2022 00:00:00 +0000</pubDate><guid>https://asanobuturi.github.io/blog/20221220/</guid><description>ただし同じ記号を二度用いてはならない 問題 それぞれの空欄に最も適当なものを次の群から選びなさい。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>トップページ on 浅野学園物理部</title><link>https://asanobuturi.github.io/</link><description>Recent content in トップページ on 浅野学園物理部</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Sun, 25 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://asanobuturi.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>ブログ記事の追加の仕方</title><link>https://asanobuturi.github.io/edit/blog/</link><pubDate>Sun, 25 Dec 2022 00:00:00 +0000</pubDate><guid>https://asanobuturi.github.io/edit/blog/</guid><description>ブログ記事の執筆の仕方 まず、書き上げた原稿(index.mdにリネームしてください)を/content/blog/20080801/index.mdのように/content/blog/&amp;lt;日付&amp;gt;/下に配置します。 その後、画像ファイルなどを同じディレクトリに配置して下さい。
+パラメータの設定 最後に、配置したファイルを開き、ファイルの最上部に
+1 2 3 --- //ここにオプションを追記していく --- を追記します。
+以下にオプションの一覧を示すので、それを参考に追記していってください。
+必須 タイトル 例:
+1 title: &amp;#34;物理部の幽霊部員とゲームの相関&amp;#34; このオプションはページのタイトル、一覧ページでの見出しに使用されます。
+日付 例:
+1 date: 2008-08-01 このオプションはページの日付、一覧ページでの並び替えに使用されます。
+説明 例:
+1 desc: &amp;#34;他人の金で食う焼肉は美味い&amp;#34; このオプションはOGPの説明、一覧ページでの説明に使用されます。
+著者 例:
+1 author: &amp;#34;フクブチョー&amp;#34; このオプションはページの著者、一覧ページでの著者に使用されます。
+タグ、カテゴリ 例:
+1 2 categories: [&amp;#34;技術記事&amp;#34;] tags: [&amp;#34;AI&amp;#34;,&amp;#34;ChatGPT&amp;#34;] このオプションはページのタグやカテゴリ、一覧ページでのタグの表示やソートに使用されます。</description></item><item><title>「ただし同じ記号を二度用いてはならない」とは</title><link>https://asanobuturi.github.io/blog/20221220/</link><pubDate>Tue, 20 Dec 2022 00:00:00 +0000</pubDate><guid>https://asanobuturi.github.io/blog/20221220/</guid><description>ただし同じ記号を二度用いてはならない 問題 それぞれの空欄に最も適当なものを次の群から選びなさい。
 入試などではこんな問題をよく見かけると思います。そしてこのような問題のうち、空欄の数以上に選択肢が用意されている問題では、
 ただし同じ記号を二度用いてはならない。
 という制約がされていることがあります。これはいったい何のためなのでしょうか。ひねくれずに考えるなら、「答えやすくするため」なのでしょう。確かにこのような制約は時にヒントとなりえます。 しかしわざわざ禁止しているのだから、「あてずっぽうでは点数を稼ぎにくくするため」なのではないかという気がしてくるものです。もしそうならばその効果はどれほどなのでしょうか。実際に調べてみましょう。 以下では空欄をa個、選択肢をb個、それぞれの空欄を1点の問題（満点がa点）とします。
