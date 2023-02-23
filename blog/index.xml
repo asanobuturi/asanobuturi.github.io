@@ -1,4 +1,30 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ブログ on 浅野学園物理部</title><link>https://asanobuturi.github.io/blog/</link><description>Recent content in ブログ on 浅野学園物理部</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Thu, 03 Nov 2022 12:58:53 +0900</lastBuildDate><atom:link href="https://asanobuturi.github.io/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>「ただし同じ記号を二度用いてはならない」とは</title><link>https://asanobuturi.github.io/blog/20221220/</link><pubDate>Tue, 20 Dec 2022 00:00:00 +0000</pubDate><guid>https://asanobuturi.github.io/blog/20221220/</guid><description>ただし同じ記号を二度用いてはならない 問題 それぞれの空欄に最も適当なものを次の群から選びなさい。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ブログ on 浅野学園物理部</title><link>https://asanobuturi.github.io/blog/</link><description>Recent content in ブログ on 浅野学園物理部</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Thu, 03 Nov 2022 12:58:53 +0900</lastBuildDate><atom:link href="https://asanobuturi.github.io/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>Kodi(LibreELEC)をセットアップする</title><link>https://asanobuturi.github.io/blog/20230223/</link><pubDate>Thu, 23 Feb 2023 00:00:00 +0000</pubDate><guid>https://asanobuturi.github.io/blog/20230223/</guid><description>実質前回の続きです。
+物理部には倉庫に保管されているだけのTVが２つ(片方は壊れている)あり、使われるのは5,6月ごろに行われる体験入部のときに極稀に使われるレベルです。去年、一昨年はTVを使わずに教室に備え付けのプロジェクターを使用する始末でした。
+そのTVを活用しようと、最近情報科から賜った全く活用されていないOptiPlex 780(コイツとは違う)にLibreELECをインストールし、活用することにしました。
+インストール LibreELCのダウンロードページからPC向けの&amp;quot;Generic PC (no NVIDIA support)&amp;ldquo;をダウンロードし、Etcherを使用して書き込みます。
+サーバーに接続 PCからサーバーに転送、それをKodiで再生したいと思ったので、サーバーに接続してみることにしました。
+左のメニューの[Pictures]からファイルをブラウズし、[Add pictures&amp;hellip;]を押して開くウィンドウの右の[Browse]を押すことで共有に接続する画面が出ます。今回Windows serverでSMBでLibreELECという名前の共有を作成しておきましたので、一番下の[Add network location&amp;hellip;]を押し、各種設定をします。
+サーバーのIPは192.168.0.90なので192.168.0.90を入力する。ユーザー名とパスワードも入力する。
+そして[OK]を押して共有を作成、使用したい共有を選択して[OK]を押し、ロケーションの名前を決めます。
+今回は名前をLibreELECとした。
+スピーカー なぜか音がOptiPlex内蔵のよわよわスピーカーからしか出なく、音量MAXでも3Dプリンターが隣で稼働しているだけで聞こえにくくなってしまう。これは如何なものかと思ったので受験勉強に来た高三を拉致してスピーカーのセットアップを行わせた。だが、電源のノイズが酷く使い物にならなかった。
+ノイズがなければ最高であった。
+終わりに DVD再生も可能でなので試験が終わったときにでも映画を部員と見たいと思います。
+この映画おすすめですよ。https://eiga.com/movie/78149/</description></item><item><title>ルーターをモバイルWiFiに接続する</title><link>https://asanobuturi.github.io/blog/20230222/</link><pubDate>Wed, 22 Feb 2023 00:00:00 +0000</pubDate><guid>https://asanobuturi.github.io/blog/20230222/</guid><description>モバイルWiFiをルーターと接続する必要があったのですが、ネットワーク素人の私にはNATコンバータなんて知識はなかったので、そのための備忘録として残しておきます。
+物理部には部費で買った楽天ポケットWiFiを使用しており、これは部員の生命線となっています。
+そして物理部にはもう一つネットワークがあり、それがTP-LinkのAX4800というルーターを頂点とする部内ネットワークです。ここのサーバーなどがこのネットワークに属しており、ファイル共有などに使用しています。
+そして部員はどちらのネットワークを使用するでしょうか。もちろん前者です。インターネットがつながっていないネットワークなんて誰も使いません。
+普通にモバイルWiFiから生えてるLANをルータに挿せばいいのではと思ったのですが、なんとモバイルWiFiから生えてるのはUSBです。これにはLANも刺さりません。1無線→有線の変換をどうにか中継機を使わずにやろうと必死にググった結果、iptablesというものを利用しポートフォワーディングすることでモバイルWiFiと接続できるということを知りました。これはやらないわけには行かないと思いましたので早速やることにしました。
+環境 ラズパイ:Raspberry pi 4 8GB
+ルーター:AX4800
+ポケットWiFi:楽天
+ポケットWiFiをeth1に、ルーターをeth0に接続。eth1を上流とする。
+IPの固定 nanoなりなんなりで/etc/dhcpcd.confに以下の内容を追記する。
+1 2 3 4 5 6 7 8 9 10 11 # ... interface eth1 static routers=192.168.0.1 static domain_name_servers=192.168.0.1 denyinterfaces eth0 interface eth0 static ip_address=192.168.20.1/24 static routers=0.0.0.0 static domain_name_servers=8.8.8.8 ラズパイのeth1はDHCPに頼ることにした。これはラズパイへのSSH等での接続の際に面倒になるので悪手であるが、二度とSSHで接続する必要が無いと信じてIPの固定をサボった。
+eth0のIPは適当に192.168.20.xxxにした。20の部分はすきに変えても問題はない。dnsmasqというdnsサーバーのソフトウェアのインストールがどうしても上手くいかなかったため、dnsmasqをインストールしてDNSサーバーを走らせるのではなくGoogle Public DNSに頼ることにしたが、ここにせラズパイで名前解決が必要になる状況がないはずなので一応として8.8.8.8を設定した。ここも1.1.1.1(Cloudflare)などお好みのモノを使っていただいて構わない。
+以上の操作終了後、dhcpcdを再起動させ設定を適用させる。
+1 sudo systemctl restart dhcpcd DHCPサーバーの設定 /etc/dhcp/dhcpd.confの
+1 2 option domain-name &amp;#34;example.org&amp;#34;; option domain-name-servers ns1.</description></item><item><title>「ただし同じ記号を二度用いてはならない」とは</title><link>https://asanobuturi.github.io/blog/20221220/</link><pubDate>Tue, 20 Dec 2022 00:00:00 +0000</pubDate><guid>https://asanobuturi.github.io/blog/20221220/</guid><description>ただし同じ記号を二度用いてはならない 問題 それぞれの空欄に最も適当なものを次の群から選びなさい。
 入試などではこんな問題をよく見かけると思います。そしてこのような問題のうち、空欄の数以上に選択肢が用意されている問題では、
 ただし同じ記号を二度用いてはならない。
 という制約がされていることがあります。これはいったい何のためなのでしょうか。ひねくれずに考えるなら、「答えやすくするため」なのでしょう。確かにこのような制約は時にヒントとなりえます。 しかしわざわざ禁止しているのだから、「あてずっぽうでは点数を稼ぎにくくするため」なのではないかという気がしてくるものです。もしそうならばその効果はどれほどなのでしょうか。実際に調べてみましょう。 以下では空欄をa個、選択肢をb個、それぞれの空欄を1点の問題（満点がa点）とします。

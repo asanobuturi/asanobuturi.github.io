@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Kodi on 浅野学園物理部</title><link>https://asanobuturi.github.io/blog/tags/kodi/</link><description>Recent content in Kodi on 浅野学園物理部</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Thu, 23 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://asanobuturi.github.io/blog/tags/kodi/index.xml" rel="self" type="application/rss+xml"/><item><title>Kodi(LibreELEC)をセットアップする</title><link>https://asanobuturi.github.io/blog/20230223/</link><pubDate>Thu, 23 Feb 2023 00:00:00 +0000</pubDate><guid>https://asanobuturi.github.io/blog/20230223/</guid><description>実質前回の続きです。
+物理部には倉庫に保管されているだけのTVが２つ(片方は壊れている)あり、使われるのは5,6月ごろに行われる体験入部のときに極稀に使われるレベルです。去年、一昨年はTVを使わずに教室に備え付けのプロジェクターを使用する始末でした。
+そのTVを活用しようと、最近情報科から賜った全く活用されていないOptiPlex 780(コイツとは違う)にLibreELECをインストールし、活用することにしました。
+インストール LibreELCのダウンロードページからPC向けの&amp;quot;Generic PC (no NVIDIA support)&amp;ldquo;をダウンロードし、Etcherを使用して書き込みます。
+サーバーに接続 PCからサーバーに転送、それをKodiで再生したいと思ったので、サーバーに接続してみることにしました。
+左のメニューの[Pictures]からファイルをブラウズし、[Add pictures&amp;hellip;]を押して開くウィンドウの右の[Browse]を押すことで共有に接続する画面が出ます。今回Windows serverでSMBでLibreELECという名前の共有を作成しておきましたので、一番下の[Add network location&amp;hellip;]を押し、各種設定をします。
+サーバーのIPは192.168.0.90なので192.168.0.90を入力する。ユーザー名とパスワードも入力する。
+そして[OK]を押して共有を作成、使用したい共有を選択して[OK]を押し、ロケーションの名前を決めます。
+今回は名前をLibreELECとした。
+スピーカー なぜか音がOptiPlex内蔵のよわよわスピーカーからしか出なく、音量MAXでも3Dプリンターが隣で稼働しているだけで聞こえにくくなってしまう。これは如何なものかと思ったので受験勉強に来た高三を拉致してスピーカーのセットアップを行わせた。だが、電源のノイズが酷く使い物にならなかった。
+ノイズがなければ最高であった。
+終わりに DVD再生も可能でなので試験が終わったときにでも映画を部員と見たいと思います。
+この映画おすすめですよ。https://eiga.com/movie/78149/</description></item></channel></rss>
