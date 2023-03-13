@@ -1,4 +1,12 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>トップページ on 浅野学園物理部</title><link>https://asanobuturi.github.io/</link><description>Recent content in トップページ on 浅野学園物理部</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Thu, 23 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://asanobuturi.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Kodi(LibreELEC)をセットアップする</title><link>https://asanobuturi.github.io/blog/20230223/</link><pubDate>Thu, 23 Feb 2023 00:00:00 +0000</pubDate><guid>https://asanobuturi.github.io/blog/20230223/</guid><description>実質前回の続きです。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>トップページ on 浅野学園物理部</title><link>https://asanobuturi.github.io/</link><description>Recent content in トップページ on 浅野学園物理部</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Mon, 13 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://asanobuturi.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>T-STEAM:Pro 2022 総合、競技部門で優勝しました</title><link>https://asanobuturi.github.io/blog/20230313/</link><pubDate>Mon, 13 Mar 2023 00:00:00 +0000</pubDate><guid>https://asanobuturi.github.io/blog/20230313/</guid><description>前置き どうも高一の平部員です。
+3月13日に行われた豊島岡女子学園が主催する T-STEAM:Pro 2022 ~MyoElectric~ において我々APC(浅野学園物理部)が総合、競技部門で優勝しました！
+今年の T-STEAM:Pro は「筋電義手を作成する」というテーマで行われ、APC(浅野学園物理部)が見事総合、競技部門で優勝しました。 期末考査の勉強時間を削った甲斐がありました。
+感想 私たちのチームは顧問の先生の都合で、本番当日に会場で実演をすることができなかったので事前に撮影した動画で競技に参加することになりました。 YouTube Liveで競技の様子を見ていると本番でトラブルになっているチームが多く、勿体ないなと感じました。 私たちは動画撮影の2時間ほど前に集まり、そこで1時間ほど本番に近い状況で練習したのですが、それがかなり功を奏したのだと思います。
+作った機体を紹介する動画では面白いアイデアが多く、それぞれ機体について詳しく説明されていて参考になる部分が多かったです。 自分たちの紹介動画も、もっと時間をかけて作ればよかったなと思っています。
+また、東京電機大学の浅沼さんの研究生活についての講義もとても参考になりました。
+最後に ここ数年間、浅野学園の理科部の中で物理部だけ実績がないという状態が続いていたので実績を作ることができてよかったです(?)
+では、また。
+(制作した機体の詳細について後日追記する予定です)</description></item><item><title>Kodi(LibreELEC)をセットアップする</title><link>https://asanobuturi.github.io/blog/20230223/</link><pubDate>Thu, 23 Feb 2023 00:00:00 +0000</pubDate><guid>https://asanobuturi.github.io/blog/20230223/</guid><description>実質前回の続きです。
 物理部には倉庫に保管されているだけのTVが２つ(片方は壊れている)あり、使われるのは5,6月ごろに行われる体験入部のときに極稀に使われるレベルです。去年、一昨年はTVを使わずに教室に備え付けのプロジェクターを使用する始末でした。
 そのTVを活用しようと、最近情報科から賜った全く活用されていないOptiPlex 780(コイツとは違う)にLibreELECをインストールし、活用することにしました。
 インストール LibreELCのダウンロードページからPC向けの&amp;quot;Generic PC (no NVIDIA support)&amp;ldquo;をダウンロードし、Etcherを使用して書き込みます。
