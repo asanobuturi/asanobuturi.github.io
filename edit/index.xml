@@ -11,4 +11,10 @@
 著者 例:
 1 author: &amp;#34;フクブチョー&amp;#34; このオプションはページの著者、一覧ページでの著者に使用されます。
 タグ、カテゴリ 例:
-1 2 categories: [&amp;#34;技術記事&amp;#34;] tags: [&amp;#34;AI&amp;#34;,&amp;#34;ChatGPT&amp;#34;] このオプションはページのタグやカテゴリ、一覧ページでのタグの表示やソートに使用されます。</description></item><item><title>サムネイルジェネレーター</title><link>https://asanobuturi.github.io/edit/thumbnail_generator/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://asanobuturi.github.io/edit/thumbnail_generator/</guid><description/></item></channel></rss>
+1 2 categories: [&amp;#34;技術記事&amp;#34;] tags: [&amp;#34;AI&amp;#34;,&amp;#34;ChatGPT&amp;#34;] このオプションはページのタグやカテゴリ、一覧ページでのタグの表示やソートに使用されます。
+任意 head 例:
+1 head: &amp;#34;&amp;lt;styles&amp;gt;* { display: none; }&amp;lt;/styles&amp;gt;&amp;#34; このオプションは&amp;lt;head&amp;gt;要素の中に追加で要素を挿入したい場合に使用します。
+最終更新日 例:
+1 lastmod: 2022-08-01 このオプションはページの最終更新の日付、一覧ページでの最終更新の日付に使用されます。ページを更新した場合、これを書くべきでしょう。
+エイリアス 例:
+1 aliases: [&amp;#34;/apc/index.html&amp;#34;] このオプションは設定したURLにアクセスした場合にページにリダイレクトするファイルを生成します。</description></item><item><title>サムネイルジェネレーター</title><link>https://asanobuturi.github.io/edit/thumbnail_generator/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://asanobuturi.github.io/edit/thumbnail_generator/</guid><description/></item></channel></rss>

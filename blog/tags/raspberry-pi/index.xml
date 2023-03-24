@@ -12,4 +12,6 @@ IPの固定 nanoなりなんなりで/etc/dhcpcd.confに以下の内容を追記
 eth0のIPは適当に192.168.20.xxxにした。20の部分はすきに変えても問題はない。dnsmasqというdnsサーバーのソフトウェアのインストールがどうしても上手くいかなかったため、dnsmasqをインストールしてDNSサーバーを走らせるのではなくGoogle Public DNSに頼ることにしたが、ここにせラズパイで名前解決が必要になる状況がないはずなので一応として8.8.8.8を設定した。ここも1.1.1.1(Cloudflare)などお好みのモノを使っていただいて構わない。
 以上の操作終了後、dhcpcdを再起動させ設定を適用させる。
 1 sudo systemctl restart dhcpcd DHCPサーバーの設定 /etc/dhcp/dhcpd.confの
-1 2 option domain-name &amp;#34;example.org&amp;#34;; option domain-name-servers ns1.</description></item></channel></rss>
+1 2 option domain-name &amp;#34;example.org&amp;#34;; option domain-name-servers ns1.example.org, ns2.example.org; の2つをコメントアウトし、
+1 #authoritative; をコメントから外すことで正当なDHCPサーバーであることを示します。
+そして以下を追記します。</description></item></channel></rss>
