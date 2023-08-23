@@ -1,0 +1,251 @@
+<!doctype html><html lang=ja><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=description content="ちょっと危険なプログラミング技術の紹介"><meta name=viewport content="width=device-width,initial-scale=1"><link rel=stylesheet href=/scss/styles.min.4a71567d35f0565714f9b264f620dd2c5abcdd3fd6d8bc1fe2bafa8114c2fe47.css><link rel=icon href=/image/favicon.svg type=image/svg+xml><link rel="icon alternate" href=/image/favicon.ico><meta property="og:site_name" content="浅野学園物理部"><meta property="og:url" content="https://asanobuturi.github.io/document/2002/2/index.html"><meta property="og:title" content="Windowsドッキリプログラミング初級｜浅野学園物理部"><meta property="og:description" content="ちょっと危険なプログラミング技術の紹介"><meta property="og:type" content="website"><meta property="og:image" content="https://asanobuturi.github.io/document/2002/2/thumbnail.jpg"><meta name=twitter:card content="summary_large_image"><meta name=twitter:site content="@Uchi54_APC"><link rel=canonical href=https://asanobuturi.github.io/document/2002/2/><script async src="https://www.googletagmanager.com/gtag/js?id=G-M4YH1E5WC1"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-M4YH1E5WC1")</script><title>Windowsドッキリプログラミング初級｜浅野学園物理部</title><script type=text/javascript src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<link rel=stylesheet href=/scss/highlight.min.9b4082acf90ec245e99e303a9e09c0a4ffa77b9754c98965a6bdb067c39e9c14.css><link rel=stylesheet href=/scss/article.min.5ab46a9154b676996cd1867b86fa75a6f6dfd4cf58534c093b363ff6739f3f03.css><link rel=stylesheet href=/scss/tableOfContents.min.603245923695f62c9be0618c1b6a10599acbf0f4f5056ffe631acd014b70fd17.css></head><body><nav id=nav-drawer><input id=nav-input type=checkbox class=nav-unshown>
+<label id=nav-open for=nav-input><span class="bar bar1"></span>
+<span class="bar bar2"></span>
+<span class="bar bar3"></span>
+<span class=menu>MENU</span>
+<span class=close>CLOSE</span></label>
+<label id=nav-close for=nav-input></label><div id=nav-content><a href=/index.html><img loading=lazy src=/image/favicon.svg id=nav-logo alt=浅野学園物理部></a>
+<a class=nav-link href=/index.html>ホーム</a>
+<a class=nav-link href=/about/index.html>物理部とは</a>
+<a class="nav-link isActive" href=/document/index.html>部誌</a>
+<a class=nav-link href=/game/index.html>ゲーム</a>
+<a class=nav-link href=/blog/index.html>ブログ</a>
+<a class=nav-link href=/electronic/index.html>電工の部屋</a><hr><a class=nav-link href=/credit/index.html>クレジット(ライセンス)</a></div></nav><main><div id=content><a name=top></a><div id=breadcrumbs><a href=/index.html><img src=/image/icons/home-solid.svg class=inline-image>ホーム</a>
+<img src=/image/icons/angle-right-solid.svg class=inline-image>
+<a href=/document/>部誌</a>
+<img src=/image/icons/angle-right-solid.svg class=inline-image>
+<a href=/document/2002/>2002年度部誌</a>
+<img src=/image/icons/angle-right-solid.svg class=inline-image>
+<a href=/document/2002/2/>Windowsドッキリプログラミング初級</a></div><header id=overview><h1 id=title>Windowsドッキリプログラミング初級</h1><div><div class=properties><span class=author><img src=/image/icons/user-edit-solid.svg class=inline-image>
+池谷</span></div><div class=share><span><a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class=twitter-share-button data-related=Uchi54_apc data-lang=ja data-show-count=false>Tweet</a>
+<script async src=https://platform.twitter.com/widgets.js></script></span></div></div></header><article><h2 id=はじめに>はじめに</h2><p>ここでは、C++を使ってWindows上で動く<strong>ビックリ</strong>なプログラム(初級)を厳選して作っていきます。なので、プログラミングの知識が必要となってきます。今回、ここでプログラミングの説明をしている余裕がないので、勝手に、あなたがC++を知っているということにしてしまいます(←超手抜き)。C++での作業にあたってはVC++を使ってください。そうすればここに書いてあるとおりにすれば同じ結果になるはず。あと、ここでは、Windowsの特殊な知識(API)を身につけなきゃならんので要注意。APIについては次の章を読んでね。</p><h2 id=apiについて>APIについて</h2><p>Windowsには<strong>API</strong>(Application Programming Interface)という、膨大な関数群がある。APIは使用用途によって分類されているのだ(Windowsで標準的に使われるWin32API、DirectX関連で使われるDirectX APIなど)。Windowsアプリケーションはこれらを使っていろんなことができるわけだ(例えばウィンドウの描画とか&mldr;etc)。C++では、APIを直接使うのが一般的(MFCなるものもありますがね)。
+C++では
+<strong>&ldquo;windows.h&rdquo;</strong>
+をインクルードするだけで利用可能。具体的にもっと知りたいという読者は、本を立ち読みしたり(プログラミング関連の本って高すぎ)、MSDNライブラリを漁ってみたりしてください。</p><h2 id=サンプルについて>サンプルについて</h2><p>我が部には、CD-ROM付録など、高等なことをするほど<strong>さいふが豊かではない</strong>ので、ベーマガ(BASIC Magazineのつもり)同様、<strong>人間コピー機を作動させてください</strong>。スキャナーを持っているブルジョアな人は、それを使ってもかまいませんよ。あと、新型のヴィールスを作ろうと思っている方、ハッキングを試みている方、この記事はあまりその方面には縁がないと思います。どちらかというと<strong>憎いやつを叩きのめしてやりたいと思っている人向け</strong>かも?</p><h2 id=注意>注意!</h2><p>ここでは、少々<strong>アブナイ</strong>ことをするので、要注意。<strong>慎重</strong>に作業を遂行せよ!あと、生成物は<strong>個人で</strong>楽しむことを前提としているので、**決して他人に迷惑をかけないように!<strong>また、この記事が原因で発生したいかなる損害も</strong>われわれは責任をとらないぞ!**あと、WinNT系での動作は一切未確認。大半はできないでしょう。では、さっそく実践に入りましょう。</p><h3 id=マウスが>マウスが。。。</h3><p>マウスカーソルが飛び回るものを作ってみましょう。</p><div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">27
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">28
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">29
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">30
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">31
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">32
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;windows.h&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span>WINAPI <span style=color:#a6e22e>WinMain</span>(HINSTANCE hI nstance, HINSTANCE hPrevInstance, LPSTR Cmd, <span style=color:#66d9ef>int</span> iState)
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>    BOOL ret;
+</span></span><span style=display:flex><span>    MSG msg;
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// メッセージループ
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#66d9ef>while</span> (<span style=color:#ae81ff>1</span>)
+</span></span><span style=display:flex><span>    {
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// メッセージチェック
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        ret <span style=color:#f92672>=</span> PeekMessage(<span style=color:#f92672>&amp;</span>msg, NULL, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>, PM_REMOVE);
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> (ret)
+</span></span><span style=display:flex><span>        { <span style=color:#75715e>// 終了判定
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>            f(msg.message <span style=color:#f92672>==</span> WM_QUIT) <span style=color:#66d9ef>return</span> msg.wParam;
+</span></span><span style=display:flex><span>            <span style=color:#75715e>// その他の処理
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>            TranslateMessage(<span style=color:#f92672>&amp;</span>msg);
+</span></span><span style=display:flex><span>            DispatchMessage(<span style=color:#f92672>&amp;</span>msg);
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>else</span>
+</span></span><span style=display:flex><span>        {
+</span></span><span style=display:flex><span>            <span style=color:#75715e>// Win が暇なとき
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>            <span style=color:#66d9ef>if</span> (rand() <span style=color:#f92672>%</span> <span style=color:#ae81ff>50000</span> <span style=color:#f92672>==</span> <span style=color:#ae81ff>0</span>)
+</span></span><span style=display:flex><span>            {
+</span></span><span style=display:flex><span>                <span style=color:#75715e>// マウスカーソルをランダムに動かす
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>                <span style=color:#66d9ef>int</span> x <span style=color:#f92672>=</span> rand() <span style=color:#f92672>%</span> GetSystemMetrics(SM_CXSCREEN);
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>int</span> y <span style=color:#f92672>=</span> rand() <span style=color:#f92672>%</span> GetSystemMetrics(SM_CYSCREEN);
+</span></span><span style=display:flex><span>                SetCursorPos(x, y);
+</span></span><span style=display:flex><span>            }
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> msg.wParam;
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></td></tr></table></div></div><p>メッセージループのためにコードが冗長になっていますね。メッセージループとはアプリケーションが実行されている間に無限に行われるループのことだよん。ここで、イベント処理などをしたりするんです。PeekMessage()、TranslateMessage()、DispatchMessage()等がそれにあたります。重要なのは、**elseの中は、イベントが何もなかったときに実行されるということ。**つまり、ほぼ毎回実行されると考えて良いでしょう。細かい説明はぬきにして、次に進みましょう。このサンプルでは、先ほどあげた関数やGetSystemMetrics()、SetCursorPos()など多くのAPIを利用しています。<strong>GetSystemMetrics(SM_CXSCREEN)で、全画面の幅、GetSystemMetrics(SM_CXSCREEN)で高さ</strong>を取得可能。それらを乱数にかけ、画面内の任意の座標を定め、<strong>SetCursorPos()関数でマウスカーソルの座標をピクセル単位で指定(X座標,Y座標)<strong>してやればマウスが画面上を動き回るわけ。ちなみに、rand()%50000とあるけれど、それは、<strong>マウスカーソルをゆっくり動かすため</strong>のものなのです。このサンプルで</strong>大事なのは、SetCursorPos()の使い方</strong>です。そこを理解すれば、自分のものにできるでしょう。最後に終了の仕方なのですが、<strong>VC++上でなら[Shift]+[F5]、それ以外のときは強制終了</strong>してください(他のサンプルのときも同様)。</p><h3 id=壁紙が>壁紙が！</h3><p>実行すると壁紙が変わってしまうプログラムを作りましょう。<strong>ビットマップファイルが必要になるので適当なもの(サイズ、色数、内容は何でもよし)を実行ファイルと同じフォルダに置いておきましょう。</strong>
+名前は
+<strong>&ldquo;wp.bmp&rdquo;</strong>
+としてください。</p><div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">9
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;windows.h&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span>WINAPI <span style=color:#a6e22e>WinMain</span>(HINSTANCE hI nstance, HINSTANCE hPrevInstance, LPSTR Cmd, <span style=color:#66d9ef>int</span> iState)
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// メッセージループ不要
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#66d9ef>char</span> s[MA X_PATH] <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;wp.bmp&#34;</span>;
+</span></span><span style=display:flex><span>    SystemParametersInfo(SPI_SETDESKWALLPAPER, <span style=color:#ae81ff>0</span>, s, SPIF_SENDWININICHANGE <span style=color:#960050;background-color:#1e0010>¦</span>SPIF_UPDATEINIFILE);
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>;
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></td></tr></table></div></div><p>壁紙の変更はひとつのAPIで可能。それは<strong>SystemParametersInfo()関数</strong>。この関数は、<strong>システム情報を取得/設定</strong>できます。第1パラメータに取得/設定する項目、第2パラメータに取得したものを格納するポインタ、第3パラメータに設定する値、第4パラメータに更新の方法を入れてやる。今回、壁紙の変更をするので、第1パラメータは<strong>SPI_SETDESKWALLPAPER</strong>にして、第2パラメータは不要なので0にし、第3パラメータは壁紙にするビットマップファイルの<strong>パスの文字列へのポインタ</strong>、第4パラメータには設定ファイルを更新し、全てのアプリケーションにその旨を伝えることを意味する<strong>SPIF_SENDWININICHANGE定数</strong>と<strong>SPIF_UPDATEINIFILE定数</strong>を<strong>OR結合</strong>しておきます(APIなどでは、複数の項目をセットする際、OR結合を良く使います)。注意してほしいのは、ビットマップファイルのパスの文字列を直接、パラメータに入れてはいけないということ。必ず、**変数に書き込んでからそのポインタをパラメータに入れよう。**なお、カレントディレクトリが実行ファイルのあるフォルダと異なっていると変更に失敗します。それを解消したいなら、SearchPath()やGetModuleFileName()などのAPI関数を使うと良いでしょう(各自で調べてくれ)。SystemParametersInfo()は他にいろんな設定を取得/変更することが可能。ぜひ、MSDNライブラリを漁ってみるといいよ。ちなみに、壁紙の表示方法には中央/並べる/拡大の3つがある。これらを変更するにはSystemParametersInfo()を呼び出す前にレジストリをいじくらなけりゃならない。場所はHKEY_CURRENT_USER¥ControlPanelセクションにあるDesktopTileWallpaperキーと、WallpaperStyleキーだ。前者(堅苦っしいしい表現だなぁ)を0にすると中央に表示、1にすると並べて表示になる。後者を2にすると拡大表示になるので試してみては。<strong>regedit</strong>を起動して先ほどの場所に行ってみましょう。面倒だったら検索にかけてもかまいません(私はWallpaperという単語でこれらの項目を探し出した)。レジストリをいじったり探したりするのにはregeditが便利。プログラム上でのレジストリの変更方法は最後のサンプルを参考にしてみてね。</p><h3 id=うんざりアイコン>うんざりアイコン</h3><p>デスクトップに嫌なほどアイコンを作ってみましょう(実行ファイル自身をデスクトップフォルダに大量に複製)。余談ですが、我が部ではこのようなことをネットワークでやった愚者がいて、戦争になった事もあったなぁ(そいつ遊んでばっかいる馬鹿中の馬鹿であるのだが、なぁK藤君)。それを自分のパソコンに自動的にやるわけですね(自爆?意味無いじゃん)。</p><div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">21
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;windows.h&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;shlobj.h&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#define ICON_NUM 100
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span>WINAPI <span style=color:#a6e22e>WinMain</span>(HINSTANCE hI nstance, HINSTANCE hPrevInstance, LPSTR Cmd, <span style=color:#66d9ef>int</span> iState)
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>char</span> path[MAX_PATH];
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>char</span> src[MAX_PATH];
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>char</span> dest[MAX_PATH];
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// デスクトップに実行ファイルを多数置く
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    SHGetSpecialFolderPath(NULL, path, CSIDL_DESKTOPDIRECTORY, FALSE);
+</span></span><span style=display:flex><span>    wsprintf(path, <span style=color:#e6db74>&#34;%s¥¥game&#34;</span>, path);
+</span></span><span style=display:flex><span>    GetModuleFileName(hInstance, src, MAX_PATH);
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; i <span style=color:#f92672>&lt;</span> ICON_NUM; i<span style=color:#f92672>++</span>)
+</span></span><span style=display:flex><span>    {
+</span></span><span style=display:flex><span>        wsprintf(dest, <span style=color:#e6db74>&#34;%s(%d).exe&#34;</span>, path, i);
+</span></span><span style=display:flex><span>        CopyFile(src, dest, FALSE);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>;
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></td></tr></table></div></div><figure><img src=1.jpeg><figcaption>消そうとして、誤って全選択中にダブルクリックしてしまったら...100x100!</figcaption></figure><p>実行ファイルのアイコンを設定するには、プロジェクトに自分の好きなアイコンを追加してください(上図はWingdingsフォントの大文字のN=<strong>どくろマーク</strong>をアイコンにした例)。やることは単純、まず、<strong>デスクトップフォルダのパスを取得</strong>、そこに<strong>実行ファイル自身をコピー</strong>。これを一定の数だけ繰り返す。同じファイル名でコピーすると上書きされてしまうので、ファイル名をgame(n).exeのように、<strong>数字が含まれるように</strong>します(なぜ、game?)。<strong>SHGetSpecialFolderPath()関数でデスクトップフォルダを取得します</strong>。このAPIは"windows.h"では定義されていないので注意が必要。代わりに
+<strong>&ldquo;shlobj.h&rdquo;</strong>
+で定義されている。ファイルシステムに関するAPIはWin32と隔離されているのです。それはさておき、SHGetSpecialFolderPath()関数は他に、いろいろな特殊フォルダを取得できます(マイドキュとかWindowsとかSystem、のちのち出てきますがスタートアップとか&mldr;ほかいろいろ)。3番目のパラメータに定数を代入すれば取得するフォルダの種類が選択可。デスクトップフォルダを取得するには、<strong>CSIDL_DESKTOPDIRECTORY</strong>を使います。このフォルダはご存じの通り、たいていの場合は"ルートドライブ:¥Windows¥デスクトップ¥"でしょう。一見、これをそのまま使えばよいと思うかもしれませんが、あくまでこれはデフォルト値なのです。凝ったユーザーは故意に別にしているかもしれない。アプリケーションを設計する際にはそういう<strong>まれなケースも重要視</strong>しなければならないのだ(念には念を押すのだぁ!)。SHGetSpecialFolderPath()を使えばほぼ確実に目的のフォルダのパスを入手できる。パスを格納するためのバッファのポインタを2番目のパラメータに入れましょう。ファイルのコピーには<strong>CopyFile()関数</strong>を使うのですが、その前に、実行ファイル自身のパスを準備しなければなりませんね。仮に実行ファイル名を、&ldquo;game.exe"とするならば、コピー元を"game.exe"にするだけで一応OKです(壁紙変更のサンプルと同様)。しかし、このように書くと、カレントディレクトリ内にある"game.exe"という名のファイルを示します(カレントディレクトリがわからんという人はDOSプロンプトを起動してそこに表示されているパスを見てくれればわかるでしょう)。そのためカレントディレクトリとアプリケーションのディレクトリが異なる場合、問題発生!そこで、<strong>GetModuleFilePath()関数</strong>を使う。このAPI関数は、<strong>実行ファイル自身のパスとファイル名を取得</strong>できるのでとても便利。後はコピー先として、デスクトップフォルダに数字を含めたファイル名を結合してやるだけ。わりと簡単でしょ。ちなみに、ICON_NUM定数は(見てのとおり)複製するファイルの数だよ(サンプルでは100になっているが、この数字をどう変えるかはあなた次第だ)。</p><h3 id=強制終了っとあれっ>強制終了っと&mldr;あれっ!</h3><p>Windowsで不可欠な強制終了。今それを剥ぎ取ってみせましょう。</p><div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">7
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;windows.h&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>WINAPI <span style=color:#a6e22e>WinMain</span>(HINSTANCE hI nstance, HINSTANCE hPrevInstance, LPSTR Cmd, <span style=color:#66d9ef>int</span> iState)
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>int</span> sw <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>    SystemParametersInfo(SPI_SCREENSAVERRUNNING, sw, <span style=color:#ae81ff>0</span>, SPIF_SENDWININICHANGE <span style=color:#960050;background-color:#1e0010>¦</span> SPIF_UPDATEINIFILE);
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>;
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></td></tr></table></div></div><p>かっ、簡単!これだけでそんなことができるのか!このサンプルは<strong>岡本武史さんの「VisualBasicAPIサンプル集」で発見</strong>。このサンプル集は他にもいろいろ役立てられるものがたくさん。Webで探してみてください(後で知ったことなのだが、壁紙の変更方法がまるっきりこのサンプル集に載っていました。もっと早く見つけてれば、レジストリの検索しないで済んだのにぃT_T)。しかし、なぜこのようなAPIがあるのだろうか。<strong>SystemParametersInfo()関数</strong>は、壁紙の変更サンプルでも登場しましたね。<strong>SPI_SCREENSAVERRUNNING</strong>定数を使うとこういう使い道もできるんですねぇ。2番目のパラメータを0にすると強制終了OFF、1にするとON。sw変数の値を変更してください(元に戻すのを忘れると大変なことに&mldr;)。3番目は0にしてください。でもなんでSCREENSAVERなんだ?そうか、スクリーンセーバー中に強制終了されないようにするためのものなのか!だから、**ウィンドウズキーや[Alt]+[Tab]**も効かないんだ。納得納得(もし、パスワード付のスクリーンセーバー中に強制終了されてしまったらしゃれになんないなぁ)。そこで、MSDNライブラリを調べてみると&mldr;ぎゃっはっはぁ、「<strong>内部的に使用されています。使わないでください。</strong>」だって。笑えるね。さすがにおおっぴらにするわけにはいかなかったんだろうね。ただし、WinNT系では動かないそうです(そりゃそうじゃなきゃ困る)。</p><h3 id=起動時に発症>起動時に発症!</h3><p>では最後に、Windows起動時に起動するようなアプリケーションを作りましょうか。これはかなり役に立つし使える。一般に2とおりの方法がありますがひとつずつ見てきましょう。</p><div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">20
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=display:flex><span><span style=color:#75715e>// スタートアップによる手法
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;windows.h&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span>WINAPI <span style=color:#a6e22e>WinMain</span>(HINSTANCE hI nstance, HINSTANCE hPrevInstance, LPSTR Cmd, <span style=color:#66d9ef>int</span> iState)
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>char</span> path[MAX_PATH];
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>char</span> file[MAX_PATH];
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// スタートアップフォルダを探す(カレントユーザー)
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    SHGetSpecialFolderPath(NULL, path, CSIDL_STARTUP, FALSE);
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> (SearchPath(path, <span style=color:#e6db74>&#34;Worm.exe&#34;</span>, NULL, MAX_PATH, file, NULL) <span style=color:#f92672>==</span> <span style=color:#ae81ff>0</span>)
+</span></span><span style=display:flex><span>    {
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// インストールされておらず
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        wsprintf(path, <span style=color:#e6db74>&#34;%s¥¥%s&#34;</span>, path,<span style=color:#e6db74>&#34;Worm.exe&#34;</span>);
+</span></span><span style=display:flex><span>        GetModuleFileName(hInstance, file, MAX_PATH);
+</span></span><span style=display:flex><span>        CopyFile(file, path, FALSE);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>else</span>
+</span></span><span style=display:flex><span>        MessageBox(NULL, <span style=color:#e6db74>&#34;がはは&#34;</span>, <span style=color:#e6db74>&#34;&#34;</span>, <span style=color:#ae81ff>0</span>); <span style=color:#75715e>// インストール済み
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#66d9ef>return</span> <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>;
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></td></tr></table></div></div><p>まず、これはスタートメニューの<strong>スタートアップを利用</strong>したやつ。<strong>一回起動するとスタートアップに自分自身を複製し、次回からのWindows起動時に毎回メッセージボックスを表示</strong>させます。デスクトップフォルダを入手するときに使った**SHGetSpecialFolderPath()**が再登場!<strong>CSIDL_STARTUP</strong>定数を使えばカレントユーザーのスタートアップフォルダを取得可能。</p><p>全てのユーザーに有効なわけではない(マルチユーザーの場合)。その後、<strong>SearchPath()関数</strong>を使って目的のファイルがすでに存在しているかを確認。SearchPath()関数は、ファイルの検索に使用するAPI関数ですが、このように<strong>ファイルの存在を確認する</strong>のにも利用でる。ややこしいが、パラメータは順に、検索パス、ファイル名、拡張子、バッファのサイズ、バッファへのポインタ、ファイル名の先頭へのポインタを格納する変数のポインタとなっている。ファイル検索をするなら、検索したいところをNULLにしてやれば良い。今回のように存在の有無の確認ならば、最初の3つは指定してやる。検索したわけではないので、検索結果は必要ないんだが、バッファをNULLにすると、エラーが出たのでダミーを入れときました。SearchPath()関数は成功すると0以外の値を返します。つまり、ここでは、ファイルがすでに存在しているなら0以外が返りますね。じゃあ、逆に存在していない(エラーがあった可能性もあるが)場合は0を返すわけです。つまり始めての起動ってこと。それなら、スタートアップに登録しなければ。複製の仕方は前のサンプル同様。よって省略。もし存在する(=Windows起動時に起動)ならメッセージボックス表示。<strong>MessageBox()関数</strong>は簡単なので省略。早く次へ進みましょう。</p><p><img src=2.jpeg alt></p><p><img src=3.jpeg alt></p><div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">21
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=display:flex><span><span style=color:#75715e>// レジストリを使う手法
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;windows.h&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span>WINAPI <span style=color:#a6e22e>WinMain</span>(HINSTANCE hI nstance, HINSTANCE hPrevInstance, LPSTR Cmd, <span style=color:#66d9ef>int</span> iState)
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>char</span> file[MAX_PATH];
+</span></span><span style=display:flex><span>    DWORD result;
+</span></span><span style=display:flex><span>    HKEY hkey;
+</span></span><span style=display:flex><span>    RegCreateKeyEx(HKEY_LOCAL_MACHINE, <span style=color:#e6db74>&#34;SOFTWARE¥¥Microsoft¥¥Windows¥¥CurrentVersion¥¥run&#34;</span>, <span style=color:#ae81ff>0</span>, NULL, REG_OPTION_NON_VOLATILE, KEY_ALL_ACCESS, NULL, <span style=color:#f92672>&amp;</span>hkey, <span style=color:#f92672>&amp;</span>result);
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> (RegQueryValueEx(hkey, <span style=color:#e6db74>&#34;Worm&#34;</span>, <span style=color:#ae81ff>0</span>, NULL, NULL, NULL) <span style=color:#f92672>!=</span> ERROR_SUCCESS)
+</span></span><span style=display:flex><span>    {
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// インストールされていない
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        GetModuleFileName(hInstance, file, MAX_PATH);
+</span></span><span style=display:flex><span>        RegSetValueEx(hkey, <span style=color:#e6db74>&#34;Worm&#34;</span>, <span style=color:#ae81ff>0</span>, REG_SZ,
+</span></span><span style=display:flex><span>                      (<span style=color:#66d9ef>const</span> BYTE <span style=color:#f92672>*</span>)file, lstrlen(file) <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>else</span>
+</span></span><span style=display:flex><span>        MessageBox(NULL, <span style=color:#e6db74>&#34;がはは&#34;</span>, <span style=color:#e6db74>&#34;&#34;</span>, <span style=color:#ae81ff>0</span>); <span style=color:#75715e>// インストール済み
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    RegCloseKey(hkey);
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>;
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></td></tr></table></div></div><p>こちらは、<strong>レジストリ</strong>を使ったやつ。Windowsの起動時に起動させるプログラムを、なんとレジストリに登録することができるのです。レジストリに登録すれば、<strong>ユーザーに気づかれずに</strong>、また、レジストリに詳しくなければ削除することもできない(これは無敵では、と思うかもしれないが、<strong>実行ファイルを削除されればお釈迦</strong>)。登録する場所は、<strong>HKEY_LOCAL_MACHINE内の"SOFTWARE¥¥Microsoft¥¥Windows¥¥CurrentVersion¥¥run"セクション</strong>の中です。この中に好きな名前のキーを作り実行ファイルのパスを格納する。そうすれば次回起動時から発症。レジストリにアクセスするのは少々厄介である。まず最初にセクションを開く。<strong>RegCreateKeyEx()関数</strong>は、指定したセクションが存在するならそれを<strong>開き、しないなら新規に作成する</strong>という優れものである。セクションの指定だが、最初の<strong>HKEY_LOCAL_MACHINE</strong>は定数で、あとの"Software&mldr;&ldquo;は文字列で指定する。細かい設定については省略。サンプルのようにすれば標準的な、読み書き可能なセクションが作成または開かれることになる。そのとき重要なのは<strong>hkey変数</strong>だ。hkeyは、先ほど開いたセクションのハンドルで、このハンドルでどのセクション内のキーを編集するかを識別する。RegCreateKeyEx()関数は、作成/開いたセクションのハンドルをhkeyに格納してくれる。result変数には、作成されたか、開かれたかが格納される。今回アクセスするセクションは、ほぼ100%存在しているのでこの情報は無視。次に、<strong>RegQueryValueEx()関数でキーの有無を確認</strong>する。このサンプルの名前を、&ldquo;Worm"とすると、&ldquo;Worm"というキーがセクション内に存在していなければ、始めての起動ということで登録を開始する。存在するならば、Windowsの起動時の起動なのでメッセージボックスを表示します。RegQueryValueEx()関数は本来、キーの値を取得するために使いますが、ここではキーの存在の有無を確認するために使うので、パラメータにNULLが連発しています。1番目のパラメータに先ほどのハンドルを指定。キーが存在するなら<strong>ERROR_SUCCESS</strong>、しないならそれ以外の値が返るので有無が簡単に確認できます。そしたら、実行ファイルのパスを取得し、<strong>RegSetValueEx()関数でそのパスをキーに書き込み</strong>ましょう。同じように1番目のパラメータに先ほどのハンドルを指定。次に、キー名。ここでは、&ldquo;Worm"にしておく。3番目は必ず0、4番目はデータが<strong>文字列であることを示すREG_SZ</strong>を指定。5番目のパラメータにはデータへのポインタを指定。型変換が必要なので<strong>キャスト</strong>を使用。最後のパラメータはデータのサイズ。文字列の場合、<strong>文字列の長さ+1なので注意</strong>。これで登録完了。最後にセクションを閉じるのを忘れずに。<strong>RegCloseKey()関数</strong>で閉じる。パラメータにハンドルを指定。実行してみたら、regeditで確認してみよう。</p><p><img src=4.jpeg alt></p><p>再起動して実際に体験してみよう。ちゃんと起動時に反応するでしょ?あと、調査したところ、レジストリに登録したほうが先に起動します。実験が終わったら、スタートアップ、レジストリ双方元に戻しておきましょう。以上にてサンプル終わり。</p><h2 id=あとがき>あとがき</h2><p>なぜ、こんなくだらない記事を書くために、大事な、とても大事な睡眠時間を割いたんだろうか?あ~眠い。でもこんな記事、うちの部では誰も書かないだろうな。書くとしたら、いたずらに興味を持っているK藤か?いや、あいつは人の作ったブツをフロッピーに盗んで、私が阻止しようとしたら強引にフロッピーを抜きやがって、ドライブを壊した(後に復活)ような野郎だから無理であろう。1番の候補は魔のF井だろう。奴の作ったプログラムを見れば想像できる。内輪ねたですんません。余白を埋めるためです。ここまで我慢して読んでくれた人、本当にありがとう。(-_-)/̃</p></article><span class=next>次へ<a href=https://asanobuturi.github.io/document/2002/3/>面白フォントを使おう＞</a></span><br><span class=prev>前へ<a href=https://asanobuturi.github.io/document/2002/1/>フォークリフト製作記＞</a></span></div><aside id=sidebar><nav id=sidemenu><div class=side-back><a href=../index.html>記事の一覧へもどる<img src=/image/icons/sign-out-alt-solid.svg class=inline-image></a></div><div class=side-prev><a href=https://asanobuturi.github.io/document/2002/1/><img src=/image/icons/angle-left-solid.svg class=inline-image>フォークリフト製作記</a></div><div class=side-next><a href=https://asanobuturi.github.io/document/2002/3/>面白フォントを使おう<img src=/image/icons/angle-right-solid.svg class=inline-image></a></div></nav><section id=indexblock><header class=indextitle>目次</header><nav id=TableOfContents><ul><li><a href=#はじめに>はじめに</a></li><li><a href=#apiについて>APIについて</a></li><li><a href=#サンプルについて>サンプルについて</a></li><li><a href=#注意>注意!</a><ul><li><a href=#マウスが>マウスが。。。</a></li><li><a href=#壁紙が>壁紙が！</a></li><li><a href=#うんざりアイコン>うんざりアイコン</a></li><li><a href=#強制終了っとあれっ>強制終了っと&mldr;あれっ!</a></li><li><a href=#起動時に発症>起動時に発症!</a></li></ul></li><li><a href=#あとがき>あとがき</a></li></ul></nav></section></aside></main><footer id=footer><div class=section><nav class=grid><div><label class=headline>CONTENT</label><ul><li><a href=/>Home</a></li><li><a href=/document/>Docs</a></li><li><a href=/game/>Games</a></li><li><a href=/blog/>Blog</a></li><li><a href=/electronic/>Electronic</a></li></ul></div><div><label class=headline>CONTACT</label><ul><li><a target=_blank href=https://twitter.com/Uchi54_apc>Twitter</a></li><li><a target=_blank href=https://github.com/asanobuturi>GitHub Organization</a></li><li><a target=_blank href=https://github.com/asanobuturi/asanobuturi.github.io>Repository</a></li><li><a target=_blank href=https://github.com/asanobuturi/asanobuturi.github.io/issues>Issues</a></li></ul></div><div><label class=headline>ABOUT</label><ul><li><a href=/about/>About Us</a></li></ul></div></nav></div><hr><div class=section><p class=copyright>Copyright &copy; 2015 - 2023 Asano Physics Club, All Rights Reversed.</p><nav class=sns><a target=_blank href=https://twitter.com/Uchi54_apc><svg xmlns="http://www.w3.org/2000/svg" fill="currentcolor" viewBox="0 0 248 204"><path d="M221.95 51.29c.15 2.17.15 4.34.15 6.53.0 66.73-50.8 143.69-143.69 143.69v-.04c-27.44.04-54.31-7.82-77.41-22.64 3.99.48 8 .72 12.02.73 22.74.02 44.83-7.61 62.72-21.66-21.61-.41-40.56-14.5-47.18-35.07 7.57 1.46 15.37 1.16 22.8-.87-23.56-4.76-40.51-25.46-40.51-49.5v-.64c7.02 3.91 14.88 6.08 22.92 6.32C11.58 63.31 4.74 33.79 18.14 10.71c25.64 31.55 63.47 50.73 104.08 52.76-4.07-17.54 1.49-35.92 14.61-48.25 20.34-19.12 52.33-18.14 71.45 2.19 11.31-2.23 22.15-6.38 32.07-12.26-3.77 11.69-11.66 21.62-22.2 27.93 10.01-1.18 19.79-3.86 29-7.95-6.78 10.16-15.32 19.01-25.2 26.16z"/></svg></a><a target=_blank href=https://github.com/asanobuturi><svg class="w-5 h-5" fill="currentcolor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483.0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951.0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65.0.0.84-.27 2.75 1.026A9.564 9.564.0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688.0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855.0 1.338-.012 2.419-.012 2.747.0.268.18.58.688.482A10.019 10.019.0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"/></a></nav></div></footer></body></html>
