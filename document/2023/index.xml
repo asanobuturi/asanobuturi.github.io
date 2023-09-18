@@ -1,4 +1,29 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>2023年度・部誌 on 浅野学園物理部</title><link>https://asanobuturi.github.io/document/2023/</link><description>Recent content in 2023年度・部誌 on 浅野学園物理部</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Sun, 17 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://asanobuturi.github.io/document/2023/index.xml" rel="self" type="application/rss+xml"/><item><title>PC-98でのグラフィカルゲームの作成</title><link>https://asanobuturi.github.io/document/2023/8/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://asanobuturi.github.io/document/2023/8/</guid><description>PC-98(with Turbo C)でのマインスイーパーの制作記。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>2023年度・部誌 on 浅野学園物理部</title><link>https://asanobuturi.github.io/document/2023/</link><description>Recent content in 2023年度・部誌 on 浅野学園物理部</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Sun, 17 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://asanobuturi.github.io/document/2023/index.xml" rel="self" type="application/rss+xml"/><item><title>AIを競技プログラミングで活用してみる</title><link>https://asanobuturi.github.io/document/2023/7/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://asanobuturi.github.io/document/2023/7/</guid><description>２回目の登場の中3のIです。
+ここでは昨今進化が著しいAI、そのうちのChatGPT(GPT-3.5)というAIを使ってプログラミングをしてみよう！という内容で書いていきます。
+そもそもChatGPTとは ChatGPTは、OpenAIによって開発された自然言語処理技術の一種です。GPT（Generative Pre-trained Transformer）というモデルの一部であり、大量のテキストデータを学習して自然な文章や会話を生成することができるAIです。GPT-3.5アーキテクチャをベースにしており、さまざまなタスクに対する応答や文章生成が可能です。
+この文章は「ChatGPTとはなんですか?」という質問に、ChatGPTが返してきたものです。こんな感じで色々質問に答えてくれるAIです。
+競技プログラミングってなんぞや 競技プログラミングとは、プログラミングスキルとアルゴリズムの解決能力を競うコンピュータサイエンスの競技です。主にオンライン上で行われ、参加者は与えられた問題に対してプログラムを書き、そのプログラムが一定のテストケースを通過するかどうかを競います。
+競技プログラミングの特徴は以下のとおりです：
+1.アルゴリズムの応用: 参加者は様々な問題に対して最適なアルゴリズムを設計・実装する必要があります。これにより、問題解決力や論理思考力が鍛えられます。
+2.制限時間とメモリ: 解答プログラムは一定の制限時間内に実行され、またメモリ制限もある場合があります。したがって、効率的なアルゴリズムを使わなければならず、最適化の余地があります。
+3.多様な問題: 競技プログラミングの問題は、数学、グラフ理論、動的計画法、文字列処理、幾何学など、さまざまな分野にわたります。これにより、幅広い知識とアルゴリズムの理解が求められます。
+4.競技環境: オンラインジャッジと呼ばれるシステムを通じてプログラムを提出し、自動的にテストケースに対する結果が判定されます。正しい解答だけでなく、効率性も評価されます。
+5.国際的なコンテスト: 競技プログラミングは国際的な大会も開催され、世界中のプログラマーが競い合います。有名な大会にはICPC（国際大学対抗プログラミングコンテスト）やCodeforces、Topcoderなどがあります。(ChatGPTより引用)
+最近では就職試験で競技プログラミングの問題を解く必要があったりもします。(Google社など)
+物理部でも多くの部員がAtCoderという競技プログラミングのコンテストに参加しています。
+AtCoderについて 今回は先程競技プログラミングの例として名前を挙げた、AtCoderの問題でAIを試してみます。
+AtCoderには様々なコンテストが難易度別に分けられており、一番簡単なABC(AtCoder Beginner Contest)や中級者向けのARC(Atcoder Regular Contest)、天才以外お断りパズルコンテストの異名を持つAGC(AtCoder Grand Contest)、アルゴリズムの最適解を求めるAHC(AtCoder Heuristic Contest)などがあります。
+ABCの例
+{width=500px}
+実際にAIを使ってみる A問題 先ほど紹介したAtCoderの、執筆時点で最新のABC315のA問題「tcdr」を解かせていきます。
+(https://atcoder.jp/contests/abc315/tasks/abc315_a)
+ちなみにA問題はプログラミングの基礎であるif文、for文さえ書ければできると言われるほど簡単です。
+とりあえず問題文だけ与えてみます
+「英小文字からなる文字列Sが与えられます。Sからa,e,i,o,uをすべて取り除いて得られる文字列を出力してください。なお、Sはa,e,i,o,u以外の文字を一つ以上含みます。
+この問題をC++で解いてください」
+ChatGPTくん↓
+「以下は、与えられた文字列からa,e,i,o,uを取り除いて得られる文字列を出力するC++プログラムの例です。
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 #include &amp;lt;iostream&amp;gt; #include &amp;lt;string&amp;gt; int main() { std::string S; std::cin &amp;gt;&amp;gt; S; std::string result; for (char c : S) { if (c !</description></item><item><title>PC-98でのグラフィカルゲームの作成</title><link>https://asanobuturi.github.io/document/2023/8/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://asanobuturi.github.io/document/2023/8/</guid><description>PC-98(with Turbo C)でのマインスイーパーの制作記。
 なぜマインスイーパーか 全てがイベントハンドラで書くことができ、厳密なtick管理などが不要で楽。 程よく複雑で勉強に最適。 知っている人が多く、文化祭での展示に丁度良い。 使用する物 PC-9821Xa10 MS-DOS Version 6.20 Turbo C++ Version 4.0 コード 定義部 グローバル変数を定義する。
 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 const int origin_x = 65; // (0, 0)のマスの左上x座標 const int origin_y = 77; // (0, 0)のマスの左上y座標 const int mines = 10; // 地雷の数 int mode = 0; // `graphics.h`の初期化時に必要なモード番号 int driver = 0; // `graphics.</description></item><item><title>PC-98でファイル転送 with FTP</title><link>https://asanobuturi.github.io/document/2023/10/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://asanobuturi.github.io/document/2023/10/</guid><description>インターネットが、見たい。
 そういう欲求で書こうと思ったわけではありませんが、物理部に書き込み可能なCDは殆どないので必然的にPC-98とのデータ移動は卍フロッピーディスク卍に限られるわけですが、せいぜい数百Kb/sが限度のフロッピー君を書き込み/読み込みを行い(挙げ句の果てにUSB-FDDが壊れた)、その上に物理部の超低速回線でデータをダウンロードしてFDDがある倉庫からPC-98がある教室までフロッピーを運ぶ手間もあるわけですので、相当遅くなるわけです。
@@ -89,32 +114,7 @@ Windows Server 2022 Datacenter Ubuntu Server 22.04 LTS Proxmox VE 7.4 (4台) そ
 だいぶクソです　何故かスタミナ制で5分経つと見れなくなります　回復するまで見れません
 しかも、サークル数は2万くらいあるのでめっちゃ時間がかかります　でも無料で見れるので余裕がないならこっち選ぶしかない {500px}
 普通のカタログ
-有料です(2750円)　内容はウェブカタログとそんなに変わらない　買う場所によっては特典でイラストがついてたりしてます</description></item><item><title>コミケは準備が９割</title><link>https://asanobuturi.github.io/document/2023/7/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://asanobuturi.github.io/document/2023/7/</guid><description>２回目の登場の中3のIです。
-ここでは昨今進化が著しいAI、そのうちのChatGPT(GPT-3.5)というAIを使ってプログラミングをしてみよう！という内容で書いていきます。
-そもそもChatGPTとは ChatGPTは、OpenAIによって開発された自然言語処理技術の一種です。GPT（Generative Pre-trained Transformer）というモデルの一部であり、大量のテキストデータを学習して自然な文章や会話を生成することができるAIです。GPT-3.5アーキテクチャをベースにしており、さまざまなタスクに対する応答や文章生成が可能です。
-この文章は「ChatGPTとはなんですか?」という質問に、ChatGPTが返してきたものです。こんな感じで色々質問に答えてくれるAIです。
-競技プログラミングってなんぞや 競技プログラミングとは、プログラミングスキルとアルゴリズムの解決能力を競うコンピュータサイエンスの競技です。主にオンライン上で行われ、参加者は与えられた問題に対してプログラムを書き、そのプログラムが一定のテストケースを通過するかどうかを競います。
-競技プログラミングの特徴は以下のとおりです：
-1.アルゴリズムの応用: 参加者は様々な問題に対して最適なアルゴリズムを設計・実装する必要があります。これにより、問題解決力や論理思考力が鍛えられます。
-2.制限時間とメモリ: 解答プログラムは一定の制限時間内に実行され、またメモリ制限もある場合があります。したがって、効率的なアルゴリズムを使わなければならず、最適化の余地があります。
-3.多様な問題: 競技プログラミングの問題は、数学、グラフ理論、動的計画法、文字列処理、幾何学など、さまざまな分野にわたります。これにより、幅広い知識とアルゴリズムの理解が求められます。
-4.競技環境: オンラインジャッジと呼ばれるシステムを通じてプログラムを提出し、自動的にテストケースに対する結果が判定されます。正しい解答だけでなく、効率性も評価されます。
-5.国際的なコンテスト: 競技プログラミングは国際的な大会も開催され、世界中のプログラマーが競い合います。有名な大会にはICPC（国際大学対抗プログラミングコンテスト）やCodeforces、Topcoderなどがあります。(ChatGPTより引用)
-最近では就職試験で競技プログラミングの問題を解く必要があったりもします。(Google社など)
-物理部でも多くの部員がAtCoderという競技プログラミングのコンテストに参加しています。
-AtCoderについて 今回は先程競技プログラミングの例として名前を挙げた、AtCoderの問題でAIを試してみます。
-AtCoderには様々なコンテストが難易度別に分けられており、一番簡単なABC(AtCoder Beginner Contest)や中級者向けのARC(Atcoder Regular Contest)、天才以外お断りパズルコンテストの異名を持つAGC(AtCoder Grand Contest)、アルゴリズムの最適解を求めるAHC(AtCoder Heuristic Contest)などがあります。
-ABCの例
-{width=500px}
-実際にAIを使ってみる A問題 先ほど紹介したAtCoderの、執筆時点で最新のABC315のA問題「tcdr」を解かせていきます。
-(https://atcoder.jp/contests/abc315/tasks/abc315_a)
-ちなみにA問題はプログラミングの基礎であるif文、for文さえ書ければできると言われるほど簡単です。
-とりあえず問題文だけ与えてみます
-「英小文字からなる文字列Sが与えられます。Sからa,e,i,o,uをすべて取り除いて得られる文字列を出力してください。なお、Sはa,e,i,o,u以外の文字を一つ以上含みます。
-この問題をC++で解いてください」
-ChatGPTくん↓
-「以下は、与えられた文字列からa,e,i,o,uを取り除いて得られる文字列を出力するC++プログラムの例です。
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 #include &amp;lt;iostream&amp;gt; #include &amp;lt;string&amp;gt; int main() { std::string S; std::cin &amp;gt;&amp;gt; S; std::string result; for (char c : S) { if (c !</description></item><item><title>とあるペルシャ人の手記</title><link>https://asanobuturi.github.io/document/2023/4/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://asanobuturi.github.io/document/2023/4/</guid><description>貴重な機会なので,今まで生きてきて考えてきたことの一部を記録しておこうと思う。
+有料です(2750円)　内容はウェブカタログとそんなに変わらない　買う場所によっては特典でイラストがついてたりしてます</description></item><item><title>とあるペルシャ人の手記</title><link>https://asanobuturi.github.io/document/2023/4/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://asanobuturi.github.io/document/2023/4/</guid><description>貴重な機会なので,今まで生きてきて考えてきたことの一部を記録しておこうと思う。
 何かに役立ててほしい。
 才能と努力のはなし 知っての通り,世の中には「才能」と「努力」と呼ばれるものがあり,対照的に扱われている。
 そして,これらはどちらが優れているのか。
