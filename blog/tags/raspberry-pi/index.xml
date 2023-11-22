@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Raspberry Pi on 浅野学園物理部</title><link>https://asanobuturi.github.io/blog/tags/raspberry-pi/</link><description>Recent content in Raspberry Pi on 浅野学園物理部</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Wed, 22 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://asanobuturi.github.io/blog/tags/raspberry-pi/index.xml" rel="self" type="application/rss+xml"/><item><title>ルーターをモバイルWiFiに接続する</title><link>https://asanobuturi.github.io/blog/20230222/</link><pubDate>Wed, 22 Feb 2023 00:00:00 +0000</pubDate><guid>https://asanobuturi.github.io/blog/20230222/</guid><description>モバイルWiFiをルーターと接続する必要があったのですが、ネットワーク素人の私にはNATコンバータなんて知識はなかったので、そのための備忘録として残しておきます。
+物理部には部費で買った楽天ポケットWiFiを使用しており、これは部員の生命線となっています。
+そして物理部にはもう一つネットワークがあり、それがTP-LinkのAX4800というルーターを頂点とする部内ネットワークです。ここのサーバーなどがこのネットワークに属しており、ファイル共有などに使用しています。
+そして部員はどちらのネットワークを使用するでしょうか。もちろん前者です。インターネットがつながっていないネットワークなんて誰も使いません。
+普通にモバイルWiFiから生えてるLANをルータに挿せばいいのではと思ったのですが、なんとモバイルWiFiから生えてるのはUSBです。これにはLANも刺さりません。1無線→有線の変換をどうにか中継機を使わずにやろうと必死にググった結果、iptablesというものを利用しポートフォワーディングすることでモバイルWiFiと接続できるということを知りました。これはやらないわけには行かないと思いましたので早速やることにしました。
+環境 ラズパイ:Raspberry pi 4 8GB
+ルーター:AX4800
+ポケットWiFi:楽天
+ポケットWiFiをeth1に、ルーターをeth0に接続。eth1を上流とする。
+IPの固定 nanoなりなんなりで/etc/dhcpcd.confに以下の内容を追記する。
+1 2 3 4 5 6 7 8 9 10 11 # ... interface eth1 static routers=192.168.0.1 static domain_name_servers=192.168.0.1 denyinterfaces eth0 interface eth0 static ip_address=192.168.20.1/24 static routers=0.0.0.0 static domain_name_servers=8.8.8.8 ラズパイのeth1はDHCPに頼ることにした。これはラズパイへのSSH等での接続の際に面倒になるので悪手であるが、二度とSSHで接続する必要が無いと信じてIPの固定をサボった。
+eth0のIPは適当に192.168.20.xxxにした。20の部分はすきに変えても問題はない。dnsmasqというdnsサーバーのソフトウェアのインストールがどうしても上手くいかなかったため、dnsmasqをインストールしてDNSサーバーを走らせるのではなくGoogle Public DNSに頼ることにしたが、ここにせラズパイで名前解決が必要になる状況がないはずなので一応として8.8.8.8を設定した。ここも1.1.1.1(Cloudflare)などお好みのモノを使っていただいて構わない。
+以上の操作終了後、dhcpcdを再起動させ設定を適用させる。
+1 sudo systemctl restart dhcpcd DHCPサーバーの設定 /etc/dhcp/dhcpd.confの
+1 2 option domain-name &amp;#34;example.org&amp;#34;; option domain-name-servers ns1.example.org, ns2.example.org; の2つをコメントアウトし、
+1 #authoritative; をコメントから外すことで正当なDHCPサーバーであることを示します。
+そして以下を追記します。</description></item></channel></rss>

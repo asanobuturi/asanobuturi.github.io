@@ -1,0 +1,296 @@
+﻿.news-block {
+    margin-top: 100px;
+}
+
+    .news-block h1 {
+        margin: 20px 0;
+    }
+
+.articleBlock {
+    font-size: 16px;
+    line-height: 1.7em;
+    background-color: #fff;
+    padding: 0px;
+    margin-bottom: 3em;
+}
+@media (max-width: 500px) {
+    .articleBlock {
+        font-size: 12px;
+    }
+}
+
+    .articleBlock h1 {
+        padding: 1.25em 0;
+        box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.1);
+    }
+
+#blogBlock {
+    padding: 0 5%;
+}
+
+.blogPosts {
+    text-align: center;
+    padding: 0em 0em 1em;
+}
+
+    .blogPosts + .blogPosts {
+        border-top: dotted 1px rgba(0, 0, 0, 0.6);
+        padding: 1em 0em 1em;
+    }
+
+.articleUnit {
+    padding: 0;
+    display: inline-block;
+    text-align: left;
+    width: 100%;
+}
+
+    .articleUnit p {
+        margin: 0.5em 0;
+    }
+
+    .articleUnit .title a {
+        font-family: "ヒラギノUD丸ゴ W6 JIS2004","Hiragino UD Sans Rd W6 JIS2004", Arial, "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic ProN", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "Meiryo UI", sans-serif, "游ゴシック", "Yu Gothic", "游ゴシック体", "YuGothic";
+        font-size: 32px;
+        font-weight: bold;
+        line-height: 1.3em;
+    }
+
+    .articleUnit .date {
+    }
+
+    .articleUnit .text {
+    }
+
+    .articleUnit .readMore {
+    }
+
+@media (max-width: 500px) {
+    .articleUnit .title a {
+        font-size: 20px;
+    }
+}
+
+#main {
+    margin: auto;
+    padding: 0 3%;
+    box-sizing: border-box;
+    max-width: 950px;
+    width: 100%;
+    float: none;
+    box-sizing: border-box;
+}
+
+article {
+    text-align: left;
+    background-color: #fff;
+    margin-bottom: 2em;
+    font-size: 16px;
+    line-height: 1.7em;
+    color: black;
+}
+
+    article img {
+        max-width: 100%;
+        margin: 1px;
+        box-shadow: 0 4px 8px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    article header {
+        padding: 10px 2em 1.5em;
+        box-shadow: 0 1px 0 0 rgba(0,0,0,0.1);
+    }
+
+@media (max-width: 500px) {
+    article header {
+        padding: 60px 2em 1.5em;
+    }
+}
+
+blockquote {
+    position: relative;
+    padding: 30px 15px 8px 15px;
+    margin: 10px;
+    box-sizing: border-box;
+    background: #f8f8f8;
+}
+
+    blockquote:before {
+        display: inline-block;
+        position: absolute;
+        top: 5px;
+        left: 3px;
+        vertical-align: middle;
+        font-style: italic;
+        content: "\"";
+        font-family: sans-serif;
+        color: #cfcfcf;
+        font-size: 90px;
+        line-height: 1;
+    }
+
+    blockquote p {
+        padding: 0;
+        margin: 10px 0;
+        line-height: 1.7;
+    }
+
+    blockquote cite {
+        display: block;
+        text-align: right;
+        color: #888888;
+        font-size: 0.9em;
+    }
+
+h1 {
+    font-family: "ヒラギノUD丸ゴ W6 JIS2004","Hiragino UD Sans Rd W6 JIS2004", Arial, "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic ProN", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "Meiryo UI", sans-serif, "游ゴシック", "Yu Gothic", "游ゴシック体", "YuGothic";
+    font-size: 32px;
+    margin-bottom: 1em;
+    font-weight: bold;
+    line-height: 1.5em;
+}
+
+h2 {
+    font-family: "ヒラギノUD丸ゴ W6 JIS2004","Hiragino UD Sans Rd W6 JIS2004", Arial, "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic ProN", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "Meiryo UI", sans-serif, "游ゴシック", "Yu Gothic", "游ゴシック体", "YuGothic";
+    border-left: 5px solid rgba(0,0,0,0.4);
+    margin: 1.5em -30px 1em;
+    padding: 0.75em 0.5em;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+
+.content {
+    padding: 1em 30px 3em;
+    box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.1);
+}
+
+.nextPrev {
+    padding: 2em;
+}
+
+    .nextPrev a {
+        margin-left: 1.25em;
+    }
+
+@media (max-width: 500px) {
+    article {
+        font-size: 12px;
+    }
+
+    h1 {
+        font-size: 20px;
+        margin-bottom: 1em;
+        font-weight: bold;
+    }
+
+    h2 {
+        border-left: 3px solid rgba(0,0,0,0.4);
+        margin-left: -20px;
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .content {
+        padding: 1em 20px 3em;
+        box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.1);
+    }
+}
+
+pre, .pre-style {
+    background: #f7f7f7;
+    color: #37474f;
+    font: 400 100%/1 Roboto Mono,monospace;
+    padding: 1px 4px
+}
+
+    pre.prettyprint, .pre-style {
+        font-weight: 400;
+        word-break: normal;
+        font: 14px/20px Roboto Mono,monospace;
+        margin: 16px 0;
+        overflow-x: auto;
+        padding: 8px;
+        position: relative;
+        border: 0px;
+    }
+
+    pre::-webkit-scrollbar {
+        height: 8px;
+        width: 4px;
+    }
+
+@media (max-width: 500px) {
+    pre.prettyprint, .pre-style {
+        font: 10px/16px Roboto Mono,monospace;
+    }
+
+    pre::-webkit-scrollbar {
+        height: 6px;
+        width: 3px;
+    }
+}
+
+pre::-webkit-scrollbar-corner {
+    background: 0;
+}
+
+pre::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,.26);
+}
+
+#embedded-explorer .com-google-api-explorer-client-Resources-Css-jsonString, pre .com {
+    color: #d81b60
+}
+
+.devsite-dark-code pre .com {
+    color: #f06292
+}
+
+#embedded-explorer .com-google-api-explorer-client-Resources-Css-jsonNumber, pre .lit, pre .dec {
+    color: #c53929
+}
+
+.devsite-dark-code pre .lit, .devsite-dark-code pre .dec {
+    color: #fbc02d
+}
+
+pre .kwd, pre .tag {
+    color: #3b78e7
+}
+
+.devsite-dark-code pre .kwd, .devsite-dark-code pre .tag {
+    color: #4dd0e1
+}
+
+#embedded-explorer .com-google-api-explorer-client-Resources-Css-jsonBoolean, pre .str, pre .atv {
+    color: #0d904f
+}
+
+.devsite-dark-code pre .str, .devsite-dark-code pre .atv {
+    color: #9ccc65
+}
+
+#embedded-explorer .com-google-api-explorer-client-Resources-Css-jsonKey, pre .typ, pre .atn {
+    color: #9c27b0
+}
+
+.devsite-dark-code pre .typ, .devsite-dark-code pre .atn {
+    color: #ce93d8
+}
+
+a code, td a code {
+    color: #039be5
+}
+
+a .atv, a .atn, a .com, a .dec, a .kwd, a .lit, a .str, a .tag, a .typ, .prettyprint :not(.devsite-github-link) > a:not(.devsite-github-link) {
+    color: #039be5;
+    -moz-osx-font-smoothing: auto;
+    -webkit-font-smoothing: auto;
+    font-weight: 700
+}
+
+
+li.L0, li.L1, li.L2, li.L3, li.L4, li.L5, li.L6, li.L7, li.L8, li.L9 {
+    list-style-type: decimal !important;
+}
