@@ -1,0 +1,138 @@
+<!doctype html><html lang=ja><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=description content="高二の電光班員作った自作Arduinoに付いて"><meta name=viewport content="width=device-width,initial-scale=1"><link rel=stylesheet href=/scss/styles.min.4a71567d35f0565714f9b264f620dd2c5abcdd3fd6d8bc1fe2bafa8114c2fe47.css><link rel=icon href=/image/favicon.svg type=image/svg+xml><link rel="icon alternate" href=/image/favicon.ico><meta property="og:site_name" content="浅野学園物理部"><meta property="og:url" content="https://asanobuturi.github.io/document/2024/19/index.html"><meta property="og:title" content="自作Arduinoを作った｜浅野学園物理部"><meta property="og:description" content="高二の電光班員作った自作Arduinoに付いて"><meta property="og:type" content="website"><meta property="og:image" content="https://asanobuturi.github.io/document/2024/19/thumbnail.jpg"><meta name=twitter:card content="summary_large_image"><meta name=twitter:site content="@Uchi54_APC"><link rel=canonical href=https://asanobuturi.github.io/document/2024/19/><script async src="https://www.googletagmanager.com/gtag/js?id=G-M4YH1E5WC1"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-M4YH1E5WC1")</script><title>自作Arduinoを作った｜浅野学園物理部</title><script type=text/javascript src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<link rel=stylesheet href=/scss/highlight.min.5fd4e02a806db4bd8e63d97db9f23a937f07d0d2478a4e37b851c96e75701cf4.css><link rel=stylesheet href=/scss/article.min.5ee3cae303b380c098ecc9cafc8ef5f27c4e7d9864fa43a00560f808df467ab1.css><link rel=stylesheet href=/scss/tableOfContents.min.603245923695f62c9be0618c1b6a10599acbf0f4f5056ffe631acd014b70fd17.css></head><body><nav id=nav-drawer><input id=nav-input type=checkbox class=nav-unshown>
+<label id=nav-open for=nav-input><span class="bar bar1"></span>
+<span class="bar bar2"></span>
+<span class="bar bar3"></span>
+<span class=menu>MENU</span>
+<span class=close>CLOSE</span></label>
+<label id=nav-close for=nav-input></label><div id=nav-content><a href=/index.html><img loading=lazy src=/image/favicon.svg id=nav-logo alt=浅野学園物理部></a>
+<a class=nav-link href=/index.html>ホーム</a>
+<a class=nav-link href=/about/index.html>物理部とは</a>
+<a class="nav-link isActive" href=/document/index.html>部誌</a>
+<a class=nav-link href=/game/index.html>ゲーム</a>
+<a class=nav-link href=/blog/index.html>ブログ</a>
+<a class=nav-link href=/electronic/index.html>電工の部屋</a><hr><a class=nav-link href=/credit/index.html>クレジット(ライセンス)</a></div></nav><main><div id=content><a name=top></a><div id=breadcrumbs><a href=/index.html><img src=/image/icons/home-solid.svg class=inline-image>ホーム</a>
+<img src=/image/icons/angle-right-solid.svg class=inline-image>
+<a href=/document/>部誌</a>
+<img src=/image/icons/angle-right-solid.svg class=inline-image>
+<a href=/document/2024/>2024年度・部誌</a>
+<img src=/image/icons/angle-right-solid.svg class=inline-image>
+<a href=/document/2024/19/>自作Arduinoを作った</a></div><header id=overview><h1 id=title>自作Arduinoを作った</h1><div><div class=properties><span class=author><img src=/image/icons/user-edit-solid.svg class=inline-image>
+高二 電光班員</span></div><div class=share><span><a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class=twitter-share-button data-related=Uchi54_apc data-lang=ja data-show-count=false>Tweet</a>
+<script async src=https://platform.twitter.com/widgets.js></script></span></div></div></header><article><h2 id=制作物画像>制作物画像</h2><p><img src=IMG_20240913_172807_1.jpg alt="alt text"></p><p>上にあるやつが Arduino 公式のやつ
+<img src=IMG_20240913_172909_1.jpg alt="alt text"></p><h2 id=はじめに>はじめに</h2><p>この記事は小学生向けというよりも電子工作をやっている外部の人向けになっています。ご了承ください。</p><p>また、物理部では執筆時点で<a href=https://store.arduino.cc/collections/boards-modules/products/uno-r4-minima>Arduino Uno R4</a>を入手していないためこの記事中の Arduino Uno は断りがなければ R3 の方を指します。</p><h2 id=arduino-とは何>Arduino とは何?</h2><p>Arduino について解説しようとしましたが<del>大変</del>説明が難しいので詳しくは<a href="https://asanobuturi.github.io/document/2022/6/#:~:text=%E3%81%84%E3%82%8B%E3%81%AE%E3%81%A7%E3%81%99%E3%80%82-,%E3%83%9E%E3%82%A4%E3%82%B3%E3%83%B3%E3%81%A8LED,-%E3%81%93%E3%81%93%E3%81%8B%E3%82%89%E3%81%AF">こちら</a>を参考にしてください。</p><h2 id=回路図>回路図</h2><p><img src=%E8%87%AA%E4%BD%9CArudino_page-0001.jpg alt="alt text"></p><h2 id=ブロックごとに解説>ブロックごとに解説</h2><p>ここからはそれぞれの部分に分けて解説していきます。ベースとしたのもは<a href=https://content.arduino.cc/assets/UNO-TH_Rev3e_sch.pdf>Arduino Uno</a>です。</p><h3 id=電源>電源</h3><p>本家(Uno R3)は<del>最近使わない</del>プリンターなどの限られた用途でしか使われていない(ただ物理部では未だバリバリの現役の)USB type B が使われています。今回は最近使われるようになってきた USBtypeC を使った。</p><p><img src=https://upload.wikimedia.org/wikipedia/commons/6/62/USB_Type-B_plug_coloured.svg alt=USBtypeB></p><p><img src=https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/USB_Type-C_plug_20170626_crop.jpg/800px-USB_Type-C_plug_20170626_crop.jpg alt=USBtypeC></p><p>wikipedia より</p><p>USB type C を使うにあたって電源構成を考えたときに typeC では最大 100W 取れるのでこれを使うことにしました。typeC から特定の電圧を取り出すには<a href=https://burariweb.info/electronic-work/ch224k-usb-pd-trigger-module.html>この記事</a>を参考にさせてもらいながら<a href=https://akizukidenshi.com/catalog/g/g118023/>CH224K</a>を使用した(チップ本体はそんなに高くなかったが、変換基盤が高かった……)。また、取り出す電圧を変更する回路には前に使った<a href=https://akizukidenshi.com/catalog/g/g115231/>ATtiny84</a>が部室に転がっていたのでこれを使用した。コードについては動けがよしという流れで書いているので参考にならないかもしれない。</p><div class=codeblock><div class=codeblock-content><div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">27
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">28
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">29
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">30
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">31
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">32
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">33
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">34
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">35
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">36
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">37
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">38
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">39
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">40
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">41
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">42
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">43
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">44
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">45
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">46
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">47
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">48
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">49
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">50
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">51
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">52
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">53
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">54
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">55
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">56
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">57
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c++ data-lang=c++><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#66d9ef>char</span> CFG[]<span style=color:#f92672>=</span>{<span style=color:#ae81ff>0</span>,<span style=color:#ae81ff>9</span>,<span style=color:#ae81ff>10</span>};
+</span></span><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#66d9ef>char</span> PG<span style=color:#f92672>=</span><span style=color:#ae81ff>1</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#66d9ef>char</span> buttons[]<span style=color:#f92672>=</span>{<span style=color:#ae81ff>5</span>,<span style=color:#ae81ff>4</span>};
+</span></span><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#66d9ef>char</span> SIG<span style=color:#f92672>=</span><span style=color:#ae81ff>6</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#66d9ef>char</span> MODE<span style=color:#f92672>=</span><span style=color:#ae81ff>7</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#66d9ef>int</span> values[]<span style=color:#f92672>=</span>{<span style=color:#ae81ff>0</span>,<span style=color:#ae81ff>7</span>,<span style=color:#ae81ff>14</span>,<span style=color:#ae81ff>21</span>,<span style=color:#ae81ff>27</span>,<span style=color:#ae81ff>33</span>};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// 1:5V 2:9V 3:12V 4:15V 5:20V
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>int</span> value<span style=color:#f92672>=</span><span style=color:#ae81ff>1</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>bool</span> lastUpButtonState<span style=color:#f92672>=</span>false;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>bool</span> lastDownButtonState<span style=color:#f92672>=</span>false;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>void</span> <span style=color:#a6e22e>setup</span>() {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>for</span>(<span style=color:#66d9ef>char</span> i:buttons){
+</span></span><span style=display:flex><span>    pinMode(i,INPUT);
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>for</span>(<span style=color:#66d9ef>char</span> i:CFG){
+</span></span><span style=display:flex><span>    pinMode(i,OUTPUT);
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>  pinMode(MODE,OUTPUT);
+</span></span><span style=display:flex><span>  pinMode(buttons[<span style=color:#ae81ff>0</span>],INPUT_PULLUP);
+</span></span><span style=display:flex><span>  pinMode(buttons[<span style=color:#ae81ff>1</span>],INPUT_PULLUP);
+</span></span><span style=display:flex><span>  digitalWrite(MODE,HIGH);
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>void</span> <span style=color:#a6e22e>loop</span>() {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>if</span>(digitalRead(buttons[<span style=color:#ae81ff>0</span>])<span style=color:#f92672>==</span>HIGH <span style=color:#f92672>&amp;&amp;</span> <span style=color:#f92672>!</span>lastUpButtonState){
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span>(value<span style=color:#f92672>&lt;</span><span style=color:#ae81ff>5</span>) value<span style=color:#f92672>++</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    lastUpButtonState<span style=color:#f92672>=</span>true;
+</span></span><span style=display:flex><span>  }<span style=color:#66d9ef>else</span> <span style=color:#66d9ef>if</span>(digitalRead(buttons[<span style=color:#ae81ff>0</span>])<span style=color:#f92672>==</span>LOW){
+</span></span><span style=display:flex><span>    lastUpButtonState<span style=color:#f92672>=</span>false;
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>if</span>(digitalRead(buttons[<span style=color:#ae81ff>1</span>])<span style=color:#f92672>==</span>HIGH <span style=color:#f92672>&amp;&amp;</span> <span style=color:#f92672>!</span>lastDownButtonState){
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span>(value<span style=color:#f92672>&gt;</span><span style=color:#ae81ff>1</span>) value<span style=color:#f92672>--</span>;
+</span></span><span style=display:flex><span>    lastDownButtonState<span style=color:#f92672>=</span>true;
+</span></span><span style=display:flex><span>  }<span style=color:#66d9ef>else</span> <span style=color:#66d9ef>if</span>(digitalRead(buttons[<span style=color:#ae81ff>1</span>])<span style=color:#f92672>==</span>LOW){
+</span></span><span style=display:flex><span>    lastDownButtonState<span style=color:#f92672>=</span>false;
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>if</span>(value<span style=color:#f92672>==</span><span style=color:#ae81ff>1</span>){
+</span></span><span style=display:flex><span>    digitalWrite(CFG[<span style=color:#ae81ff>0</span>],HIGH);
+</span></span><span style=display:flex><span>  }<span style=color:#66d9ef>else</span>{
+</span></span><span style=display:flex><span>    digitalWrite(CFG[<span style=color:#ae81ff>0</span>],LOW);
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>if</span>(value<span style=color:#f92672>==</span><span style=color:#ae81ff>4</span><span style=color:#f92672>||</span>value<span style=color:#f92672>==</span><span style=color:#ae81ff>5</span>){
+</span></span><span style=display:flex><span>    digitalWrite(CFG[<span style=color:#ae81ff>1</span>],HIGH);
+</span></span><span style=display:flex><span>  }<span style=color:#66d9ef>else</span>{
+</span></span><span style=display:flex><span>    digitalWrite(CFG[<span style=color:#ae81ff>1</span>],LOW);
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>if</span>(value<span style=color:#f92672>==</span><span style=color:#ae81ff>3</span><span style=color:#f92672>||</span>value<span style=color:#f92672>==</span><span style=color:#ae81ff>4</span>){
+</span></span><span style=display:flex><span>    digitalWrite(CFG[<span style=color:#ae81ff>2</span>],HIGH);
+</span></span><span style=display:flex><span>  }<span style=color:#66d9ef>else</span>{
+</span></span><span style=display:flex><span>    digitalWrite(CFG[<span style=color:#ae81ff>2</span>],LOW);
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>  analogWrite(SIG,values[value]);
+</span></span><span style=display:flex><span>}</span></span></code></pre></td></tr></table></div></div></div></div><p>ここまでで typeC から任意の電圧を取り出せたのですがロジック回路の方は 5V で動かしたかったのでトランジスタなどを使ってなんとかしようとした。(この回路の実験中に何個か IC を燃やしてしまった)
+しかし、CH224K のテスト中に使用していた 48M05F がたまたま約 5V を取得できるたためこれを使用した。しかし 3 端子レギュレータがとても暑くなるためこれも物理部に転がっていたヒートシンクを取り付けた。</p><h3 id=書き込み回路>書き込み回路</h3><p>書き込み回路には<a href=https://akizukidenshi.com/catalog/g/g113543/>CH340E</a>を使用した(チップが小さくてハンダ付けに苦労した)。しかし、買い出しのときにミスって<a href=https://akizukidenshi.com/catalog/g/g116306/>CH340K</a>を買ってしまい書き込みができなかった。最終的に書き込み回路は以下のようになった。</p><p>結局文化祭までには間に合わず、書き込み装置経由の書き込みは諦めることにした。</p><h3 id=増幅回路>増幅回路</h3><p>Arduino を自作するにあたって今まで本家を使っていて一番困ったモーター制御を楽にしたいということから増幅回路を積みました。具体的には ATMEGA328P では各ピンの出力がそれぞれ最大 40mA となっておりこのままモーターなどを回そうとすると壊れるので入力電圧で最大 1A(全体が超えていなければ)に対応できるようにしました。しかし増幅すると波形がなまってしまったので(、あとボードの面積がなくなったので)本体ではなくシールド側につけました。</p><p>これについても時間がなく、はんだ付けが間に合わなかったため作ってはいない。</p><h2 id=最後に>最後に</h2><p>部活で作った自作 Arduino に付いて解説しました。</p><h2 id=参考資料>参考資料</h2><ul><li><a href=https://arduino.cc>Arduino 公式サイト</a></li></ul></article><span class=next>次へ<a href=https://asanobuturi.github.io/document/2024/20/>APCの部誌執筆を支える技術＞</a></span><br><span class=prev>前へ<a href=https://asanobuturi.github.io/document/2024/18/>猫でもわかる電工班＞</a></span></div><aside id=sidebar><nav id=sidemenu><div class=side-back><a href=../index.html>記事の一覧へもどる<img src=/image/icons/sign-out-alt-solid.svg class=inline-image></a></div><div class=side-prev><a href=https://asanobuturi.github.io/document/2024/18/><img src=/image/icons/angle-left-solid.svg class=inline-image>猫でもわかる電工班</a></div><div class=side-next><a href=https://asanobuturi.github.io/document/2024/20/>APCの部誌執筆を支える技術<img src=/image/icons/angle-right-solid.svg class=inline-image></a></div></nav><section id=indexblock><header class=indextitle>目次</header><nav id=TableOfContents><ul><li><a href=#制作物画像>制作物画像</a></li><li><a href=#はじめに>はじめに</a></li><li><a href=#arduino-とは何>Arduino とは何?</a></li><li><a href=#回路図>回路図</a></li><li><a href=#ブロックごとに解説>ブロックごとに解説</a><ul><li><a href=#電源>電源</a></li><li><a href=#書き込み回路>書き込み回路</a></li><li><a href=#増幅回路>増幅回路</a></li></ul></li><li><a href=#最後に>最後に</a></li><li><a href=#参考資料>参考資料</a></li></ul></nav></section></aside></main><footer id=footer><div class=section><nav class=grid><div><label class=headline>CONTENT</label><ul><li><a href=/>Home</a></li><li><a href=/document/>Docs</a></li><li><a href=/game/>Games</a></li><li><a href=/blog/>Blog</a></li><li><a href=/electronic/>Electronic</a></li></ul></div><div><label class=headline>CONTACT</label><ul><li><a target=_blank href=https://x.com/Uchi54_apc>X</a></li><li><a target=_blank href=https://github.com/asanobuturi>GitHub Organization</a></li><li><a target=_blank href=https://github.com/asanobuturi/asanobuturi.github.io>Repository</a></li><li><a target=_blank href=https://github.com/asanobuturi/asanobuturi.github.io/issues>Issues</a></li></ul></div><div><label class=headline>ABOUT</label><ul><li><a href=/about/>About Us</a></li></ul></div></nav></div><hr><div class=section><p class=copyright>Copyright &copy; 2015 - 2023 Asano Physics Club, All Rights Reversed.</p><nav class=sns><a target=_blank href=https://twitter.com/Uchi54_apc><svg xmlns="http://www.w3.org/2000/svg" fill="currentcolor" viewBox="0 0 248 204"><path d="M221.95 51.29c.15 2.17.15 4.34.15 6.53.0 66.73-50.8 143.69-143.69 143.69v-.04c-27.44.04-54.31-7.82-77.41-22.64 3.99.48 8 .72 12.02.73 22.74.02 44.83-7.61 62.72-21.66-21.61-.41-40.56-14.5-47.18-35.07 7.57 1.46 15.37 1.16 22.8-.87-23.56-4.76-40.51-25.46-40.51-49.5v-.64c7.02 3.91 14.88 6.08 22.92 6.32C11.58 63.31 4.74 33.79 18.14 10.71c25.64 31.55 63.47 50.73 104.08 52.76-4.07-17.54 1.49-35.92 14.61-48.25 20.34-19.12 52.33-18.14 71.45 2.19 11.31-2.23 22.15-6.38 32.07-12.26-3.77 11.69-11.66 21.62-22.2 27.93 10.01-1.18 19.79-3.86 29-7.95-6.78 10.16-15.32 19.01-25.2 26.16z"/></svg></a><a target=_blank href=https://github.com/asanobuturi><svg class="w-5 h-5" fill="currentcolor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483.0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951.0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65.0.0.84-.27 2.75 1.026A9.564 9.564.0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688.0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855.0 1.338-.012 2.419-.012 2.747.0.268.18.58.688.482A10.019 10.019.0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"/></a></nav></div></footer></body></html>

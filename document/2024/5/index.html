@@ -1,0 +1,159 @@
+<!doctype html><html lang=ja><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=description content><meta name=viewport content="width=device-width,initial-scale=1"><link rel=stylesheet href=/scss/styles.min.4a71567d35f0565714f9b264f620dd2c5abcdd3fd6d8bc1fe2bafa8114c2fe47.css><link rel=icon href=/image/favicon.svg type=image/svg+xml><link rel="icon alternate" href=/image/favicon.ico><meta property="og:site_name" content="浅野学園物理部"><meta property="og:url" content="https://asanobuturi.github.io/document/2024/5/index.html"><meta property="og:title" content="マルコフ連鎖で名言を作ろう｜浅野学園物理部"><meta property="og:description" content><meta property="og:type" content="website"><meta property="og:image" content="https://asanobuturi.github.io/document/2024/5/thumbnail.jpg"><meta name=twitter:card content="summary_large_image"><meta name=twitter:site content="@Uchi54_APC"><link rel=canonical href=https://asanobuturi.github.io/document/2024/5/><script async src="https://www.googletagmanager.com/gtag/js?id=G-M4YH1E5WC1"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-M4YH1E5WC1")</script><title>マルコフ連鎖で名言を作ろう｜浅野学園物理部</title><script type=text/javascript src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<link rel=stylesheet href=/scss/highlight.min.5fd4e02a806db4bd8e63d97db9f23a937f07d0d2478a4e37b851c96e75701cf4.css><link rel=stylesheet href=/scss/article.min.5ee3cae303b380c098ecc9cafc8ef5f27c4e7d9864fa43a00560f808df467ab1.css><link rel=stylesheet href=/scss/tableOfContents.min.603245923695f62c9be0618c1b6a10599acbf0f4f5056ffe631acd014b70fd17.css></head><body><nav id=nav-drawer><input id=nav-input type=checkbox class=nav-unshown>
+<label id=nav-open for=nav-input><span class="bar bar1"></span>
+<span class="bar bar2"></span>
+<span class="bar bar3"></span>
+<span class=menu>MENU</span>
+<span class=close>CLOSE</span></label>
+<label id=nav-close for=nav-input></label><div id=nav-content><a href=/index.html><img loading=lazy src=/image/favicon.svg id=nav-logo alt=浅野学園物理部></a>
+<a class=nav-link href=/index.html>ホーム</a>
+<a class=nav-link href=/about/index.html>物理部とは</a>
+<a class="nav-link isActive" href=/document/index.html>部誌</a>
+<a class=nav-link href=/game/index.html>ゲーム</a>
+<a class=nav-link href=/blog/index.html>ブログ</a>
+<a class=nav-link href=/electronic/index.html>電工の部屋</a><hr><a class=nav-link href=/credit/index.html>クレジット(ライセンス)</a></div></nav><main><div id=content><a name=top></a><div id=breadcrumbs><a href=/index.html><img src=/image/icons/home-solid.svg class=inline-image>ホーム</a>
+<img src=/image/icons/angle-right-solid.svg class=inline-image>
+<a href=/document/>部誌</a>
+<img src=/image/icons/angle-right-solid.svg class=inline-image>
+<a href=/document/2024/>2024年度・部誌</a>
+<img src=/image/icons/angle-right-solid.svg class=inline-image>
+<a href=/document/2024/5/>マルコフ連鎖で名言を作ろう</a></div><header id=overview><h1 id=title>マルコフ連鎖で名言を作ろう</h1><div><div class=properties></div><div class=share><span><a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class=twitter-share-button data-related=Uchi54_apc data-lang=ja data-show-count=false>Tweet</a>
+<script async src=https://platform.twitter.com/widgets.js></script></span></div></div></header><article><h2 id=はじめに>はじめに</h2><p>中学３年生のIです
+初めての部誌ですがよろしくおねがいいたします。</p><h2 id=マルコフ連鎖って>マルコフ連鎖って？</h2><p>マルコフ連鎖とは、</p><blockquote><p>マルコフ連鎖（マルコフれんさ、英: Markov chain）とは、確率過程の一種であるマルコフ過程のうち、とりうる状態が離散的（有限または可算）なもの（離散状態マルコフ過程）をいう。また特に、時間が離散的なもの（時刻は添え字で表される）を指すことが多（略）
+何を言っているのかまるでわからないので要約すると、</p></blockquote><p><img src=img.png alt>{width=100%}</p><p>こういう感じで文章を作って名言を作ろうという内容です。</p><h2 id=最低限の環境を整えよう>最低限の環境を整えよう！</h2><p>まず私が行ったのはプログラミングができる環境を作ったことです。</p><h3 id=必要なもの>必要なもの</h3><ul><li>python（生活必需品）</li><li>Mecab（文章を分けたりしてくれる）</li><li>辞書</li></ul><p>こいつらを入れたら、
+試しに使ってみましょう！！
+私の場合はWindows 10だったためWindows 10以外の人はできないかも知れません。
+まずコマンドプロンプトを開いて、</p><div class=codeblock><div class=codeblock-content><div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback><span style=display:flex><span>pip install mecab-python3
+</span></span><span style=display:flex><span>pip install ipadic</span></span></code></pre></td></tr></table></div></div></div></div><p>をしてあげてMecabのインストールをしてあげます（辞書がない場合は個別に入れてね）。</p><h2 id=使ってみよう>使ってみよう</h2><p>最低限の環境を整えたら本当に入ってるのか確認するためにMecabを使ってみましょう！！</p><div class=codeblock><div class=codeblock-content><div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">4
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-py data-lang=py><span style=display:flex><span><span style=color:#f92672>import</span> MeCab
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>tagger <span style=color:#f92672>=</span> MeCab<span style=color:#f92672>.</span>Tagger()
+</span></span><span style=display:flex><span>print(tagger<span style=color:#f92672>.</span>parse(<span style=color:#e6db74>&#34;すもももももももものうち&#34;</span>)<span style=color:#f92672>.</span>split())</span></span></code></pre></td></tr></table></div></div></div></div><p>を打ち込んだファイルに.pyをつけてpythonファイルにしてあげて実行する。
+そうすると、
+こんなかんじになります。</p><div class=codeblock><div class=codeblock-content><div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback><span style=display:flex><span>[&#39;すもも&#39;, &#39;名詞,一般,*,*,*,*,すもも,スモモ,スモモ&#39;, &#39;も&#39;, &#39;助詞,係助詞,*,*,*,*,も,モ,モ&#39;, &#39;もも&#39;, &#39;名詞,一般,*,*,*,*,もも,モモ,モモ&#39;, &#39;も&#39;, &#39;助詞,係助詞,*,*,*,*,も,モ,モ&#39;, &#39;もも&#39;, &#39;名詞,一般,*,*,*,*,もも,モモ,モモ&#39;, &#39;の&#39;, &#39;助詞,連体化,*,*,*,*,の,ノ,ノ&#39;, &#39;うち&#39;, &#39;名詞,非自立,副詞可能,*,*,*,うち,ウチ,ウチ&#39;, &#39;EOS&#39;]</span></span></code></pre></td></tr></table></div></div></div></div><p>では最後に分かち書きをすると、</p><div class=codeblock><div class=codeblock-content><div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">4
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-py data-lang=py><span style=display:flex><span><span style=color:#f92672>import</span> MeCab
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>tagger <span style=color:#f92672>=</span> MeCab<span style=color:#f92672>.</span>Tagger(<span style=color:#e6db74>&#34;-Owakati&#34;</span>)
+</span></span><span style=display:flex><span>print(tagger<span style=color:#f92672>.</span>parse(<span style=color:#e6db74>&#34;すもももももももものうち&#34;</span>)<span style=color:#f92672>.</span>split())</span></span></code></pre></td></tr></table></div></div></div></div><p>をすると、</p><div class=codeblock><div class=codeblock-content><div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback><span style=display:flex><span>\( python mecab_wakati.py
+</span></span><span style=display:flex><span>[&#39;すもも&#39;, &#39;も&#39;, &#39;もも&#39;, &#39;も&#39;, &#39;もも&#39;, &#39;の&#39;, &#39;うち&#39;]</span></span></code></pre></td></tr></table></div></div></div></div><p>となりま。。</p><h2 id=名言っぽいのを作ってみよう>名言っぽいのを作ってみよう！！</h2><p>では迷言をつくっていきましょう！
+とある有名なある御方の言葉を借りて作らせていただきましょう</p><div class=codeblock><div class=codeblock-content><div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">27
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">28
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">29
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">30
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">31
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">32
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">33
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">34
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">35
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">36
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">37
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">38
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">39
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">40
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">41
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">42
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">43
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">44
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">45
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">46
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">47
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">48
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">49
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">50
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">51
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">52
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">53
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-py data-lang=py><span style=display:flex><span><span style=color:#f92672>import</span> MeCab
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> markovify
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>main</span>():
+</span></span><span style=display:flex><span>    <span style=color:#75715e># 匿名Kさんの名言を配列でいれる</span>
+</span></span><span style=display:flex><span>    meigen <span style=color:#f92672>=</span> [
+</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#39;30年後の自分は何歳かな&#39;</span>,
+</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#39;プラスチックの原料って石油なんですよね、意外に知られていないケースがある。&#39;</span>,
+</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#39;反省をしていると申し上げましたが、反省しているんです。&#39;</span>,
+</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#39;リモートワークのおかげでリモートできる仕事ができたのはリモートワークのおかげ。&#39;</span>,
+</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#39;日本は今のままではいけない、だからこそ日本はこのままではいけない。&#39;</span>,
+</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#39;毎日でもステーキを食べたい。</span>
+</span></span><span style=display:flex><span><span style=color:#e6db74>&#39;</span>
+</span></span><span style=display:flex><span>    ]
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    mecab <span style=color:#f92672>=</span> MeCab<span style=color:#f92672>.</span>Tagger()
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># 上手く解釈できない文字列を定義しておく</span>
+</span></span><span style=display:flex><span>    breaking_chars <span style=color:#f92672>=</span> [<span style=color:#e6db74>&#39;(&#39;</span>, <span style=color:#e6db74>&#39;)&#39;</span>, <span style=color:#e6db74>&#39;[&#39;</span>, <span style=color:#e6db74>&#39;]&#39;</span>, <span style=color:#e6db74>&#39;&#34;&#39;</span>, <span style=color:#e6db74>&#34;&#39;&#34;</span>]
+</span></span><span style=display:flex><span>    <span style=color:#75715e># 最終的に1文に収めるための変数</span>
+</span></span><span style=display:flex><span>    splitted_meigen <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;&#39;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span> line <span style=color:#f92672>in</span> meigen:
+</span></span><span style=display:flex><span>        print(<span style=color:#e6db74>&#39;Line : &#39;</span>, line)
+</span></span><span style=display:flex><span>        parsed_nodes <span style=color:#f92672>=</span> mecab<span style=color:#f92672>.</span>parseToNode(line)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>while</span> parsed_nodes:
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>try</span>:
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>if</span> parsed_nodes<span style=color:#f92672>.</span>surface <span style=color:#f92672>not</span> <span style=color:#f92672>in</span> breaking_chars:
+</span></span><span style=display:flex><span>                    splitted_meigen <span style=color:#f92672>+=</span> parsed_nodes<span style=color:#f92672>.</span>surface
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>if</span> parsed_nodes<span style=color:#f92672>.</span>surface <span style=color:#f92672>!=</span> <span style=color:#e6db74>&#39;。&#39;</span> <span style=color:#f92672>and</span> parsed_nodes<span style=color:#f92672>.</span>surface <span style=color:#f92672>!=</span> <span style=color:#e6db74>&#39;、&#39;</span>:
+</span></span><span style=display:flex><span>                    splitted_meigen <span style=color:#f92672>+=</span> <span style=color:#e6db74>&#39; &#39;</span>
+</span></span><span style=display:flex><span>    <span style=color:#960050;background-color:#1e0010>　　　　　</span>  <span style=color:#66d9ef>if</span> parsed_nodes<span style=color:#f92672>.</span>surface <span style=color:#f92672>==</span> <span style=color:#e6db74>&#39;。&#39;</span>:
+</span></span><span style=display:flex><span>                    splitted_meigen <span style=color:#f92672>+=</span> <span style=color:#e6db74>&#39;</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#39;</span>
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>except</span> <span style=color:#a6e22e>UnicodeDecodeError</span> <span style=color:#66d9ef>as</span> error:
+</span></span><span style=display:flex><span>                print(<span style=color:#e6db74>&#39;Error : &#39;</span>, line)
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>finally</span>:
+</span></span><span style=display:flex><span>                parsed_nodes <span style=color:#f92672>=</span> parsed_nodes<span style=color:#f92672>.</span>next
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    print(<span style=color:#e6db74>&#39;解析結果 :</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#39;</span>, splitted_meigen)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    model <span style=color:#f92672>=</span> markovify<span style=color:#f92672>.</span>NewlineText(splitted_meigen, state_size<span style=color:#f92672>=</span><span style=color:#ae81ff>2</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># 文章を生成する</span>
+</span></span><span style=display:flex><span>    sentence <span style=color:#f92672>=</span> model<span style=color:#f92672>.</span>make_sentence(tries<span style=color:#f92672>=</span><span style=color:#ae81ff>100</span>)
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> sentence <span style=color:#f92672>is</span> <span style=color:#f92672>not</span> <span style=color:#66d9ef>None</span>:
+</span></span><span style=display:flex><span>        print(<span style=color:#e6db74>&#39;---------------------------------------------------&#39;</span>)
+</span></span><span style=display:flex><span>        print(<span style=color:#e6db74>&#39;&#39;</span><span style=color:#f92672>.</span>join(sentence<span style=color:#f92672>.</span>split()))
+</span></span><span style=display:flex><span>        print(<span style=color:#e6db74>&#39;---------------------------------------------------&#39;</span>)
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>else</span>:
+</span></span><span style=display:flex><span>        print(<span style=color:#e6db74>&#39;None&#39;</span>)
+</span></span><span style=display:flex><span><span style=color:#66d9ef>if</span> __name__ <span style=color:#f92672>==</span> <span style=color:#e6db74>&#34;__ main __&#34;</span>:
+</span></span><span style=display:flex><span>    main()<span style=color:#e6db74>&#39;</span></span></span></code></pre></td></tr></table></div></div></div></div><h1 id=おわりに>おわりに</h1><p>ようやくできました！！
+で、完成品としては（まともなので）いくつか例をあげてみます</p><ol><li>30年後の自分は毎日でもステーキを食べたいと思っているのかもしれない。</li><li>反省をしていると申し上げましたが、本当に反省しているんです。</li><li>プラスチックの原料って石油なんですよね、日本は今のままではいけない</li></ol><p>名言、、、？迷言ですね！
+一応できたのでよしとします。
+ここまでありがとうございました！！</p></article><span class=next>次へ<a href=https://asanobuturi.github.io/document/2024/6/>じゃんけんの必勝法＞</a></span><br><span class=prev>前へ<a href=https://asanobuturi.github.io/document/2024/4/>ネットスラングを分類してみる＞</a></span></div><aside id=sidebar><nav id=sidemenu><div class=side-back><a href=../index.html>記事の一覧へもどる<img src=/image/icons/sign-out-alt-solid.svg class=inline-image></a></div><div class=side-prev><a href=https://asanobuturi.github.io/document/2024/4/><img src=/image/icons/angle-left-solid.svg class=inline-image>ネットスラングを分類してみる</a></div><div class=side-next><a href=https://asanobuturi.github.io/document/2024/6/>じゃんけんの必勝法<img src=/image/icons/angle-right-solid.svg class=inline-image></a></div></nav><section id=indexblock><header class=indextitle>目次</header><nav id=TableOfContents><ul><li><a href=#はじめに>はじめに</a></li><li><a href=#マルコフ連鎖って>マルコフ連鎖って？</a></li><li><a href=#最低限の環境を整えよう>最低限の環境を整えよう！</a><ul><li><a href=#必要なもの>必要なもの</a></li></ul></li><li><a href=#使ってみよう>使ってみよう</a></li><li><a href=#名言っぽいのを作ってみよう>名言っぽいのを作ってみよう！！</a></li></ul></nav></section></aside></main><footer id=footer><div class=section><nav class=grid><div><label class=headline>CONTENT</label><ul><li><a href=/>Home</a></li><li><a href=/document/>Docs</a></li><li><a href=/game/>Games</a></li><li><a href=/blog/>Blog</a></li><li><a href=/electronic/>Electronic</a></li></ul></div><div><label class=headline>CONTACT</label><ul><li><a target=_blank href=https://x.com/Uchi54_apc>X</a></li><li><a target=_blank href=https://github.com/asanobuturi>GitHub Organization</a></li><li><a target=_blank href=https://github.com/asanobuturi/asanobuturi.github.io>Repository</a></li><li><a target=_blank href=https://github.com/asanobuturi/asanobuturi.github.io/issues>Issues</a></li></ul></div><div><label class=headline>ABOUT</label><ul><li><a href=/about/>About Us</a></li></ul></div></nav></div><hr><div class=section><p class=copyright>Copyright &copy; 2015 - 2023 Asano Physics Club, All Rights Reversed.</p><nav class=sns><a target=_blank href=https://twitter.com/Uchi54_apc><svg xmlns="http://www.w3.org/2000/svg" fill="currentcolor" viewBox="0 0 248 204"><path d="M221.95 51.29c.15 2.17.15 4.34.15 6.53.0 66.73-50.8 143.69-143.69 143.69v-.04c-27.44.04-54.31-7.82-77.41-22.64 3.99.48 8 .72 12.02.73 22.74.02 44.83-7.61 62.72-21.66-21.61-.41-40.56-14.5-47.18-35.07 7.57 1.46 15.37 1.16 22.8-.87-23.56-4.76-40.51-25.46-40.51-49.5v-.64c7.02 3.91 14.88 6.08 22.92 6.32C11.58 63.31 4.74 33.79 18.14 10.71c25.64 31.55 63.47 50.73 104.08 52.76-4.07-17.54 1.49-35.92 14.61-48.25 20.34-19.12 52.33-18.14 71.45 2.19 11.31-2.23 22.15-6.38 32.07-12.26-3.77 11.69-11.66 21.62-22.2 27.93 10.01-1.18 19.79-3.86 29-7.95-6.78 10.16-15.32 19.01-25.2 26.16z"/></svg></a><a target=_blank href=https://github.com/asanobuturi><svg class="w-5 h-5" fill="currentcolor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483.0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951.0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65.0.0.84-.27 2.75 1.026A9.564 9.564.0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688.0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855.0 1.338-.012 2.419-.012 2.747.0.268.18.58.688.482A10.019 10.019.0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"/></a></nav></div></footer></body></html>

@@ -1,0 +1,138 @@
+<!doctype html><html lang=ja><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=description content="マクローリン展開をできるだけ分かりやすく解説する記事。"><meta name=viewport content="width=device-width,initial-scale=1"><link rel=stylesheet href=/scss/styles.min.4a71567d35f0565714f9b264f620dd2c5abcdd3fd6d8bc1fe2bafa8114c2fe47.css><link rel=icon href=/image/favicon.svg type=image/svg+xml><link rel="icon alternate" href=/image/favicon.ico><meta property="og:site_name" content="浅野学園物理部"><meta property="og:url" content="https://asanobuturi.github.io/document/2024/15/index.html"><meta property="og:title" content="sinの近似値を求めよう！｜浅野学園物理部"><meta property="og:description" content="マクローリン展開をできるだけ分かりやすく解説する記事。"><meta property="og:type" content="website"><meta property="og:image" content="https://asanobuturi.github.io/document/2024/15/thumbnail.jpg"><meta name=twitter:card content="summary_large_image"><meta name=twitter:site content="@Uchi54_APC"><link rel=canonical href=https://asanobuturi.github.io/document/2024/15/><script async src="https://www.googletagmanager.com/gtag/js?id=G-M4YH1E5WC1"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-M4YH1E5WC1")</script><title>sinの近似値を求めよう！｜浅野学園物理部</title><script type=text/javascript src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<link rel=stylesheet href=/scss/highlight.min.5fd4e02a806db4bd8e63d97db9f23a937f07d0d2478a4e37b851c96e75701cf4.css><link rel=stylesheet href=/scss/article.min.5ee3cae303b380c098ecc9cafc8ef5f27c4e7d9864fa43a00560f808df467ab1.css><link rel=stylesheet href=/scss/tableOfContents.min.603245923695f62c9be0618c1b6a10599acbf0f4f5056ffe631acd014b70fd17.css></head><body><nav id=nav-drawer><input id=nav-input type=checkbox class=nav-unshown>
+<label id=nav-open for=nav-input><span class="bar bar1"></span>
+<span class="bar bar2"></span>
+<span class="bar bar3"></span>
+<span class=menu>MENU</span>
+<span class=close>CLOSE</span></label>
+<label id=nav-close for=nav-input></label><div id=nav-content><a href=/index.html><img loading=lazy src=/image/favicon.svg id=nav-logo alt=浅野学園物理部></a>
+<a class=nav-link href=/index.html>ホーム</a>
+<a class=nav-link href=/about/index.html>物理部とは</a>
+<a class="nav-link isActive" href=/document/index.html>部誌</a>
+<a class=nav-link href=/game/index.html>ゲーム</a>
+<a class=nav-link href=/blog/index.html>ブログ</a>
+<a class=nav-link href=/electronic/index.html>電工の部屋</a><hr><a class=nav-link href=/credit/index.html>クレジット(ライセンス)</a></div></nav><main><div id=content><a name=top></a><div id=breadcrumbs><a href=/index.html><img src=/image/icons/home-solid.svg class=inline-image>ホーム</a>
+<img src=/image/icons/angle-right-solid.svg class=inline-image>
+<a href=/document/>部誌</a>
+<img src=/image/icons/angle-right-solid.svg class=inline-image>
+<a href=/document/2024/>2024年度・部誌</a>
+<img src=/image/icons/angle-right-solid.svg class=inline-image>
+<a href=/document/2024/15/>sinの近似値を求めよう！</a></div><header id=overview><h1 id=title>sinの近似値を求めよう！</h1><div><div class=properties></div><div class=share><span><a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class=twitter-share-button data-related=Uchi54_apc data-lang=ja data-show-count=false>Tweet</a>
+<script async src=https://platform.twitter.com/widgets.js></script></span></div></div></header><article><h2 id=はじめに>はじめに</h2><p>私は今回初めて部誌を書くのですが、マクローリン展開がとても面白いと思ったので今回書いてみました。できるだけ、数学が分からない人でも読んでマクローリン展開の面白さや凄さが伝えられるようにしたいと思います。</p><p>さて、これから色々な数式が出てくるのですが、最初に出てくる記号等の補足を入れたいと思います。知っている人は読み飛ばしてください。</p><p>\(f(x)\)とは、\(x\)の関数を意味しています。<br>\(sum_{k=0}^a f(k)\)とは、\(f(k)\)において\(k=0\)から\(a\)まで代入したときの総和を表しています。なので、 \(sum_{k=0}^a f(k)=f(0)+f(1)+\ldots+f(a)\) ということになります。\(f^{(n)}(x)\)とは\(f(x)\)の第\(n\)次導関数を意味していて、\(f(x)\)の\(n\)階微分ともいいます。
+\(n!\)とは非負整数(負ではない整数つまり\(0,1,2,\ldots\))\(n\)に対して\(1\)から\(n\)までの積の値で、\(n\)の階乗です。つまり、\(n! = 1 \times 2 \times 3 \times \ldots \times n\)となります。(\(n\)の階乗もガンマ関数で定義することで非負整数から正の実数まで拡張することができ、面白いのですがここでは取り扱いません)<br>区間\([a,b]\)とは閉区間\([a,b]\)ともいい、a以上b以下の数の集合です。</p><h2 id=マクローリン展開とは>マクローリン展開とは？</h2><p>\[f(x)=sum_{k=0}^{\infty} f^{(k)}(0) \frac{x^k}{k\!} \cdot (1)\]
+上の式は無限回微分可能で右辺の級数が収束するような関数\(f(x)\)について成立する式です。<br>マクローリン展開とはこの式において、\(f(x)\)を左辺のように展開することです。この無限級数を途中まで計算すると、多項式になり\(f(x)\)を多項式で近似することができます。マクローリン展開の面白いところは、複雑な関数で表された曲線を多項式で近似できるところです。</p><h2 id=sinxを実際にマクローリン展開してみる>sinxを実際にマクローリン展開してみる</h2><p>①だとよく分からないかもしれない人もいるかもしれないので、まず①の右辺の級数を展開をしてみましょう。
+\[f(x)=f^{\prime}(0) \frac{x}{1\!}+f^{\prime \prime}(0) \frac{x^2}{2\!}+f^{\prime \prime \prime}(0) \frac{x}{3\!}+\ldots\]</p><p>と、右辺はなっています。<br>ここで、\(\sin x\)の\(n\)階導関数を求めると、
+\[
+\sin^{(n)}(x) =
+\begin{cases}
+\cos(x) & \text{n = 1, 5, 9... のとき} \\
+-\sin(x) & \text{n = 2, 6, 10... のとき} \\
+-\cos(x) & \text{n = 3, 7, 11... のとき} \\
+\sin(x) & \text{n = 4, 8, 12... のとき}
+\end{cases}
+\]</p><p>となります。
+よって、 \(\sin x\) のマクローリン展開は次のようになります。</p><p>\[
+\begin{aligned}
+& \sin x=\cos 0 \frac{x}{1!}-\sin 0 \frac{x^2}{2!}-\cos 0 \frac{x^3}{3!}+\sin 0 \frac{x^4}{4!}+\cos 0 \frac{x^5}{5!}+\ldots
+\\
+& =x-\frac{x^3}{3!}+\frac{x^5}{5\!}\ldots \ldots
+\\
+& = sum_{k=0}^{\infty}(-1)^k \frac{x^{2 k+1}}{(2 k+1)!} \cdot \text { ・(2) }
+\end{aligned}
+\]</p><h2 id=javascriptで実際に実装してみる>JavaScriptで実際に実装してみる</h2><p>sinxのマクローリン展開が出来たので実際にJavaScriptを使って、実装してみようと思います。<br>コードは以下のようになります。</p><div class=codeblock><div class=codeblock-content><div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">21
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>factorize</span> (<span style=color:#a6e22e>k</span>) {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>m</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>1</span>;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>n</span><span style=color:#f92672>=</span><span style=color:#ae81ff>1</span>;<span style=color:#a6e22e>n</span><span style=color:#f92672>&lt;=</span><span style=color:#a6e22e>k</span>;<span style=color:#a6e22e>n</span><span style=color:#f92672>++</span>) {
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>m</span> <span style=color:#f92672>*=</span> <span style=color:#a6e22e>n</span>;
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>m</span>;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>sin</span>() {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>sinx</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>i</span><span style=color:#f92672>=</span><span style=color:#ae81ff>1</span>;<span style=color:#a6e22e>i</span><span style=color:#f92672>&lt;=</span><span style=color:#ae81ff>50</span>;<span style=color:#a6e22e>i</span><span style=color:#f92672>++</span>) {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>i</span><span style=color:#f92672>%</span><span style=color:#ae81ff>2</span> <span style=color:#f92672>===</span> <span style=color:#ae81ff>1</span>) {
+</span></span><span style=display:flex><span>            <span style=color:#a6e22e>sinx</span> <span style=color:#f92672>+=</span> (<span style=color:#a6e22e>x</span><span style=color:#f92672>**</span>(<span style=color:#ae81ff>2</span><span style=color:#f92672>*</span><span style=color:#a6e22e>i</span><span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>))<span style=color:#f92672>/</span><span style=color:#a6e22e>factorize</span>(<span style=color:#ae81ff>2</span><span style=color:#f92672>*</span><span style=color:#ae81ff>1</span><span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>);
+</span></span><span style=display:flex><span>        } <span style=color:#66d9ef>else</span> {
+</span></span><span style=display:flex><span>            <span style=color:#a6e22e>sinx</span> <span style=color:#f92672>-=</span> (<span style=color:#a6e22e>x</span><span style=color:#f92672>**</span>(<span style=color:#ae81ff>2</span><span style=color:#f92672>*</span><span style=color:#a6e22e>i</span><span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>))<span style=color:#f92672>/</span><span style=color:#a6e22e>factorize</span>(<span style=color:#ae81ff>2</span><span style=color:#f92672>*</span><span style=color:#ae81ff>1</span><span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>)
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>sinx</span>;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span><span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#e6db74>&#34;sin(0)=&#34;</span><span style=color:#f92672>+</span><span style=color:#a6e22e>sin</span>(<span style=color:#ae81ff>0</span>));
+</span></span><span style=display:flex><span><span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#e6db74>&#34;sin(π/6)=&#34;</span><span style=color:#f92672>+</span><span style=color:#a6e22e>sin</span>(Math.<span style=color:#a6e22e>PI</span><span style=color:#f92672>/</span><span style=color:#ae81ff>6</span>));
+</span></span><span style=display:flex><span><span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#e6db74>&#34;sin(π/4)=&#34;</span><span style=color:#f92672>+</span><span style=color:#a6e22e>sin</span>(Math.<span style=color:#a6e22e>PI</span><span style=color:#f92672>/</span><span style=color:#ae81ff>4</span>));</span></span></code></pre></td></tr></table></div></div></div></div><p>コンソールに出力した結果↓</p><div class=codeblock><div class=codeblock-content><div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">3
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback><span style=display:flex><span>sin(0)=0
+</span></span><span style=display:flex><span>sin(π/6)=0.49999999999999994
+</span></span><span style=display:flex><span>sin(π/4)=0.7071067811865475</span></span></code></pre></td></tr></table></div></div></div></div><p>ということで、実際の値は<br>\(\sin 0=0, \sin \frac{\pi}{6}=0.5, \sin \frac{\pi}{4}=\frac{\sqrt{2}}{2}=0.707106781187 \ldots\) となるので\((2)\)で\(k=50\)まで計算するだけでもかなりの精度があり、よく近似出来ていることが分かります。例えば、 \(\sin \frac{\pi}{4}\) では小数点第\(11\)桁ま で正しい値になっています。</p><p>このコードでは<code>factorize</code>関数で階乗の値を求め、<code>sin(x)</code>関数で\(\sin(x)\)の値をマクローリン展開に<code>k=50</code>まで代入して近似しています。次から、ロルの定理 \(\rightarrow\) テイラーの定理 \(\rightarrow\) テイラー展開 \(\rightarrow\) マクローリン展開の順に証明したいと思います。</p><h2 id=ロルの定理>ロルの定理</h2><p>ロルの定理の前に最大値の定理は認めたいと思います。</p><h3 id=最大値の定理>最大値の定理</h3><p>区間\([a,b]\)で連続な関数\(f(x)\)は最大値を持つ<br>ここから実際に証明に入ります。</p><h3 id=ロルの定理-1>ロルの定理</h3><p>　区間\([a,b]\)で連続、\((a,b)\)で微分可能で\(f(a)=f(b)\)となる関数\(f(x)\)において<br>　\(f&rsquo;(c)=0\)かつ\(a&lt;c&lt;b\)を満たす\(c\)が存在する<br>(証明)<br>(ⅰ)\(f(x)\)が区間内で定数関数のとき<br>　\(a&lt;c&lt;b\)を満たす、すべての\(c\)において\(f&rsquo;(c)=0\)が成り立つ<br>(ⅱ)\(f(x)\)が区間内で定数関数ではないとき<br>　\(f(x)\)が区間内で定数関数でないので\(f(k)>f(a),a&lt;k&lt;b\)を満たす\(k\)が存在するとき<br>　最大値の定理より\(a&lt;c&lt;b\)を満たし\(f(c)\)が区間内で最大になるような\(c\)が存在する。<br>これから f^{\prime}(c) を証明する。<br>\(\forall x \in [a, b]\)に対して\(f(c) \geq f(x)\)なので、<br>\(\lim_{h \to +0} \frac{f(c+h) - f(c)}{h} \leq 0, \quad \lim_{h \to -0} \frac{f(c+h) - f(c)}{h} \geq 0\)</p><p>\(f(c)\)で微分可能なので \(\lim_{h \rightarrow+0} \frac{f(c+h)-f(c)}{h}=\lim_{h \rightarrow-0} \frac{f(c+h)-f(c)}{h}\) が成り立つ。<br>よって、\(\lim_{h \rightarrow 0} \frac{f(c+h)-f(c)}{h}=0\)となるので\(f^{\prime}(c)=0\) が成り立つ。<br></p><p>\(f(k)&lt;f(a), a&lt;k&lt;b\)を満たす\(k\)が存在するときは最小値を考え同様にできる。</p><h2 id=テイラーの定理>テイラーの定理</h2><p>閉区間\([a, x]\)で\(n\)回微分可能な関数\(f(x)\)について、
+\[
+f(x)=\sum_{k=0}^{n-1} f^{(k)}(a) \frac{(x-a)^k}{k\!}+f^{(n)}(c) \frac{(x-a)^n}{n\!}
+\]</p><p>を満たす\(a&lt;c&lt;x\)が存在する。</p><p>(証明)<br>\(f(b)=\sum_{k=0}^{n-1} f^{(k)}(a) \frac{(b-a)^k}{k!}+A \frac{(b-a)^n}{n!}\)となるような定数\(A\)をおく。<br>ここで、<br>\[
+\begin{aligned} g(x) & =f(b)-f(x)-\sum_{k=1}^{n-1} f^{(k)}(x) \frac{(b-x)^k}{k\!}-A \frac{(b-x)^n}{n\!} \end{aligned}
+\]</p><p>とおくと<br></p><p>\[
+\begin{aligned}
+g(a) & =f(b)-f(a)-\sum_{k=1}^{n-1} f^{(k)}(a) \frac{(b-a)^k}{k!}-A \frac{(b-a)^n}{n\!} \\
+& =f^{(0)}(a) \frac{(b-a)^0}{0\!}-f(a) \\
+& =0
+\end{aligned}
+\]
+\[
+\begin{aligned}
+g(b) & =f(b)-f(b)-\sum_{k=1} f^{(k)}(b) \frac{(b-b)}{k!}-A \frac{(b-b))^2}{n\!} \\
+& =0
+\end{aligned}
+\]</p><p>よって、ロルの定理より\(g^{\prime}(c)=0\)かつ\(a&lt;c&lt;b\)となる\(c\)が存在する。\(a&lt;x&lt;b\)において\(g(x)\)を微分すると</p><p>\[
+\begin{aligned}
+g^{\prime}(x) & =-f^{\prime}(x)-\sum_{k=1}^{n-1}\left(f^{(k+1)}(x) \frac{(b-x)^k}{k!}-f^{(k)}(x) k \frac{(b-x)^{k-1}}{k!}\right)+ \\
+& A n \frac{(b-x)^{n-1}}{n!} \\
+& =-f^{(0+1)}(x) \frac{(b-x)^0}{0\!}-\sum_{k=1}^{n-1} f^{(k+1)}(x) \frac{(b-x)^k}{k\!}+ \\
+& \sum_{k=1}^{n-1} f^{(k)}(x) \frac{(b-x)^{k-1}}{(k-1)!}+A \frac{(b-x)^{n-1}}{(n-1)!} \\
+& =-\sum_{k=0}^{n-1} f^{(k+1)}(x) \frac{(b-x)^k}{k!}+\sum_{k=1}^{n-1} f^{(k)}(x) \frac{(b-x)^{k-1}}{(k-1)!}+A \frac{(b-x)^{n-1}}{(n-1)!} \\
+& =-f^{(n)}(x) \frac{(b-x)^{n-1}}{(n-1)\!}+A \frac{(b-x)^{n-1}}{(n-1)\!} \\
+& =\frac{(b-x)^{n-1}}{(n-1)!}\left(A-f^{(n)}(x)\right)
+\end{aligned}
+\]</p><p>また、\(g^{\prime}(c)=0\)
+より
+\(\frac{(b-c)^{n-1}}{(n-1)!}\left(A-f^{(n)}(c)\right)=0\)
+が成り立ち
+\(c&lt;b\)
+より
+\(b-c \neq 0\)なので\(\frac{(b-c)^{n-1}}{(n-1)!} \neq 0\)より\(A=f^{(n)}(c)\)</p><p>よって、閉区間\([a, x]\)で\(n\)回微分可能な関数\(f(x)\)について、
+\[
+f(x)=\sum_{k=0}^{n-1} f^{(k)}(a) \frac{(x-a)^k}{k\!}+f^{(n)}(c) \frac{(x-a)^n}{n\!}
+\]</p><p>を満たす \(a&lt;c&lt;x\) が存在する
+\((Q.E.D)\)</p><h2 id=テイラー展開>テイラー展開</h2><p>テイラーの定理において、 \(n \rightarrow \infty\) のときを考えると、
+\(f(x)=\sum_{k=0}^{\infty} f^{(k)}(a) \frac{(x-a)^k}{k!}+f^{(n)}(c) \frac{(x-a)^n}{n!}\)は、
+シグマの部分は\(n-1\)次の多項式となっていて、
+誤差 \(R_n=\frac{f^{(n)}(c)}{n!}(x-a)^n\)とすると<br>\(n\)階微分がべき乗で抑えられるすなわち、<br>\(A, B\)を定数として、すべての\(n\)と\(x\)について\(f^{(n)}\left(x_0\right) \leq A B^n\)が成り立つとき、
+\(R_n=\frac{f^{(n)}(c)}{n!}(x-a)^n \leq \frac{A B^n}{n!}(x-a)^n=A \frac{(B(x-a))^n}{n!}\) となり、
+一般に \(\frac{m^{n+1}}{m^n}=m, \frac{(n+1)!}{n!}=n\) より \(n \rightarrow \infty\) において、階乗の方が指数関数よりも発散速度が速いので \(\lim _{n \rightarrow \infty} R_n=0\)となります。<br>よって、\(A, B\)を定数として、すべての\(n\)と\(x_0\)について\(f^{(n)}\left(x_0\right) \leq A B^n\)が成り立つとき、
+\(f(x)=\sum_{k=0}^{\infty} f^{(k)}(a) \frac{(x-a)^k}{k!}\)が成り立つ。</p><h2 id=マクローリン展開>マクローリン展開</h2><p>テイラー展開において\(a=0\)とすると、<br>\(f(x)=\sum_{k=0}^{\infty} f^{(k)}(0) \frac{x^k}{k!}\) が成り立つ。これがマクローリン展開です。<br>ここで、\(\sin x\)のマクローリン展開ができるかどうか、すなわち、<br>\(A, B\)を定数として、すべての\(n\)について\(f^{(n)}(0) \leq A B^n\)が成り立つか どうか確認してみましょう。</p><p>すべての非負整数\(n\)と\(x\)に対して\(\left|\sin ^{(n)} x\right| \leq 1\)より<br>マクローリン展開ができることが分かる。</p><h2 id=最後に>最後に</h2><p>今回、色々確認、参考にしながら書いたのですが、書いていてなかなか初学の人には説明が分かりにくいところも多くあり、式変形などを詳しく書いたつもりなのですが、理解できたでしょうか？文章も拙いところもありますが、最後まで長々読んでくださりありがとうございました。</p><h2 id=参考文献>参考文献</h2><ul><li>マクローリン展開 | 高校数学の美しい物語
+<img src=references/manabitimesjp1.png class=qrcode>
+<a href=https://manabitimes.jp/math/570#2>https://manabitimes.jp/math/570#2</a></li><li>テイラーの定理とテイラー展開～例と証明 | 高校数学の美しい物語
+<img src=references/manabitimesjp2.png class=qrcode>
+<a href=https://manabitimes.jp/math/1001#3>https://manabitimes.jp/math/1001#3</a></li><li>sinとcosのn階微分とマクローリン展開 | 高校数学の美しい物語
+<img src=references/manabitimesjp3.png class=qrcode>
+<a href=https://manabitimes.jp/math/1158>https://manabitimes.jp/math/1158</a></li></ul></article><span class=next>次へ<a href=https://asanobuturi.github.io/document/2024/16/>418 I'm a Teapot＞</a></span><br><span class=prev>前へ<a href=https://asanobuturi.github.io/document/2024/14/>すもももももももものうち＞</a></span></div><aside id=sidebar><nav id=sidemenu><div class=side-back><a href=../index.html>記事の一覧へもどる<img src=/image/icons/sign-out-alt-solid.svg class=inline-image></a></div><div class=side-prev><a href=https://asanobuturi.github.io/document/2024/14/><img src=/image/icons/angle-left-solid.svg class=inline-image>すもももももももものうち</a></div><div class=side-next><a href=https://asanobuturi.github.io/document/2024/16/>418 I'm a Teapot<img src=/image/icons/angle-right-solid.svg class=inline-image></a></div></nav><section id=indexblock><header class=indextitle>目次</header><nav id=TableOfContents><ul><li><a href=#はじめに>はじめに</a></li><li><a href=#マクローリン展開とは>マクローリン展開とは？</a></li><li><a href=#sinxを実際にマクローリン展開してみる>sinxを実際にマクローリン展開してみる</a></li><li><a href=#javascriptで実際に実装してみる>JavaScriptで実際に実装してみる</a></li><li><a href=#ロルの定理>ロルの定理</a><ul><li><a href=#最大値の定理>最大値の定理</a></li><li><a href=#ロルの定理-1>ロルの定理</a></li></ul></li><li><a href=#テイラーの定理>テイラーの定理</a></li><li><a href=#テイラー展開>テイラー展開</a></li><li><a href=#マクローリン展開>マクローリン展開</a></li><li><a href=#最後に>最後に</a></li><li><a href=#参考文献>参考文献</a></li></ul></nav></section></aside></main><footer id=footer><div class=section><nav class=grid><div><label class=headline>CONTENT</label><ul><li><a href=/>Home</a></li><li><a href=/document/>Docs</a></li><li><a href=/game/>Games</a></li><li><a href=/blog/>Blog</a></li><li><a href=/electronic/>Electronic</a></li></ul></div><div><label class=headline>CONTACT</label><ul><li><a target=_blank href=https://x.com/Uchi54_apc>X</a></li><li><a target=_blank href=https://github.com/asanobuturi>GitHub Organization</a></li><li><a target=_blank href=https://github.com/asanobuturi/asanobuturi.github.io>Repository</a></li><li><a target=_blank href=https://github.com/asanobuturi/asanobuturi.github.io/issues>Issues</a></li></ul></div><div><label class=headline>ABOUT</label><ul><li><a href=/about/>About Us</a></li></ul></div></nav></div><hr><div class=section><p class=copyright>Copyright &copy; 2015 - 2023 Asano Physics Club, All Rights Reversed.</p><nav class=sns><a target=_blank href=https://twitter.com/Uchi54_apc><svg xmlns="http://www.w3.org/2000/svg" fill="currentcolor" viewBox="0 0 248 204"><path d="M221.95 51.29c.15 2.17.15 4.34.15 6.53.0 66.73-50.8 143.69-143.69 143.69v-.04c-27.44.04-54.31-7.82-77.41-22.64 3.99.48 8 .72 12.02.73 22.74.02 44.83-7.61 62.72-21.66-21.61-.41-40.56-14.5-47.18-35.07 7.57 1.46 15.37 1.16 22.8-.87-23.56-4.76-40.51-25.46-40.51-49.5v-.64c7.02 3.91 14.88 6.08 22.92 6.32C11.58 63.31 4.74 33.79 18.14 10.71c25.64 31.55 63.47 50.73 104.08 52.76-4.07-17.54 1.49-35.92 14.61-48.25 20.34-19.12 52.33-18.14 71.45 2.19 11.31-2.23 22.15-6.38 32.07-12.26-3.77 11.69-11.66 21.62-22.2 27.93 10.01-1.18 19.79-3.86 29-7.95-6.78 10.16-15.32 19.01-25.2 26.16z"/></svg></a><a target=_blank href=https://github.com/asanobuturi><svg class="w-5 h-5" fill="currentcolor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483.0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951.0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65.0.0.84-.27 2.75 1.026A9.564 9.564.0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688.0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855.0 1.338-.012 2.419-.012 2.747.0.268.18.58.688.482A10.019 10.019.0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"/></a></nav></div></footer></body></html>
