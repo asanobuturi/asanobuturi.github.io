@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>mikan os on 浅野学園物理部</title><link>https://asanobuturi.github.io/blog/tags/mikan-os/</link><description>Recent content in mikan os on 浅野学園物理部</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Sat, 09 Mar 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://asanobuturi.github.io/blog/tags/mikan-os/index.xml" rel="self" type="application/rss+xml"/><item><title>PythonでSVGのQRコードを生成する</title><link>https://asanobuturi.github.io/blog/20240321/</link><pubDate>Sat, 09 Mar 2024 00:00:00 +0000</pubDate><guid>https://asanobuturi.github.io/blog/20240321/</guid><description>Copyright [yyyy] [著作権所有者の名前]
-Apache License Version 2.0（「本ライセンス」）に基づいてライセンスされます。あなたがこのファイルを使用するためには、本ライセンスに従わなければなりません。本ライセンスのコピーは下記の場所から入手できます。
-http://www.apache.org/licenses/LICENSE-2.0 適用される法律または書面での同意によって命じられない限り、本ライセンスに基づいて頒布されるソフトウェアは、明示黙示を問わず、いかなる保証も条件もなしに「現状のまま」頒布されます。本ライセンスでの権利と制限を規定した文言については、本ライセンスを参照してください。
-春休みになり漸くまとまった時間が取れるようになったので詰まったところなど。
-Windows 11 23H2 Ubuntu 22.04 on WSL2 80p hlt命令が見つからない info registersをしRIPレジスタの値の命令をx /2i 0x3fb73016のように参照するとjmp命令があるとのことだったがあったのは比較命令とje(jump if equal)命令だけであった。je命令は比較命令をジャンプ先に指定していたので無限ループではあったがmain.cppに記述したhlt命令が読めていないということなので解決が必要であった。
-https://github.com/uchan-nos/os-from-zero/issues/140
-ここの最下部に記載のある通りリンカスクリプトを書けば良いとのことでしたので試したらサクッと動いた。しかしこれに応じてリンカスクリプトを参照する設定をMakefileに適宜追記する必要がある。
-ビルドが億劫 tasks.jsonを書きましょう。 私は~/workspace/mymikanos下に写経しながら行っているのでパスを適宜変更してください。
-.vscode/tasks.json 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 { &amp;#34;version&amp;#34;: &amp;#34;2.0.0&amp;#34;, &amp;#34;tasks&amp;#34;: [ { &amp;#34;label&amp;#34;: &amp;#34;make kernel&amp;#34;, &amp;#34;type&amp;#34;: &amp;#34;shell&amp;#34;, &amp;#34;command&amp;#34;: &amp;#34;source ~/osbook/devenv/buildenv.</description></item></channel></rss>
