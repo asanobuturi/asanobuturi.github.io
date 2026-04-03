@@ -1,0 +1,177 @@
+<!doctype html><html lang=ja><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=description content><meta name=viewport content="width=device-width,initial-scale=1"><link rel=stylesheet href=/scss/styles.min.4a71567d35f0565714f9b264f620dd2c5abcdd3fd6d8bc1fe2bafa8114c2fe47.css><link rel=icon href=/image/favicon.svg type=image/svg+xml><link rel="icon alternate" href=/image/favicon.ico><meta property="og:site_name" content="浅野学園物理部"><meta property="og:url" content="https://asanobuturi.github.io/document/2025/10/index.html"><meta property="og:title" content="BASICでお絵かき｜浅野学園物理部"><meta property="og:description" content><meta property="og:type" content="website"><meta property="og:image" content="https://asanobuturi.github.io/document/2025/10/thumbnail.jpg"><meta name=twitter:card content="summary_large_image"><meta name=twitter:site content="@Uchi54_APC"><link rel=canonical href=https://asanobuturi.github.io/document/2025/10/><script async src="https://www.googletagmanager.com/gtag/js?id=G-M4YH1E5WC1"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-M4YH1E5WC1")</script><title>BASICでお絵かき｜浅野学園物理部</title><script type=text/javascript src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<link rel=stylesheet href=/scss/highlight.min.5fd4e02a806db4bd8e63d97db9f23a937f07d0d2478a4e37b851c96e75701cf4.css><link rel=stylesheet href=/scss/article.min.5ee3cae303b380c098ecc9cafc8ef5f27c4e7d9864fa43a00560f808df467ab1.css><link rel=stylesheet href=/scss/tableOfContents.min.603245923695f62c9be0618c1b6a10599acbf0f4f5056ffe631acd014b70fd17.css></head><body><nav id=nav-drawer><input id=nav-input type=checkbox class=nav-unshown>
+<label id=nav-open for=nav-input><span class="bar bar1"></span>
+<span class="bar bar2"></span>
+<span class="bar bar3"></span>
+<span class=menu>MENU</span>
+<span class=close>CLOSE</span></label>
+<label id=nav-close for=nav-input></label><div id=nav-content><a href=/index.html><img loading=lazy src=/image/favicon.svg id=nav-logo alt=浅野学園物理部></a>
+<a class=nav-link href=/index.html>ホーム</a>
+<a class=nav-link href=/about/index.html>物理部とは</a>
+<a class="nav-link isActive" href=/document/index.html>部誌</a>
+<a class=nav-link href=/game/index.html>ゲーム</a>
+<a class=nav-link href=/blog/index.html>ブログ</a>
+<a class=nav-link href=/electronic/index.html>電工の部屋</a><hr><a class=nav-link href=/credit/index.html>クレジット(ライセンス)</a></div></nav><main><div id=content><a name=top></a><div id=breadcrumbs><a href=/index.html><img src=/image/icons/home-solid.svg class=inline-image>ホーム</a>
+<img src=/image/icons/angle-right-solid.svg class=inline-image>
+<a href=/document/>部誌</a>
+<img src=/image/icons/angle-right-solid.svg class=inline-image>
+<a href=/document/2025/>2025年度・部誌</a>
+<img src=/image/icons/angle-right-solid.svg class=inline-image>
+<a href=/document/2025/10/>BASICでお絵かき</a></div><header id=overview><h1 id=title>BASICでお絵かき</h1><div><div class=properties><span class=author><img src=/image/icons/user-edit-solid.svg class=inline-image>
+高二</span></div><div class=share><span><a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class=twitter-share-button data-related=Uchi54_apc data-lang=ja data-show-count=false>Tweet</a>
+<script async src=https://platform.twitter.com/widgets.js></script></span></div></div></header><article><p>BASICという昔のプログラミング言語を使用して絵を描いたので記録として書いてみた。</p><h3 id=いきさつ>いきさつ</h3><p>日課である倉庫の整理をしていたところ、何故か椅子の上にPC98が置いてあったので中身を漁ることに。結果いくつかのイラストを発見。大昔は座標を指定して線を引いたりすることで絵を描いたりしていたとTwitterで見た記憶と結びつき、自分もやってみることに。</p><h2 id=やること>やること</h2><p>BASICというプログラミング言語を使用した絵の描画。</p><h3 id=pc98basicについて>PC98/BASICについて</h3><p>PC98はNECが1980年代から販売していたパソコンの総称。今の一般的なパソコンとRAM容量で比較すると約1万倍性能に差がある。ちなみに物理部には4台のPC98が眠っている。<br>BASICは1964年に誕生した初期のプログラミング言語の１つ。<code>Beginner's All-purpose Symbolic Instruction Code</code>(初心者向け汎用記号命令コード)の頭文字を取って名付けられた。これのいくつかある派生形の１つであるMicrosoftが開発した<code>GWBASIC</code>を今回は使用する。</p><h3 id=実行準備>実行準備</h3><p>GWBASICは太古の遺物なのでもちろん今のWindowsPCでは動作しない。年代を合わせて物理部にあるPC98でコードを書いても良いのだが、自宅での作業を考慮して今回は自分のWindowsPCを使用する。
+Windows11上で動作させるためにDOSBoxというエミュレータを使用。また、描く対象については直線が多く描きやすそうだったので物理部のロゴに決定。</p><p><img src=images/Logo.jpg alt=APCロゴ></p><h2 id=描画>描画</h2><h3 id=使用する関数紹介>使用する関数紹介</h3><p>座標などの数値を入力したら線を引いてくれる関数がGWBASICには備わっているのでそれを用いて絵を描いていく。そんな関数たちの紹介。<br></p><ul><li><code>LINE</code> 直線を引く。点Aから点Bまで線を引くには　LINE(\(X_{A}\),\(Y_{A}\))-(\(X_{B}\),\(Y_{B}\))　と書く。</li><li><code>CIRCLE</code> 楕円を描く。楕円の中心\(O\)、x軸方向の半径\(r\)、始点の傾角\(θ_1\)、終点の傾角\(θ_2\)、楕円の縦横比\(a\)を指定する必要がある。　CIRCLE(\(X_o,Y_o\)),\(r\),2,\(θ_!\),\(θ_2\),\(a\) と書くと楕円の一部を描画してくれる。</li><li><code>PAINT</code> 塗りつぶす。図形の内側の座標を代入するとそれを塗りつぶしてくれる。PAINT(\(X,Y\))　と書くだけでいい。楽！</li></ul><p>この3つの関数のみで図形を描くことができる(らしい)。
+しかしロゴの各点を座標でおかないとこれらの関数が使えなく、がんばって計測した。</p><p><img src=images/%E8%A8%AD%E8%A8%88%E5%9B%B3.jpg alt=設計図写真></p><h3 id=実際描いてみて>実際描いてみて</h3><h4 id=a>A</h4><p>ものすごく簡単。直線を引くだけ。PAINT関数も正常に動作した。</p><h4 id=pc>P,C</h4><p>結構めんどい。単純な直線の部分をとりあえず描画。曲線部を弧としたときの中心とx,yが最大・最小になる点の座標を調べてGeminiAIくんに投げたら式を考えてくれた、優秀！</p><p><img src=images/Gemini.png alt=Gemini></p><h4 id=周りの枠みたいなやつ>周りの枠みたいなやつ</h4><p>Aとほとんどやることは同じだが、右下にあるネジの描画に手間がかかった。やることはP、Cと同じだがサイズが小さく調整が難しかった。</p><p><img src=images/APC%E3%83%AD%E3%82%B4.png alt=できあがったもの。></p><p>なんか微妙。右下の部分のクオリティをもっと上げられると良いかも。</p><h2 id=おわりに>おわりに</h2><p>本当はPC98でコード実行したかったのだが、別の作業をPC98上で行っていたところ壊れてしまったので仮想環境での実行になってしまった。残念。
+原理的にはSVGから直接変換できそうだなーと思ったので興味を持った人は実装してみてください。
+ここまで読んでいただきありがとうございました。
+以下に<code>GWBASIC</code>のコードとおまけ話を載せています。気が向いたら読んでみてください。</p><h2 id=実際のコード>実際のコード</h2><div class=codeblock><div class=codeblock-content><div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">27
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">28
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">29
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">30
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">31
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">32
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">33
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">34
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">35
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">36
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">37
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">38
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">39
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">40
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">41
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">42
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">43
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">44
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">45
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">46
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">47
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">48
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">49
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">50
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">51
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">52
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">53
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">54
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">55
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">56
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">57
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">58
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">59
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">60
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">61
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">62
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">63
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">64
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">65
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">66
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">67
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">68
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">69
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">70
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">71
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">72
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">73
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">74
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback><span style=display:flex><span>0 REM A描画
+</span></span><span style=display:flex><span>10 LINE(47,20)-(73,20)
+</span></span><span style=display:flex><span>20 LINE(73,20)-(122,163)
+</span></span><span style=display:flex><span>30 LINE(122,163)-(96,163)
+</span></span><span style=display:flex><span>40 LINE(96,163)-(86,131)
+</span></span><span style=display:flex><span>50 LINE(86,131)-(36,131)
+</span></span><span style=display:flex><span>60 LINE(36,131)-(26,163)
+</span></span><span style=display:flex><span>70 LINE(26,163)-(0,163)
+</span></span><span style=display:flex><span>80 LINE(0,163)-(47,20)
+</span></span><span style=display:flex><span>90 LINE(60,54)-(78,106)
+</span></span><span style=display:flex><span>100 LINE(78,106)-(44,106)
+</span></span><span style=display:flex><span>110 LINE(44,106)-(60,54)
+</span></span><span style=display:flex><span>111 PAINT(50,50)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>115 REM P描画
+</span></span><span style=display:flex><span>120 LINE(96,37)-(145,37)
+</span></span><span style=display:flex><span>130 PI=3.14159
+</span></span><span style=display:flex><span>140 CIRCLE (145, 69), 32, , 3*PI / 2,  PI / 2, 1.48
+</span></span><span style=display:flex><span>150 LINE(145,101)-(115,101)
+</span></span><span style=display:flex><span>160 LINE(115,101)-(115,131)
+</span></span><span style=display:flex><span>170 LINE(115,131)-(96,76)
+</span></span><span style=display:flex><span>180 LINE(96,76)-(96,36)
+</span></span><span style=display:flex><span>190 LINE(115,54)-(145,54)
+</span></span><span style=display:flex><span>200 CIRCLE (145, 69), 14, , 3*PI / 2,  PI / 2, 3
+</span></span><span style=display:flex><span>210 LINE(145,84)-(115,84)
+</span></span><span style=display:flex><span>220 LINE(115,84)-(115,54)
+</span></span><span style=display:flex><span>230 PAINT(100,40)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>240 REM C描画
+</span></span><span style=display:flex><span>250 CIRCLE(211,88),54,2,0.4,2*PI-.4,1.317
+</span></span><span style=display:flex><span>260 CIRCLE(211,88),36,2,0.4,PI*2-.4,1.565
+</span></span><span style=display:flex><span>270 LINE(249,64)-(231,74)
+</span></span><span style=display:flex><span>280 LINE(249,112)-(231,102)
+</span></span><span style=display:flex><span>290 PAINT(211,40)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>300 REM　枠部分
+</span></span><span style=display:flex><span>310 LINE(273,0)-(273,144)
+</span></span><span style=display:flex><span>320 LINE(273,144)-(280,144)
+</span></span><span style=display:flex><span>330 LINE(280,144)-(280,163)
+</span></span><span style=display:flex><span>340 LINE(280,163)-(273,163)
+</span></span><span style=display:flex><span>350 LINE(273,163)-(273,171)
+</span></span><span style=display:flex><span>360 LINE(273,171)-(259,171)
+</span></span><span style=display:flex><span>370 LINE(259,171)-(259,163)
+</span></span><span style=display:flex><span>380 LINE(259,163)-(125,163)
+</span></span><span style=display:flex><span>390 LINE(125,163)-(120,144)
+</span></span><span style=display:flex><span>400 LINE(120,144)-(259,144)
+</span></span><span style=display:flex><span>405 LINE(259,144)-(259,0)
+</span></span><span style=display:flex><span>410 REM 右下ネジ描画
+</span></span><span style=display:flex><span>411 LINE(262,148)-(272,148)
+</span></span><span style=display:flex><span>412 CIRCLE(267, 148), 5, PI, 0, 3.1415
+</span></span><span style=display:flex><span>413 LINE(262,150)-(272,150)
+</span></span><span style=display:flex><span>414 CIRCLE(267,150),5,2*PI,PI,3.1415
+</span></span><span style=display:flex><span>415 LINE(266,156)-(266,162)
+</span></span><span style=display:flex><span>416 CIRCLE(266,159),6,PI/2,3*PI/2,1
+</span></span><span style=display:flex><span>417 LINE(268,156)-(268,162)
+</span></span><span style=display:flex><span>418 CIRCLE(268,159),6,3*PI/2,PI/2,1
+</span></span><span style=display:flex><span>420 PAINT(270,120)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>430 LINE(113,20)-(256,34),2,BF
+</span></span><span style=display:flex><span>440 LINE(96,34)-(99,34)
+</span></span><span style=display:flex><span>450 LINE(102,34)-(105,34)
+</span></span><span style=display:flex><span>460 LINE(108,34)-(111,34)
+</span></span><span style=display:flex><span>470 LINE(96,34)-(96,31)
+</span></span><span style=display:flex><span>480 LINE(96,31)-(99,29)
+</span></span><span style=display:flex><span>490 LINE(99,29)-(99,34)
+</span></span><span style=display:flex><span>500 LINE(102,34)-(102,27)
+</span></span><span style=display:flex><span>510 LINE(102,27)-(105,25)
+</span></span><span style=display:flex><span>520 LINE(105,25)-(105,34)
+</span></span><span style=display:flex><span>530 LINE(108,34)-(108,23)
+</span></span><span style=display:flex><span>540 LINE(108,23)-(111,21)
+</span></span><span style=display:flex><span>550 LINE(111,21)-(111,34)
+</span></span><span style=display:flex><span>560 PAINT(97,33)
+</span></span><span style=display:flex><span>570 PAINT(103,33)
+</span></span><span style=display:flex><span>580 PAINT(109,33)</span></span></code></pre></td></tr></table></div></div></div></div><h3 id=細かい話>細かい話</h3><h4 id=パス指定>パス指定</h4><p>MS-DOSでは9文字以上のパスを単純に入力できず、以下の規則に従って指定するパスで入力しなければならない。(例：Documents→Docume~1)
+ここで問題になるのが<code>~</code>(チルダ)である。DOSBoxでのテキストの入力は普段我々が使用しているキーボードと配列が違っている。その関係上<code>~</code>を入力することができないので、わざわざ設定を弄る必要がある。といってもキーボードのキー割り当てを変更するだけだが。</p><hr class=break><ul><li>参考: DOSBoxのキーボード問題
+<img src=ref.png class=qrcode><br><a href=https://indo-ka.sakura.ne.jp/dos_v/dosbox/keyboard.html>https://indo-ka.sakura.ne.jp/dos_v/dosbox/keyboard.html</a></li></ul><p><img src=images/%E7%9F%AD%E3%81%84%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E5%90%8D.png alt></p><h4 id=座標の特定>座標の特定</h4><p>ロゴのSVGファイルを持っていたのでそれを製図ソフトに挿入し、座標を調べた。使用したのは<code>AutodeskFusion</code></p><h4 id=basic実行画面>BASIC実行画面</h4><p>何もしないと画像のようにログが溜まって描画された図が見えづらくなるが、<code>CLS</code>コマンドを使用してログ表示を消去することができる。</p><p><img src=images/%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%83%A9%E3%82%A4%E3%83%B3.png alt=実行画面></p></article><span class=next>次へ<a href=https://asanobuturi.github.io/document/2025/11/>デスノート人狼という呪物について＞</a></span><br><span class=prev>前へ<a href=https://asanobuturi.github.io/document/2025/9/>遅刻について＞</a></span></div><aside id=sidebar><nav id=sidemenu><div class=side-back><a href=../index.html>記事の一覧へもどる<img src=/image/icons/sign-out-alt-solid.svg class=inline-image></a></div><div class=side-prev><a href=https://asanobuturi.github.io/document/2025/9/><img src=/image/icons/angle-left-solid.svg class=inline-image>遅刻について</a></div><div class=side-next><a href=https://asanobuturi.github.io/document/2025/11/>デスノート人狼という呪物について<img src=/image/icons/angle-right-solid.svg class=inline-image></a></div></nav><section id=indexblock><header class=indextitle>目次</header><nav id=TableOfContents><ul><li><ul><li><a href=#いきさつ>いきさつ</a></li></ul></li><li><a href=#やること>やること</a><ul><li><a href=#pc98basicについて>PC98/BASICについて</a></li><li><a href=#実行準備>実行準備</a></li></ul></li><li><a href=#描画>描画</a><ul><li><a href=#使用する関数紹介>使用する関数紹介</a></li><li><a href=#実際描いてみて>実際描いてみて</a></li></ul></li><li><a href=#おわりに>おわりに</a></li><li><a href=#実際のコード>実際のコード</a><ul><li><a href=#細かい話>細かい話</a></li></ul></li></ul></nav></section></aside></main><footer id=footer><div class=section><nav class=grid><div><label class=headline>CONTENT</label><ul><li><a href=/>Home</a></li><li><a href=/document/>Docs</a></li><li><a href=/game/>Games</a></li><li><a href=/blog/>Blog</a></li><li><a href=/electronic/>Electronic</a></li></ul></div><div><label class=headline>CONTACT</label><ul><li><a target=_blank href=https://x.com/Uchi54_apc>X</a></li><li><a target=_blank href=https://github.com/asanobuturi>GitHub Organization</a></li><li><a target=_blank href=https://github.com/asanobuturi/asanobuturi.github.io>Repository</a></li><li><a target=_blank href=https://github.com/asanobuturi/asanobuturi.github.io/issues>Issues</a></li></ul></div><div><label class=headline>ABOUT</label><ul><li><a href=/about/>About Us</a></li></ul></div></nav></div><hr><div class=section><p class=copyright>Copyright &copy; 2015 - 2023 Asano Physics Club, All Rights Reversed.</p><nav class=sns><a target=_blank href=https://twitter.com/Uchi54_apc><svg xmlns="http://www.w3.org/2000/svg" fill="currentcolor" viewBox="0 0 248 204"><path d="M221.95 51.29c.15 2.17.15 4.34.15 6.53.0 66.73-50.8 143.69-143.69 143.69v-.04c-27.44.04-54.31-7.82-77.41-22.64 3.99.48 8 .72 12.02.73 22.74.02 44.83-7.61 62.72-21.66-21.61-.41-40.56-14.5-47.18-35.07 7.57 1.46 15.37 1.16 22.8-.87-23.56-4.76-40.51-25.46-40.51-49.5v-.64c7.02 3.91 14.88 6.08 22.92 6.32C11.58 63.31 4.74 33.79 18.14 10.71c25.64 31.55 63.47 50.73 104.08 52.76-4.07-17.54 1.49-35.92 14.61-48.25 20.34-19.12 52.33-18.14 71.45 2.19 11.31-2.23 22.15-6.38 32.07-12.26-3.77 11.69-11.66 21.62-22.2 27.93 10.01-1.18 19.79-3.86 29-7.95-6.78 10.16-15.32 19.01-25.2 26.16z"/></svg></a><a target=_blank href=https://github.com/asanobuturi><svg class="w-5 h-5" fill="currentcolor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483.0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951.0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65.0.0.84-.27 2.75 1.026A9.564 9.564.0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688.0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855.0 1.338-.012 2.419-.012 2.747.0.268.18.58.688.482A10.019 10.019.0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"/></a></nav></div></footer></body></html>

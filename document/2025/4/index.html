@@ -1,0 +1,89 @@
+<!doctype html><html lang=ja><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=description content><meta name=viewport content="width=device-width,initial-scale=1"><link rel=stylesheet href=/scss/styles.min.4a71567d35f0565714f9b264f620dd2c5abcdd3fd6d8bc1fe2bafa8114c2fe47.css><link rel=icon href=/image/favicon.svg type=image/svg+xml><link rel="icon alternate" href=/image/favicon.ico><meta property="og:site_name" content="浅野学園物理部"><meta property="og:url" content="https://asanobuturi.github.io/document/2025/4/index.html"><meta property="og:title" content="ニューラルネットワーク(NN)と自分が考えるAIの定義｜浅野学園物理部"><meta property="og:description" content><meta property="og:type" content="website"><meta property="og:image" content="https://asanobuturi.github.io/document/2025/4/thumbnail.jpg"><meta name=twitter:card content="summary_large_image"><meta name=twitter:site content="@Uchi54_APC"><link rel=canonical href=https://asanobuturi.github.io/document/2025/4/><script async src="https://www.googletagmanager.com/gtag/js?id=G-M4YH1E5WC1"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-M4YH1E5WC1")</script><title>ニューラルネットワーク(NN)と自分が考えるAIの定義｜浅野学園物理部</title><script type=text/javascript src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<link rel=stylesheet href=/scss/highlight.min.5fd4e02a806db4bd8e63d97db9f23a937f07d0d2478a4e37b851c96e75701cf4.css><link rel=stylesheet href=/scss/article.min.5ee3cae303b380c098ecc9cafc8ef5f27c4e7d9864fa43a00560f808df467ab1.css><link rel=stylesheet href=/scss/tableOfContents.min.603245923695f62c9be0618c1b6a10599acbf0f4f5056ffe631acd014b70fd17.css></head><body><nav id=nav-drawer><input id=nav-input type=checkbox class=nav-unshown>
+<label id=nav-open for=nav-input><span class="bar bar1"></span>
+<span class="bar bar2"></span>
+<span class="bar bar3"></span>
+<span class=menu>MENU</span>
+<span class=close>CLOSE</span></label>
+<label id=nav-close for=nav-input></label><div id=nav-content><a href=/index.html><img loading=lazy src=/image/favicon.svg id=nav-logo alt=浅野学園物理部></a>
+<a class=nav-link href=/index.html>ホーム</a>
+<a class=nav-link href=/about/index.html>物理部とは</a>
+<a class="nav-link isActive" href=/document/index.html>部誌</a>
+<a class=nav-link href=/game/index.html>ゲーム</a>
+<a class=nav-link href=/blog/index.html>ブログ</a>
+<a class=nav-link href=/electronic/index.html>電工の部屋</a><hr><a class=nav-link href=/credit/index.html>クレジット(ライセンス)</a></div></nav><main><div id=content><a name=top></a><div id=breadcrumbs><a href=/index.html><img src=/image/icons/home-solid.svg class=inline-image>ホーム</a>
+<img src=/image/icons/angle-right-solid.svg class=inline-image>
+<a href=/document/>部誌</a>
+<img src=/image/icons/angle-right-solid.svg class=inline-image>
+<a href=/document/2025/>2025年度・部誌</a>
+<img src=/image/icons/angle-right-solid.svg class=inline-image>
+<a href=/document/2025/4/>ニューラルネットワーク(NN)と自分が考えるAIの定義</a></div><header id=overview><h1 id=title>ニューラルネットワーク(NN)と自分が考えるAIの定義</h1><div><div class=properties><span class=author><img src=/image/icons/user-edit-solid.svg class=inline-image>
+高二</span></div><div class=share><span><a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class=twitter-share-button data-related=Uchi54_apc data-lang=ja data-show-count=false>Tweet</a>
+<script async src=https://platform.twitter.com/widgets.js></script></span></div></div></header><article><h2 id=第1章-はじめに---ai時代における手作りの意義>第1章: はじめに - AI時代における「手作り」の意義</h2><p>現代、AI（人工知能）という言葉を聞かない日はない。VSCodeなどの高機能なエディタで、AIの補完機能に導かれるようにして書き上げたコードは、一見すると完璧に動作します。しかし、その内部で何が起きているのか、なぜそのアルゴリズムが最適なのかを深く理解しているかと問われれば、言葉に詰まる開発者も少なくないでしょう。AIがブラックボックスであるならば、AIが生成したコードもまた、開発者にとってのブラックボックスになりかねないのです。</p><p>私が今回、あえて「Scratch（スクラッチ）」というビジュアルプログラミング言語を用いてニューラルネットワークを実装するという、一見遠回りに思える手段を選んだのには明確な理由があります。それは、AIという技術の根源的な面白さとその仕組みを、自らの手で再構築することで、ブラックボックスの内部に光を当てたいと考えたからです。AIでは自動生成することが困難な環境にあえて身を置くことで、アルゴリズムの一行一行まで理解する。これこそが、AIに”使われる”のではなく、AIを”使いこなす”ための本質的な一歩だと思いました</p><h2 id=第2章-aiとは何か>第2章: AIとは何か？</h2><p>「AIの定義とは何か？」この答えはまだわかっていません。</p><p>かつては、人間のように対話できる「強いAI」と、特定のタスクのみをこなす「弱いAI」という分類がなされました。アラン・チューリングが提唱した「チューリング・テスト」のように、機械が人間と見分けがつかないほど知的であるかを試す思考実験も存在します。しかし、現代において実用化されているAIのほとんどは「弱いAI」に分類されるものであり、特定の領域で活躍しています。</p><p>この「AI」という広大な分野の中で、現代のAI技術、特に「機械学習」の中核を担っているのが「ニューラルネットワーク」です。ニューラルネットワークは、人間の脳を構成する神経細胞「ニューロン」のネットワーク構造を数理モデルで模倣したものです。個々のニューロンは単純な計算しか行いませんが、それらが何層にもわたって結合し、膨大な数のパラメータ（重みやバイアス）を持つことで、極めて複雑なパターンを学習し、認識・予測・生成といった高度なタスクを実行できるようになります。</p><p>つまり、ニューラルネットワークは「AIを実現するための一つの強力なアプローチ（手法）」と位置づけることができます。「知能とは何か」という哲学的な問いの答えそのものではなく、データの中からパターンを学習し、未知のデータに対して適切な出力を返すという「知的な振る舞い」を擬似的に実現するための工学的なモデルなのです。</p><p>私が実装した◯×△認識AIも、このニューラルネットワークに基づいています。入力された画像のピクセル情報から、「◯らしさ」「×らしさ」「△らしさ」といった特徴をネットワーク自身が学習し、分類するというタスクをこなします。これはまさに、特定の機能に特化した「弱いAI」の一例と言えるでしょう。</p><p>例えば◯であれば真ん中に穴が空いている角ばっている部分がない。バツであれば2ほんの線がある三角であれば角ばっている部分が3つあるなど、一つ一つの図形には特徴があるのです。この特徴というのは図形を画像として扱いそれを数値化しても残るものです、それについては後々語るとしましょう&mldr;</p><h2 id=第3章-全体の構成作るものの設計図>第3章: 全体の構成（作るものの設計図）</h2><p>まず、どのようなニューラルネットワークを作るか決めましょう。一番シンプルで分かりやすい構成は以下の通りです。</p><h3 id=ニューロン>ニューロン</h3><p>ニューラルネットワークの最小単位は「ニューロン」と呼ばれ人間の脳にも存在します。ニューロンは、以下の要素で構成されます。</p><ul><li>入力 (\(Input\)): 他の複数のニューロンから信号を受け取ります。</li><li>重み (\(Weight\)): 各入力信号には、その重要度を示す「重み」が掛け合わされます。この重みは、学習プロセスを通じて調整される重要なパラメータです。</li><li>バイアス (\(Bias\)): ニューロンの発火しやすさを調整するための固定値です。重み付けされた入力の総和に加えられます。</li><li>活性化関数 (\(Activation Function\)): 重み付けされた入力とバイアスの総和を最終的な出力信号に変換する関数です。この関数によって、ニューラルネットワークは非線形な問題を扱うことが可能になります。代表的な活性化関数に、シグモイド関数や\(ReLU\)関数 (\(Rectified Linear Unit\)) があります。</li></ul><h3 id=ネットワーク構造>ネットワーク構造</h3><p>ニューロンを多数配置し、層状に結合することでニューラルネットワークが構築されます。基本的なネットワークは以下の3つの層から構成されます。</p><ul><li>入力層 (\(Input Layer\)): 外部からデータを受け取る層です。</li><li>隠れ層 (\(Hidden Layer\)): 中間層とも呼ばれます。入力層から受け取った情報から特徴を抽出し、複雑な計算を行います。 隠れ層が多層になったものをディープニューラルネットワーク (\(DNN\)) と呼び、ディープラーニングの基盤となります。</li><li>出力層 (\(Output Layer\)): 最終的な処理結果を出力する層です。
+信号は入力層から隠れ層を経て出力層へと一方向に伝播します。これを順伝播 (\(Feedforward\)) と呼びます。</li></ul><h3 id=学習プロセス>学習プロセス</h3><p>ニューラルネットワークの学習とは、与えられたデータ（学習データ）に対して望ましい出力を得られるように、各ニューロンの「重み」と「バイアス」を自動で調整するプロセスです</p><ul><li>損失関数 (\(Loss Function\)): まず、ネットワークの出力と、正解データとの誤差を計算します。この誤差を定量化する関数を損失関数（またはコスト関数）と呼びます。</li><li>誤差逆伝播法 (\(Backpropagation\)): 損失関数によって計算された誤差を最小化するために、出力層から入力層に向かって、各層の重みとバイアスをどの程度修正すればよいかを効率的に計算していくアルゴリズムです。</li><li>勾配降下法 (\(Gradient Descent\)): 誤差逆伝播法によって求められた勾配（誤差の傾き）に基づき、誤差が最も減少する方向に重みとバイアスを少しずつ更新していきます。この最適化のプロセスを繰り返すことで、ネットワークの精度が向上していきます。
+この一連の学習プロセスを大量のデータを用いて繰り返し行い、ニューラルネットワークができます。</li></ul><h2 id=第4章-スクラッチで実装した画像認識ai>第4章: スクラッチで実装した画像認識AI</h2><p>ここまでの理論を元に、私がスクラッチで実装した「◯×△認識AI」の具体的な構成を見ていきましょう。</p><ul><li>入力データ: ユーザーがスクラッチのステージ上に描いた図形を、8x8ピクセルのモノクロ画像に変換します。各ピクセルの明るさを0（白）から9（黒）の10段階の数値で表現します。この64個の数値が、入力層の64個のニューロンに入力されます。</li><li>ネットワーク構造:<ul><li>入力層: 64ニューロン。各ピクセルの輝度値がそのまま入力値となります。</li><li>隠れ層: 16ニューロン。64次元のピクセル情報から、図形を特徴づけるためのより抽象的な16次元のデータに変換します。例えば、特定のニューロンは「縦の線」に強く反応し、別のニューロンは「右上のカーブ」に強く反応する、といった役割を学習の過程で獲得していきます。</li><li>出力層: 3ニューロン。それぞれが「◯である確率」「×である確率」「△である確率」を出力するように設計されています。ソフトマックス関数を用いることで、3つの出力の合計は1（100%）となり、最も確率の高いものを予測結果として採用します。</li></ul></li><li>学習: 予め手作業で用意した「◯の画像データ100個」「×の画像データ100個」「△の画像データ100個」を教師データとして使用します。これらのデータを使って前章で説明した誤差逆伝播法を繰り返し実行することで、64x16個の入力層-隠れ層間の重みと、16x3個の隠れ層-出力層間の重み、そして各ニューロンのバイアスが最適な値に調整されていきます。</li></ul><p>具体的な計算を以下に上げていきます。
+今回は4つの \(input\), 3つの \(hidden\), 2つの \(output\) で構成します。</p><ul><li>入力層 (\(input\)): 4ニューロン</li><li>隠れ層 (\(hidden\)): 3ニューロン</li><li>出力層 (\(output\)): 2ニューロン</li><li>学習率: \(0.5\)</li></ul><h3 id=初期設定aiの脳の初期状態>初期設定（AIの脳の初期状態）</h3><p>学習を始める前に、重みとバイアスをランダムな値で初期化します。</p><p>重み (\(input \rightarrow hidden\)):</p><p>\[i_1 \rightarrow h-1: 0.2, i_1 \rightarrow h_2: 0.3, i_1 \rightarrow h_3: -0.1\]
+\[i_2 \rightarrow h-1: 0.1, i_2 \rightarrow h_2: -0.2, i_2 \rightarrow h_3: 0.4\]
+\[i_3 \rightarrow h-1: -0.3, i_3 \rightarrow h_2: 0.5, i_3 \rightarrow h_3: 0.1\]
+\[i_4 \rightarrow h-1: 0.4, i_4 \rightarrow h_2: 0.1, i_4 \rightarrow h_3: -0.2\]</p><p>バイアス (\(hidden\)):
+\[h_1: 0.1, h_2: 0.2, h_3: -0.1\]</p><p>重み (\(hidden \rightarrow output\)):
+\[h_1 \rightarrow o_1: 0.5, h_1 \rightarrow o_2: -0.4\]
+\[h_2 \rightarrow o_1: -0.2, h_2 \rightarrow o_2: 0.6\]
+\[h_3 \rightarrow o_1: 0.3, h_3 \rightarrow o_2: 0.1\]</p><p>バイアス (\(output\)):
+\[o_1: 0.3, o_2: -0.2\]</p><h3 id=ステップ1順伝播>ステップ1：順伝播</h3><p>ある1つのデータでAIを動かします。</p><ul><li>入力データ: \([8, 5, 1, 0]\)</li><li>正解ラベル: \([1, 0]\) (例えば「物体A」)</li></ul><h4 id=隠れ層の計算>隠れ層の計算</h4><p>編注:\(S(x)\): <span class=footnote>\(S(x)\):シグモイド関数とは \[S(x) = \frac{1}{1+e^{-x}}\]
+<img src=./sigmoid.png>
+<span style=text-align:center;display:block>この上記の画像のように結果が必ず0~1に収まります</span>
+</span>, \(sum\): <span class=footnote>\(sum\): \(h_1\)の合計値</span>, \(weight\): <span class=footnote>\(weight\): 重み</span></p><p>h1の計算:</p><p>\[
+\begin{eqnarray*}
+sum &=& (i_1*weight) + (i_2*weight) + (i_3*weight) + (i_4*weight) + bias \\
+&=& (8*0.2) + (5*0.1) + (1*-0.3) + (0*0.4) + 0.1 \\
+&=& 1.6 + 0.5 - 0.3 + 0 + 0.1 \\
+&=& 1.9
+\end{eqnarray*}
+\]</p><p>\[\therefore output = S(1.9) ≈ 0.87\]</p><p>o1の計算:
+\[
+\begin{eqnarray*}
+sum &=& (h_1*weight) + (h_2*weight) + (h_3*weight) + bias \\
+&=& (0.87*0.5) + (0.89*-0.2) + (0.77*0.3) + 0.3 \\
+&=& 0.435 - 0.178 + 0.231 + 0.3 = 0.788 \\
+\end{eqnarray*}
+\]</p><p>\[\therefore output = S(0.788) ≈ 0.687\]</p><p>同様にすべての\(h_1,h_2,h_3 \cdots,o_1,o_2\)に対して同じ処理を行います</p><h3 id=ステップ2逆伝播>ステップ2:逆伝播</h3><p>AIは \([0.687, 0.516]\) と予測しましたが、正解は \([1, 0]\) です。この間違いを元に修正します。</p><p>編注:\(first error\):<span class=footnote>\(first error\): 一次誤差</span>, \(last error\): <span class=footnote>\(last error\): 最終誤差</span>, \(answer\): <span class=footnote>\(answer\): 正解</span>, \(expectation\): <span class=footnote>\(expectation\): 予測</span></p><p>\(o_1\)の誤差計算:</p><p>\[
+\begin{eqnarray*}
+first error &=& answer - expectation \\
+&=& 1 - 0.687 = 0.313 \\
+last error &=& 0.313 * (0.687 * (1 - 0.687)) \\
+&=& 0.313 * 0.215 ≈ 0.067\\
+\end{eqnarray*}\]</p><p>\(o_2\)の誤差計算:</p><p>\[
+\begin{eqnarray*}
+first error &=& answer - expectation \\
+&=& 0 - 0.516 = 0.313 \\
+last error &=& -0.516 * (0.516 * (1 - 0.516)) \\
+&=& -0.516 * 0.25 ≈ -0.129 \\
+\end{eqnarray*}\]</p><hr class=break><p>編注:\(modification\):<span class=footnote>\(modification\):修正量</span></p><p>重み( \(h_1 \rightarrow o_1\) )の修正:
+\[
+\begin{eqnarray*}
+modification &=& learning rate * error(o_1) * output(h_1) \\
+&=& 0.5 * 0.067 * 0.87 \\
+&≈& 0.029 \\
+new weight &=& former weight + 0.029 \\
+&=& 0.5 + 0.029 = 0.529
+\end{eqnarray*}
+\]</p><p>&mldr;これを\(hidden \rightarrow output\)の全ての重み（6本）と、\(output\)のバイアス（2個）で行います。</p><p>編注:\(forcederror\):<span class=footnote>\(forcederror\):押し付けられた誤差</span></p><p>\(h_1\)の誤差計算:</p><p>\[
+\begin{eqnarray*}
+forced error &=& (error(o_1) * weight(h_1 \rightarrow o_1)) + (error(o_2) * weight(h_1 \rightarrow o_2)) \\
+&=& (0.067 * 0.5) + (-0.129 * -0.4) = 0.0335 + 0.0516 = 0.0851 \\
+last error &=& 0.0851 * (output(h_1) * (1 - output(h_1))) \\
+&=& 0.0851 * (0.87 * 0.13) ≈ 0.0096
+\end{eqnarray*}
+\]</p><p>重み(\(i_1 \rightarrow h_1\))の修正:
+\[
+\begin{eqnarray*}
+modification &=& learning rate * error(h_1) * input(i_1) \\
+&=& 0.5 * 0.0096 * 8 ≈ 0.0384 \\
+newweight &=& formerweight(0.2) + 0.0384 = 0.2384
+\end{eqnarray*}
+\]</p><p>&mldr;これを\(input \rightarrow hidden\)の全ての重み（12本）と、\(hidden\)のバイアス（3個）で行います。</p><h3 id=ステップ3繰り返し>ステップ3：繰り返し</h3><p>この「順伝播→逆伝播」の1サイクルが終わりました。
+これにより、AIの脳（重みとバイアス）は、ほんの少しだけ「入力\([8, 5, 1, 0]\)が来たら、出力が\([1, 0]\)に近づく」ように変化しました。</p><h2 id=第5章-結論---ブラックボックスを自分の手で理解する>第5章: 結論 - ブラックボックスを自分の手で理解する</h2><p>AI支援コーディングが当たり前になった今、ニューラルネットワークをスクラッチで実装するという行為は、時代に逆行しているように見えるかもしれません。しかし、私はこの経験を通じて、計り知れない価値を得られたと確信しています。</p><p>それは、AIという巨大なブラックボックスを、自らの手で開けるという体験です。もちろん全てはわかりませんが、順伝播における重み付き和、活性化関数による非線形変換、そして誤差逆伝播法による地道なパラメータ更新。これら全てを自分のコードとして実装することで、AIの仕組みが理解できました。</p><p>しかし未だにAIとはなんなのかは不明です、
+<strong>だって全部数式でかけるんですよ!</strong>
+先程も書いた通りAIの定義というのは明確には存在しませんが、どこまで行っても全ては数式上に成り立っていて不思議さは依然として残り続けるのかなとか思いました。</p></article><span class=next>次へ<a href=https://asanobuturi.github.io/document/2025/5/>The unsuccessful self-treatment of a case of "writer's block"＞</a></span><br><span class=prev>前へ<a href=https://asanobuturi.github.io/document/2025/3/>トロッコ問題から理解する人間の考え方＞</a></span></div><aside id=sidebar><nav id=sidemenu><div class=side-back><a href=../index.html>記事の一覧へもどる<img src=/image/icons/sign-out-alt-solid.svg class=inline-image></a></div><div class=side-prev><a href=https://asanobuturi.github.io/document/2025/3/><img src=/image/icons/angle-left-solid.svg class=inline-image>トロッコ問題から理解する人間の考え方</a></div><div class=side-next><a href=https://asanobuturi.github.io/document/2025/5/>The unsuccessful self-treatment of a case of "writer's block"<img src=/image/icons/angle-right-solid.svg class=inline-image></a></div></nav><section id=indexblock><header class=indextitle>目次</header><nav id=TableOfContents><ul><li><a href=#第1章-はじめに---ai時代における手作りの意義>第1章: はじめに - AI時代における「手作り」の意義</a></li><li><a href=#第2章-aiとは何か>第2章: AIとは何か？</a></li><li><a href=#第3章-全体の構成作るものの設計図>第3章: 全体の構成（作るものの設計図）</a><ul><li><a href=#ニューロン>ニューロン</a></li><li><a href=#ネットワーク構造>ネットワーク構造</a></li><li><a href=#学習プロセス>学習プロセス</a></li></ul></li><li><a href=#第4章-スクラッチで実装した画像認識ai>第4章: スクラッチで実装した画像認識AI</a><ul><li><a href=#初期設定aiの脳の初期状態>初期設定（AIの脳の初期状態）</a></li><li><a href=#ステップ1順伝播>ステップ1：順伝播</a></li><li><a href=#ステップ2逆伝播>ステップ2:逆伝播</a></li><li><a href=#ステップ3繰り返し>ステップ3：繰り返し</a></li></ul></li><li><a href=#第5章-結論---ブラックボックスを自分の手で理解する>第5章: 結論 - ブラックボックスを自分の手で理解する</a></li></ul></nav></section></aside></main><footer id=footer><div class=section><nav class=grid><div><label class=headline>CONTENT</label><ul><li><a href=/>Home</a></li><li><a href=/document/>Docs</a></li><li><a href=/game/>Games</a></li><li><a href=/blog/>Blog</a></li><li><a href=/electronic/>Electronic</a></li></ul></div><div><label class=headline>CONTACT</label><ul><li><a target=_blank href=https://x.com/Uchi54_apc>X</a></li><li><a target=_blank href=https://github.com/asanobuturi>GitHub Organization</a></li><li><a target=_blank href=https://github.com/asanobuturi/asanobuturi.github.io>Repository</a></li><li><a target=_blank href=https://github.com/asanobuturi/asanobuturi.github.io/issues>Issues</a></li></ul></div><div><label class=headline>ABOUT</label><ul><li><a href=/about/>About Us</a></li></ul></div></nav></div><hr><div class=section><p class=copyright>Copyright &copy; 2015 - 2023 Asano Physics Club, All Rights Reversed.</p><nav class=sns><a target=_blank href=https://twitter.com/Uchi54_apc><svg xmlns="http://www.w3.org/2000/svg" fill="currentcolor" viewBox="0 0 248 204"><path d="M221.95 51.29c.15 2.17.15 4.34.15 6.53.0 66.73-50.8 143.69-143.69 143.69v-.04c-27.44.04-54.31-7.82-77.41-22.64 3.99.48 8 .72 12.02.73 22.74.02 44.83-7.61 62.72-21.66-21.61-.41-40.56-14.5-47.18-35.07 7.57 1.46 15.37 1.16 22.8-.87-23.56-4.76-40.51-25.46-40.51-49.5v-.64c7.02 3.91 14.88 6.08 22.92 6.32C11.58 63.31 4.74 33.79 18.14 10.71c25.64 31.55 63.47 50.73 104.08 52.76-4.07-17.54 1.49-35.92 14.61-48.25 20.34-19.12 52.33-18.14 71.45 2.19 11.31-2.23 22.15-6.38 32.07-12.26-3.77 11.69-11.66 21.62-22.2 27.93 10.01-1.18 19.79-3.86 29-7.95-6.78 10.16-15.32 19.01-25.2 26.16z"/></svg></a><a target=_blank href=https://github.com/asanobuturi><svg class="w-5 h-5" fill="currentcolor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483.0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951.0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65.0.0.84-.27 2.75 1.026A9.564 9.564.0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688.0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855.0 1.338-.012 2.419-.012 2.747.0.268.18.58.688.482A10.019 10.019.0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"/></a></nav></div></footer></body></html>

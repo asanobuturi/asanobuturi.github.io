@@ -1,0 +1,158 @@
+<!doctype html><html lang=ja><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=description content><meta name=viewport content="width=device-width,initial-scale=1"><link rel=stylesheet href=/scss/styles.min.4a71567d35f0565714f9b264f620dd2c5abcdd3fd6d8bc1fe2bafa8114c2fe47.css><link rel=icon href=/image/favicon.svg type=image/svg+xml><link rel="icon alternate" href=/image/favicon.ico><meta property="og:site_name" content="浅野学園物理部"><meta property="og:url" content="https://asanobuturi.github.io/document/2025/14/index.html"><meta property="og:title" content="AtCoderで一発逆転を狙う｜浅野学園物理部"><meta property="og:description" content><meta property="og:type" content="website"><meta property="og:image" content="https://asanobuturi.github.io/document/2025/14/thumbnail.jpg"><meta name=twitter:card content="summary_large_image"><meta name=twitter:site content="@Uchi54_APC"><link rel=canonical href=https://asanobuturi.github.io/document/2025/14/><script async src="https://www.googletagmanager.com/gtag/js?id=G-M4YH1E5WC1"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-M4YH1E5WC1")</script><title>AtCoderで一発逆転を狙う｜浅野学園物理部</title><script type=text/javascript src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<link rel=stylesheet href=/scss/highlight.min.5fd4e02a806db4bd8e63d97db9f23a937f07d0d2478a4e37b851c96e75701cf4.css><link rel=stylesheet href=/scss/article.min.5ee3cae303b380c098ecc9cafc8ef5f27c4e7d9864fa43a00560f808df467ab1.css><link rel=stylesheet href=/scss/tableOfContents.min.603245923695f62c9be0618c1b6a10599acbf0f4f5056ffe631acd014b70fd17.css></head><body><nav id=nav-drawer><input id=nav-input type=checkbox class=nav-unshown>
+<label id=nav-open for=nav-input><span class="bar bar1"></span>
+<span class="bar bar2"></span>
+<span class="bar bar3"></span>
+<span class=menu>MENU</span>
+<span class=close>CLOSE</span></label>
+<label id=nav-close for=nav-input></label><div id=nav-content><a href=/index.html><img loading=lazy src=/image/favicon.svg id=nav-logo alt=浅野学園物理部></a>
+<a class=nav-link href=/index.html>ホーム</a>
+<a class=nav-link href=/about/index.html>物理部とは</a>
+<a class="nav-link isActive" href=/document/index.html>部誌</a>
+<a class=nav-link href=/game/index.html>ゲーム</a>
+<a class=nav-link href=/blog/index.html>ブログ</a>
+<a class=nav-link href=/electronic/index.html>電工の部屋</a><hr><a class=nav-link href=/credit/index.html>クレジット(ライセンス)</a></div></nav><main><div id=content><a name=top></a><div id=breadcrumbs><a href=/index.html><img src=/image/icons/home-solid.svg class=inline-image>ホーム</a>
+<img src=/image/icons/angle-right-solid.svg class=inline-image>
+<a href=/document/>部誌</a>
+<img src=/image/icons/angle-right-solid.svg class=inline-image>
+<a href=/document/2025/>2025年度・部誌</a>
+<img src=/image/icons/angle-right-solid.svg class=inline-image>
+<a href=/document/2025/14/>AtCoderで一発逆転を狙う</a></div><header id=overview><h1 id=title>AtCoderで一発逆転を狙う</h1><div><div class=properties><span class=author><img src=/image/icons/user-edit-solid.svg class=inline-image>
+中３</span></div><div class=share><span><a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class=twitter-share-button data-related=Uchi54_apc data-lang=ja data-show-count=false>Tweet</a>
+<script async src=https://platform.twitter.com/widgets.js></script></span></div></div></header><article><script src=/mermaid/mermaid.min.js></script><h2 id=はじめに>はじめに</h2><p>中3のkino0402です。競技プログラミングをやっています。
+去年の部誌ではAtCoderでの入水記事を書いたのですが&mldr;未だに水色から上がれていません。色変記事を部誌として書くことによって部誌作成を楽にする作戦が崩れてしまいました。このままでは部誌を書くことができないので、今週末のABCで一発逆転しての入青を狙うしかありません。</p><p>ところで皆さん、フローというアルゴリズムを知っていますか？フローというのは、理解が（比較的）難しくなく、（とあるものを使えば）実装量が少ないにも関わらず、AtCoderで出題された際には基本的に暖色diffになるという、知っていれば一発逆転を狙うことができるアルゴリズムです。
+ABCでは、基本的にG問題に配置されているのですが、ABCでの1問の価値は非常に高く、難易度次第ではありますがG問題を解けるとperfが大きく上がります。早さ次第ではカンストperfも狙えるかもしれません。</p><p>ということで今回は、フローについて解説していきます。</p><h2 id=目次>目次</h2><ol><li>フローとは何か</li><li>フローの実装方法</li><li>フローを使う問題</li></ol><hr class=break><h2 id=フローとは何か>フローとは何か</h2><img src=references/1.png class=qrcode><ul><li>E - 最大流<br><a href=https://atcoder.jp/contests/pastbook2022/tasks/pastbook2022_e>https://atcoder.jp/contests/pastbook2022/tasks/pastbook2022_e</a></li></ul><blockquote><p>\(V\) 個の街があります。各街には \(1, 2, \cdots, V\) と番号が付いています。 \(E\) 本の水道管があり、 \(i\) 本目の水道管は街 \(u_i\)​ から街 \(v_i\)​ へ水を最大で \(c_i\) ​だけ流すことが出来ます。街1から街 \(V\) へ流せる水の量の最大値を求めてください。</p></blockquote><p>このような問題を解くことができるアルゴリズムです。</p><h2 id=フローの実装方法>フローの実装方法</h2><p><strong>Ford-Fulkerson法</strong>と呼ばれる方法で最大フローを求めていきます。
+このアルゴリズムでは、入力の通りに作ったフローグラフではなく、残り容量を順方向、使用済み容量を逆方向の辺として追加したグラフである、残余グラフを使います。
+以下の手順で最大フローを求めることができます。</p><ol><li>残余グラフ上の、頂点 \(1\) から頂点 \(N\) までのパスを見つける。</li><li>そのパス上に流せるだけ流す。厳密には、パスにおける容量の最小値 \(F\) を求め、パス上に流量 \(F\) を流す。この時、逆方向の辺の流量を \(F\) 減らす。</li><li>パスが見つからなくなるまで、以上の動作を繰り返す。</li></ol><p>なお計算量は、辺の数を \(E\) 、最大フローを \(F\) とした時、 \(O(EF)\) になります。</p><p>実装例はこちらになります。
+量が多く、100行ほどになってしまったので、こちらのリンクからご覧ください。</p><img src=references/2.png class=qrcode><ul><li>Submission #69228808 - 典型アルゴリズム問題集 上級〜エキスパート編
+<a href=https://atcoder.jp/contests/pastbook2022/submissions/69228808>https://atcoder.jp/contests/pastbook2022/submissions/69228808</a></li></ul><p>これで最大フローが求められることの証明ですが、筆者が言語化できるほど理解していない、執筆時刻が部誌の締切前日の夜12時である、証明を書くには余白が狭すぎるなどの理由で載せることができません。申し訳ございません。</p><p>なお、AtCoderで問題を解くだけであれば、ほとんどの問題では必ずしも証明を理解する必要はありません。（もちろん理解するに越したことはないですが）
+なんなら、ACLという物を使えば、実装の理解ができなくてもある程度は解くことができます。</p><p>AtCoderにはACL(AtCoder Library)と呼ばれる、AtCoderが提供する、C++用アルゴリズム・データ構造ライブラリがあります。
+ACLの使い方はここでは省略します（<span class=footnote><img src=references/3.png class=qrcode><a href=https://atcoder.github.io/ac-library/master/document_ja/maxflow.html>https://atcoder.github.io/ac-library/master/document_ja/maxflow.html</a></span>を見てください）が、ACLを使うことで関数部分を省略し、このように短く書くことができます。</p><div class=codeblock><div class=codeblock-content><div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">20
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;bits/stdc++.h&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;atcoder/all&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>using</span> <span style=color:#66d9ef>namespace</span> std;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>using</span> ll <span style=color:#f92672>=</span> <span style=color:#66d9ef>long</span> <span style=color:#66d9ef>long</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>int</span> <span style=color:#a6e22e>main</span>() {
+</span></span><span style=display:flex><span>  ll V, A;
+</span></span><span style=display:flex><span>  cin <span style=color:#f92672>&gt;&gt;</span> V <span style=color:#f92672>&gt;&gt;</span> A;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  atcoder<span style=color:#f92672>::</span>mf_graph<span style=color:#f92672>&lt;</span>ll<span style=color:#f92672>&gt;</span> G(V);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; i <span style=color:#f92672>&lt;</span> A; i<span style=color:#f92672>++</span>) {
+</span></span><span style=display:flex><span>    ll u, v, c;
+</span></span><span style=display:flex><span>    cin <span style=color:#f92672>&gt;&gt;</span> u <span style=color:#f92672>&gt;&gt;</span> v <span style=color:#f92672>&gt;&gt;</span> c;
+</span></span><span style=display:flex><span>    G.add_edge(u <span style=color:#f92672>-</span> <span style=color:#ae81ff>1</span>, v <span style=color:#f92672>-</span> <span style=color:#ae81ff>1</span>, c);
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  cout <span style=color:#f92672>&lt;&lt;</span> G.flow(<span style=color:#ae81ff>0</span>, V <span style=color:#f92672>-</span> <span style=color:#ae81ff>1</span>) <span style=color:#f92672>&lt;&lt;</span> endl;
+</span></span><span style=display:flex><span>}</span></span></code></pre></td></tr></table></div></div></div></div><p>また、以下のような最小費用流問題というものもあります。</p><blockquote><p>\(V\) 個の街があります。各街には \(1, 2, \cdots, V\) と番号が付いています。 \(E\) 本の水道管があり、 \(i\) 本目の水道管は街 \(u_i\) ​から街 \(v_i\) ​へ水を最大で \(c_i\) ​だけ流すことができますが、水を \(1\) 流すごとに費用が \(d_i\) ​かかります。街 \(1\) から街 \(V\) へ水を \(F\) だけ流すとき、合計費用の最小値を求めてください。</p></blockquote><p>時間とページ数に余裕がないので実装方法などは省略しますが、これもACLを使うことで短く書くことができます。</p><div class=codeblock><div class=codeblock-content><div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">20
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;bits/stdc++.h&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;atcoder/all&gt;</span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>using</span> <span style=color:#66d9ef>namespace</span> std;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>using</span> ll <span style=color:#f92672>=</span> <span style=color:#66d9ef>long</span> <span style=color:#66d9ef>long</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>int</span> <span style=color:#a6e22e>main</span>() {
+</span></span><span style=display:flex><span>  ll V, E, F;
+</span></span><span style=display:flex><span>  cin <span style=color:#f92672>&gt;&gt;</span> V <span style=color:#f92672>&gt;&gt;</span> E <span style=color:#f92672>&gt;&gt;</span> F;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  atcoder<span style=color:#f92672>::</span>mcf_graph<span style=color:#f92672>&lt;</span>ll,ll<span style=color:#f92672>&gt;</span> G(V);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; i <span style=color:#f92672>&lt;</span> E; i<span style=color:#f92672>++</span>) {
+</span></span><span style=display:flex><span>    ll u, v, c, d;
+</span></span><span style=display:flex><span>    cin <span style=color:#f92672>&gt;&gt;</span> u <span style=color:#f92672>&gt;&gt;</span> v <span style=color:#f92672>&gt;&gt;</span> c <span style=color:#f92672>&gt;&gt;</span> d;
+</span></span><span style=display:flex><span>    G.add_edge(u <span style=color:#f92672>-</span> <span style=color:#ae81ff>1</span>, v <span style=color:#f92672>-</span> <span style=color:#ae81ff>1</span>, c, d);
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  cout <span style=color:#f92672>&lt;&lt;</span> G.flow(<span style=color:#ae81ff>0</span>, V <span style=color:#f92672>-</span> <span style=color:#ae81ff>1</span>, F).second <span style=color:#f92672>&lt;&lt;</span> endl;
+</span></span><span style=display:flex><span>}</span></span></code></pre></td></tr></table></div></div></div></div><h2 id=フローを使う問題>フローを使う問題</h2><h3 id=最小カット問題>最小カット問題</h3><p>辺ごとに決められたコストを払うことでその辺を消せる時に、頂点 \(1\) から頂点 \(N\) まで辿り着けないようにするためのコストを最小化する問題です。
+コストを辺の最大容量とすると、 \(1\) から \(N\) にフローを流した時の流量が答えになることが知られています。</p><h4 id=abc010-d-浮気予防diff1777>ABC010-D 浮気予防（diff:1777）</h4><img src=references/4.png class=qrcode><p>最小カットの基本問題。<br><a href=https://atcoder.jp/contests/abc010/tasks/abc010_4>https://atcoder.jp/contests/abc010/tasks/abc010_4</a></p><h4 id=abc239-g-builder-takahashidiff2215>ABC239-G Builder Takahashi（diff:2215）</h4><img src=references/5.png class=qrcode><p>消す物が辺ではなく頂点になっている。<br><a href=https://atcoder.jp/contests/abc239/tasks/abc239_g>https://atcoder.jp/contests/abc239/tasks/abc239_g</a></p><hr class=break><h3 id=二部マッチング問題>二部マッチング問題</h3><p>\(N\) 組の点があり、ペアになれる二組の組み合わせがわかっているとき、ペアの個数を最大化する問題です。
+点 \(A1-A6\) , \(B1-B6\) のマッチングを考えます。
+頂点 \(S, G\) を作り、 \(S\) から \(A1-A6\) 、 \(G\) から \(B1-B6\) 、ペアになれる組み合わせに最大容量が \(1\) の辺を追加した時に、 \(S\) から \(G\) へ流せる量が答えになります。この場合は \(4\) です。</p><div class=codeblock><div class=codeblock-content><div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">21
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback><span style=display:flex><span>graph TD;
+</span></span><span style=display:flex><span>    S--&gt;A1;
+</span></span><span style=display:flex><span>    S--&gt;A2;
+</span></span><span style=display:flex><span>    S--&gt;A3;
+</span></span><span style=display:flex><span>    S--&gt;A4;
+</span></span><span style=display:flex><span>    S--&gt;A5;
+</span></span><span style=display:flex><span>    S--&gt;A6;
+</span></span><span style=display:flex><span>    B1--&gt;G;
+</span></span><span style=display:flex><span>    B2--&gt;G;
+</span></span><span style=display:flex><span>    B3--&gt;G;
+</span></span><span style=display:flex><span>    B4--&gt;G;
+</span></span><span style=display:flex><span>    B5--&gt;G;
+</span></span><span style=display:flex><span>    B6--&gt;G;
+</span></span><span style=display:flex><span>    A1--&gt;B1;
+</span></span><span style=display:flex><span>    A4--&gt;B3;
+</span></span><span style=display:flex><span>    A4--&gt;B4;
+</span></span><span style=display:flex><span>    A4--&gt;B5;
+</span></span><span style=display:flex><span>    A5--&gt;B6;
+</span></span><span style=display:flex><span>    A2--&gt;B2;
+</span></span><span style=display:flex><span>    A3--&gt;B2;
+</span></span><span style=display:flex><span>    A6--&gt;B6;</span></span></code></pre></td></tr></table></div></div></div></div><h4 id=abc091-c-plane-2n-pointsdiff1268>ABC091-C Plane 2N Points（diff:1268）</h4><img src=references/6.png class=qrcode><p>二部マッチングの基本問題。他の解き方もできる。<br><a href=https://atcoder.jp/contests/abc091/tasks/arc092_a>https://atcoder.jp/contests/abc091/tasks/arc092_a</a></p><h4 id=典型90問-077-planes-on-a-2d-plane7>典型90問-077 Planes on a 2D Plane（★7）</h4><img src=references/7.png class=qrcode><p>復元が必要。<br><a href=https://atcoder.jp/contests/typical90/tasks/typical90_by>https://atcoder.jp/contests/typical90/tasks/typical90_by</a></p><h4 id=abc401-g-push-simultaneouslydiff2022>ABC401-G Push Simultaneously（diff:2022）</h4><img src=references/8.png class=qrcode><p>二部マッチング＋何か。<br><a href=https://atcoder.jp/contests/abc401/tasks/abc401_g>https://atcoder.jp/contests/abc401/tasks/abc401_g</a></p><h3 id=燃やす埋める問題>燃やす埋める問題</h3><p>この名前の由来になった問題を紹介します。</p><blockquote><p>いくつかのゴミがあり、燃やすか埋めるかで全て処理する。
+i個目のゴミは燃やすと \(a_i\) 円、埋めると \(b_i\) 円かかる。
+いくつかの「 \(x_i\) 個目のゴミを燃やし、 \(y_i\) 個目のゴミを埋めると \(z_i\) 円の罰金。」といった指示が与えられる。
+この時、かかる金額を最小化せよ。</p></blockquote><p>頂点 \(S, G\) を作り、頂点 \(S\) から \(i\) に最大容量 \(a_i\) の辺を、頂点 \(i\) から \(G\) に最大容量\(b_i\)の辺を、頂点 \(x_i\) から \(y_i\) に最大容量 \(z_i\) の辺を追加した時、最小カット、つまり \(S\) から \(G\) まで流せる量が答えになります。</p><p>「両方埋める場合に罰金」、「燃やしたら \(a_i\) 円の報酬」、「全て燃やしたら報酬」など様々な応用パターンがありますが、ここでは解説しきれないので<span class=footnote><img src=references/burnbury.png class=qrcode>最小カットについて - よすぽの日記<br><a href=https://yosupo.hatenablog.com/entry/2015/03/31/134336>https://yosupo.hatenablog.com/entry/2015/03/31/134336</a></span>をご覧ください。</p><h4 id=arc085-e-muldiff2571>ARC085-E MUL（diff:2571）</h4><img src=references/9.png class=qrcode><p>燃やす埋めるの基本問題。<br><a href=https://atcoder.jp/contests/arc085/tasks/arc085_c>https://atcoder.jp/contests/arc085/tasks/arc085_c</a></p><h4 id=abc225-g-xdiff2566>ABC225-G X（diff:2566）</h4><img src=references/10.png class=qrcode><p>燃やす埋めるで解けると知っていると解きやすい問題。<br><a href=https://atcoder.jp/contests/abc225/tasks/abc225_g>https://atcoder.jp/contests/abc225/tasks/abc225_g</a></p><h4 id=abc326-g-unlock-achievementdiff2470>ABC326-G Unlock Achievement（diff:2470）</h4><img src=references/11.png class=qrcode><p>燃やす埋めるで解けると知っていると解きやすい問題2。<br><a href=https://atcoder.jp/contests/abc326/tasks/abc326_g>https://atcoder.jp/contests/abc326/tasks/abc326_g</a></p><h2 id=最後に>最後に</h2><p>ここまで長々書いてきましたが、なんと悲しいことに、8/30のABC421にてフローを使う問題が出題されたにも関わらず解けませんでした。なのでおそらく打越祭までに入青することはできないでしょう&mldr;これでは部誌を書くことができません。学校の友達にも「何があっても部誌を書く」ことは約束していますし。精神も壊れ、人間関係も壊れ、そして信用も失い、最終的には退学に追い込まれるかもしれません。</p><p>&mldr;あれ？部誌を書くための方法について考えていたら部誌と言えるレベルの内容が完成してしまいました。
+今年はこれで許されましたが、来年こそはちゃんと入青記事が書けるようにしたいですね。
+最後までご覧いただきありがとうございました。</p></article><span class=next>次へ<a href=https://asanobuturi.github.io/document/2025/15/>人類の目を覚ます＞</a></span><br><span class=prev>前へ<a href=https://asanobuturi.github.io/document/2025/13/>僕の親友、祟殺 鱟翁＞</a></span></div><aside id=sidebar><nav id=sidemenu><div class=side-back><a href=../index.html>記事の一覧へもどる<img src=/image/icons/sign-out-alt-solid.svg class=inline-image></a></div><div class=side-prev><a href=https://asanobuturi.github.io/document/2025/13/><img src=/image/icons/angle-left-solid.svg class=inline-image>僕の親友、祟殺 鱟翁</a></div><div class=side-next><a href=https://asanobuturi.github.io/document/2025/15/>人類の目を覚ます<img src=/image/icons/angle-right-solid.svg class=inline-image></a></div></nav><section id=indexblock><header class=indextitle>目次</header><nav id=TableOfContents><ul><li><a href=#はじめに>はじめに</a></li><li><a href=#目次>目次</a></li><li><a href=#フローとは何か>フローとは何か</a></li><li><a href=#フローの実装方法>フローの実装方法</a></li><li><a href=#フローを使う問題>フローを使う問題</a><ul><li><a href=#最小カット問題>最小カット問題</a></li><li><a href=#二部マッチング問題>二部マッチング問題</a></li><li><a href=#燃やす埋める問題>燃やす埋める問題</a></li></ul></li><li><a href=#最後に>最後に</a></li></ul></nav></section></aside></main><footer id=footer><div class=section><nav class=grid><div><label class=headline>CONTENT</label><ul><li><a href=/>Home</a></li><li><a href=/document/>Docs</a></li><li><a href=/game/>Games</a></li><li><a href=/blog/>Blog</a></li><li><a href=/electronic/>Electronic</a></li></ul></div><div><label class=headline>CONTACT</label><ul><li><a target=_blank href=https://x.com/Uchi54_apc>X</a></li><li><a target=_blank href=https://github.com/asanobuturi>GitHub Organization</a></li><li><a target=_blank href=https://github.com/asanobuturi/asanobuturi.github.io>Repository</a></li><li><a target=_blank href=https://github.com/asanobuturi/asanobuturi.github.io/issues>Issues</a></li></ul></div><div><label class=headline>ABOUT</label><ul><li><a href=/about/>About Us</a></li></ul></div></nav></div><hr><div class=section><p class=copyright>Copyright &copy; 2015 - 2023 Asano Physics Club, All Rights Reversed.</p><nav class=sns><a target=_blank href=https://twitter.com/Uchi54_apc><svg xmlns="http://www.w3.org/2000/svg" fill="currentcolor" viewBox="0 0 248 204"><path d="M221.95 51.29c.15 2.17.15 4.34.15 6.53.0 66.73-50.8 143.69-143.69 143.69v-.04c-27.44.04-54.31-7.82-77.41-22.64 3.99.48 8 .72 12.02.73 22.74.02 44.83-7.61 62.72-21.66-21.61-.41-40.56-14.5-47.18-35.07 7.57 1.46 15.37 1.16 22.8-.87-23.56-4.76-40.51-25.46-40.51-49.5v-.64c7.02 3.91 14.88 6.08 22.92 6.32C11.58 63.31 4.74 33.79 18.14 10.71c25.64 31.55 63.47 50.73 104.08 52.76-4.07-17.54 1.49-35.92 14.61-48.25 20.34-19.12 52.33-18.14 71.45 2.19 11.31-2.23 22.15-6.38 32.07-12.26-3.77 11.69-11.66 21.62-22.2 27.93 10.01-1.18 19.79-3.86 29-7.95-6.78 10.16-15.32 19.01-25.2 26.16z"/></svg></a><a target=_blank href=https://github.com/asanobuturi><svg class="w-5 h-5" fill="currentcolor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483.0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951.0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65.0.0.84-.27 2.75 1.026A9.564 9.564.0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688.0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855.0 1.338-.012 2.419-.012 2.747.0.268.18.58.688.482A10.019 10.019.0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"/></a></nav></div></footer></body></html>
