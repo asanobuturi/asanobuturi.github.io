@@ -676,7 +676,37 @@ https://atcoder.jp/contests/pastbook2022/tasks/pastbook2022_e $V$ 個の街が�
 残余グラフ上の、頂点 $1$ から頂点 $N$ までのパスを見つける。 そのパス上に流せるだけ流す。厳密には、パスにおける容量の最小値 $F$ を求め、パス上に流量 $F$ を流す。この時、逆方向の辺の流量を $F$ 減らす。 パスが見つからなくなるまで、以上の動作を繰り返す。 なお計算量は、辺の数を $E$ 、最大フローを $F$ とした時、 $O(EF)$ になります。
 実装例はこちらになります。 量が多く、100行ほどになってしまったので、こちらのリンクからご覧ください。
 Submission #69228808 - 典型アルゴリズム問題集 上級〜エキスパート編 https://atcoder.jp/contests/pastbook2022/submissions/69228808 これで最大フローが求められることの証明ですが、筆者が言語化できるほど理解していない、執筆時刻が部誌の締切前日の夜12時である、証明を書くには余白が狭すぎるなどの理由で載せることができません。申し訳ございません。
-なお、AtCoderで問題を解くだけであれば、ほとんどの問題では必ずしも証明を理解する必要はありません。（もちろん理解するに越したことはないですが） なんなら、ACLという物を使えば、実装の理解ができなくてもある程度は解くことができます。</description></item><item><title>BASICでお絵かき</title><link>https://asanobuturi.github.io/document/2025/10/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://asanobuturi.github.io/document/2025/10/</guid><description>BASICという昔のプログラミング言語を使用して絵を描いたので記録として書いてみた。
+なお、AtCoderで問題を解くだけであれば、ほとんどの問題では必ずしも証明を理解する必要はありません。（もちろん理解するに越したことはないですが） なんなら、ACLという物を使えば、実装の理解ができなくてもある程度は解くことができます。</description></item><item><title>AtCoderの少し変わった遊び方</title><link>https://asanobuturi.github.io/document/2026/11/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://asanobuturi.github.io/document/2026/11/</guid><description>はじめに 今年はこれで許されましたが、来年こそはちゃんと入青記事が書けるようにしたいですね。
+最後までご覧いただきありがとうございました。
+高1のkino0402です。2026/04/18のABC454にて遂に入青しました！なので今年こそは入青記事を書こうと思ったのですが、AtCoderにはレートを最大化する他にも様々な楽しみ方があることに気付いたので、今回はこれらを紹介していきます。
+目次 Shortestを狙う Fastestを狙う Shortestを狙う 俗に言うコードゴルフというやつです。
+AtCoder Problemsでは、問題ごとの最短ACコードを見ることができ、最短ACコードの所持数ランキングも見ることができます。私はAtCoder上の約1.3%の問題（125/9430）でShortestを獲得しています。
+Shortestを取る方法はいくつかあります。
+短く書ける言語を使う 競プロで最も使われているC++はコードゴルフでは弱いです。例えば直近のABC-AのShortestコードは、A言語、dc、Uiua、Bash、AWKなど、あまり聞き馴染みのない言語に埋め尽くされています。
+様々な言語がありそれぞれに強みや弱みもあり、強い言語を全て使えるようになるのが理想ではありますが、現実的ではありません。（Shortest取得数1位の方などは例外です）
+私はcLayという言語をオススメします。ABC-AなどでShortestを取れる言語ではありませんが、基本的な文法はC++を元にしているため書きやすく、ライブラリが豊富なので一部の問題は瞬殺することもできます。
+例えば、この順列の転倒数を求める問題では、ライブラリを使うことで30byteでACすることができます。
+https://atcoder.jp/contests/tessoku-book/tasks/tessoku_book_ef
+1 ll@A,@B[A];wt(inversion(A,B)); マイナーな問題を狙う ABC,ARC,AGC,AHCなどのコンテスト以外の問題（大学コン、パ研合宿、PAST、AWCなど）であれば、簡単なのにAC者数が少ないことがあります。こういった問題は狙いやすいです。
+細かいテクニックなど、書きたいことはたくさんありますが、余白が狭すぎるのでやめておきます。
+Fastestを狙う ここからが本題です。Shortest狙いと比べてわざわざ狙う人が少なく、時間をかければ比較的簡単にランキング上位になれます。私はAtCoder上の約2.6%（246/9430）の問題でFastestを獲得しています。
+ここから先に書くことは全て、C++を使うことを想定しています。
+計算量を減らす 場合分けをするなどの方法で、計算量を減らすことができる場合があります。 https://atcoder.jp/contests/math-and-algorithm/tasks/math_and_algorithm_bn
+例えば、この問題は典型的な区間スケジューリング問題なのでO(NlogN)で解くことができますが、R_i&amp;lt;=86400という制約になっているので、O(N+max(R_i))でも解くことができます。
+これにより、Fastestが18msだったところを3msまで縮めることができました。
+コンパイルオプションの指定 1 2 3 #pragma GCC target(&amp;#34;avx2&amp;#34;) #pragma GCC optimize(&amp;#34;O3&amp;#34;) #pragma GCC optimize(&amp;#34;unroll-loops&amp;#34;) を書くだけでかなり速くなります。TopCoderでは使えないらしいですが、AtCoderで使えればOKです。
+入出力の高速化 標準のcinやcoutはかなり遅いです。
+1 2 ios::sync_with_stdio(false); std::cin.tie(nullptr); を書くだけでかなりの高速化になります。
+もっと入出力を高速化 普段のコンテストであればこれで十分です。しかし、ここまでの内容はFastestを狙っていない人でも書いていることが多く、これだけで差をつけるのは難しいです。
+getchar_unlocked()やputchar_unlocked()といった、1文字ずつ高速に入力や出力を行う関数を使い、入出力関数を作ると更に速くなります。これらはインタラクティブ問題では基本的に使うことができないので気をつけましょう。
+もっともっと入出力を高速化 mmapやfwriteを使うことで更に高速化できます。ここまですれば、マイナーな問題であれば雑にコードを書くだけでFastestが取れることがあります。
+ちなみに、1文字ずつ高速に入力や出力を行う関数を使うことによるメリットとして、「必要のない文字を飛ばすことができる」というものがあります。 https://atcoder.jp/contests/math-and-algorithm/tasks/math_and_algorithm_r
+この問題では、A_iの値が100、200、300、400のいずれかで確定しているので、百の位を受け取ったらその後の00の部分を飛ばすことができます。これにより、N&amp;lt;=200000の制約でも0msを出すことができました。
+入出力の比較 https://atcoder.jp/contests/chokudai_S002/tasks/chokudai_S002_a
+この問題での実行時間を比較してみます。
+通常のcin,cout : 198ms
+高速化したcin,cout : 92ms
+getchar_unlocked(),putchar_unlocked() : 24ms</description></item><item><title>BASICでお絵かき</title><link>https://asanobuturi.github.io/document/2025/10/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://asanobuturi.github.io/document/2025/10/</guid><description>BASICという昔のプログラミング言語を使用して絵を描いたので記録として書いてみた。
 いきさつ 日課である倉庫の整理をしていたところ、何故か椅子の上にPC98が置いてあったので中身を漁ることに。結果いくつかのイラストを発見。大昔は座標を指定して線を引いたりすることで絵を描いたりしていたとTwitterで見た記憶と結びつき、自分もやってみることに。
 やること BASICというプログラミング言語を使用した絵の描画。
 PC98/BASICについて PC98はNECが1980年代から販売していたパソコンの総称。今の一般的なパソコンとRAM容量で比較すると約1万倍性能に差がある。ちなみに物理部には4台のPC98が眠っている。
