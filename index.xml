@@ -1260,7 +1260,15 @@ util.py, logger.py ベクトル計算の支援を主とするライブラリと�
 座標は全て&amp;quot;geo:&amp;lt;lat&amp;gt;,&amp;lt;lng&amp;gt;&amp;quot;という形式で記録されていたので、geo_resolver関数を作成し効率化を図った。
 main.py 28 29 30 31 32 33 def geo_resolver(text: str) -&amp;gt; Vector[float, float]: &amp;#34;&amp;#34;&amp;#34; &amp;#34;geo:lat,lng&amp;#34; -&amp;gt; (lat, lng) &amp;#34;&amp;#34;&amp;#34; return Vector(map(float, text[4:].split(&amp;#34;,&amp;#34;))) また、データの特性上(datetime, (lat, lng))という形式のオブジェクトを扱う機会が多いのでNamedTupleを利用してリーダブルなコードにした。
 main.py 19 20 21 class Visit(NamedTuple): dt: datetime.datetime pos: Vector[float, float] markers辞書は同じ座標のmarkerが重なって読めないという事態を防ぐために座標をキーにした辞書型で格納しその後forを回してfolium.Mapに載せている。座標をキーにする際に処理を簡潔に.append()で済ませるためにdefaultdictを使用した。
-main.py 155 markers = defaultdict(list) 169 markers[&amp;#34;,&amp;#34;.join(list(map(str,p)))].append(tooltip) 187 188 for pos in markers: folium.Marker(tuple(map(float, pos.split(&amp;#34;,&amp;#34;))), tooltip=&amp;#34;,&amp;#34;.</description></item><item><title>コヒーラ</title><link>https://asanobuturi.github.io/document/2004/7/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://asanobuturi.github.io/document/2004/7/</guid><description>コヒーラコヒーラとは電波探知機と言ってしまっていいのです
+main.py 155 markers = defaultdict(list) 169 markers[&amp;#34;,&amp;#34;.join(list(map(str,p)))].append(tooltip) 187 188 for pos in markers: folium.Marker(tuple(map(float, pos.split(&amp;#34;,&amp;#34;))), tooltip=&amp;#34;,&amp;#34;.</description></item><item><title>クトゥルフ神話TRPG(通称Coc)について</title><link>https://asanobuturi.github.io/document/2026/4/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://asanobuturi.github.io/document/2026/4/</guid><description>はじめに クトゥルフ神話TRPGは、プレイヤーが作成したキャラクターシートを使用してし誰かが作成したシナリオをプレイするものです。
+クトゥルフ神話TRPGに出会ったきっかけ 昔、Youtubeを視聴してみると、とある実況者のクトゥルフ神話TRPG実況の動画がおすすめ欄に出てきました。視聴してみると、とても面白く、もっと見てみたいと思い、ここまで至ります。
+そもそもクトゥルフ神話TRPGとは クトゥルフ神話TRPGは基本サイコロで物語を進め、シナリオをクリアするものです。その際、シナリオを読み込んでいるGM(総称ゲームマスター)またはKP(俗称キーパー)がプレイヤーの言動やサイコロの出目を踏まえてシナリオを進行します。なお、最近はGMが居ない状態でシナリオを進めるキーパーレスのシナリオもあります。
+準備の方法 プレイするシナリオと、ココフォリアというサイトを用意して下さい。(ココフォリアの使用方法はココフォリア公式ドキュメントをご参照ください)シナリオは&amp;quot;クトゥルフ神話TRPG シナリオ&amp;quot;と検索すればシナリオが掲載されているサイトがいくつかあります。その後、プレイヤー側はシナリオで使用するキャラクターの能力が書かれたキャラクターシートを直接ココフォリアに記入し、シナリオで使う背景や立ち絵、シナリオの途中に送る可能性がある文を保存して下さい。
+いざプレイ! シナリオに沿うということを前提にすれば、超真面目にやるも良し、大ふざけするのも良いです。物語を進め、より良いエンディングを目指しましょう！
+終わりに クトゥルフ神話TRPG以外にも、「シノビガミ」や「永い後日談のネクロニカ」など、システムが違うゲームには他にもあります。著作権に注意しながら遊んでみて下さい。
+※「クトゥルフ神話TRPG」は、「株式会社アークライト」及び「株式会社KADOKAWA」が権利を有しています。
+※「シノビガミ」は、『冒険企画局』及び『新紀元社』が権利を有しています。
+※「永い後日談のネクロニカ」は『神谷涼』及び『インコグ・ラボ』が権利を有しています。</description></item><item><title>コヒーラ</title><link>https://asanobuturi.github.io/document/2004/7/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://asanobuturi.github.io/document/2004/7/</guid><description>コヒーラコヒーラとは電波探知機と言ってしまっていいのです
 身近なものにはラジコンとかに実装されております
 有名なお話では
 日露戦争のとき
